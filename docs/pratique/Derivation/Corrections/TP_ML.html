@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Correction complète · Le labo maths</title><link rel="stylesheet" href="../../../assets/site.css"><link rel="stylesheet" href="../../../assets/katex/katex.min.css"><link rel="stylesheet" href="../../../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page reading-mode" data-deck="Derivation/Corrections/TP_ML.md"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../../../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../../../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Corrections</p><h1>Correction complète</h1><p>Derivation / Corrections / TP_ML.md</p></div><span class="chapter-count">11 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="false">Slides</button><button id="mode-reading" aria-pressed="true">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 11</span><span id="progress-label">9 %</span></div><progress id="progress" max="11" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Correction complète</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>1. Dérivées partielles</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>2. Points critiques</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>3. Hessienne</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>4. Évaluation du Hessien aux points critiques</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Cas 1 : ((0,0))</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Cas 2 et 3 : (x=\pm\sqrt{17/8}), (y=\frac{3}{2}x)</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Conclusion sur la classification</span></a><a class="slide-link" href="#9" data-slide-link="9"><small>09</small><span>6. Interprétation machine learning</span></a><a class="slide-link" href="#10" data-slide-link="10"><small>10</small><span>b) Pourquoi les minima non stricts posent problème ?</span></a><a class="slide-link" href="#11" data-slide-link="11"><small>11</small><span>c) Zones dangereuses pour un algorithme ML</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../../../sources/Derivation/Corrections/TP_ML.md" download>Source Markdown ↓</a><a class="source-link" href="../../../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../../../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Corrections <span class="pill">01 / 11</span></p><div class="prose">
+<h1 id="correction-compl%C3%A8te"><strong>Correction complète</strong></h1>
+<p>La fonction de perte est :</p>
+<p>[<br />
+L(x,y)=x^4 - 2x^2 + y^2 - 3xy.<br />
+]</p>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2"><p class="question-kicker" id="slide-label-2">Corrections <span class="pill">02 / 11</span></p><div class="prose">
+<h1 id="1-d%C3%A9riv%C3%A9es-partielles"><strong>1. Dérivées partielles</strong></h1>
+<h3 id="par-rapport-%C3%A0-x">Par rapport à (x)</h3>
+<p>[<br />
+L_x = 4x^3 - 4x - 3y<br />
+]</p>
+<h3 id="par-rapport-%C3%A0-y">Par rapport à (y)</h3>
+<p>[<br />
+L_y = 2y - 3x<br />
+]</p>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3"><p class="question-kicker" id="slide-label-3">Corrections <span class="pill">03 / 11</span></p><div class="prose">
+<h1 id="2-points-critiques"><strong>2. Points critiques</strong></h1>
+<p>On résout :</p>
+<p>[<br />
+L_x = 0,\qquad L_y = 0.<br />
+]</p>
+<h3 id="de-l_y--0">De (L_y = 0) :</h3>
+<p>[<br />
+2y - 3x = 0<br />
+\quad\Rightarrow\quad<br />
+y = \frac{3}{2}x<br />
+]</p>
+<p>On substitue dans (L_x = 0) :</p>
+<p>[<br />
+4x^3 - 4x - 3\left(\frac{3}{2}x\right)=0<br />
+]</p>
+<p>[<br />
+4x^3 - 4x - \frac{9}{2}x = 0<br />
+]</p>
+<p>[<br />
+4x^3 - \left(4 + \frac{9}{2}\right)x = 0<br />
+]</p>
+<p>[<br />
+4x^3 - \frac{17}{2}x = 0<br />
+]</p>
+<p>Factorisons :</p>
+<p>[<br />
+x\left(4x^2 - \frac{17}{2}\right)=0<br />
+]</p>
+<p>Donc :</p>
+<ol>
+<li>(x = 0)</li>
+<li>(4x^2 = \frac{17}{2})<br />
+[<br />
+x^2 = \frac{17}{8}<br />
+\quad\Rightarrow\quad<br />
+x = \pm \sqrt{\frac{17}{8}}<br />
+]</li>
+</ol>
+<p>Correspondance des y :</p>
+<p>[<br />
+y = \frac{3}{2}x<br />
+]</p>
+<h3 id="%E2%9C%94-points-critiques"><img class="emoji" draggable="false" alt="✔" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2714.svg" data-marp-twemoji=""/> Points critiques :</h3>
+<p>[<br />
+(0,0)<br />
+]</p>
+<p>[<br />
+\left(\sqrt{\frac{17}{8}},; \frac{3}{2}\sqrt{\frac{17}{8}}\right)<br />
+]</p>
+<p>[<br />
+\left(-\sqrt{\frac{17}{8}},; -\frac{3}{2}\sqrt{\frac{17}{8}}\right)<br />
+]</p>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4"><p class="question-kicker" id="slide-label-4">Corrections <span class="pill">04 / 11</span></p><div class="prose">
+<h1 id="3-hessienne"><strong>3. Hessienne</strong></h1>
+<p>Calculons les dérivées secondes.</p>
+<p>[<br />
+L_{xx} = 12x^2 - 4, \qquad<br />
+L_{yy} = 2, \qquad<br />
+L_{xy} = L_{yx} = -3<br />
+]</p>
+<p>Hessienne :</p>
+<p>[<br />
+H(x,y)=<br />
+\begin{pmatrix}<br />
+12x^2 - 4 &amp; -3 <br />
+-3 &amp; 2<br />
+\end{pmatrix}<br />
+]</p>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5"><p class="question-kicker" id="slide-label-5">Corrections <span class="pill">05 / 11</span></p><div class="prose">
+<h1 id="4-%C3%A9valuation-du-hessien-aux-points-critiques"><strong>4. Évaluation du Hessien aux points critiques</strong></h1>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6"><p class="question-kicker" id="slide-label-6">Corrections <span class="pill">06 / 11</span></p><div class="prose">
+<h2 id="%F0%9F%94%B9-cas-1--00"><img class="emoji" draggable="false" alt="🔹" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f539.svg" data-marp-twemoji=""/> <strong>Cas 1 : ((0,0))</strong></h2>
+<p>[<br />
+H(0,0)=<br />
+\begin{pmatrix}<br />
+-4 &amp; -3 <br />
+-3 &amp; 2<br />
+\end{pmatrix}<br />
+]</p>
+<p>Déterminant :</p>
+<p>[<br />
+\det(H)=(-4)(2) - (-3)^2 = -8 - 9 = -17 &lt; 0<br />
+]</p>
+<p><img class="emoji" draggable="false" alt="➡️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/27a1.svg" data-marp-twemoji=""/> <strong>Hessien indéfini</strong><br />
+<img class="emoji" draggable="false" alt="➡️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/27a1.svg" data-marp-twemoji=""/> <strong>point-selle</strong></p>
+</div></article>
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7"><p class="question-kicker" id="slide-label-7">Corrections <span class="pill">07 / 11</span></p><div class="prose">
+<h2 id="%F0%9F%94%B9-cas-2-et-3--xpmsqrt178-yfrac32x"><img class="emoji" draggable="false" alt="🔹" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f539.svg" data-marp-twemoji=""/> <strong>Cas 2 et 3 : (x=\pm\sqrt{17/8}), (y=\frac{3}{2}x)</strong></h2>
+<p>Calculons d’abord (12x^2 - 4) :</p>
+<p>[<br />
+x^2 = \frac{17}{8}<br />
+]</p>
+<p>[<br />
+12x^2 - 4 = 12\left(\frac{17}{8}\right) - 4<br />
+= \frac{204}{8} - 4<br />
+= 25.5 - 4<br />
+= 21.5<br />
+]</p>
+<p>Le Hessien vaut donc :</p>
+<p>[<br />
+H=<br />
+\begin{pmatrix}<br />
+21.5 &amp; -3 <br />
+-3 &amp; 2<br />
+\end{pmatrix}<br />
+]</p>
+<p>Déterminant :</p>
+<p>[<br />
+\det(H)=21.5\cdot 2 - 9 = 43 - 9 = 34 &gt; 0<br />
+]</p>
+<p>Et :</p>
+<p>[<br />
+L_{xx}=21.5 &gt; 0<br />
+]</p>
+<p><img class="emoji" draggable="false" alt="➡️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/27a1.svg" data-marp-twemoji=""/> Hessien <strong>défini positif</strong><br />
+<img class="emoji" draggable="false" alt="➡️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/27a1.svg" data-marp-twemoji=""/> <strong>minimum local strict</strong></p>
+<p>Cela vaut pour les deux points symétriques (car la Hessienne dépend seulement de (x^2)).</p>
+</div></article>
+<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8"><p class="question-kicker" id="slide-label-8">Corrections <span class="pill">08 / 11</span></p><div class="prose">
+<h1 id="%F0%9F%8E%AF-conclusion-sur-la-classification"><img class="emoji" draggable="false" alt="🎯" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f3af.svg" data-marp-twemoji=""/> <strong>Conclusion sur la classification</strong></h1>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Point critique</th>
+<th>Nature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>((0,0))</td>
+<td><strong>Point-selle</strong></td>
+</tr>
+<tr>
+<td>(\left(\sqrt{\frac{17}{8}},;\frac{3}{2}\sqrt{\frac{17}{8}}\right))</td>
+<td><strong>Minimum strict</strong></td>
+</tr>
+<tr>
+<td>(\left(-\sqrt{\frac{17}{8}},;-\frac{3}{2}\sqrt{\frac{17}{8}}\right))</td>
+<td><strong>Minimum strict</strong></td>
+</tr>
+</tbody>
+</table></div>
+</div></article>
+<article class="slide-card" id="slide-9" aria-labelledby="slide-label-9"><p class="question-kicker" id="slide-label-9">Corrections <span class="pill">09 / 11</span></p><div class="prose">
+<h1 id="%F0%9F%9A%80-6-interpr%C3%A9tation-machine-learning"><img class="emoji" draggable="false" alt="🚀" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f680.svg" data-marp-twemoji=""/> <strong>6. Interprétation machine learning</strong></h1>
+<h3 id="a-pourquoi-la-descente-de-gradient-ralentit-elle-dans-un-point-selle"><strong>a) Pourquoi la descente de gradient ralentit-elle dans un point-selle ?</strong></h3>
+<p>Parce que :</p>
+<ul>
+<li data-marpit-fragment="1">le gradient devient très petit,</li>
+<li data-marpit-fragment="2">mais la fonction ne se comporte pas comme un minimum,</li>
+<li data-marpit-fragment="3">certaines directions montent, d’autres descendent.</li>
+</ul>
+<p>Le modèle peut <strong>stagner longtemps</strong> sans progresser.</p>
+</div></article>
+<article class="slide-card exercise" id="slide-10" aria-labelledby="slide-label-10"><p class="question-kicker" id="slide-label-10">Corrections <span class="pill">10 / 11</span></p><div class="prose">
+<h3 id="b-pourquoi-les-minima-non-stricts-posent-probl%C3%A8me"><strong>b) Pourquoi les minima non stricts posent problème ?</strong></h3>
+<p>Car la surface est plate ou très mal conditionnée :</p>
+<ul>
+<li data-marpit-fragment="1">le gradient est faible ou instable,</li>
+<li data-marpit-fragment="2">les mises à jour deviennent petites ou oscillent,</li>
+<li data-marpit-fragment="3">la convergence est lente.</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-11" aria-labelledby="slide-label-11"><p class="question-kicker" id="slide-label-11">Corrections <span class="pill">11 / 11</span></p><div class="prose">
+<h3 id="c-zones-dangereuses-pour-un-algorithme-ml"><strong>c) Zones dangereuses pour un algorithme ML</strong></h3>
+<p>Ici :</p>
+<ul>
+<li data-marpit-fragment="1">autour de ((0,0)), le Hessien est <strong>indéfini</strong> → <strong>point-selle → danger</strong></li>
+<li data-marpit-fragment="2">les régions où (x\approx 0) créent des vallées plates → ralentissement majeur</li>
+</ul>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../../../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 11</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../../../index.html">Comprendre, puis pratiquer.</a></footer><script src="../../../assets/slides.js" defer></script></body></html>

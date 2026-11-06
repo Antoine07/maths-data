@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Projet fil rouge — Comprendre la consommation électrique · Le labo maths</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="../../assets/katex/katex.min.css"><link rel="stylesheet" href="../../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page reading-mode" data-deck="Projet_IA/README.md"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Travaux pratiques</p><h1>Projet fil rouge — Comprendre la consommation électrique</h1><p>Projet_IA / README.md</p></div><span class="chapter-count">3 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="false">Slides</button><button id="mode-reading" aria-pressed="true">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 3</span><span id="progress-label">33 %</span></div><progress id="progress" max="3" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Projet fil rouge — Comprendre la consommation électrique</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Jalons reliés aux séances</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Livrables</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../../sources/Projet_IA/README.md" download>Source Markdown ↓</a><a class="source-link" href="../../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Travaux pratiques <span class="pill">01 / 3</span></p><div class="prose">
+<h1 id="projet-fil-rouge--comprendre-la-consommation-%C3%A9lectrique">Projet fil rouge — Comprendre la consommation électrique</h1>
+<h2 id="objectif">Objectif</h2>
+<p>Faire évoluer le même projet pendant les six chapitres avancés : comparer des journées, prévoir leur consommation, explorer les directions des données, vérifier les gradients et entraîner des modèles.</p>
+<p>Ce projet prolonge <a href="../../02_modelisation.html">le TP de modélisation de la consommation</a>. Les 30 valeurs de ce TP restent dans leur source. Pour expérimenter avec plusieurs variables et un test réservé, on utilise ici une <strong>nouvelle table de 240 journées entièrement simulées</strong>. Les variables ajoutées ne sont pas des mesures reconstituées des 30 journées initiales.</p>
+<h2 id="contexte-et-utilisateurs">Contexte et utilisateurs</h2>
+<p>Une équipe de gestion énergétique souhaite estimer la consommation d'une journée et repérer à l'avance les journées de forte demande. Les résultats doivent être compréhensibles pour l'équipe technique.</p>
+<h2 id="probl%C3%A8me-%C3%A0-r%C3%A9soudre">Problème à résoudre</h2>
+<p>Une simple tendance en fonction du jour ne décrit pas l'effet combiné de la température, de l'occupation et des équipements. Nous comparons plusieurs représentations et modèles en gardant les mêmes partitions.</p>
+<p>Les données sont pédagogiques : aucune conclusion opérationnelle sur un bâtiment réel ne peut être tirée de leurs performances.</p>
+<h2 id="fonctionnalit%C3%A9s-cibles">Fonctionnalités cibles</h2>
+<ol>
+<li>Rechercher des profils comparables sans connaître leur consommation future.</li>
+<li>Ajuster et contrôler une régression multivariée.</li>
+<li>Analyser la possibilité d'une réduction de dimension.</li>
+<li>Calculer puis vérifier la perte et les gradients.</li>
+<li>Comparer résolution directe, descente et pénalité L2.</li>
+<li>Comparer une classification logistique et un petit réseau.</li>
+</ol>
+<h2 id="mod%C3%A8le-de-donn%C3%A9es-ou-objets-principaux">Modèle de données ou objets principaux</h2>
+<p>Le fichier <a href="../../projet-ia/data/consommation.csv">consommation.csv</a> contient :</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Sens</th>
+<th>Utilisation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jour</code></td>
+<td>Ordre chronologique, de 1 à 240</td>
+<td>Partitionnement ; pas une caractéristique du modèle avancé</td>
+</tr>
+<tr>
+<td><code>temperature</code></td>
+<td>Température simulée, en °C</td>
+<td>Caractéristique connue ou prévue avant la journée</td>
+</tr>
+<tr>
+<td><code>occupation</code></td>
+<td>Nombre d'occupants simulé, de 1 à 5</td>
+<td>Caractéristique</td>
+</tr>
+<tr>
+<td><code>equipements</code></td>
+<td>Indice d'intensité d'utilisation simulé, entre 1 et 5</td>
+<td>Caractéristique sans unité physique</td>
+</tr>
+<tr>
+<td><code>consommation</code></td>
+<td>Consommation simulée, en kWh</td>
+<td>Cible de régression puis construction de l'étiquette</td>
+</tr>
+</tbody>
+</table></div>
+<p>La simulation inclut une composante non linéaire liée au chauffage et un bruit aléatoire. Cela ne garantit pas qu'un réseau soit meilleur que la logistique sur la tâche de classification choisie.</p>
+<p>Partitions fixées : jours 1–144 pour l'apprentissage, 145–192 pour la validation, 193–240 pour le test. Leur ordre chronologique est conservé. La saisonnalité simulée crée des distributions différentes : commenter cette limite.</p>
+<h2 id="architecture-attendue">Architecture attendue</h2>
+<p>Faire évoluer <a href="../../projet-ia/depart.py">depart.py</a>, ou le <a href="../../projet-ia/depart.ipynb">notebook de départ</a>, sans créer six projets indépendants.</p>
+<p>Séparer progressivement les fonctions de chargement, transformation, prédiction, perte, gradient, apprentissage et évaluation. Sauvegarder la moyenne, l'écart-type et les paramètres avec le modèle : les poids seuls ne suffisent pas à reproduire les prédictions.</p>
+<p>Le calcul obligatoire utilise seulement NumPy. Les visualisations et la comparaison PyTorch sont des extensions facultatives.</p>
+<h2 id="installation-et-ex%C3%A9cution">Installation et exécution</h2>
+<p>Depuis le dossier <code>Projet_IA</code> :</p>
+<pre tabindex="0"><code class="language-sh">python3 -m pip install -r requirements.txt
+python3 depart.py
+python3 correction.py --verifier
+</code></pre>
+<p>Le programme de correction utilise toujours les mêmes données et graines. Il écrit <code>resultats/bilan.json</code> et <code>resultats/modeles.npz</code> à côté du script, quel que soit le dossier depuis lequel il est lancé.</p>
+<p>Pour télécharger le projet complet : <a href="../../projet-ia/projet_ia.zip">archive du fil rouge</a>. Décompresser l'archive avant d'exécuter le script, afin de conserver <code>data/consommation.csv</code> à sa place.</p>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2"><p class="question-kicker" id="slide-label-2">Travaux pratiques <span class="pill">02 / 3</span></p><div class="prose">
+<h2 id="jalons-reli%C3%A9s-aux-s%C3%A9ances">Jalons reliés aux séances</h2>
+<h3 id="jalon-1--g%C3%A9om%C3%A9trie-des-donn%C3%A9es">Jalon 1 — Géométrie des données</h3>
+<p>Après <a href="../../avance/01_geometrie_donnees.html">Géométrie des données</a>.</p>
+<p><strong>Notions mobilisées :</strong> normes, distances, cosinus et échelles. <strong>Fonctionnalité à produire :</strong> chercher trois journées d'apprentissage proches de la première journée de validation, sans utiliser la consommation comme variable.</p>
+<p><strong>Consigne :</strong> fixer des échelles métier simples, annoncer la mesure et expliquer le premier résultat. Ne pas comparer une requête à elle-même dans l'ensemble des candidats.</p>
+<p><strong>Résultat vérifiable :</strong> trois identifiants distincts et des scores ordonnés. <strong>Erreurs à observer :</strong> confusion entre direction et valeur, absence de contrôle des vecteurs nuls.</p>
+<p><strong>Livrable :</strong> une fonction de voisinage et un tableau commenté. Revenir sur ce choix après l'introduction de la standardisation au jalon 3.</p>
+<h3 id="jalon-2--moindres-carr%C3%A9s">Jalon 2 — Moindres carrés</h3>
+<p>Après <a href="../../avance/02_moindres_carres.html">Régression multivariée</a>.</p>
+<p><strong>Notions mobilisées :</strong> matrice de conception, rang et orthogonalité des résidus. <strong>Fonctionnalité :</strong> ajuster trois poids et une constante sur l'apprentissage avec <code>lstsq</code>.</p>
+<p><strong>Consigne :</strong> vérifier les dimensions, calculer les résidus, puis comparer la RMSE de validation avec une référence prédisant la moyenne d'apprentissage. Aucun choix ne doit utiliser le test.</p>
+<p><strong>Résultat vérifiable :</strong> rang 4 et <code>A.T @ r</code> proche de zéro pour la solution non pénalisée. Ajouter temporairement une colonne dupliquée pour examiner la perte de rang.</p>
+<p><strong>Livrable :</strong> paramètres et diagnostic. <strong>Erreurs à observer :</strong> inverse explicite et interprétation causale des coefficients.</p>
+<h3 id="jalon-3--svd-apr%C3%A8s-les-statistiques-et-lacp">Jalon 3 — SVD après les statistiques et l'ACP</h3>
+<p>Après <a href="../../stat/03_centrage_reduction.html">centrage-réduction</a>, <a href="../../stat/04_acp_intro.html">ACP</a> et <a href="../../avance/03_svd_acp.html">SVD</a>.</p>
+<p><strong>Notions mobilisées :</strong> standardisation, covariance, valeurs singulières et projection. <strong>Fonctionnalité :</strong> proposer une représentation à 95 % de variance et reconstruire les observations.</p>
+<p><strong>Consigne :</strong> apprendre moyenne et écart-type sur les 144 premières lignes ; appliquer les mêmes paramètres partout ; calculer les axes sur l'apprentissage. Recalculer les voisins du jalon 1 avec cette nouvelle géométrie.</p>
+<p><strong>Résultat vérifiable :</strong> les parts de variance sont environ 40,24 %, 33,96 % et 25,80 %. Trois axes restent nécessaires au seuil de 95 %. Le résultat « pas de compression » est correct.</p>
+<p><strong>Livrable :</strong> spectre, nombre d'axes, reconstruction et explication. <strong>Erreurs à observer :</strong> forcer deux axes, ajuster la moyenne sur toutes les lignes.</p>
+<h3 id="jalon-4--calcul-diff%C3%A9rentiel">Jalon 4 — Calcul différentiel</h3>
+<p>Après <a href="../../gradient.html">gradient et Hessienne</a>, puis <a href="../../avance/04_calcul_differentiel.html">Calcul différentiel matriciel</a>.</p>
+<p><strong>Notions mobilisées :</strong> perte moyenne, transposée et règle de chaîne. <strong>Fonctionnalité :</strong> calculer la perte quadratique et ses quatre dérivées.</p>
+<p><strong>Consigne :</strong> écrire une seule fonction renvoyant perte et gradient ; comparer avec des différences finies centrées sur chaque paramètre.</p>
+<p><strong>Résultat vérifiable :</strong> gradient <code>(4,)</code>, écart inférieur à <code>1e-7</code> au point de contrôle fourni, en précision double.</p>
+<p><strong>Livrable :</strong> code et explication des dimensions. <strong>Erreurs à observer :</strong> résidu de signe contraire, moyenne absente et diffusion automatique.</p>
+<h3 id="jalon-5--optimisation-et-r%C3%A9gularisation">Jalon 5 — Optimisation et régularisation</h3>
+<p>Après <a href="../../avance/05_optimisation.html">Optimisation</a>.</p>
+<p><strong>Notions mobilisées :</strong> pas, courbure, L2 et sélection sur validation. <strong>Fonctionnalité :</strong> entraîner le modèle par descente et comparer à une solution directe.</p>
+<p><strong>Consigne :</strong> conserver le biais non pénalisé ; comparer <code>lambda</code> dans <code>[0, .001, .01, .1, 1]</code> ; choisir la RMSE de validation minimale. Figer les paramètres avant le test.</p>
+<p><strong>Résultat vérifiable :</strong> accord à <code>1e-6</code> entre descente complète et résolution directe du même objectif ; choix de <code>lambda=0.1</code> sur le fichier fourni. Une expérimentation à mini-lots doit commenter les oscillations.</p>
+<p><strong>Livrable :</strong> historique, tableau de sélection et paramètres sauvegardés. <strong>Erreurs à observer :</strong> comparaison de deux normalisations différentes et réglages sur le test.</p>
+<h3 id="jalon-6--classification-et-r%C3%A9seau">Jalon 6 — Classification et réseau</h3>
+<p>Après <a href="../../avance/06_retropropagation.html">Classification et rétropropagation</a>.</p>
+<p><strong>Notions mobilisées :</strong> sigmoïde, perte binaire stable et chaîne de dérivation. <strong>Fonctionnalité :</strong> prévoir les journées dépassant la médiane de consommation d'apprentissage, sans fournir la consommation en entrée.</p>
+<p><strong>Consigne :</strong> comparer classe majoritaire, logistique et réseau à quatre neurones ; sélectionner les itérations sur la perte de validation et garder un seuil de probabilité fixé à 0,5. Contrôler numériquement les quatre tableaux de gradients.</p>
+<p><strong>Résultat vérifiable :</strong> gradients corrects à <code>1e-8</code> sur le petit exemple ; paramètres figés avant l'évaluation finale. La correction obtient 48/48 décisions correctes pour la logistique et 47/48 pour le réseau sur le petit test simulé.</p>
+<p><strong>Livrable :</strong> pertes de validation, matrices de confusion, fréquences des classes et commentaire des erreurs. <strong>Erreurs à observer :</strong> fuite de la cible, surinterprétation de 48 exemples et affirmation systématique que le réseau est meilleur.</p>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3"><p class="question-kicker" id="slide-label-3">Travaux pratiques <span class="pill">03 / 3</span></p><div class="prose">
+<h2 id="livrables">Livrables</h2>
+<ul>
+<li>Le même script ou notebook enrichi pendant les six étapes.</li>
+<li>Un tableau des transformations apprises et de leurs dimensions.</li>
+<li>Les résultats de contrôle des gradients et de reconstruction.</li>
+<li>Les erreurs de validation utilisées pour les choix.</li>
+<li>Les modèles figés et un compte rendu de l'évaluation finale.</li>
+<li>Une conclusion distinguant qualité numérique, qualité prédictive et limites des données simulées.</li>
+</ul>
+<h2 id="crit%C3%A8res-de-validation">Critères de validation</h2>
+<p>La solution doit se relancer avec le CSV fourni. Les partitions, graines, unités et conventions de perte sont explicites. Les transformations sont ajustées uniquement sur l'apprentissage ; le test ne sélectionne aucun réglage.</p>
+<p>Les gradients analytiques et numériques concordent. Les résultats de régression sont comparés à une référence constante ; la classification est comparée à la classe majoritaire et à la logistique. Aucune amélioration du réseau n'est exigée.</p>
+<h2 id="correction-expliqu%C3%A9e">Correction expliquée</h2>
+<p>La <a href="../../projet-ia/correction.py">correction exécutable</a> regroupe les six jalons dans l'ordre. Le <a href="../../projet-ia/correction.ipynb">notebook de correction</a> permet d'examiner chaque étape séparément.</p>
+<p>Lecture du code : <code>charger</code> fixe les partitions ; <code>ajuster_echelle</code> apprend les transformations ; <code>cout_gradient</code> implémente la perte du chapitre de calcul différentiel ; <code>descente</code> et <code>ridge</code> résolvent le même objectif ; <code>reseau_cout_gradients</code> applique la chaîne de dérivation. <code>main</code> assemble les jalons et consulte le test après la sélection.</p>
+<p>Le fichier <a href="../../projet-ia/resultats/bilan.json">bilan de référence</a> contient les valeurs obtenues sur le CSV fourni. De petits écarts d'arrondi sont possibles selon la bibliothèque numérique ; le signe des axes SVD peut aussi changer.</p>
+<h2 id="extensions-facultatives">Extensions facultatives</h2>
+<ul>
+<li>
+<p>Les <a href="../Tps/Tail_End/README.html">quatre problèmes Compter les occasions</a> prolongent le cours avec d'autres situations. Le fichier <a href="../../projet-ia/tail_end.py">tail_end.py</a>, inclus dans l'archive, vérifie leurs résultats : <code>python3 tail_end.py</code>.</p>
+</li>
+<li>
+<p>Les six problèmes supplémentaires se trouvent dans le <a href="../../problemes.html">catalogue du parcours</a>. Le fichier <a href="../../projet-ia/paradoxes.py">paradoxes.py</a>, inclus dans l'archive, vérifie les minutes cumulées, Simpson, le bus, le dîner, Braess et les fausses alertes : <code>python3 paradoxes.py</code>.</p>
+</li>
+<li>
+<p><a href="../../projet-ia/verification_pytorch.py">Comparer les gradients NumPy et PyTorch</a>, après installation des dépendances optionnelles : <code>python3 verification_pytorch.py</code>.</p>
+</li>
+<li>
+<p>Compresser une image par SVD et tracer erreur contre rang ; cela complète le jalon 3 sans remplacer les données du projet.</p>
+</li>
+<li>
+<p>Étudier les mini-lots, plusieurs graines d'initialisation et le coût des faux négatifs.</p>
+</li>
+<li>
+<p>Définir un protocole temporel avec plusieurs fenêtres de validation, avant de réutiliser ces idées sur de vraies données.</p>
+</li>
+</ul>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 3</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../../index.html">Comprendre, puis pratiquer.</a></footer><script src="../../assets/slides.js" defer></script></body></html>

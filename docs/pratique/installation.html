@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Stacks · Le labo maths</title><link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="../assets/katex/katex.min.css"><link rel="stylesheet" href="../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page reading-mode" data-deck="installation.md"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Installation</p><h1>Stacks</h1><p>installation.md</p></div><span class="chapter-count">6 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="false">Slides</button><button id="mode-reading" aria-pressed="true">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 6</span><span id="progress-label">17 %</span></div><progress id="progress" max="6" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Stacks</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Télécharger Python</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Créer un environnement virtuel</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Installer Jupyter et JupyterLab</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>En cas de problème d&#39;installation</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Alternative Docker</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../sources/installation.md" download>Source Markdown ↓</a><a class="source-link" href="../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Installation <span class="pill">01 / 6</span></p><div class="prose">
+<h1 id="stacks">Stacks</h1>
+<p><em>Lisez bien tout pour choisir une méthode d'installation</em></p>
+<ol>
+<li><strong>Télécharger Python</strong></li>
+<li><strong>Environnement virtuel</strong></li>
+<li><strong>Jupyter &amp; JupyterLab</strong></li>
+<li><strong>Alternative : Google Colab</strong></li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2"><p class="question-kicker" id="slide-label-2">Installation <span class="pill">02 / 6</span></p><div class="prose">
+<h1 id="t%C3%A9l%C3%A9charger-python">Télécharger Python</h1>
+<p>Téléchargez la dernière version :<br />
+<a href="https://www.python.org/downloads/">python.org/downloads</a></p>
+<p><img src="https://www.python.org/static/community_logos/python-logo-master-v3-TM.png" alt="" style="width:600px;" /></p>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3"><p class="question-kicker" id="slide-label-3">Installation <span class="pill">03 / 6</span></p><div class="prose">
+<h1 id="cr%C3%A9er-un-environnement-virtuel">Créer un environnement virtuel</h1>
+<pre tabindex="0"><code class="language-bash">python -m venv env_dataops
+</code></pre>
+<p>Activez-le selon votre système :</p>
+<p><strong>Windows</strong></p>
+<pre tabindex="0"><code class="language-bash">env_dataops\Scripts\activate
+</code></pre>
+<p><strong>Mac / Linux</strong></p>
+<pre tabindex="0"><code class="language-bash"><span class="hljs-built_in">source</span> env_dataops/bin/activate
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4"><p class="question-kicker" id="slide-label-4">Installation <span class="pill">04 / 6</span></p><div class="prose">
+<h1 id="installer-jupyter-et-jupyterlab">Installer Jupyter et JupyterLab</h1>
+<figure class="math-figure"><a href="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" alt="" style="width:100px;" /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+<pre tabindex="0"><code class="language-bash">pip install --upgrade pip
+pip install notebook jupyterlab
+</code></pre>
+<p>Lancez JupyterLab :</p>
+<pre tabindex="0"><code class="language-bash">jupyter lab
+</code></pre>
+<p>Pour sortir :</p>
+<pre tabindex="0"><code class="language-bash">deactivate
+</code></pre>
+<h1 id="organisation-de-travail-avec-la-virtualisation">Organisation de travail avec la virtualisation</h1>
+<pre tabindex="0"><code class="language-txt">project_data/
+│
+├── env_dataops/          ←  environnement virtuel
+│
+├── requirements.txt      ← liste des dépendances du projet
+├── main.py               ← point d&#x27;entrée principal du programme
+│
+├── mon_projet/           ← dossier du code source (ton “package”)
+│   ├── models/           ← tes classes ou structures de données
+│   │   └── user.py
+│   └── utils/            ← fonctions utilitaires
+│       └── helpers.py
+│
+└── tests/                ← tes fichiers de test
+    └── test_user.py
+</code></pre>
+</div></article>
+<article class="slide-card exercise" id="slide-5" aria-labelledby="slide-label-5"><p class="question-kicker" id="slide-label-5">Installation <span class="pill">05 / 6</span></p><div class="prose">
+<h1 id="en-cas-de-probl%C3%A8me-dinstallation">En cas de problème d'installation</h1>
+<p>Alternative en ligne sans installation : <a href="https://colab.research.google.com">Google Colab</a></p>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6"><p class="question-kicker" id="slide-label-6">Installation <span class="pill">06 / 6</span></p><div class="prose">
+<h1 id="alternative-docker">Alternative Docker</h1>
+<p>Vous pouvez sinon utiliser le docker-compose suivant</p>
+<pre tabindex="0"><code class="language-yaml"><span class="hljs-attr">services:</span>
+
+  <span class="hljs-attr">jupyter:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">jupyter/base-notebook:latest</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-attr">JUPYTER_ENABLE_LAB:</span> <span class="hljs-string">&quot;yes&quot;</span>
+      <span class="hljs-attr">GRANT_SUDO:</span> <span class="hljs-string">&quot;yes&quot;</span>
+      <span class="hljs-attr">PYTHONPATH:</span> <span class="hljs-string">&quot;/home/jovyan/work/src&quot;</span>
+    <span class="hljs-attr">user:</span> <span class="hljs-string">root</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;8880:8888&quot;</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;8000:8000&quot;</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./project:/home/jovyan/work</span>
+    <span class="hljs-attr">working_dir:</span> <span class="hljs-string">/home/jovyan/work</span>
+    <span class="hljs-attr">command:</span> <span class="hljs-string">&gt;
+      bash -c &quot;
+      pip install -r /home/jovyan/work/config/requirements.txt &amp;&amp;
+      start-notebook.sh --NotebookApp.token=&#x27;&#x27; --NotebookApp.password=&#x27;&#x27;
+      &quot;
+</span>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span>
+
+  <span class="hljs-attr">fastapi:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">jupyter/base-notebook:latest</span>
+    <span class="hljs-attr">user:</span> <span class="hljs-string">root</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;8001:8000&quot;</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./project:/home/jovyan/work</span>
+    <span class="hljs-attr">working_dir:</span> <span class="hljs-string">/home/jovyan/work/src</span>
+    <span class="hljs-attr">command:</span> <span class="hljs-string">&gt;
+      bash -c &quot;
+      pip install -r /home/jovyan/work/config/requirements.txt &amp;&amp;
+      uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+      &quot;
+</span>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span>
+</code></pre>
+<p>Fichier <code>requirements.txt</code></p>
+<pre tabindex="0"><code class="language-txt">numpy
+sympy
+matplotlib
+scipy
+pandas
+fastapi
+uvicorn
+python-multipart
+</code></pre>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 6</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../index.html">Comprendre, puis pratiquer.</a></footer><script src="../assets/slides.js" defer></script></body></html>

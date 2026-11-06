@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>TP – Modéliser la saturation d&#39;un marché numérique · Le labo maths</title><link rel="stylesheet" href="../../../assets/site.css"><link rel="stylesheet" href="../../../assets/katex/katex.min.css"><link rel="stylesheet" href="../../../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page reading-mode" data-deck="Derivation/TPs/01_TP_saturation_numerique.md"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../../../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../../../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Travaux pratiques</p><h1>TP – Modéliser la saturation d&#39;un marché numérique</h1><p>Derivation / TPs / 01_TP_saturation_numerique.md</p></div><span class="chapter-count">7 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="false">Slides</button><button id="mode-reading" aria-pressed="true">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 7</span><span id="progress-label">14 %</span></div><progress id="progress" max="7" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>TP – Modéliser la saturation d&#39;un marché numérique</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Dérivée et signe de la dérivée</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Étudier rigoureusement le signe de U&#39;(t)</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Dérivée seconde et dynamique</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>Limite et asymptote</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Y-a-t-il des asymptotes</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Analyse de la faiblesse de la croissance</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../../../sources/Derivation/TPs/01_TP_saturation_numerique.md" download>Source Markdown ↓</a><a class="source-link" href="../../../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../../../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Travaux pratiques <span class="pill">01 / 7</span></p><div class="prose">
+<h1 id="tp-%E2%80%93-mod%C3%A9liser-la-saturation-dun-march%C3%A9-num%C3%A9rique"><strong>TP – Modéliser la saturation d'un marché numérique</strong></h1>
+<p>Une startup lance une application mobile. Le nombre d'utilisateurs actifs (en milliers) au mois (t) est modélisé par :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>U</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn><mo>+</mo><mi>t</mi><mi>ln</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo>−</mo><mn>2</mn><mi>t</mi><mo separator="true">,</mo><mspace width="2em"/><mi>t</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">U(t) = 5 + t\ln(t+2) - 2t, \qquad t\ge 0
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">ln</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mord mathnormal">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span></p><p>où</p>
+<ul>
+<li data-marpit-fragment="1">(t) : temps en mois,</li>
+<li data-marpit-fragment="2">(U(t)) : utilisateurs actifs (en milliers).</li>
+</ul>
+<p>Le modèle reflète :</p>
+<ol>
+<li>une croissance initiale :</li>
+</ol>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>t</mi><mi>ln</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">t \ln(t+2)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">ln</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span></span></span></span></span></p><ol>
+<li>une perte naturelle d'utilisateurs : (-2t)</li>
+<li>une base stable d'utilisateurs fidèles : (+5)</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2"><p class="question-kicker" id="slide-label-2">Travaux pratiques <span class="pill">02 / 7</span></p><div class="prose">
+<h1 id="d%C3%A9riv%C3%A9e-et-signe-de-la-d%C3%A9riv%C3%A9e"><strong>Dérivée et signe de la dérivée</strong></h1>
+<h2 id="calculer-la-d%C3%A9riv%C3%A9e-ut"><strong>Calculer la dérivée <code>U'(t)</code></strong></h2>
+<p>En déduire une expression simple de <code>U'(t)</code>.</p>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3"><p class="question-kicker" id="slide-label-3">Travaux pratiques <span class="pill">03 / 7</span></p><div class="prose">
+<h2 id="%C3%A9tudier-rigoureusement-le-signe-de-ut"><strong>Étudier rigoureusement le signe de <code>U'(t)</code></strong></h2>
+<p>On pose :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>U</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(t)=U&#x27;(t)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0519em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8019em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span></span></p><ol>
+<li>
+<p>Calculer <code>f'(t)</code>.</p>
+</li>
+<li>
+<p>Montrer que <code>f'(t) &gt; 0</code> pour tout (t &gt; 0).</p>
+</li>
+<li>
+<p>Conclure que <code>f(t)</code> est strictement croissante.</p>
+</li>
+<li>
+<p>Calculer :</p>
+</li>
+<li>
+<p>f(0)</p>
+</li>
+<li>
+<p>la limite de f(t) lorsque (t tend vers  + l'infini)</p>
+</li>
+<li>
+<p>En déduire l'existence d'un <strong>unique</strong> point (t_0) tel que (U'(t_0)=0).</p>
+</li>
+<li>
+<p>Dresser le tableau de signe de (U'(t)).</p>
+</li>
+<li>
+<p>Trouvez ce point par dicothomie avec Python.</p>
+</li>
+<li>
+<p>En conclure les <strong>variations de U(t)</strong>.</p>
+</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4"><p class="question-kicker" id="slide-label-4">Travaux pratiques <span class="pill">04 / 7</span></p><div class="prose">
+<h1 id="d%C3%A9riv%C3%A9e-seconde-et-dynamique"><strong>Dérivée seconde et dynamique</strong></h1>
+<p>Expliquer, dans le contexte d'un marché :</p>
+<ol>
+<li>pourquoi une fonction d'utilisateurs peut d'abord décroître,</li>
+<li>puis repartir,</li>
+<li>et pourquoi une convexité constante est réaliste.</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5"><p class="question-kicker" id="slide-label-5">Travaux pratiques <span class="pill">05 / 7</span></p><div class="prose">
+<h1 id="limite-et-asymptote"><strong>Limite et asymptote</strong></h1>
+<p>Calculez la limite en + l'infini de la fonction <code>U</code>.</p>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6"><p class="question-kicker" id="slide-label-6">Travaux pratiques <span class="pill">06 / 7</span></p><div class="prose">
+<h2 id="y-a-t-il-des-asymptotes"><strong>Y-a-t-il des asymptotes</strong></h2>
+<p>Étudier :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mi>U</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mi>t</mi></mfrac><mo>=</mo><mi>ln</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo>−</mo><mn>2</mn><mo>+</mo><mfrac><mn>5</mn><mi>t</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{U(t)}{t} = \ln(t+2)-2 + \frac{5}{t}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.113em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">ln</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p><ol>
+<li>Calculer sa limite.</li>
+<li>Conclure s'il existe une asymptote horizontale ou oblique.</li>
+</ol>
+<p>À partir du signe de U'(t), expliquer :</p>
+<ol>
+<li>quand l'application perd des utilisateurs,</li>
+<li>quand elle en regagne,</li>
+<li>ce que signifie le point (t_0) pour une équipe produit.</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7"><p class="question-kicker" id="slide-label-7">Travaux pratiques <span class="pill">07 / 7</span></p><div class="prose">
+<h2 id="analyse-de-la-faiblesse-de-la-croissance"><strong>Analyse de la faiblesse de la croissance</strong></h2>
+<p>On fixe un seuil minimal de croissance égal à :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>U</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>&lt;</mo><mn>0.2.</mn></mrow><annotation encoding="application/x-tex">U&#x27;(t) &lt; 0.2.
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0519em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8019em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.2.</span></span></span></span></span></p><p>On dit que la croissance est trop faible lorsque la dérivée U'(t) est strictement inférieure à ce seuil.<br />
+Déterminer, à l’aide d’un raisonnement analytique ou d’un calcul numérique, l’instant à partir duquel cette situation cesse d’être vérifiée.</p>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../../../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 7</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../../../index.html">Comprendre, puis pratiquer.</a></footer><script src="../../../assets/slides.js" defer></script></body></html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Quatre problèmes — Compter les occasions · Le labo maths</title><link rel="stylesheet" href="../../../assets/site.css"><link rel="stylesheet" href="../../../assets/katex/katex.min.css"><link rel="stylesheet" href="../../../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page reading-mode" data-deck="Tps/Tail_End/README.md"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../../../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../../../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Travaux pratiques</p><h1>Quatre problèmes — Compter les occasions</h1><p>Tps / Tail_End / README.md</p></div><span class="chapter-count">1 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="false">Slides</button><button id="mode-reading" aria-pressed="true">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 1</span><span id="progress-label">100 %</span></div><progress id="progress" max="1" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Quatre problèmes — Compter les occasions</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../../../sources/Tps/Tail_End/README.md" download>Source Markdown ↓</a><a class="source-link" href="../../../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../../../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card exercise" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Travaux pratiques <span class="pill">01 / 1</span></p><div class="prose">
+<h1 id="quatre-probl%C3%A8mes--compter-les-occasions">Quatre problèmes — Compter les occasions</h1>
+<h2 id="une-autre-fa%C3%A7on-de-regarder-le-temps">Une autre façon de regarder le temps</h2>
+<p>Dans <a href="https://waitbutwhy.com/2015/12/the-tail-end.html"><em>The Tail End</em></a>, Tim Urban propose de compter les activités et les rencontres plutôt que les seules années. Ces quatre problèmes originaux reprennent cette idée comme point de départ mathématique. Leurs personnages, données, modèles et dessins sont créés pour le cours.</p>
+<p>Les horizons sont des hypothèses de scénario. Ils ne sont ni des prévisions individuelles de durée de vie, ni une manière d'attribuer une valeur aux personnes ou aux relations. Les élèves peuvent remplacer les situations par des activités fictives équivalentes.</p>
+<h2 id="o%C3%B9-les-placer-dans-le-parcours">Où les placer dans le parcours ?</h2>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Problème</th>
+<th>Après quel cours ?</th>
+<th>Question mathématique</th>
+<th>Durée indicative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="01_rencontres.html">1 — La moitié des années, combien de rencontres ?</a></td>
+<td>Révisions d'algèbre</td>
+<td>Produits, pourcentages, unités et changement de dénominateur</td>
+<td>45 min</td>
+</tr>
+<tr>
+<td><a href="02_frequence.html">2 — Et si les occasions devenaient moins fréquentes ?</a></td>
+<td>Dérivation</td>
+<td>Exponentielle, fréquence, cumul et dérivée</td>
+<td>60 à 75 min</td>
+</tr>
+<tr>
+<td><a href="03_evenement_rare.html">3 — Une rencontre peut-elle disparaître dans 99 % de variance ?</a></td>
+<td>SVD, après statistiques et ACP</td>
+<td>Centrage, projection, reconstruction et choix de métrique</td>
+<td>75 min</td>
+</tr>
+<tr>
+<td><a href="04_planning.html">4 — Vingt-quatre demi-journées à répartir</a></td>
+<td>Optimisation et régularisation</td>
+<td>Contrainte linéaire, concavité et optimum entier</td>
+<td>75 min</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="m%C3%A9thode-commune">Méthode commune</h2>
+<p>Écrire les hypothèses, nommer les unités, prédire l'allure du résultat, puis calculer. Lire le graphique avant de conclure. Distinguer enfin ce qui découle du calcul et ce qui dépend du scénario choisi.</p>
+<p>Chaque problème fournit un énoncé, des indices gradués, des critères de réussite et une correction dépliable. Le code commun <a href="../../../projet-ia/tail_end.py">tail_end.py</a> vérifie les résultats numériques des quatre problèmes. Il est également inclus dans l'archive du <a href="../../Projet_IA/README.html">projet fil rouge</a>.</p>
+<h2 id="lien-avec-la-data-et-lia">Lien avec la data et l'IA</h2>
+<p>Le premier problème travaille la définition des indicateurs. Le deuxième montre qu'extrapoler une fréquence exige un modèle. Le troisième sépare fidélité statistique et information utile. Le dernier rend visibles un objectif, ses contraintes et ses hypothèses de préférence.</p>
+<p>Dans les quatre cas, un résultat numérique ne suffit pas : il faut expliquer ce qui a été mesuré et ce qui n'a pas été modélisé.</p>
+<p>Les six problèmes « Penser autrement » complètent cette série : minutes cumulées, Simpson, attente du bus, dîner à dix, Braess et fausses alertes. <a href="../../../problemes.html">Ouvrir le catalogue des dix problèmes</a>.</p>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../../../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 1</span><button class="button primary" id="next" disabled>Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../../../index.html">Comprendre, puis pratiquer.</a></footer><script src="../../../assets/slides.js" defer></script></body></html>

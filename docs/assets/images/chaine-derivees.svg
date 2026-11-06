@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="330" viewBox="0 0 960 330" role="img" aria-labelledby="titre description">
+<title id="titre">Valeurs et dérivées d'une composition scalaire</title>
+<desc id="description">Pour w égal à 1, z égal à deux fois w plus un vaut 3, puis L égal à z carré vaut 9. En sens inverse, dL sur dz vaut 6 et dz sur dw vaut 2, donc dL sur dw vaut 12.</desc>
+<defs><marker id="fleche" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="none" stroke="#275c47" stroke-width="1.5"/></marker></defs>
+<rect width="960" height="330" rx="24" fill="#f7f8f2"/>
+<g font-family="Arial,sans-serif" fill="#203b36" text-anchor="middle">
+<text x="480" y="35" font-size="19" font-weight="700">Les valeurs avancent ; les sensibilités reviennent</text>
+<rect x="35" y="85" width="210" height="110" rx="16" fill="#fff" stroke="#dce2d9"/><text x="140" y="132" font-size="24">w = 1</text><text x="140" y="165" font-size="16" fill="#63716a">paramètre initial</text>
+<rect x="375" y="85" width="210" height="110" rx="16" fill="#ddf18a" stroke="#b5cf66"/><text x="480" y="132" font-size="24">z = 2w + 1 = 3</text><text x="480" y="165" font-size="16" fill="#63716a">valeur intermédiaire</text>
+<rect x="715" y="85" width="210" height="110" rx="16" fill="#fff" stroke="#dce2d9"/><text x="820" y="132" font-size="24">L = z² = 9</text><text x="820" y="165" font-size="16" fill="#63716a">sortie scalaire</text>
+<path d="M255 130H360 M595 130H700" stroke="#275c47" stroke-width="2" marker-end="url(#fleche)"/>
+<path d="M715 225H585 M375 225H245" stroke="#275c47" stroke-width="2" marker-end="url(#fleche)"/>
+<text x="650" y="258" font-size="19">dL/dz = 6</text><text x="310" y="258" font-size="19">dz/dw = 2</text>
+<text x="480" y="305" font-size="20" font-weight="700">dL/dw = 6 × 2 = 12</text>
+</g></svg>

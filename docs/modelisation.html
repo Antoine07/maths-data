@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Applications de modélisation · Le labo maths</title><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page" data-deck="modelisation"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Des bases à la modélisation</p><h1>Applications de modélisation</h1><p>Températures et consommation : des observations au modèle.</p></div><span class="chapter-count">14 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="true">Slides</button><button id="mode-reading" aria-pressed="false">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 14</span><span id="progress-label">7 %</span></div><progress id="progress" max="14" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Exercice 1 : Modéliser l&#39;évolution de la température moyenne d&#39;un mois</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Tracer les données</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Trouver un modèle linéaire</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Tracer la droite obtenue sur le même graphique.</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>4. Interpréter les paramètres</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Prédire la température au jour 35.</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Exercice 2</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Exercice : Modéliser la consommation électrique quotidienne d&#39;un foyer</span></a><a class="slide-link" href="#9" data-slide-link="9"><small>09</small><span>Tracer les données C en fonction de t.</span></a><a class="slide-link" href="#10" data-slide-link="10"><small>10</small><span>Ajuster un modèle linéaire</span></a><a class="slide-link" href="#11" data-slide-link="11"><small>11</small><span>Tracer la droite de régression sur les données.</span></a><a class="slide-link" href="#12" data-slide-link="12"><small>12</small><span>Interprétation</span></a><a class="slide-link" href="#13" data-slide-link="13"><small>13</small><span>Prévoir la consommation au jour 40.</span></a><a class="slide-link" href="#14" data-slide-link="14"><small>14</small><span>Modélisation quadratique</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="sources/Slides/01_modelisation.md" download>Source Markdown ↓</a><a class="source-link" href="problemes.html">Tous les problèmes ↗</a><a class="source-link" href="ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card exercise" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Application <span class="pill">01 / 14</span></p><div class="prose">
+<h1 id="exercice-1--mod%C3%A9liser-l%C3%A9volution-de-la-temp%C3%A9rature-moyenne-dun-mois"><strong>Exercice 1 : Modéliser l'évolution de la température moyenne d'un mois</strong></h1>
+<p>On s'intéresse à l'évolution de la <strong>température moyenne quotidienne</strong> dans une ville pendant un mois (par exemple en avril).</p>
+<p>Voici des valeurs observées (en °C) :</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">T = np.array([
+    <span class="hljs-number">8.0</span>, <span class="hljs-number">8.2</span>, <span class="hljs-number">8.5</span>, <span class="hljs-number">9.0</span>, <span class="hljs-number">9.3</span>, <span class="hljs-number">9.5</span>, <span class="hljs-number">10.1</span>, <span class="hljs-number">10.4</span>, 
+    <span class="hljs-number">10.6</span>, <span class="hljs-number">11.0</span>, <span class="hljs-number">11.2</span>, <span class="hljs-number">11.4</span>, <span class="hljs-number">11.7</span>, <span class="hljs-number">12.0</span>, <span class="hljs-number">12.1</span>, 
+    <span class="hljs-number">12.5</span>, <span class="hljs-number">12.6</span>, <span class="hljs-number">12.9</span>, <span class="hljs-number">13.0</span>, <span class="hljs-number">13.1</span>, <span class="hljs-number">13.4</span>, <span class="hljs-number">13.5</span>, 
+    <span class="hljs-number">13.7</span>, <span class="hljs-number">14.0</span>, <span class="hljs-number">14.2</span>, <span class="hljs-number">14.3</span>, <span class="hljs-number">14.5</span>, <span class="hljs-number">14.8</span>, <span class="hljs-number">15.0</span>, <span class="hljs-number">15.2</span>
+])
+</code></pre>
+<p>On suppose que la température augmente <strong>presque linéairement</strong> au cours du mois.</p>
+<p>On associe chaque valeur à un jour <code>t = 1, 2, ..., 30</code>.</p>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2" hidden><p class="question-kicker" id="slide-label-2">Application <span class="pill">02 / 14</span></p><div class="prose">
+<h3 id="tracer-les-donn%C3%A9es"><strong>Tracer les données</strong></h3>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3" hidden><p class="question-kicker" id="slide-label-3">Application <span class="pill">03 / 14</span></p><div class="prose">
+<h3 id="trouver-un-mod%C3%A8le-lin%C3%A9aire"><strong>Trouver un modèle linéaire</strong></h3>
+<p>On cherche une fonction :</p>
+<p><mjx-container class="MathJax" jax="SVG" display="true" style="margin: 0;"><svg style="vertical-align: -0.566ex; display: block; width: 100%; height: auto; max-height: 2.262ex;" xmlns="http://www.w3.org/2000/svg" width="12.937ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 5718 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path></g><g data-mml-node="mo" transform="translate(704,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1093,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(1454,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(2120.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mi" transform="translate(3176.6,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mi" transform="translate(3705.6,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(4288.8,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mi" transform="translate(5289,0)"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g></g></g></svg></mjx-container></p><p>Utiliser <strong>NumPy <code>np.polyfit</code></strong> pour estimer (a) et (b), droite de régression linéaire.</p>
+<p><code>np.polyfit(x, y, 1)</code> où 1 est le degré du pôlynome.</p>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4" hidden><p class="question-kicker" id="slide-label-4">Application <span class="pill">04 / 14</span></p><div class="prose">
+<h3 id="tracer-la-droite-obtenue-sur-le-m%C3%AAme-graphique"><strong>Tracer la droite obtenue sur le même graphique.</strong></h3>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5" hidden><p class="question-kicker" id="slide-label-5">Application <span class="pill">05 / 14</span></p><div class="prose">
+<h3 id="4-interpr%C3%A9ter-les-param%C3%A8tres"><strong>4. Interpréter les paramètres</strong></h3>
+<ol>
+<li>Que signifie (a) ?</li>
+<li>Que signifie (b) ?</li>
+<li>Le modèle semble-t-il cohérent ?</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6" hidden><p class="question-kicker" id="slide-label-6">Application <span class="pill">06 / 14</span></p><div class="prose">
+<h3 id="pr%C3%A9dire-la-temp%C3%A9rature-au-jour-35"><strong>Prédire la température au jour 35.</strong></h3>
+</div></article>
+<article class="slide-card exercise" id="slide-7" aria-labelledby="slide-label-7" hidden><p class="question-kicker" id="slide-label-7">Application <span class="pill">07 / 14</span></p><div class="prose">
+<h2 id="exercice-2">Exercice 2</h2>
+<p>Voici un <strong>autre exercice, identique dans l'esprit</strong>, toujours basé sur une <strong>régression linéaire simple</strong>, mais avec un contexte différent et des données réalistes.</p>
+<p>Prêt à l'emploi pour un TP ou un notebook.</p>
+</div></article>
+<article class="slide-card exercise" id="slide-8" aria-labelledby="slide-label-8" hidden><p class="question-kicker" id="slide-label-8">Application <span class="pill">08 / 14</span></p><div class="prose">
+<h1 id="exercice--mod%C3%A9liser-la-consommation-%C3%A9lectrique-quotidienne-dun-foyer"><strong>Exercice : Modéliser la consommation électrique quotidienne d'un foyer</strong></h1>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">C = np.array([
+    <span class="hljs-number">9.5</span>, <span class="hljs-number">9.7</span>, <span class="hljs-number">9.8</span>, <span class="hljs-number">10.0</span>, <span class="hljs-number">10.3</span>, <span class="hljs-number">10.4</span>, <span class="hljs-number">10.6</span>, <span class="hljs-number">10.8</span>,
+    <span class="hljs-number">11.0</span>, <span class="hljs-number">11.3</span>, <span class="hljs-number">11.4</span>, <span class="hljs-number">11.5</span>, <span class="hljs-number">11.7</span>, <span class="hljs-number">12.0</span>, <span class="hljs-number">12.1</span>, <span class="hljs-number">12.4</span>,
+    <span class="hljs-number">12.6</span>, <span class="hljs-number">12.7</span>, <span class="hljs-number">12.9</span>, <span class="hljs-number">13.0</span>, <span class="hljs-number">13.2</span>, <span class="hljs-number">13.4</span>, <span class="hljs-number">13.5</span>, <span class="hljs-number">13.7</span>,
+    <span class="hljs-number">13.9</span>, <span class="hljs-number">14.0</span>, <span class="hljs-number">14.1</span>, <span class="hljs-number">14.3</span>, <span class="hljs-number">14.5</span>, <span class="hljs-number">14.6</span>
+])
+</code></pre>
+<p>On associe à chaque valeur un jour <code>t = 1, 2, ..., 30</code>.</p>
+</div></article>
+<article class="slide-card" id="slide-9" aria-labelledby="slide-label-9" hidden><p class="question-kicker" id="slide-label-9">Application <span class="pill">09 / 14</span></p><div class="prose">
+<h3 id="tracer-les-donn%C3%A9es-c-en-fonction-de-t"><strong>Tracer les données C en fonction de t.</strong></h3>
+</div></article>
+<article class="slide-card" id="slide-10" aria-labelledby="slide-label-10" hidden><p class="question-kicker" id="slide-label-10">Application <span class="pill">10 / 14</span></p><div class="prose">
+<h3 id="ajuster-un-mod%C3%A8le-lin%C3%A9aire"><strong>Ajuster un modèle linéaire</strong></h3>
+<p>Chercher :</p>
+<p><mjx-container class="MathJax" jax="SVG" display="true" style="margin: 0;"><svg style="vertical-align: -0.566ex; display: block; width: 100%; height: auto; max-height: 2.262ex;" xmlns="http://www.w3.org/2000/svg" width="13.063ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 5774 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D436" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path></g><g data-mml-node="mo" transform="translate(760,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1149,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(1510,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(2176.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mi" transform="translate(3232.6,0)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mi" transform="translate(3761.6,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></g><g data-mml-node="mo" transform="translate(4344.8,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mi" transform="translate(5345,0)"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g></g></g></svg></mjx-container></p><p>en utilisant :</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">a, b = np.polyfit(t, C, <span class="hljs-number">1</span>)
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-11" aria-labelledby="slide-label-11" hidden><p class="question-kicker" id="slide-label-11">Application <span class="pill">11 / 14</span></p><div class="prose">
+<h3 id="tracer-la-droite-de-r%C3%A9gression-sur-les-donn%C3%A9es"><strong>Tracer la droite de régression sur les données.</strong></h3>
+</div></article>
+<article class="slide-card" id="slide-12" aria-labelledby="slide-label-12" hidden><p class="question-kicker" id="slide-label-12">Application <span class="pill">12 / 14</span></p><div class="prose">
+<h3 id="interpr%C3%A9tation"><strong>Interprétation</strong></h3>
+<ol>
+<li>Que représente la pente <code>a</code> en kWh/jour ?</li>
+<li>Que représente l'ordonnée <code>b</code> ?</li>
+<li>Le modèle vous semble-t-il pertinent ?</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-13" aria-labelledby="slide-label-13" hidden><p class="question-kicker" id="slide-label-13">Application <span class="pill">13 / 14</span></p><div class="prose">
+<h3 id="pr%C3%A9voir-la-consommation-au-jour-40"><strong>Prévoir la consommation au jour 40.</strong></h3>
+</div></article>
+<article class="slide-card" id="slide-14" aria-labelledby="slide-label-14" hidden><p class="question-kicker" id="slide-label-14">Application <span class="pill">14 / 14</span></p><div class="prose">
+<h2 id="mod%C3%A9lisation-quadratique">Modélisation quadratique</h2>
+<p>Si les écarts ne sont pas constant entre les données alors le modèle n'est pas linéaire ...</p>
+<p>Que pouvez-vous dire des données suivantes ?</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">T = np.array([
+    <span class="hljs-number">9.5</span>, <span class="hljs-number">9.7</span>, <span class="hljs-number">10.0</span>, <span class="hljs-number">10.4</span>, <span class="hljs-number">10.9</span>, <span class="hljs-number">11.3</span>, <span class="hljs-number">12.0</span>, <span class="hljs-number">12.8</span>,
+    <span class="hljs-number">13.7</span>, <span class="hljs-number">14.8</span>, <span class="hljs-number">16.0</span>, <span class="hljs-number">17.3</span>, <span class="hljs-number">18.7</span>, <span class="hljs-number">20.2</span>, <span class="hljs-number">21.8</span>
+])
+</code></pre>
+<p>Utilisez la méthode <code>np.diff</code> sur ces données et concluez.</p>
+<p>Puis on vous aidant de la méthode <code>np.polyfit</code> trouvez un modèle qui décrit les données.</p>
+<p>Pour déternimer si un jeu de données suit un modèle d'ordre <code>k</code> vous pouvez utiliser le tableau suivant, <code>y</code> le jeu de données.</p>
+<p>Remarque importante : attention au &quot;zéro informatique&quot;<br />
+Si vous obtenez des valeurs très petites comme 1e-14, −3e-15, etc., cela correspond en fait à 0 (à l'erreur machine près)</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Différences</th>
+<th>Interprétation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>np.diff(y)</code> ≈ constant</td>
+<td>→ polynôme <strong>de degré 1</strong></td>
+</tr>
+<tr>
+<td><code>np.diff(y,2)</code> ≈ constant</td>
+<td>→ polynôme <strong>de degré 2</strong></td>
+</tr>
+<tr>
+<td><code>np.diff(y,3)</code> ≈ constant</td>
+<td>→ polynôme <strong>de degré 3</strong></td>
+</tr>
+<tr>
+<td><code>np.diff(y,4)</code> ≈ constant</td>
+<td>→ polynôme <strong>de degré 4</strong></td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="exercice">Exercice</h2>
+<p>Que dire de ces données ? Trouvez le modèle qui les décrit parfaitement.</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">y = np.array([
+     <span class="hljs-number">5.00</span>,  <span class="hljs-number">6.32</span>,  <span class="hljs-number">9.28</span>, <span class="hljs-number">14.40</span>, <span class="hljs-number">22.30</span>,
+    <span class="hljs-number">33.60</span>, <span class="hljs-number">48.92</span>, <span class="hljs-number">69.00</span>, <span class="hljs-number">94.60</span>,<span class="hljs-number">126.52</span>,
+   <span class="hljs-number">165.60</span>
+])
+</code></pre>
+<h2 id="exercice-1">Exercice</h2>
+<p>Représentez ces données et trouvez un modèle qui convient pour les décrire.</p>
+<blockquote>
+<p><em>Pour ajuster un modèle logarithmique aux données, il suffit de transformer le temps en <code>ln(t)</code> et d'appliquer une régression linéaire : si la croissance ralentit régulièrement, le modèle <code>y(t) = a,\ln(t) + b</code> décrit bien le phénomène.</em></p>
+</blockquote>
+<p>Remarque t <code>X = np.log(t)</code></p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">t = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>])
+y = np.array([<span class="hljs-number">2.1</span>, <span class="hljs-number">2.9</span>, <span class="hljs-number">3.4</span>, <span class="hljs-number">3.8</span>, <span class="hljs-number">4.1</span>, <span class="hljs-number">4.3</span>, <span class="hljs-number">4.5</span>, <span class="hljs-number">4.6</span>, <span class="hljs-number">4.7</span>])
+</code></pre>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 14</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="index.html">Comprendre, puis pratiquer.</a></footer><script src="assets/slides.js" defer></script></body></html>

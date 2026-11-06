@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Ajouter une route peut-il ralentir tout le monde ? · Le labo maths</title><link rel="stylesheet" href="../../../assets/site.css"><link rel="stylesheet" href="../../../assets/katex/katex.min.css"><link rel="stylesheet" href="../../../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page reading-mode" data-deck="Tps/Paradoxes/05_braess.md"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../../../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../../../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Travaux pratiques</p><h1>Ajouter une route peut-il ralentir tout le monde ?</h1><p>Tps / Paradoxes / 05_braess.md</p></div><span class="chapter-count">6 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="false">Slides</button><button id="mode-reading" aria-pressed="true">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 6</span><span id="progress-label">17 %</span></div><progress id="progress" max="6" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Ajouter une route peut-il ralentir tout le monde ?</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Données du réseau</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Énoncé</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Correction — Avant et après l&#39;ouverture</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>Correction — Une ressource supplémentaire ne supprime pas les anciens plans</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Correction — Contrôle Python</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../../../sources/Tps/Paradoxes/05_braess.md" download>Source Markdown ↓</a><a class="source-link" href="../../../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../../../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Travaux pratiques <span class="pill">01 / 6</span></p><div class="prose">
+<h1 id="ajouter-une-route-peut-il-ralentir-tout-le-monde">Ajouter une route peut-il ralentir tout le monde ?</h1>
+<h2 id="objectif-et-pr%C3%A9requis">Objectif et prérequis</h2>
+<p><strong>Après :</strong> <a href="../../../avance/05_optimisation.html">optimisation</a>. <strong>Approfondissement facultatif :</strong> 75 min.</p>
+<p><strong>Objectif :</strong> distinguer un équilibre de choix individuels et un objectif collectif. Les graphes nécessaires sont introduits dans l'énoncé.</p>
+<h2 id="la-situation">La situation</h2>
+<p>Une ville fictive ouvre une nouvelle liaison gratuite. Aucun trajet existant ne disparaît. Pourtant, lorsque chacun choisit son trajet le plus rapide, tout le monde peut mettre plus de temps qu'avant.</p>
+<p>Un <strong>graphe orienté</strong> représente les croisements par des sommets et les routes par des flèches. Ici, 4 000 conducteurs vont de S à T ; les deux sommets intermédiaires sont A et B.</p>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2"><p class="question-kicker" id="slide-label-2">Travaux pratiques <span class="pill">02 / 6</span></p><div class="prose">
+<h2 id="donn%C3%A9es-du-r%C3%A9seau">Données du réseau</h2>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Route orientée</th>
+<th style="text-align:right">Temps en minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S → A</td>
+<td style="text-align:right">nombre de conducteurs sur cette route / 100</td>
+</tr>
+<tr>
+<td>A → T</td>
+<td style="text-align:right">45</td>
+</tr>
+<tr>
+<td>S → B</td>
+<td style="text-align:right">45</td>
+</tr>
+<tr>
+<td>B → T</td>
+<td style="text-align:right">nombre de conducteurs sur cette route / 100</td>
+</tr>
+<tr>
+<td>Nouvelle liaison A → B</td>
+<td style="text-align:right">0 dans ce modèle idéalisé</td>
+</tr>
+</tbody>
+</table></div>
+<p>Les temps d'un trajet s'additionnent. Seules S → A et B → T dépendent de la congestion. Les conducteurs ont tous le même point de départ, la même destination et accès aux mêmes informations.</p>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3"><p class="question-kicker" id="slide-label-3">Travaux pratiques <span class="pill">03 / 6</span></p><div class="prose">
+<h2 id="%C3%A9nonc%C3%A9">Énoncé</h2>
+<ol>
+<li>Dessiner le réseau sans la liaison A → B. Si 2 000 conducteurs choisissent chaque trajet, calculer les temps de parcours.</li>
+<li>Si un trajet accueille davantage de conducteurs que l'autre, pourquoi certains ont-ils intérêt à changer ?</li>
+<li>Ajouter A → B, puis supposer que les 4 000 conducteurs empruntent S → A → B → T. Calculer leur temps et celui d'un conducteur qui dévierait seul par l'un des anciens trajets.</li>
+<li>Un état est un <strong>équilibre individuel</strong> si aucun conducteur ne peut réduire son temps en changeant seul. L'état précédent possède-t-il cette propriété ? Comparer son temps à celui d'avant l'ouverture.</li>
+<li>Un planificateur pourrait-il conserver une répartition réalisable à 65 minutes après l'ouverture ? Pourquoi cela ne contredit-il pas le résultat individuel ?</li>
+</ol>
+<h2 id="contraintes-livrables-et-crit%C3%A8res-de-r%C3%A9ussite">Contraintes, livrables et critères de réussite</h2>
+<p><strong>Contraintes :</strong> recalculer les flux sur les routes partagées ; conserver la demande totale de 4 000 ; ne pas interpréter cet exemple comme une règle sur toutes les routes.</p>
+<p><strong>Livrables :</strong> graphe annoté, tableau des flux, temps et conclusion.</p>
+<p><strong>Critères :</strong> distinguer trajet et route ; vérifier les déviations individuelles ; expliquer la différence entre ensemble des choix possibles et choix effectivement réalisés.</p>
+<details><summary>Indices gradués</summary>
+<ol>
+<li>Sans liaison, chaque conducteur utilise une route congestionnée et une route à temps constant.</li>
+<li>Avec tous les conducteurs au milieu, les deux routes congestionnées portent chacune 4 000 conducteurs.</li>
+<li>Le conducteur qui dévie vers A → T économise un tronçon de 40 min mais le remplace par un de 45 min.</li>
+</ol>
+</details>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4"><p class="question-kicker" id="slide-label-4">Travaux pratiques <span class="pill">04 / 6</span></p><div class="prose">
+<h2 id="correction--avant-et-apr%C3%A8s-louverture">Correction — Avant et après l'ouverture</h2>
+<details><summary>Afficher la correction</summary>
+<p>Sans liaison, une répartition 2 000 / 2 000 donne <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mtext> </mtext><mn>000</mn><mi mathvariant="normal">/</mi><mn>100</mn><mo>+</mo><mn>45</mn><mo>=</mo><mn>65</mn></mrow><annotation encoding="application/x-tex">2\,000/100+45=65</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">000/100</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">45</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">65</span></span></span></span> minutes sur chaque trajet. Une répartition déséquilibrée rend le trajet le plus chargé moins attractif.</p>
+<p>Avec tous les conducteurs sur le trajet central, le temps vaut <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mtext> </mtext><mn>000</mn><mi mathvariant="normal">/</mi><mn>100</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>4</mn><mtext> </mtext><mn>000</mn><mi mathvariant="normal">/</mi><mn>100</mn><mo>=</mo><mn>80</mn></mrow><annotation encoding="application/x-tex">4\,000/100+0+4\,000/100=80</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">000/100</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">000/100</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">80</span></span></span></span> minutes.</p>
+<p>Dévier seul sur un ancien trajet donnerait <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>40</mn><mo>+</mo><mn>45</mn><mo>=</mo><mn>85</mn></mrow><annotation encoding="application/x-tex">40+45=85</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">40</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">45</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">85</span></span></span></span> minutes. Personne ne gagne donc à changer seul : c'est un équilibre individuel, mais tous mettent 15 minutes de plus qu'avant, soit environ 23,08 %.</p>
+<figure class="math-figure"><a href="../../../assets/images/paradoxe-braess.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="../../../assets/images/paradoxe-braess.svg" alt="Le réseau sans liaison répartit les trajets à 65 minutes ; avec la liaison centrale, un équilibre où tous l'empruntent donne 80 minutes et une déviation individuelle coûterait 85 minutes." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+</details>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5"><p class="question-kicker" id="slide-label-5">Travaux pratiques <span class="pill">05 / 6</span></p><div class="prose">
+<h2 id="correction--une-ressource-suppl%C3%A9mentaire-ne-supprime-pas-les-anciens-plans">Correction — Une ressource supplémentaire ne supprime pas les anciens plans</h2>
+<details><summary>Afficher la correction</summary>
+<p>Le planificateur peut conserver l'ancienne répartition et laisser la nouvelle liaison inutilisée : 65 minutes reste un plan réalisable. Nous n'avons pas besoin de calculer ici l'optimum collectif exact pour constater qu'il fait mieux que 80 minutes.</p>
+<p>L'ajout d'une possibilité ne dégrade pas le meilleur plan collectif réalisable dans ce modèle. Il peut cependant changer l'équilibre produit par les décisions individuelles.</p>
+<p>C'est cette différence entre objectifs et modes de décision qui crée le paradoxe, pas une disparition mathématique des anciens trajets.</p>
+</details>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6"><p class="question-kicker" id="slide-label-6">Travaux pratiques <span class="pill">06 / 6</span></p><div class="prose">
+<h2 id="correction--contr%C3%B4le-python">Correction — Contrôle Python</h2>
+<details><summary>Afficher la correction</summary>
+<pre tabindex="0"><code class="language-python">demande = <span class="hljs-number">4000</span>
+avant = (demande/<span class="hljs-number">2</span>)/<span class="hljs-number">100</span> + <span class="hljs-number">45</span>
+apres = demande/<span class="hljs-number">100</span> + demande/<span class="hljs-number">100</span>
+deviation = demande/<span class="hljs-number">100</span> + <span class="hljs-number">45</span>
+<span class="hljs-built_in">print</span>(avant, apres, deviation)
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">round</span>(<span class="hljs-number">100</span>*(apres-avant)/avant, <span class="hljs-number">2</span>))
+</code></pre>
+<p><strong>Lecture :</strong> les valeurs représentent les temps des états décrits, pas une simulation de trafic réel. Les sorties sont <code>65.0 80.0 85.0</code>, puis <code>23.08</code>.</p>
+<p><strong>Erreur fréquente :</strong> conserver un flux de 2 000 sur une route qui en porte maintenant 4 000, ou appeler l'équilibre individuel « optimum collectif ».</p>
+</details>
+<h2 id="discussion--optimiser-quoi-et-pour-qui">Discussion — Optimiser quoi, et pour qui ?</h2>
+<p>Dans un système partagé, un choix modifie parfois le coût subi par les autres. Des recommandations individuelles peuvent déplacer les congestions plutôt que les supprimer.</p>
+<p><strong>Lien data / IA :</strong> un système de recommandation de trajets doit distinguer le coût d'un utilisateur et celui du réseau. La population, les règles de décision et les contraintes appartiennent au modèle.</p>
+<p>Référence : <a href="https://supernet.isenberg.umass.edu/braess/braess-new.html">Braess et sa traduction présentés par l'UMass Amherst</a>. Le réseau chiffré ci-dessus est un exemple pédagogique idéalisé.</p>
+<p><a href="../../../problemes.html">Tous les problèmes du parcours</a>.</p>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../../../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 6</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../../../index.html">Comprendre, puis pratiquer.</a></footer><script src="../../../assets/slides.js" defer></script></body></html>

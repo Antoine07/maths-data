@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Modéliser la consommation · Le labo maths</title><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page" data-deck="02_modelisation"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Des bases à la modélisation</p><h1>Modéliser la consommation</h1><p>Passer des mesures à une prévision et l’interpréter.</p></div><span class="chapter-count">8 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="true">Slides</button><button id="mode-reading" aria-pressed="false">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 8</span><span id="progress-label">13 %</span></div><progress id="progress" max="8" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Exercice 1</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Exercice : Modéliser la consommation électrique quotidienne d&#39;un foyer</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Tracer les données C en fonction de t.</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Ajuster un modèle linéaire</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>Tracer la droite de régression sur les données.</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Interprétation</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Prévoir la consommation au jour 40.</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Modélisation quadratique</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="sources/Slides/02_modelisation.md" download>Source Markdown ↓</a><a class="source-link" href="problemes.html">Tous les problèmes ↗</a><a class="source-link" href="ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card exercise" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Application <span class="pill">01 / 8</span></p><div class="prose">
+<h2 id="exercice-1">Exercice 1</h2>
+<p>Voici un <strong>autre exercice, identique dans l'esprit</strong>, toujours basé sur une <strong>régression linéaire simple</strong>, mais avec un contexte différent et des données réalistes.</p>
+<p>Prêt à l'emploi pour un TP ou un notebook.</p>
+</div></article>
+<article class="slide-card exercise" id="slide-2" aria-labelledby="slide-label-2" hidden><p class="question-kicker" id="slide-label-2">Application <span class="pill">02 / 8</span></p><div class="prose">
+<h1 id="exercice--mod%C3%A9liser-la-consommation-%C3%A9lectrique-quotidienne-dun-foyer"><strong>Exercice : Modéliser la consommation électrique quotidienne d'un foyer</strong></h1>
+<pre tabindex="0"><code class="language-python">C = np.array([
+    <span class="hljs-number">9.5</span>, <span class="hljs-number">9.7</span>, <span class="hljs-number">9.8</span>, <span class="hljs-number">10.0</span>, <span class="hljs-number">10.3</span>, <span class="hljs-number">10.4</span>, <span class="hljs-number">10.6</span>, <span class="hljs-number">10.8</span>,
+    <span class="hljs-number">11.0</span>, <span class="hljs-number">11.3</span>, <span class="hljs-number">11.4</span>, <span class="hljs-number">11.5</span>, <span class="hljs-number">11.7</span>, <span class="hljs-number">12.0</span>, <span class="hljs-number">12.1</span>, <span class="hljs-number">12.4</span>,
+    <span class="hljs-number">12.6</span>, <span class="hljs-number">12.7</span>, <span class="hljs-number">12.9</span>, <span class="hljs-number">13.0</span>, <span class="hljs-number">13.2</span>, <span class="hljs-number">13.4</span>, <span class="hljs-number">13.5</span>, <span class="hljs-number">13.7</span>,
+    <span class="hljs-number">13.9</span>, <span class="hljs-number">14.0</span>, <span class="hljs-number">14.1</span>, <span class="hljs-number">14.3</span>, <span class="hljs-number">14.5</span>, <span class="hljs-number">14.6</span>
+])
+</code></pre>
+<p>On associe à chaque valeur un jour <code>t = 1, 2, ..., 30</code>.</p>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3" hidden><p class="question-kicker" id="slide-label-3">Application <span class="pill">03 / 8</span></p><div class="prose">
+<h3 id="tracer-les-donn%C3%A9es-c-en-fonction-de-t"><strong>Tracer les données C en fonction de t.</strong></h3>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4" hidden><p class="question-kicker" id="slide-label-4">Application <span class="pill">04 / 8</span></p><div class="prose">
+<h3 id="ajuster-un-mod%C3%A8le-lin%C3%A9aire"><strong>Ajuster un modèle linéaire</strong></h3>
+<p>Chercher :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>a</mi><mi>t</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">C(t) = a t + b
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6984em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span></p><p>en utilisant :</p>
+<pre tabindex="0"><code class="language-python">a, b = np.polyfit(t, C, <span class="hljs-number">1</span>)
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5" hidden><p class="question-kicker" id="slide-label-5">Application <span class="pill">05 / 8</span></p><div class="prose">
+<h3 id="tracer-la-droite-de-r%C3%A9gression-sur-les-donn%C3%A9es"><strong>Tracer la droite de régression sur les données.</strong></h3>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6" hidden><p class="question-kicker" id="slide-label-6">Application <span class="pill">06 / 8</span></p><div class="prose">
+<h3 id="interpr%C3%A9tation"><strong>Interprétation</strong></h3>
+<ol>
+<li>Que représente la pente <code>a</code> en kWh/jour ?</li>
+<li>Que représente l'ordonnée <code>b</code> ?</li>
+<li>Le modèle vous semble-t-il pertinent ?</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7" hidden><p class="question-kicker" id="slide-label-7">Application <span class="pill">07 / 8</span></p><div class="prose">
+<h3 id="pr%C3%A9voir-la-consommation-au-jour-40"><strong>Prévoir la consommation au jour 40.</strong></h3>
+</div></article>
+<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8" hidden><p class="question-kicker" id="slide-label-8">Application <span class="pill">08 / 8</span></p><div class="prose">
+<h2 id="mod%C3%A9lisation-quadratique">Modélisation quadratique</h2>
+<p>Si les écarts ne sont pas constant entre les données alors le modèle n'est pas linéaire ...</p>
+<p>Que pouvez-vous dire des données suivantes ?</p>
+<pre tabindex="0"><code class="language-python">T = np.array([
+    <span class="hljs-number">9.5</span>, <span class="hljs-number">9.7</span>, <span class="hljs-number">10.0</span>, <span class="hljs-number">10.4</span>, <span class="hljs-number">10.9</span>, <span class="hljs-number">11.3</span>, <span class="hljs-number">12.0</span>, <span class="hljs-number">12.8</span>,
+    <span class="hljs-number">13.7</span>, <span class="hljs-number">14.8</span>, <span class="hljs-number">16.0</span>, <span class="hljs-number">17.3</span>, <span class="hljs-number">18.7</span>, <span class="hljs-number">20.2</span>, <span class="hljs-number">21.8</span>
+])
+</code></pre>
+<p>Utilisez la méthode <code>np.diff</code> sur ces données et concluez.</p>
+<p>Puis on vous aidant de la méthode <code>np.polyfit</code> trouvez un modèle qui décrit les données.</p>
+<p>Pour déternimer si un jeu de données suit un modèle d'ordre <code>k</code> vous pouvez utiliser le tableau suivant, <code>y</code> le jeu de données.</p>
+<p>Remarque importante : attention au &quot;zéro informatique&quot;<br />
+Si vous obtenez des valeurs très petites comme 1e-14, −3e-15, etc., cela correspond en fait à 0 (à l'erreur machine près)</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Différences</th>
+<th>Interprétation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>np.diff(y)</code> ≈ constant</td>
+<td>→ polynôme <strong>de degré 1</strong></td>
+</tr>
+<tr>
+<td><code>np.diff(y,2)</code> ≈ constant</td>
+<td>→ polynôme <strong>de degré 2</strong></td>
+</tr>
+<tr>
+<td><code>np.diff(y,3)</code> ≈ constant</td>
+<td>→ polynôme <strong>de degré 3</strong></td>
+</tr>
+<tr>
+<td><code>np.diff(y,4)</code> ≈ constant</td>
+<td>→ polynôme <strong>de degré 4</strong></td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="exercice-2">Exercice 2</h2>
+<p>Que dire de ces données ? Trouvez le modèle qui les décrit parfaitement.</p>
+<pre tabindex="0"><code class="language-python">y = np.array([
+     <span class="hljs-number">5.00</span>,  <span class="hljs-number">6.32</span>,  <span class="hljs-number">9.28</span>, <span class="hljs-number">14.40</span>, <span class="hljs-number">22.30</span>,
+    <span class="hljs-number">33.60</span>, <span class="hljs-number">48.92</span>, <span class="hljs-number">69.00</span>, <span class="hljs-number">94.60</span>,<span class="hljs-number">126.52</span>,
+   <span class="hljs-number">165.60</span>
+])
+</code></pre>
+<h2 id="exercice-3">Exercice 3</h2>
+<p>Représentez ces données et trouvez un modèle qui convient pour les décrire.</p>
+<blockquote>
+<p><em>Pour ajuster un modèle logarithmique aux données, il suffit de transformer le temps en <code>ln(t)</code> et d'appliquer une régression linéaire : si la croissance ralentit régulièrement, le modèle <code>y(t) = a,\ln(t) + b</code> décrit bien le phénomène.</em></p>
+</blockquote>
+<p>Remarque t <code>X = np.log(t)</code></p>
+<pre tabindex="0"><code class="language-python">t = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>])
+y = np.array([<span class="hljs-number">2.1</span>, <span class="hljs-number">2.9</span>, <span class="hljs-number">3.4</span>, <span class="hljs-number">3.8</span>, <span class="hljs-number">4.1</span>, <span class="hljs-number">4.3</span>, <span class="hljs-number">4.5</span>, <span class="hljs-number">4.6</span>, <span class="hljs-number">4.7</span>])
+</code></pre>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button primary" href="matrice.html">Matrices et vecteurs propres →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 8</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="index.html">Comprendre, puis pratiquer.</a></footer><script src="assets/slides.js" defer></script></body></html>

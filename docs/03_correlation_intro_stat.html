@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Corrélation et régression · Le labo maths</title><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page" data-deck="03_correlation_intro_stat"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Approfondir les statistiques</p><h1>Corrélation et régression</h1><p>Relier deux variables et ajuster une droite.</p></div><span class="chapter-count">21 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="true">Slides</button><button id="mode-reading" aria-pressed="false">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 21</span><span id="progress-label">5 %</span></div><progress id="progress" max="21" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Corrélation et Régression linéaire</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Objectif du chapitre</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Exemple de données</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Visualisation du lien</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>Question</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Corrélation : idée intuitive</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Coefficient de corrélation de Pearson</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Interprétation de r</span></a><a class="slide-link" href="#9" data-slide-link="9"><small>09</small><span>Exercice 1 – Corrélation</span></a><a class="slide-link" href="#10" data-slide-link="10"><small>10</small><span>Attention : corrélation ≠ causalité</span></a><a class="slide-link" href="#11" data-slide-link="11"><small>11</small><span>Régression linéaire</span></a><a class="slide-link" href="#12" data-slide-link="12"><small>12</small><span>Objectif de la régression</span></a><a class="slide-link" href="#13" data-slide-link="13"><small>13</small><span>Calcul de la droite avec Numpy</span></a><a class="slide-link" href="#14" data-slide-link="14"><small>14</small><span>Visualisation de la droite</span></a><a class="slide-link" href="#15" data-slide-link="15"><small>15</small><span>Interprétation de la pente</span></a><a class="slide-link" href="#16" data-slide-link="16"><small>16</small><span>Exercice 2 – Régression</span></a><a class="slide-link" href="#17" data-slide-link="17"><small>17</small><span>Résidus</span></a><a class="slide-link" href="#18" data-slide-link="18"><small>18</small><span>Graphique des résidus</span></a><a class="slide-link" href="#19" data-slide-link="19"><small>19</small><span>Interprétation des résidus</span></a><a class="slide-link" href="#20" data-slide-link="20"><small>20</small><span>Lien entre corrélation et régression</span></a><a class="slide-link" href="#21" data-slide-link="21"><small>21</small><span>Exercice 3 – Interprétation</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="sources/Slides/03_correlation_intro_stat.md" download>Source Markdown ↓</a><a class="source-link" href="problemes.html">Tous les problèmes ↗</a><a class="source-link" href="ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Cours détaillé <span class="pill">01 / 21</span></p><div class="prose">
+<h1 id="corr%C3%A9lation-et-r%C3%A9gression-lin%C3%A9aire">Corrélation et Régression linéaire</h1>
+<figure class="math-figure cover-illustration"><a href="assets/images/couverture-correlation.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/images/couverture-correlation.svg" alt="Trois nuages de points donnent des exemples de relations croissante, décroissante et non linéaire." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2" hidden><p class="question-kicker" id="slide-label-2">Cours détaillé <span class="pill">02 / 21</span></p><div class="prose">
+<h2 id="objectif-du-chapitre">Objectif du chapitre</h2>
+<ol>
+<li>Comprendre le <strong>lien entre deux variables quantitatives</strong></li>
+<li>Mesurer ce lien avec la <strong>corrélation</strong></li>
+<li>Modéliser ce lien avec une <strong>droite de régression</strong></li>
+<li>Interpréter correctement les résultats</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3" hidden><p class="question-kicker" id="slide-label-3">Cours détaillé <span class="pill">03 / 21</span></p><div class="prose">
+<h2 id="exemple-de-donn%C3%A9es">Exemple de données</h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-comment"># Temps d&#x27;entraînement (heures/semaine)</span>
+x = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>])
+
+<span class="hljs-comment"># Performance (score)</span>
+y = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">12</span>, <span class="hljs-number">15</span>, <span class="hljs-number">18</span>, <span class="hljs-number">19</span>, <span class="hljs-number">22</span>, <span class="hljs-number">24</span>])
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4" hidden><p class="question-kicker" id="slide-label-4">Cours détaillé <span class="pill">04 / 21</span></p><div class="prose">
+<h2 id="visualisation-du-lien">Visualisation du lien</h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+plt.scatter(x, y)
+plt.xlabel(<span class="hljs-string">&quot;Temps d&#x27;entraînement&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Performance&quot;</span>)
+plt.title(<span class="hljs-string">&quot;Nuage de points&quot;</span>)
+plt.show()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5" hidden><p class="question-kicker" id="slide-label-5">Cours détaillé <span class="pill">05 / 21</span></p><div class="prose">
+<h2 id="question">Question</h2>
+<ol>
+<li>Le lien semble-t-il <strong>croissant</strong> ou <strong>décroissant</strong> ?</li>
+<li>Le lien semble-t-il <strong>fort</strong> ou <strong>faible</strong> ?</li>
+<li>Peut-on prédire <code>y</code> à partir de <code>x</code> ?</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6" hidden><p class="question-kicker" id="slide-label-6">Cours détaillé <span class="pill">06 / 21</span></p><div class="prose">
+<h2 id="corr%C3%A9lation--id%C3%A9e-intuitive">Corrélation : idée intuitive</h2>
+<blockquote>
+<p>La corrélation mesure <strong>à quel point deux variables évoluent ensemble</strong>.</p>
+</blockquote>
+<ul>
+<li data-marpit-fragment="1">positive → quand x augmente, y augmente</li>
+<li data-marpit-fragment="2">négative → quand x augmente, y diminue</li>
+<li data-marpit-fragment="3">proche de 0 → pas de lien linéaire clair</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7" hidden><p class="question-kicker" id="slide-label-7">Cours détaillé <span class="pill">07 / 21</span></p><div class="prose">
+<h2 id="coefficient-de-corr%C3%A9lation-de-pearson">Coefficient de corrélation de Pearson</h2>
+<p>Valeur comprise entre <strong>–1 et +1</strong></p>
+<pre tabindex="0"><code class="language-python">r = np.corrcoef(x, y)[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]
+r
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8" hidden><p class="question-kicker" id="slide-label-8">Cours détaillé <span class="pill">08 / 21</span></p><div class="prose">
+<h2 id="interpr%C3%A9tation-de-r">Interprétation de r</h2>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Valeur de r</th>
+<th>Interprétation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>proche de 1</td>
+<td>lien linéaire fort positif</td>
+</tr>
+<tr>
+<td>proche de –1</td>
+<td>lien linéaire fort négatif</td>
+</tr>
+<tr>
+<td>proche de 0</td>
+<td>pas de lien linéaire</td>
+</tr>
+</tbody>
+</table></div>
+</div></article>
+<article class="slide-card exercise" id="slide-9" aria-labelledby="slide-label-9" hidden><p class="question-kicker" id="slide-label-9">Cours détaillé <span class="pill">09 / 21</span></p><div class="prose">
+<h2 id="exercice-1-%E2%80%93-corr%C3%A9lation">Exercice 1 – Corrélation</h2>
+<p>On donne :</p>
+<pre tabindex="0"><code class="language-python">a = np.array([<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">8</span>, <span class="hljs-number">10</span>])
+b = np.array([<span class="hljs-number">9</span>, <span class="hljs-number">7</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>])
+</code></pre>
+<ol>
+<li>Calculez la corrélation</li>
+<li>Interprétez le résultat</li>
+</ol>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># TODO</span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-10" aria-labelledby="slide-label-10" hidden><p class="question-kicker" id="slide-label-10">Cours détaillé <span class="pill">10 / 21</span></p><div class="prose">
+<h2 id="attention--corr%C3%A9lation-%E2%89%A0-causalit%C3%A9">Attention : corrélation ≠ causalité</h2>
+<p>Exemples classiques :</p>
+<ul>
+<li data-marpit-fragment="1">température et ventes de glaces</li>
+<li data-marpit-fragment="2">nombre de pompiers et dégâts</li>
+</ul>
+<blockquote>
+<p>La corrélation décrit un lien, <strong>pas une cause</strong>.</p>
+</blockquote>
+</div></article>
+<article class="slide-card" id="slide-11" aria-labelledby="slide-label-11" hidden><p class="question-kicker" id="slide-label-11">Cours détaillé <span class="pill">11 / 21</span></p><div class="prose">
+<h1 id="r%C3%A9gression-lin%C3%A9aire">Régression linéaire</h1>
+</div></article>
+<article class="slide-card" id="slide-12" aria-labelledby="slide-label-12" hidden><p class="question-kicker" id="slide-label-12">Cours détaillé <span class="pill">12 / 21</span></p><div class="prose">
+<h2 id="objectif-de-la-r%C3%A9gression">Objectif de la régression</h2>
+<blockquote>
+<p>Trouver la <strong>meilleure droite</strong> qui approxime la relation entre <code>x</code> et <code>y</code>.</p>
+</blockquote>
+<p>Forme :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo>=</mo><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">y = ax + b
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span></p><ul>
+<li data-marpit-fragment="1"><code>a</code> : pente</li>
+<li data-marpit-fragment="2"><code>b</code> : ordonnée à l’origine</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-13" aria-labelledby="slide-label-13" hidden><p class="question-kicker" id="slide-label-13">Cours détaillé <span class="pill">13 / 21</span></p><div class="prose">
+<h2 id="calcul-de-la-droite-avec-numpy">Calcul de la droite avec Numpy</h2>
+<pre tabindex="0"><code class="language-python">a, b = np.polyfit(x, y, <span class="hljs-number">1</span>)
+a, b
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-14" aria-labelledby="slide-label-14" hidden><p class="question-kicker" id="slide-label-14">Cours détaillé <span class="pill">14 / 21</span></p><div class="prose">
+<h2 id="visualisation-de-la-droite">Visualisation de la droite</h2>
+<pre tabindex="0"><code class="language-python">y_pred = a * x + b
+
+plt.scatter(x, y)
+plt.plot(x, y_pred)
+plt.show()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-15" aria-labelledby="slide-label-15" hidden><p class="question-kicker" id="slide-label-15">Cours détaillé <span class="pill">15 / 21</span></p><div class="prose">
+<h2 id="interpr%C3%A9tation-de-la-pente">Interprétation de la pente</h2>
+<blockquote>
+<p><code>a</code> représente la variation moyenne de <code>y</code> lorsque <code>x</code> augmente de 1.</p>
+</blockquote>
+<p>Exemple :</p>
+<ul>
+<li data-marpit-fragment="1"><code>a = 2.1</code> → +1 heure d’entraînement ≈ +2.1 points</li>
+</ul>
+</div></article>
+<article class="slide-card exercise" id="slide-16" aria-labelledby="slide-label-16" hidden><p class="question-kicker" id="slide-label-16">Cours détaillé <span class="pill">16 / 21</span></p><div class="prose">
+<h2 id="exercice-2-%E2%80%93-r%C3%A9gression">Exercice 2 – Régression</h2>
+<pre tabindex="0"><code class="language-python">x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>])
+y = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>])
+</code></pre>
+<ol>
+<li>Calculez <code>a</code> et <code>b</code></li>
+<li>Tracez la droite</li>
+<li>Interprétez la pente</li>
+</ol>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># TODO</span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-17" aria-labelledby="slide-label-17" hidden><p class="question-kicker" id="slide-label-17">Cours détaillé <span class="pill">17 / 21</span></p><div class="prose">
+<h2 id="r%C3%A9sidus">Résidus</h2>
+<p>Les <strong>résidus</strong> mesurent l’erreur du modèle :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mrow><mtext>r</mtext><mover accent="true"><mtext>e</mtext><mo>ˊ</mo></mover><mtext>sidu</mtext></mrow><mi>i</mi></msub><mo>=</mo><msub><mi>y</mi><mi>i</mi></msub><mo>−</mo><msub><mover accent="true"><mi>y</mi><mo>^</mo></mover><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\text{résidu}_i = y_i - \hat{y}_i
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord text"><span class="mord">r</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mord">sidu</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p><pre tabindex="0"><code class="language-python">residus = y - y_pred
+residus
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-18" aria-labelledby="slide-label-18" hidden><p class="question-kicker" id="slide-label-18">Cours détaillé <span class="pill">18 / 21</span></p><div class="prose">
+<h2 id="graphique-des-r%C3%A9sidus">Graphique des résidus</h2>
+<pre tabindex="0"><code class="language-python">plt.scatter(x, residus)
+plt.axhline(<span class="hljs-number">0</span>)
+plt.xlabel(<span class="hljs-string">&quot;x&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Résidu&quot;</span>)
+plt.show()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-19" aria-labelledby="slide-label-19" hidden><p class="question-kicker" id="slide-label-19">Cours détaillé <span class="pill">19 / 21</span></p><div class="prose">
+<h2 id="interpr%C3%A9tation-des-r%C3%A9sidus">Interprétation des résidus</h2>
+<ul>
+<li>résidus centrés autour de 0 → bon modèle</li>
+<li>structure visible → modèle inadapté</li>
+<li>résidus très grands → valeurs atypiques</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-20" aria-labelledby="slide-label-20" hidden><p class="question-kicker" id="slide-label-20">Cours détaillé <span class="pill">20 / 21</span></p><div class="prose">
+<h2 id="lien-entre-corr%C3%A9lation-et-r%C3%A9gression">Lien entre corrélation et régression</h2>
+<ol>
+<li>Corrélation forte → droite pertinente</li>
+<li>Corrélation faible → droite peu informative</li>
+<li>Corrélation mesure <strong>l’intensité</strong></li>
+<li>Régression fournit un <strong>modèle prédictif</strong></li>
+</ol>
+</div></article>
+<article class="slide-card exercise" id="slide-21" aria-labelledby="slide-label-21" hidden><p class="question-kicker" id="slide-label-21">Cours détaillé <span class="pill">21 / 21</span></p><div class="prose">
+<h2 id="exercice-3-%E2%80%93-interpr%C3%A9tation">Exercice 3 – Interprétation</h2>
+<ol>
+<li>Une corrélation de <strong>0.95</strong> implique-t-elle une causalité ?</li>
+<li>Peut-on avoir une corrélation faible mais une relation non linéaire forte ?</li>
+<li>Pourquoi toujours tracer un nuage de points avant de calculer <code>r</code> ?</li>
+</ol>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button primary" href="03_covariance_anova.html">Covariance, ANOVA et ACP →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 21</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="index.html">Comprendre, puis pratiquer.</a></footer><script src="assets/slides.js" defer></script></body></html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>----------------------------- · Le labo maths</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="../../assets/katex/katex.min.css"><link rel="stylesheet" href="../../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page reading-mode" data-deck="Corrections/TP_ACP.md"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Corrections</p><h1>-----------------------------</h1><p>Corrections / TP_ACP.md</p></div><span class="chapter-count">1 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="false">Slides</button><button id="mode-reading" aria-pressed="true">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 1</span><span id="progress-label">100 %</span></div><progress id="progress" max="1" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>----------------------------- — suite</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../../sources/Corrections/TP_ACP.md" download>Source Markdown ↓</a><a class="source-link" href="../../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Corrections <span class="pill">01 / 1</span></p><div class="prose">
+<pre tabindex="0"><code class="language-python">
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-comment"># -----------------------------</span>
+<span class="hljs-comment"># 1. Données</span>
+<span class="hljs-comment"># -----------------------------</span>
+X = np.array([
+    [<span class="hljs-number">160</span>, <span class="hljs-number">55</span>],
+    [<span class="hljs-number">170</span>, <span class="hljs-number">65</span>],
+    [<span class="hljs-number">172</span>, <span class="hljs-number">68</span>],
+    [<span class="hljs-number">180</span>, <span class="hljs-number">80</span>],
+    [<span class="hljs-number">175</span>, <span class="hljs-number">75</span>],
+    [<span class="hljs-number">158</span>, <span class="hljs-number">50</span>]
+], dtype=<span class="hljs-built_in">float</span>)
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Données initiales :\n&quot;</span>, X)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">50</span>)
+
+<span class="hljs-comment"># -----------------------------</span>
+<span class="hljs-comment"># 2. Centrage des données</span>
+<span class="hljs-comment"># -----------------------------</span>
+mean = np.mean(X, axis=<span class="hljs-number">0</span>)
+X_centered = X - mean
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Moyennes :&quot;</span>, mean)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Données centrées :\n&quot;</span>, np.<span class="hljs-built_in">round</span>(X_centered, <span class="hljs-number">2</span>))
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">50</span>)
+
+<span class="hljs-comment"># -----------------------------</span>
+<span class="hljs-comment"># 3. Matrice de covariance</span>
+<span class="hljs-comment"># -----------------------------</span>
+C = np.cov(X_centered, rowvar=<span class="hljs-literal">False</span>)
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Matrice de covariance :\n&quot;</span>, np.<span class="hljs-built_in">round</span>(C, <span class="hljs-number">2</span>))
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">50</span>)
+
+<span class="hljs-comment"># -----------------------------</span>
+<span class="hljs-comment"># 4. Valeurs propres / vecteurs propres</span>
+<span class="hljs-comment"># -----------------------------</span>
+eigenvalues, eigenvectors = np.linalg.eig(C)
+
+<span class="hljs-comment"># Trier par importance décroissante</span>
+idx = np.argsort(eigenvalues)[::-<span class="hljs-number">1</span>]
+eigenvalues = eigenvalues[idx]
+eigenvectors = eigenvectors[:, idx]
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Valeurs propres (variance expliquée) :\n&quot;</span>, eigenvalues)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Vecteurs propres (directions principales) :\n&quot;</span>, eigenvectors)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">50</span>)
+
+<span class="hljs-comment"># Pourcentage de variance expliquée</span>
+variance_ratio = eigenvalues / np.<span class="hljs-built_in">sum</span>(eigenvalues)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Proportion de variance expliquée :&quot;</span>, variance_ratio)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">50</span>)
+
+
+<span class="hljs-comment"># -----------------------------</span>
+<span class="hljs-comment"># 5. Projection des données</span>
+<span class="hljs-comment"># -----------------------------</span>
+X_projected = X_centered @ eigenvectors
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Données projetées sur les nouvelles composantes :\n&quot;</span>, np.<span class="hljs-built_in">round</span>(X_projected, <span class="hljs-number">2</span>))
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">50</span>)
+
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;=== Interprétation ===&quot;</span>)
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\nPC1 (1ère composante) explique {:.1f}% de la variance.&quot;</span>
+      .<span class="hljs-built_in">format</span>(variance_ratio[<span class="hljs-number">0</span>] * <span class="hljs-number">100</span>))
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;C’est la direction :&quot;</span>, np.<span class="hljs-built_in">round</span>(eigenvectors[:, <span class="hljs-number">0</span>], <span class="hljs-number">3</span>))
+
+<span class="hljs-keyword">if</span> variance_ratio[<span class="hljs-number">0</span>] &gt; <span class="hljs-number">0.85</span>:
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;→ Les données sont presque entièrement alignées sur une seule direction.&quot;</span>)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;→ On peut résumer la taille + poids par une seule composante.&quot;</span>)
+<span class="hljs-keyword">else</span>:
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;→ Il faut au moins 2 composantes pour bien représenter les données.&quot;</span>)
+
+<span class="hljs-comment"># Exemple d&#x27;analyse simple</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\nProjection sur PC1 :&quot;</span>)
+<span class="hljs-built_in">print</span>(np.<span class="hljs-built_in">round</span>(X_projected[:, <span class="hljs-number">0</span>], <span class="hljs-number">2</span>))
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;→ Ce score indique la « corpulence globale » de chaque individu.&quot;</span>)
+</code></pre>
+<p><img class="emoji" draggable="false" alt="✔" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2714.svg" data-marp-twemoji=""/> Les données sont centrées (moyenne = 0).</p>
+<p><img class="emoji" draggable="false" alt="✔" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2714.svg" data-marp-twemoji=""/> La covariance taille-poids est positive (elles montent ensemble).</p>
+<p><img class="emoji" draggable="false" alt="✔" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2714.svg" data-marp-twemoji=""/> PC1 explique la majorité de la variance (souvent &gt;90%).</p>
+<p><img class="emoji" draggable="false" alt="✔" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2714.svg" data-marp-twemoji=""/> PC1 ≈ combinaison linéaire taille+poids → “gabarit général”.</p>
+<p><img class="emoji" draggable="false" alt="✔" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2714.svg" data-marp-twemoji=""/> PC2 ≈ différence taille/poids → “silhouette plus ou moins élancée”.</p>
+<p><img class="emoji" draggable="false" alt="✔" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2714.svg" data-marp-twemoji=""/> La projection simplifie l’analyse sur une seule dimension.</p>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 1</span><button class="button primary" id="next" disabled>Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../../index.html">Comprendre, puis pratiquer.</a></footer><script src="../../assets/slides.js" defer></script></body></html>

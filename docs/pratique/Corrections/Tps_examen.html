@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Correction – Normalisation et comparaison de deux séries statistiques · Le labo maths</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="../../assets/katex/katex.min.css"><link rel="stylesheet" href="../../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page reading-mode" data-deck="Corrections/Tps_examen.md"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Corrections</p><h1>Correction – Normalisation et comparaison de deux séries statistiques</h1><p>Corrections / Tps_examen.md</p></div><span class="chapter-count">8 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="false">Slides</button><button id="mode-reading" aria-pressed="true">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 8</span><span id="progress-label">13 %</span></div><progress id="progress" max="8" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Correction – Normalisation et comparaison de deux séries statistiques</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>2. Normalisation par centrage–réduction</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>3. Normalisation min–max</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>4. Représentations graphiques</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>b) Séries normalisées min–max</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>5. Interprétation des résultats</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Partie facultative</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Conclusion générale</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../../sources/Corrections/Tps_examen.md" download>Source Markdown ↓</a><a class="source-link" href="../../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Corrections <span class="pill">01 / 8</span></p><div class="prose">
+<h1 id="correction-%E2%80%93-normalisation-et-comparaison-de-deux-s%C3%A9ries-statistiques"><strong>Correction – Normalisation et comparaison de deux séries statistiques</strong></h1>
+<h2 id="1-%C3%A9tude-descriptive-des-s%C3%A9ries">1. Étude descriptive des séries</h2>
+<h3 id="s%C3%A9rie-a">Série A</h3>
+<ul>
+<li data-marpit-fragment="1">Minimum : <strong>12</strong></li>
+<li data-marpit-fragment="2">Maximum : <strong>103</strong></li>
+<li data-marpit-fragment="3">Moyenne ( \mu_A \approx 63 )</li>
+<li data-marpit-fragment="4">Écart-type ( \sigma_A \approx 26 )</li>
+</ul>
+<h3 id="s%C3%A9rie-b">Série B</h3>
+<ul>
+<li data-marpit-fragment="5">Minimum : <strong>95</strong></li>
+<li data-marpit-fragment="6">Maximum : <strong>250</strong></li>
+<li data-marpit-fragment="7">Moyenne ( \mu_B \approx 168 )</li>
+<li data-marpit-fragment="8">Écart-type ( \sigma_B \approx 45 )</li>
+</ul>
+<h3 id="interpr%C3%A9tation">Interprétation</h3>
+<p>Les deux séries :</p>
+<ul>
+<li data-marpit-fragment="9">n’ont <strong>pas la même unité</strong>,</li>
+<li data-marpit-fragment="10">n’ont <strong>pas le même niveau moyen</strong>,</li>
+<li data-marpit-fragment="11">n’ont <strong>pas la même dispersion</strong>.</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="➡️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/27a1.svg" data-marp-twemoji=""/> Une comparaison directe n’est donc <strong>pas possible</strong> sans normalisation.</p>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2"><p class="question-kicker" id="slide-label-2">Corrections <span class="pill">02 / 8</span></p><div class="prose">
+<h2 id="2-normalisation-par-centrage%E2%80%93r%C3%A9duction">2. Normalisation par centrage–réduction</h2>
+<p>On applique la formule :<br />
+[<br />
+z = \frac{x - \mu}{\sigma}<br />
+]</p>
+<h3 id="r%C3%A9sultats-et-observations">Résultats et observations</h3>
+<h4 id="a-moyennes">a) Moyennes</h4>
+<p>Après centrage-réduction :</p>
+<ul>
+<li data-marpit-fragment="1">moyenne de la série A = <strong>0</strong></li>
+<li data-marpit-fragment="2">moyenne de la série B = <strong>0</strong></li>
+</ul>
+<p><img class="emoji" draggable="false" alt="➡️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/27a1.svg" data-marp-twemoji=""/> Les deux séries sont recentrées autour de la même valeur.</p>
+<h4 id="b-%C3%A9carts-types">b) Écarts-types</h4>
+<p>Après réduction :</p>
+<ul>
+<li data-marpit-fragment="3">écart-type de A = <strong>1</strong></li>
+<li data-marpit-fragment="4">écart-type de B = <strong>1</strong></li>
+</ul>
+<p><img class="emoji" draggable="false" alt="➡️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/27a1.svg" data-marp-twemoji=""/> Les dispersions deviennent comparables.</p>
+<h4 id="c-comparabilit%C3%A9-des-distributions">c) Comparabilité des distributions</h4>
+<p>Les séries deviennent comparables :</p>
+<ul>
+<li data-marpit-fragment="5">en termes de <strong>dispersion relative</strong>,</li>
+<li data-marpit-fragment="6">de <strong>symétrie</strong>,</li>
+<li data-marpit-fragment="7">et de <strong>présence de valeurs extrêmes</strong>.</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="⚠️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" data-marp-twemoji=""/> En revanche, les <strong>niveaux absolus</strong> et les unités sont perdus.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Le centrage-réduction permet de comparer les <strong>formes des distributions</strong>, indépendamment des unités.</p>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3"><p class="question-kicker" id="slide-label-3">Corrections <span class="pill">03 / 8</span></p><div class="prose">
+<h2 id="3-normalisation-min%E2%80%93max">3. Normalisation min–max</h2>
+<p>On applique la formule :<br />
+[<br />
+x_{\min\max} = \frac{x - x_{\min}}{x_{\max} - x_{\min}}<br />
+]</p>
+<h3 id="r%C3%A9sultats-et-observations-1">Résultats et observations</h3>
+<h4 id="a-%C3%A9chelle">a) Échelle</h4>
+<p>Après normalisation :</p>
+<ul>
+<li data-marpit-fragment="1">toutes les valeurs sont comprises entre <strong>0 et 1</strong> pour A et B.</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="➡️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/27a1.svg" data-marp-twemoji=""/> Les deux séries sont sur la <strong>même échelle</strong>.</p>
+<h4 id="b-information-conserv%C3%A9e">b) Information conservée</h4>
+<p>La normalisation min–max conserve :</p>
+<ul>
+<li data-marpit-fragment="2">l’ordre des valeurs,</li>
+<li data-marpit-fragment="3">les écarts relatifs,</li>
+<li data-marpit-fragment="4">la dynamique de variation.</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="⚠️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" data-marp-twemoji=""/> Elle ne conserve pas :</p>
+<ul>
+<li data-marpit-fragment="5">la moyenne,</li>
+<li data-marpit-fragment="6">l’écart-type,</li>
+<li data-marpit-fragment="7">l’interprétation statistique des valeurs.</li>
+</ul>
+<h3 id="conclusion-1">Conclusion</h3>
+<p>La normalisation min–max est adaptée pour comparer des <strong>évolutions</strong> ou des <strong>profils</strong>.</p>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4"><p class="question-kicker" id="slide-label-4">Corrections <span class="pill">04 / 8</span></p><div class="prose">
+<h2 id="4-repr%C3%A9sentations-graphiques">4. Représentations graphiques</h2>
+<h3 id="a-s%C3%A9ries-centr%C3%A9es-r%C3%A9duites">a) Séries centrées-réduites</h3>
+<p><strong>Représentation pertinente : diagramme à moustaches</strong></p>
+<ul>
+<li data-marpit-fragment="1">médiane proche de 0 pour les deux séries,</li>
+<li data-marpit-fragment="2">dispersions comparables,</li>
+<li data-marpit-fragment="3">outliers éventuellement visibles.</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="➡️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/27a1.svg" data-marp-twemoji=""/> Le boxplot permet de comparer la <strong>distribution</strong>.</p>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5"><p class="question-kicker" id="slide-label-5">Corrections <span class="pill">05 / 8</span></p><div class="prose">
+<h3 id="b-s%C3%A9ries-normalis%C3%A9es-min%E2%80%93max">b) Séries normalisées min–max</h3>
+<p><strong>Représentation pertinente : courbes</strong></p>
+<ul>
+<li data-marpit-fragment="1">valeurs entre 0 et 1,</li>
+<li data-marpit-fragment="2">comparaison directe des évolutions,</li>
+<li data-marpit-fragment="3">visualisation des pics et variations.</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="➡️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/27a1.svg" data-marp-twemoji=""/> La courbe permet de comparer la <strong>dynamique temporelle</strong>.</p>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6"><p class="question-kicker" id="slide-label-6">Corrections <span class="pill">06 / 8</span></p><div class="prose">
+<h2 id="5-interpr%C3%A9tation-des-r%C3%A9sultats">5. Interprétation des résultats</h2>
+<h3 id="1-comparaison-des-m%C3%A9dianes">1. Comparaison des médianes</h3>
+<ul>
+<li data-marpit-fragment="1">Après centrage-réduction : médianes proches de 0 (effet de la méthode).</li>
+<li data-marpit-fragment="2">Après min–max : médianes parfois différentes.</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="➡️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/27a1.svg" data-marp-twemoji=""/> Des médianes proches <strong>ne signifient pas</strong> que les séries ont des niveaux comparables, mais qu’elles sont comparables <strong>relativement</strong>.</p>
+</div></article>
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7"><p class="question-kicker" id="slide-label-7">Corrections <span class="pill">07 / 8</span></p><div class="prose">
+<h2 id="partie-facultative">Partie facultative</h2>
+<h3 id="2-s%C3%A9rie-la-plus-dispers%C3%A9e">2. Série la plus dispersée</h3>
+<ul>
+<li data-marpit-fragment="1">La série <strong>B</strong> est plus dispersée (moustaches plus longues en min–max).</li>
+</ul>
+<h3 id="3-valeurs-atypiques">3. Valeurs atypiques</h3>
+<ul>
+<li data-marpit-fragment="2">Peu de véritables outliers.</li>
+<li data-marpit-fragment="3">Quelques valeurs élevées plus visibles dans la série B après centrage-réduction.</li>
+</ul>
+<h3 id="4-dynamique-temporelle">4. Dynamique temporelle</h3>
+<ul>
+<li data-marpit-fragment="4">Série A : évolution plutôt <strong>régulière</strong>.</li>
+<li data-marpit-fragment="5">Série B : évolution <strong>plus irrégulière</strong>, avec des pics.</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="➡️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/27a1.svg" data-marp-twemoji=""/> La normalisation <strong>n’altère pas l’ordre des données</strong>, mais modifie la perception des écarts.</p>
+</div></article>
+<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8"><p class="question-kicker" id="slide-label-8">Corrections <span class="pill">08 / 8</span></p><div class="prose">
+<h2 id="conclusion-g%C3%A9n%C3%A9rale">Conclusion générale</h2>
+<ul>
+<li data-marpit-fragment="1">Le <strong>centrage–réduction</strong> sert à comparer des <strong>distributions</strong>.</li>
+<li data-marpit-fragment="2">La <strong>normalisation min–max</strong> sert à comparer des <strong>évolutions</strong>.</li>
+<li data-marpit-fragment="3">Les données sont les mêmes, <strong>seul l’objectif d’analyse change</strong>.</li>
+</ul>
+<p>C’est exactement ce que ce TP cherche à mettre en évidence.</p>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 8</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../../index.html">Comprendre, puis pratiquer.</a></footer><script src="../../assets/slides.js" defer></script></body></html>

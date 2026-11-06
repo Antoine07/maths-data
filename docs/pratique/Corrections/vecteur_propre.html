@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Correction détaillée et interprétée · Le labo maths</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="../../assets/katex/katex.min.css"><link rel="stylesheet" href="../../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page reading-mode" data-deck="Corrections/vecteur_propre.md"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Corrections</p><h1>Correction détaillée et interprétée</h1><p>Corrections / vecteur_propre.md</p></div><span class="chapter-count">9 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="false">Slides</button><button id="mode-reading" aria-pressed="true">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 9</span><span id="progress-label">11 %</span></div><progress id="progress" max="9" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Correction détaillée et interprétée</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>1. Valeurs propres</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>2. Vecteurs propres</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Pour (\lambda = 2)</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>3. Matrice (P)</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>4. Inverse de (P)</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>5. Matrice diagonale (D)</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>6. Vérification</span></a><a class="slide-link" href="#9" data-slide-link="9"><small>09</small><span>Résumé interprétatif</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../../sources/Corrections/vecteur_propre.md" download>Source Markdown ↓</a><a class="source-link" href="../../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Corrections <span class="pill">01 / 9</span></p><div class="prose">
+<h1 id="correction-d%C3%A9taill%C3%A9e-et-interpr%C3%A9t%C3%A9e"><strong>Correction détaillée et interprétée</strong></h1>
+<p>(C'est la même correction que précédemment mais <strong>toujours replacée dans le contexte du système dynamique</strong>.)</p>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2"><p class="question-kicker" id="slide-label-2">Corrections <span class="pill">02 / 9</span></p><div class="prose">
+<h1 id="1-valeurs-propres">1. Valeurs propres</h1>
+<h1 id="deta---lambda-i">[<br />
+\det(A - \lambda I)</h1>
+<p>\lambda^2 - 7\lambda + 10<br />
+= (\lambda - 5)(\lambda - 2).<br />
+]</p>
+<p>[<br />
+\boxed{\lambda_1 = 5,\qquad \lambda_2 = 2.}<br />
+]</p>
+<p><strong>Interprétation :</strong></p>
+<ul>
+<li data-marpit-fragment="1">un mode d'évolution grandit d'un facteur <strong>5</strong> par unité de temps,</li>
+<li data-marpit-fragment="2">l'autre grandit d'un facteur <strong>2</strong>.</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3"><p class="question-kicker" id="slide-label-3">Corrections <span class="pill">03 / 9</span></p><div class="prose">
+<h1 id="2-vecteurs-propres">2. Vecteurs propres</h1>
+<h2 id="pour-lambda--5">Pour (\lambda = 5)</h2>
+<p>Système : (x = 2y).<br />
+Je prends (y=1).</p>
+<p>[<br />
+v_1 =<br />
+\begin{pmatrix}<br />
+2<br />
+1<br />
+\end{pmatrix}.<br />
+]</p>
+<p><strong>Interprétation :</strong><br />
+Il existe une combinaison (2x + y) qui se dilate exactement par un facteur 5 à chaque période.</p>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4"><p class="question-kicker" id="slide-label-4">Corrections <span class="pill">04 / 9</span></p><div class="prose">
+<h2 id="pour-lambda--2">Pour (\lambda = 2)</h2>
+<p>Système : (x = -y).<br />
+Je prends (y=1).</p>
+<p>[<br />
+v_2 =<br />
+\begin{pmatrix}<br />
+-1<br />
+1<br />
+\end{pmatrix}.<br />
+]</p>
+<p><strong>Interprétation :</strong><br />
+Il existe une direction du système où l'évolution est plus lente (facteur 2).</p>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5"><p class="question-kicker" id="slide-label-5">Corrections <span class="pill">05 / 9</span></p><div class="prose">
+<h1 id="3-matrice-p">3. Matrice (P)</h1>
+<p>[<br />
+P =<br />
+\begin{pmatrix}<br />
+2 &amp; -1<br />
+1 &amp; 1<br />
+\end{pmatrix}.<br />
+]</p>
+<p><strong>Interprétation :</strong><br />
+Passer de la base standard à la base des vecteurs propres = regarder le système dans ses <strong>axes naturels d'évolution</strong>.</p>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6"><p class="question-kicker" id="slide-label-6">Corrections <span class="pill">06 / 9</span></p><div class="prose">
+<h1 id="4-inverse-de-p">4. Inverse de (P)</h1>
+<h1 id="p-1">[<br />
+P^{-1}</h1>
+<p>\frac{1}{3}<br />
+\begin{pmatrix}<br />
+1 &amp; 1<br />
+-1 &amp; 2<br />
+\end{pmatrix}.<br />
+]</p>
+</div></article>
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7"><p class="question-kicker" id="slide-label-7">Corrections <span class="pill">07 / 9</span></p><div class="prose">
+<h1 id="5-matrice-diagonale-d">5. Matrice diagonale (D)</h1>
+<p>[<br />
+D =<br />
+\begin{pmatrix}<br />
+5 &amp; 0<br />
+0 &amp; 2<br />
+\end{pmatrix}.<br />
+]</p>
+<p><strong>Interprétation :</strong><br />
+Dans la base des vecteurs propres, le système devient :</p>
+<p>[<br />
+z_{t+1} =<br />
+\begin{pmatrix}<br />
+5 &amp; 0<br />
+0 &amp; 2<br />
+\end{pmatrix}<br />
+z_t.<br />
+]</p>
+<p>C'est <strong>le modèle le plus simple possible</strong> :<br />
+les deux composantes évoluent <strong>indépendamment</strong>.</p>
+</div></article>
+<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8"><p class="question-kicker" id="slide-label-8">Corrections <span class="pill">08 / 9</span></p><div class="prose">
+<h1 id="6-v%C3%A9rification">6. Vérification</h1>
+<p>[<br />
+A = P D P^{-1}.<br />
+]</p>
+<p>(Les calculs vérifient parfaitement.)</p>
+</div></article>
+<article class="slide-card" id="slide-9" aria-labelledby="slide-label-9"><p class="question-kicker" id="slide-label-9">Corrections <span class="pill">09 / 9</span></p><div class="prose">
+<h1 id="%F0%9F%94%B5-r%C3%A9sum%C3%A9-interpr%C3%A9tatif"><img class="emoji" draggable="false" alt="🔵" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f535.svg" data-marp-twemoji=""/> <strong>Résumé interprétatif</strong></h1>
+<ul>
+<li data-marpit-fragment="1">Les <strong>vecteurs propres</strong> donnent les axes dans lesquels le système évolue naturellement.</li>
+<li data-marpit-fragment="2">Les <strong>valeurs propres</strong> donnent la vitesse d'évolution dans ces axes.</li>
+<li data-marpit-fragment="3">La diagonalisation permet d'écrire le système dans une forme où l'évolution est <strong>découplée</strong>, ce qui simplifie l'analyse, la simulation et la prédiction.</li>
+</ul>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 9</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../../index.html">Comprendre, puis pratiquer.</a></footer><script src="../../assets/slides.js" defer></script></body></html>

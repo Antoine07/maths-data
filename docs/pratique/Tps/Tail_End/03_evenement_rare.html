@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Problème 3 — Une rencontre peut-elle disparaître dans 99 % de variance ? · Le labo maths</title><link rel="stylesheet" href="../../../assets/site.css"><link rel="stylesheet" href="../../../assets/katex/katex.min.css"><link rel="stylesheet" href="../../../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page reading-mode" data-deck="Tps/Tail_End/03_evenement_rare.md"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../../../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../../../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Travaux pratiques</p><h1>Problème 3 — Une rencontre peut-elle disparaître dans 99 % de variance ?</h1><p>Tps / Tail_End / 03_evenement_rare.md</p></div><span class="chapter-count">8 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="false">Slides</button><button id="mode-reading" aria-pressed="true">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 8</span><span id="progress-label">13 %</span></div><progress id="progress" max="8" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Problème 3 — Une rencontre peut-elle disparaître dans 99 % de variance ?</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Objectif et prérequis</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Données et énoncé</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Contraintes, livrables et critères de réussite</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>Correction — Une bonne compression, selon quelle métrique ?</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Correction — Changer l&#39;échelle change le compromis</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Correction — Contrôle avec Python</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Discussion — La rareté n&#39;est pas le bruit</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../../../sources/Tps/Tail_End/03_evenement_rare.md" download>Source Markdown ↓</a><a class="source-link" href="../../../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../../../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card exercise" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Travaux pratiques <span class="pill">01 / 8</span></p><div class="prose">
+<h1 id="probl%C3%A8me-3--une-rencontre-peut-elle-dispara%C3%AEtre-dans-99--de-variance">Problème 3 — Une rencontre peut-elle disparaître dans 99 % de variance ?</h1>
+<h2 id="le-point-de-d%C3%A9part">Le point de départ</h2>
+<p>Noé résume ses six prochaines semaines dans un tableau. Il compte des sessions vidéo et les occasions de voir un proche qui habite loin.</p>
+<p>Un outil lui propose de compresser son tableau : « Nous conservons plus de 99 % de la variance. » Noé se demande si cela suffit pour conserver ce qui compte dans sa question.</p>
+<p>Le tableau est fictif et toutes les semaines sont connues pour cet exercice descriptif. Il ne s'agit pas d'une évaluation prédictive.</p>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2"><p class="question-kicker" id="slide-label-2">Travaux pratiques <span class="pill">02 / 8</span></p><div class="prose">
+<h2 id="objectif-et-pr%C3%A9requis">Objectif et prérequis</h2>
+<p><strong>Objectif pédagogique :</strong> distinguer une erreur globale de reconstruction et la préservation d'un événement rare.</p>
+<p><strong>Prérequis :</strong> <a href="../../../stat/03_centrage_reduction.html">centrage-réduction</a>, <a href="../../../stat/04_acp_intro.html">ACP</a> et <a href="../../../avance/03_svd_acp.html">SVD</a>.</p>
+<p><strong>Durée indicative :</strong> 75 minutes. Le sens des colonnes est choisi pour illustrer le problème ; il ne leur attribue pas de valeur universelle.</p>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3"><p class="question-kicker" id="slide-label-3">Travaux pratiques <span class="pill">03 / 8</span></p><div class="prose">
+<h2 id="donn%C3%A9es-et-%C3%A9nonc%C3%A9">Données et énoncé</h2>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align:right">Semaine</th>
+<th style="text-align:right">Sessions vidéo</th>
+<th style="text-align:right">Rencontres avec le proche</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">14</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">16</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">18</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table></div>
+<ol>
+<li>Centrer les deux colonnes, sans standardiser. Réaliser la SVD et calculer les parts de variance.</li>
+<li>Conserver un seul axe et reconstruire le tableau en réajoutant les moyennes.</li>
+<li>Examiner la valeur reconstruite de la rencontre en semaine 6. Une règle descriptive signale une semaine si cette valeur atteint 0,75. Que devient le signal ?</li>
+<li>Recommencer après standardisation des deux colonnes. Un axe suffit-il encore à conserver 95 % de variance ?</li>
+<li>Proposer une représentation et un critère de contrôle qui préservent l'information nécessaire à Noé.</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4"><p class="question-kicker" id="slide-label-4">Travaux pratiques <span class="pill">04 / 8</span></p><div class="prose">
+<h2 id="contraintes-livrables-et-crit%C3%A8res-de-r%C3%A9ussite">Contraintes, livrables et critères de réussite</h2>
+<p><strong>Contraintes :</strong> ne pas arrondir les reconstructions en cours de calcul ; appliquer la même règle de 0,75 avant et après compression ; ne pas confondre cette reconstruction descriptive avec un comptage réel.</p>
+<p><strong>Livrables :</strong> parts de variance, tableau reconstruit, graphique, réponse au seuil et choix argumenté d'une autre représentation.</p>
+<p><strong>Critères de réussite :</strong> annoncer la bonne part de variance, détecter l'atténuation de l'événement rare et distinguer variance de valeur d'usage.</p>
+<details><summary>Indices gradués</summary>
+<ol>
+<li>Les parts utilisent les carrés des valeurs singulières.</li>
+<li>La reconstruction de rang 1 est <code>(Xc @ Vt[:1].T) @ Vt[:1] + moyenne</code>.</li>
+<li>Une perte globale peut être petite alors que l'erreur sur une colonne ou une ligne particulière est importante.</li>
+</ol>
+</details>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5"><p class="question-kicker" id="slide-label-5">Travaux pratiques <span class="pill">05 / 8</span></p><div class="prose">
+<h2 id="correction--une-bonne-compression-selon-quelle-m%C3%A9trique">Correction — Une bonne compression, selon quelle métrique ?</h2>
+<details><summary>Afficher la correction</summary>
+<p>Le premier axe conserve environ <strong>99,331 %</strong> de la variance du tableau centré non standardisé. Pourtant, la rencontre de la semaine 6 passe de 1 à environ <strong>0,529</strong> après reconstruction de rang 1.</p>
+<p>La règle de 0,75 signale la semaine avant compression mais plus après. Elle était fixée avant le calcul : nous n'avons pas changé le seuil pour fabriquer cette comparaison.</p>
+<figure class="math-figure"><a href="../../../assets/images/tail-03-variance.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="../../../assets/images/tail-03-variance.svg" alt="La reconstruction de rang 1 suit surtout les sessions vidéo et réduit la rencontre de la semaine 6 d'une valeur 1 à environ 0,529." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+<p>La reconstruction peut produire des valeurs fractionnaires, voire négatives, car une projection linéaire n'impose pas des comptes entiers positifs. Ce n'est donc pas un calendrier directement exploitable.</p>
+</details>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6"><p class="question-kicker" id="slide-label-6">Travaux pratiques <span class="pill">06 / 8</span></p><div class="prose">
+<h2 id="correction--changer-l%C3%A9chelle-change-le-compromis">Correction — Changer l'échelle change le compromis</h2>
+<details><summary>Afficher la correction</summary>
+<p>Après standardisation, les parts deviennent environ <strong>82,73 %</strong> et <strong>17,27 %</strong>. Le seuil de 95 % impose les deux axes : il n'y a plus de réduction de dimension à ce seuil.</p>
+<p>La standardisation change les poids implicites de l'erreur : chaque colonne possède désormais la même variance. Elle ne garantit pas pour autant de préserver tous les événements importants dans tous les tableaux.</p>
+<p>On peut conserver explicitement la colonne des rencontres, construire une vue séparée des événements rares et contrôler l'erreur par colonne ou le nombre d'événements effacés par la règle descriptive.</p>
+<p>La métrique doit correspondre à la question. Il n'est pas nécessaire de compresser toutes les informations dans un seul indicateur.</p>
+</details>
+</div></article>
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7"><p class="question-kicker" id="slide-label-7">Travaux pratiques <span class="pill">07 / 8</span></p><div class="prose">
+<h2 id="correction--contr%C3%B4le-avec-python">Correction — Contrôle avec Python</h2>
+<details><summary>Afficher la correction</summary>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+X = np.column_stack([np.arange(<span class="hljs-number">10.</span>, <span class="hljs-number">22.</span>, <span class="hljs-number">2.</span>), [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]])
+mu = X.mean(axis=<span class="hljs-number">0</span>)
+Xc = X - mu
+_, s, Vt = np.linalg.svd(Xc, full_matrices=<span class="hljs-literal">False</span>)
+reconstruction = (Xc @ Vt[:<span class="hljs-number">1</span>].T) @ Vt[:<span class="hljs-number">1</span>] + mu
+<span class="hljs-built_in">print</span>(<span class="hljs-number">100</span>*s[<span class="hljs-number">0</span>]**<span class="hljs-number">2</span> / np.<span class="hljs-built_in">sum</span>(s**<span class="hljs-number">2</span>))
+<span class="hljs-built_in">print</span>(reconstruction[-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>])
+_, ss, _ = np.linalg.svd(Xc / X.std(axis=<span class="hljs-number">0</span>), full_matrices=<span class="hljs-literal">False</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-number">100</span>*ss**<span class="hljs-number">2</span> / np.<span class="hljs-built_in">sum</span>(ss**<span class="hljs-number">2</span>))
+</code></pre>
+<p><strong>Lecture :</strong> les entrées sont six semaines et deux variables. Le code centre, décompose, tronque et reconstruit, puis refait le diagnostic sur des colonnes standardisées. Les sorties sont environ <code>99.331</code>, <code>0.529</code> et <code>[82.733, 17.267]</code>.</p>
+<p><strong>Erreur fréquente :</strong> lire 99,331 % comme le pourcentage de rencontres correctement préservées. Il s'agit d'une fraction de variance globale dans la géométrie choisie.</p>
+</details>
+</div></article>
+<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8"><p class="question-kicker" id="slide-label-8">Travaux pratiques <span class="pill">08 / 8</span></p><div class="prose">
+<h2 id="discussion--la-raret%C3%A9-nest-pas-le-bruit">Discussion — La rareté n'est pas le bruit</h2>
+<p>Une rencontre rare peut être importante pour la question posée, même si elle contribue peu à la variance d'un tableau brut.</p>
+<p><strong>Lien data / IA :</strong> une bonne reconstruction globale ne garantit pas de préserver une anomalie, un défaut industriel rare ou une caractéristique utile à une cible. La représentation doit être évaluée selon l'usage prévu.</p>
+<p><a href="README.html">Retour aux quatre problèmes</a>. Inspiration du comptage des occasions : <a href="https://waitbutwhy.com/2015/12/the-tail-end.html"><em>The Tail End</em></a> ; expérience SVD originale.</p>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../../../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 8</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../../../index.html">Comprendre, puis pratiquer.</a></footer><script src="../../../assets/slides.js" defer></script></body></html>

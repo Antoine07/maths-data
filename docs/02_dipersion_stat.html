@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Comprendre la dispersion · Le labo maths</title><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page" data-deck="02_dipersion_stat"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Approfondir les statistiques</p><h1>Comprendre la dispersion</h1><p>Indicateurs de position, d’étalement et distributions.</p></div><span class="chapter-count">41 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="true">Slides</button><button id="mode-reading" aria-pressed="false">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 41</span><span id="progress-label">2 %</span></div><progress id="progress" max="41" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Statistiques descriptives – bases indispensables</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Objectif du chapitre</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Jeu de données simple</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Moyenne – idée intuitive</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>Exercice 1 – Moyenne</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Médiane</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Moyenne vs médiane</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Quartiles</span></a><a class="slide-link" href="#9" data-slide-link="9"><small>09</small><span>Exercice 2 – Quartiles</span></a><a class="slide-link" href="#10" data-slide-link="10"><small>10</small><span>Dispersion – pourquoi c&#39;est essentiel ?</span></a><a class="slide-link" href="#11" data-slide-link="11"><small>11</small><span>Étendue</span></a><a class="slide-link" href="#12" data-slide-link="12"><small>12</small><span>Variance</span></a><a class="slide-link" href="#13" data-slide-link="13"><small>13</small><span>Écart-type</span></a><a class="slide-link" href="#14" data-slide-link="14"><small>14</small><span>Interprétation de l&#39;écart-type</span></a><a class="slide-link" href="#15" data-slide-link="15"><small>15</small><span>Exercice 3 – Dispersion</span></a><a class="slide-link" href="#16" data-slide-link="16"><small>16</small><span>Visualisation : histogramme</span></a><a class="slide-link" href="#17" data-slide-link="17"><small>17</small><span>Interprétation de l&#39;histogramme</span></a><a class="slide-link" href="#18" data-slide-link="18"><small>18</small><span>Diagramme en boîte (boxplot)</span></a><a class="slide-link" href="#19" data-slide-link="19"><small>19</small><span>Lecture du boxplot</span></a><a class="slide-link" href="#20" data-slide-link="20"><small>20</small><span>Exercice 4 – Boxplot comparatif</span></a><a class="slide-link" href="#21" data-slide-link="21"><small>21</small><span>Résumé</span></a><a class="slide-link" href="#22" data-slide-link="22"><small>22</small><span>Statistiques descriptives – approfondissement</span></a><a class="slide-link" href="#23" data-slide-link="23"><small>23</small><span>Pourquoi aller plus loin ?</span></a><a class="slide-link" href="#24" data-slide-link="24"><small>24</small><span>Forme d&#39;une distribution</span></a><a class="slide-link" href="#25" data-slide-link="25"><small>25</small><span>Distribution symétrique</span></a><a class="slide-link" href="#26" data-slide-link="26"><small>26</small><span>Distribution asymétrique (skewed)</span></a><a class="slide-link" href="#27" data-slide-link="27"><small>27</small><span>Asymétrie à gauche (skew négatif)</span></a><a class="slide-link" href="#28" data-slide-link="28"><small>28</small><span>Illustration simple</span></a><a class="slide-link" href="#29" data-slide-link="29"><small>29</small><span>Mesure de l&#39;asymétrie (skewness)</span></a><a class="slide-link" href="#30" data-slide-link="30"><small>30</small><span>Exercice 5 – Asymétrie</span></a><a class="slide-link" href="#31" data-slide-link="31"><small>31</small><span>Concentration des valeurs (kurtosis)</span></a><a class="slide-link" href="#32" data-slide-link="32"><small>32</small><span>Valeurs atypiques (outliers)</span></a><a class="slide-link" href="#33" data-slide-link="33"><small>33</small><span>Détection avec l&#39;écart-type</span></a><a class="slide-link" href="#34" data-slide-link="34"><small>34</small><span>Détection avec les quartiles (boxplot)</span></a><a class="slide-link" href="#35" data-slide-link="35"><small>35</small><span>Exercice 6 – Outliers</span></a><a class="slide-link" href="#36" data-slide-link="36"><small>36</small><span>Comparer plusieurs groupes (descriptif)</span></a><a class="slide-link" href="#37" data-slide-link="37"><small>37</small><span>Comparaison numérique</span></a><a class="slide-link" href="#38" data-slide-link="38"><small>38</small><span>Comparaison graphique (indispensable)</span></a><a class="slide-link" href="#39" data-slide-link="39"><small>39</small><span>Lecture comparative</span></a><a class="slide-link" href="#40" data-slide-link="40"><small>40</small><span>Exercice 7 – Analyse complète</span></a><a class="slide-link" href="#41" data-slide-link="41"><small>41</small><span>Résumé</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="sources/Slides/02_dipersion_stat.md" download>Source Markdown ↓</a><a class="source-link" href="problemes.html">Tous les problèmes ↗</a><a class="source-link" href="ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Cours détaillé <span class="pill">01 / 41</span></p><div class="prose">
+<h1 id="statistiques-descriptives-%E2%80%93-bases-indispensables">Statistiques descriptives – bases indispensables</h1>
+<figure class="math-figure cover-illustration"><a href="assets/images/couverture-statistiques.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/images/couverture-statistiques.svg" alt="Une petite série de points avec des repères distincts pour la médiane et la moyenne." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2" hidden><p class="question-kicker" id="slide-label-2">Cours détaillé <span class="pill">02 / 41</span></p><div class="prose">
+<h2 id="objectif-du-chapitre">Objectif du chapitre</h2>
+<ol>
+<li>Décrire un jeu de données</li>
+<li>Résumer l'information par quelques nombres clés</li>
+<li>Comprendre la dispersion</li>
+<li>Visualiser correctement les données</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3" hidden><p class="question-kicker" id="slide-label-3">Cours détaillé <span class="pill">03 / 41</span></p><div class="prose">
+<h2 id="jeu-de-donn%C3%A9es-simple">Jeu de données simple</h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+notes = np.array([<span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>, <span class="hljs-number">13</span>, <span class="hljs-number">15</span>, <span class="hljs-number">18</span>])
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4" hidden><p class="question-kicker" id="slide-label-4">Cours détaillé <span class="pill">04 / 41</span></p><div class="prose">
+<h2 id="moyenne-%E2%80%93-id%C3%A9e-intuitive">Moyenne – idée intuitive</h2>
+<blockquote>
+<p>La moyenne représente le <strong>niveau global</strong> de la série.</p>
+</blockquote>
+<p>Formule :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>μ</mi><mo>=</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\mu = \frac{1}{n} \sum_{i=1}^n x_i
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">μ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.9291em;vertical-align:-1.2777em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">n</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p><pre tabindex="0"><code class="language-python">notes.mean()
+</code></pre>
+</div></article>
+<article class="slide-card exercise" id="slide-5" aria-labelledby="slide-label-5" hidden><p class="question-kicker" id="slide-label-5">Cours détaillé <span class="pill">05 / 41</span></p><div class="prose">
+<h2 id="exercice-1-%E2%80%93-moyenne">Exercice 1 – Moyenne</h2>
+<pre tabindex="0"><code class="language-python">temps = np.array([<span class="hljs-number">12.3</span>, <span class="hljs-number">12.5</span>, <span class="hljs-number">12.7</span>, <span class="hljs-number">13.1</span>, <span class="hljs-number">14.8</span>])
+</code></pre>
+<ol>
+<li>Calculez la moyenne</li>
+<li>Interprétez-la</li>
+</ol>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># TODO</span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6" hidden><p class="question-kicker" id="slide-label-6">Cours détaillé <span class="pill">06 / 41</span></p><div class="prose">
+<h2 id="m%C3%A9diane">Médiane</h2>
+<blockquote>
+<p>La médiane est la valeur qui <strong>coupe la série en deux parties égales</strong>.</p>
+</blockquote>
+<ul>
+<li>50 % des valeurs sont en dessous</li>
+<li>50 % sont au-dessus</li>
+</ul>
+<pre tabindex="0"><code class="language-python">np.median(notes)
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7" hidden><p class="question-kicker" id="slide-label-7">Cours détaillé <span class="pill">07 / 41</span></p><div class="prose">
+<h2 id="moyenne-vs-m%C3%A9diane">Moyenne vs médiane</h2>
+<p>Exemple :</p>
+<pre tabindex="0"><code class="language-python">data = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>, <span class="hljs-number">30</span>])
+</code></pre>
+<ul>
+<li>moyenne élevée</li>
+<li>médiane stable</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> La médiane est <strong>robuste aux valeurs extrêmes</strong>.</p>
+</div></article>
+<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8" hidden><p class="question-kicker" id="slide-label-8">Cours détaillé <span class="pill">08 / 41</span></p><div class="prose">
+<h2 id="quartiles">Quartiles</h2>
+<blockquote>
+<p>Les quartiles découpent la série en <strong>4 parts égales</strong>.</p>
+</blockquote>
+<ul>
+<li>Q1 : 25 %</li>
+<li>Q2 : médiane</li>
+<li>Q3 : 75 %</li>
+</ul>
+<pre tabindex="0"><code class="language-python">np.percentile(notes, [<span class="hljs-number">25</span>, <span class="hljs-number">50</span>, <span class="hljs-number">75</span>])
+</code></pre>
+</div></article>
+<article class="slide-card exercise" id="slide-9" aria-labelledby="slide-label-9" hidden><p class="question-kicker" id="slide-label-9">Cours détaillé <span class="pill">09 / 41</span></p><div class="prose">
+<h2 id="exercice-2-%E2%80%93-quartiles">Exercice 2 – Quartiles</h2>
+<pre tabindex="0"><code class="language-python">data = np.array([<span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">12</span>, <span class="hljs-number">14</span>, <span class="hljs-number">18</span>])
+</code></pre>
+<ol>
+<li>Calculez Q1, Q2, Q3</li>
+<li>Interprétez chaque valeur</li>
+</ol>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># TODO</span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-10" aria-labelledby="slide-label-10" hidden><p class="question-kicker" id="slide-label-10">Cours détaillé <span class="pill">10 / 41</span></p><div class="prose">
+<h2 id="dispersion-%E2%80%93-pourquoi-cest-essentiel">Dispersion – pourquoi c'est essentiel ?</h2>
+<p>Deux séries peuvent avoir :</p>
+<ul>
+<li>la <strong>même moyenne</strong>,</li>
+<li>mais des comportements très différents.</li>
+</ul>
+<p>Exemples :</p>
+<p>A : <code>[10, 10, 10, 10]</code><br />
+B : <code>[5, 10, 15, 10]</code></p>
+</div></article>
+<article class="slide-card" id="slide-11" aria-labelledby="slide-label-11" hidden><p class="question-kicker" id="slide-label-11">Cours détaillé <span class="pill">11 / 41</span></p><div class="prose">
+<h2 id="%C3%A9tendue">Étendue</h2>
+<blockquote>
+<p>Différence entre la plus grande et la plus petite valeur.</p>
+</blockquote>
+<pre tabindex="0"><code class="language-python">notes.<span class="hljs-built_in">max</span>() - notes.<span class="hljs-built_in">min</span>()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-12" aria-labelledby="slide-label-12" hidden><p class="question-kicker" id="slide-label-12">Cours détaillé <span class="pill">12 / 41</span></p><div class="prose">
+<h2 id="variance">Variance</h2>
+<blockquote>
+<p>Mesure la <strong>dispersion moyenne autour de la moyenne</strong>.</p>
+</blockquote>
+<p>Formule :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo>∑</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>μ</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\sigma^2 = \frac{1}{n} \sum (x_i - \mu)^2
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">n</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord mathnormal">μ</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p><pre tabindex="0"><code class="language-python">notes.var()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-13" aria-labelledby="slide-label-13" hidden><p class="question-kicker" id="slide-label-13">Cours détaillé <span class="pill">13 / 41</span></p><div class="prose">
+<h2 id="%C3%A9cart-type">Écart-type</h2>
+<blockquote>
+<p>Racine carrée de la variance<br />
+→ même unité que les données.</p>
+</blockquote>
+<pre tabindex="0"><code class="language-python">notes.std()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-14" aria-labelledby="slide-label-14" hidden><p class="question-kicker" id="slide-label-14">Cours détaillé <span class="pill">14 / 41</span></p><div class="prose">
+<h2 id="interpr%C3%A9tation-de-l%C3%A9cart-type">Interprétation de l'écart-type</h2>
+<ul>
+<li>faible → données regroupées</li>
+<li>élevé → données dispersées</li>
+</ul>
+<p>Lien direct avec le <strong>centrage-réduction</strong>.</p>
+</div></article>
+<article class="slide-card exercise" id="slide-15" aria-labelledby="slide-label-15" hidden><p class="question-kicker" id="slide-label-15">Cours détaillé <span class="pill">15 / 41</span></p><div class="prose">
+<h2 id="exercice-3-%E2%80%93-dispersion">Exercice 3 – Dispersion</h2>
+<pre tabindex="0"><code class="language-python">A = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>])
+B = np.array([<span class="hljs-number">7</span>, <span class="hljs-number">10</span>, <span class="hljs-number">13</span>, <span class="hljs-number">10</span>])
+</code></pre>
+<ol>
+<li>Calculez moyenne et écart-type</li>
+<li>Comparez les dispersions</li>
+</ol>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># TODO</span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-16" aria-labelledby="slide-label-16" hidden><p class="question-kicker" id="slide-label-16">Cours détaillé <span class="pill">16 / 41</span></p><div class="prose">
+<h2 id="visualisation--histogramme">Visualisation : histogramme</h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+plt.hist(notes, bins=<span class="hljs-number">5</span>)
+plt.xlabel(<span class="hljs-string">&quot;Valeurs&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Effectif&quot;</span>)
+plt.show()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-17" aria-labelledby="slide-label-17" hidden><p class="question-kicker" id="slide-label-17">Cours détaillé <span class="pill">17 / 41</span></p><div class="prose">
+<h2 id="interpr%C3%A9tation-de-lhistogramme">Interprétation de l'histogramme</h2>
+<figure class="math-figure lesson-illustration"><a href="assets/images/dispersion-histogramme.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/images/dispersion-histogramme.svg" alt="Les neuf notes du support regroupées en cinq classes, avec les effectifs de chaque classe." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+<ul>
+<li>symétrique ?</li>
+<li>étalé ?</li>
+<li>présence de valeurs extrêmes ?</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-18" aria-labelledby="slide-label-18" hidden><p class="question-kicker" id="slide-label-18">Cours détaillé <span class="pill">18 / 41</span></p><div class="prose">
+<h2 id="diagramme-en-bo%C3%AEte-boxplot">Diagramme en boîte (boxplot)</h2>
+<blockquote>
+<p>Résume la série avec les quartiles et la dispersion.</p>
+</blockquote>
+<pre tabindex="0"><code class="language-python">plt.boxplot(notes, vert=<span class="hljs-literal">False</span>)
+plt.show()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-19" aria-labelledby="slide-label-19" hidden><p class="question-kicker" id="slide-label-19">Cours détaillé <span class="pill">19 / 41</span></p><div class="prose">
+<h2 id="lecture-du-boxplot">Lecture du boxplot</h2>
+<figure class="math-figure lesson-illustration"><a href="assets/images/dispersion-boite.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/images/dispersion-boite.svg" alt="Une boîte à moustaches des notes du cours avec Q1 égal à 10, médiane 11, Q3 égal à 13 et la note 18 isolée selon la règle de 1,5 écart interquartile." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+<ol>
+<li>Boîte = Q1 → Q3</li>
+<li>Trait central = médiane</li>
+<li>Moustaches = valeurs observées extrêmes à l'intérieur des bornes Q1 − 1,5 × IQR et Q3 + 1,5 × IQR, avec IQR = Q3 − Q1</li>
+<li>Points isolés = valeurs potentiellement atypiques selon cette règle, sans preuve automatique d'erreur de mesure</li>
+</ol>
+</div></article>
+<article class="slide-card exercise" id="slide-20" aria-labelledby="slide-label-20" hidden><p class="question-kicker" id="slide-label-20">Cours détaillé <span class="pill">20 / 41</span></p><div class="prose">
+<h2 id="exercice-4-%E2%80%93-boxplot-comparatif">Exercice 4 – Boxplot comparatif</h2>
+<pre tabindex="0"><code class="language-python">groupe_A = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>, <span class="hljs-number">12</span>, <span class="hljs-number">13</span>])
+groupe_B = np.array([<span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">15</span>, <span class="hljs-number">20</span>])
+</code></pre>
+<ol>
+<li>Tracez les boxplots</li>
+<li>Comparez médiane et dispersion</li>
+</ol>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># TODO</span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-21" aria-labelledby="slide-label-21" hidden><p class="question-kicker" id="slide-label-21">Cours détaillé <span class="pill">21 / 41</span></p><div class="prose">
+<h2 id="r%C3%A9sum%C3%A9">Résumé</h2>
+<ol>
+<li><strong>Moyenne</strong> → niveau global</li>
+<li><strong>Médiane</strong> → valeur centrale robuste</li>
+<li><strong>Écart-type</strong> → dispersion</li>
+<li><strong>Histogramme</strong> → forme de la distribution</li>
+<li><strong>Boxplot</strong> → synthèse visuelle</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-22" aria-labelledby="slide-label-22" hidden><p class="question-kicker" id="slide-label-22">Cours détaillé <span class="pill">22 / 41</span></p><div class="prose">
+<h1 id="statistiques-descriptives-%E2%80%93-approfondissement">Statistiques descriptives – approfondissement</h1>
+</div></article>
+<article class="slide-card" id="slide-23" aria-labelledby="slide-label-23" hidden><p class="question-kicker" id="slide-label-23">Cours détaillé <span class="pill">23 / 41</span></p><div class="prose">
+<h2 id="pourquoi-aller-plus-loin">Pourquoi aller plus loin ?</h2>
+<p>Deux séries peuvent avoir :</p>
+<ul>
+<li>même moyenne,</li>
+<li>même écart-type,</li>
+<li>mêmes quartiles,</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> <strong>mais des formes très différentes</strong>.</p>
+<p>On va maintenant :</p>
+<ol>
+<li>décrire la <strong>forme</strong> des distributions,</li>
+<li>détecter les <strong>valeurs atypiques</strong>,</li>
+<li>comparer <strong>plusieurs groupes</strong> proprement.</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-24" aria-labelledby="slide-label-24" hidden><p class="question-kicker" id="slide-label-24">Cours détaillé <span class="pill">24 / 41</span></p><div class="prose">
+<h2 id="forme-dune-distribution">Forme d'une distribution</h2>
+<p>Trois notions clés :</p>
+<ol>
+<li>Symétrie / dissymétrie</li>
+<li>Asymétrie (skewness)</li>
+<li>Concentration (kurtosis)</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-25" aria-labelledby="slide-label-25" hidden><p class="question-kicker" id="slide-label-25">Cours détaillé <span class="pill">25 / 41</span></p><div class="prose">
+<h2 id="distribution-sym%C3%A9trique">Distribution symétrique</h2>
+<p>Exemple typique : loi normale.</p>
+<pre tabindex="0"><code class="language-python">x = np.random.normal(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1000</span>)
+</code></pre>
+<ul>
+<li>moyenne ≈ médiane</li>
+<li>histogramme équilibré</li>
+<li>boxplot centré</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-26" aria-labelledby="slide-label-26" hidden><p class="question-kicker" id="slide-label-26">Cours détaillé <span class="pill">26 / 41</span></p><div class="prose">
+<h2 id="distribution-asym%C3%A9trique-skewed">Distribution asymétrique (skewed)</h2>
+<p>Deux cas :</p>
+<h3 id="asym%C3%A9trie-%C3%A0-droite-skew-positif">Asymétrie à droite (skew positif)</h3>
+<ul>
+<li>queue longue vers les grandes valeurs</li>
+<li>moyenne &gt; médiane</li>
+</ul>
+<p>Exemples :</p>
+<ul>
+<li>revenus</li>
+<li>temps d'attente</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-27" aria-labelledby="slide-label-27" hidden><p class="question-kicker" id="slide-label-27">Cours détaillé <span class="pill">27 / 41</span></p><div class="prose">
+<h3 id="asym%C3%A9trie-%C3%A0-gauche-skew-n%C3%A9gatif">Asymétrie à gauche (skew négatif)</h3>
+<ul>
+<li>queue longue vers les petites valeurs</li>
+<li>moyenne &lt; médiane</li>
+</ul>
+<p>Exemples :</p>
+<ul>
+<li>notes plafonnées</li>
+<li>scores avec effet plafond</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-28" aria-labelledby="slide-label-28" hidden><p class="question-kicker" id="slide-label-28">Cours détaillé <span class="pill">28 / 41</span></p><div class="prose">
+<h2 id="illustration-simple">Illustration simple</h2>
+<pre tabindex="0"><code class="language-python">data = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">20</span>])
+</code></pre>
+<ul>
+<li>médiane ≈ 3</li>
+<li>moyenne tirée vers 20</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> la moyenne est <strong>sensible aux valeurs extrêmes</strong></p>
+</div></article>
+<article class="slide-card" id="slide-29" aria-labelledby="slide-label-29" hidden><p class="question-kicker" id="slide-label-29">Cours détaillé <span class="pill">29 / 41</span></p><div class="prose">
+<h2 id="mesure-de-lasym%C3%A9trie-skewness">Mesure de l'asymétrie (skewness)</h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">from</span> scipy.stats <span class="hljs-keyword">import</span> skew
+
+skew(data)
+</code></pre>
+<p>Interprétation :</p>
+<ul>
+<li>≈ 0 → symétrique</li>
+<li>
+<blockquote>
+<p>0 → asymétrie à droite</p>
+</blockquote>
+</li>
+<li>&lt; 0 → asymétrie à gauche</li>
+</ul>
+</div></article>
+<article class="slide-card exercise" id="slide-30" aria-labelledby="slide-label-30" hidden><p class="question-kicker" id="slide-label-30">Cours détaillé <span class="pill">30 / 41</span></p><div class="prose">
+<h2 id="exercice-5-%E2%80%93-asym%C3%A9trie">Exercice 5 – Asymétrie</h2>
+<pre tabindex="0"><code class="language-python">A = np.array([<span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>])
+B = np.array([<span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">30</span>])
+</code></pre>
+<ol>
+<li>Comparez moyenne et médiane</li>
+<li>Calculez l'asymétrie</li>
+<li>Interprétez la forme des distributions</li>
+</ol>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># TODO</span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-31" aria-labelledby="slide-label-31" hidden><p class="question-kicker" id="slide-label-31">Cours détaillé <span class="pill">31 / 41</span></p><div class="prose">
+<h2 id="concentration-des-valeurs-kurtosis">Concentration des valeurs (kurtosis)</h2>
+<blockquote>
+<p>Mesure si les valeurs sont :</p>
+</blockquote>
+<ul>
+<li>très concentrées autour de la moyenne</li>
+<li>ou très étalées avec des extrêmes</li>
+</ul>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">from</span> scipy.stats <span class="hljs-keyword">import</span> kurtosis
+
+kurtosis(data)
+</code></pre>
+<p>Interprétation (simplifiée) :</p>
+<ul>
+<li>proche de 0 → forme “normale”</li>
+<li>
+<blockquote>
+<p>0 → beaucoup de valeurs extrêmes</p>
+</blockquote>
+</li>
+<li>&lt; 0 → distribution aplatie</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-32" aria-labelledby="slide-label-32" hidden><p class="question-kicker" id="slide-label-32">Cours détaillé <span class="pill">32 / 41</span></p><div class="prose">
+<h2 id="valeurs-atypiques-outliers">Valeurs atypiques (outliers)</h2>
+<p>Une valeur atypique :</p>
+<ul>
+<li>n'est pas forcément fausse</li>
+<li>mais <strong>doit être expliquée</strong></li>
+</ul>
+<p>Exemples :</p>
+<ul>
+<li>erreur de mesure</li>
+<li>situation exceptionnelle</li>
+<li>individu particulier</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-33" aria-labelledby="slide-label-33" hidden><p class="question-kicker" id="slide-label-33">Cours détaillé <span class="pill">33 / 41</span></p><div class="prose">
+<h2 id="d%C3%A9tection-avec-l%C3%A9cart-type">Détection avec l'écart-type</h2>
+<p>Règle simple (approximative) :</p>
+<blockquote>
+<p>|x − moyenne| &gt; 2 × écart-type → valeur suspecte<br />
+|x − moyenne| &gt; 3 × écart-type → valeur très atypique</p>
+</blockquote>
+</div></article>
+<article class="slide-card" id="slide-34" aria-labelledby="slide-label-34" hidden><p class="question-kicker" id="slide-label-34">Cours détaillé <span class="pill">34 / 41</span></p><div class="prose">
+<h2 id="d%C3%A9tection-avec-les-quartiles-boxplot">Détection avec les quartiles (boxplot)</h2>
+<p>Méthode robuste :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>IQR</mtext><mo>=</mo><mi>Q</mi><mn>3</mn><mo>−</mo><mi>Q</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">\text{IQR} = Q3 - Q1
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">IQR</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span><span class="mord">1</span></span></span></span></span></p><p>Valeurs atypiques si :</p>
+<ul>
+<li>&lt; Q1 − 1.5 × IQR</li>
+<li>
+<blockquote>
+<p>Q3 + 1.5 × IQR</p>
+</blockquote>
+</li>
+</ul>
+</div></article>
+<article class="slide-card exercise" id="slide-35" aria-labelledby="slide-label-35" hidden><p class="question-kicker" id="slide-label-35">Cours détaillé <span class="pill">35 / 41</span></p><div class="prose">
+<h2 id="exercice-6-%E2%80%93-outliers">Exercice 6 – Outliers</h2>
+<pre tabindex="0"><code class="language-python">data = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>, <span class="hljs-number">12</span>, <span class="hljs-number">13</span>, <span class="hljs-number">14</span>, <span class="hljs-number">50</span>])
+</code></pre>
+<ol>
+<li>Calculez Q1, Q3, IQR</li>
+<li>Identifiez les valeurs atypiques</li>
+<li>Comparez avec la méthode écart-type</li>
+</ol>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># TODO</span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-36" aria-labelledby="slide-label-36" hidden><p class="question-kicker" id="slide-label-36">Cours détaillé <span class="pill">36 / 41</span></p><div class="prose">
+<h2 id="comparer-plusieurs-groupes-descriptif">Comparer plusieurs groupes (descriptif)</h2>
+<p>On reste <strong>sans test statistique</strong>.</p>
+<pre tabindex="0"><code class="language-python">groupe_A = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>, <span class="hljs-number">13</span>, <span class="hljs-number">14</span>])
+groupe_B = np.array([<span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">25</span>])
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-37" aria-labelledby="slide-label-37" hidden><p class="question-kicker" id="slide-label-37">Cours détaillé <span class="pill">37 / 41</span></p><div class="prose">
+<h2 id="comparaison-num%C3%A9rique">Comparaison numérique</h2>
+<p>Comparer :</p>
+<ol>
+<li>moyenne</li>
+<li>médiane</li>
+<li>écart-type</li>
+<li>étendue</li>
+</ol>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">for</span> g <span class="hljs-keyword">in</span> [groupe_A, groupe_B]:
+    <span class="hljs-built_in">print</span>(g.mean(), g.std(), np.median(g))
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-38" aria-labelledby="slide-label-38" hidden><p class="question-kicker" id="slide-label-38">Cours détaillé <span class="pill">38 / 41</span></p><div class="prose">
+<h2 id="comparaison-graphique-indispensable">Comparaison graphique (indispensable)</h2>
+<pre tabindex="0"><code class="language-python">plt.boxplot([groupe_A, groupe_B], labels=[<span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;B&quot;</span>])
+plt.show()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-39" aria-labelledby="slide-label-39" hidden><p class="question-kicker" id="slide-label-39">Cours détaillé <span class="pill">39 / 41</span></p><div class="prose">
+<h2 id="lecture-comparative">Lecture comparative</h2>
+<p>Questions clés :</p>
+<ol>
+<li>Quel groupe est plus dispersé ?</li>
+<li>Les médianes sont-elles proches ?</li>
+<li>Y a-t-il des valeurs atypiques ?</li>
+<li>Les distributions sont-elles comparables ?</li>
+</ol>
+</div></article>
+<article class="slide-card exercise" id="slide-40" aria-labelledby="slide-label-40" hidden><p class="question-kicker" id="slide-label-40">Cours détaillé <span class="pill">40 / 41</span></p><div class="prose">
+<h2 id="exercice-7-%E2%80%93-analyse-compl%C3%A8te">Exercice 7 – Analyse complète</h2>
+<pre tabindex="0"><code class="language-python">A = np.array([<span class="hljs-number">12</span>, <span class="hljs-number">13</span>, <span class="hljs-number">14</span>, <span class="hljs-number">15</span>, <span class="hljs-number">16</span>])
+B = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>, <span class="hljs-number">20</span>, <span class="hljs-number">22</span>])
+</code></pre>
+<p>Réaliser :</p>
+<ol>
+<li>statistiques descriptives complètes</li>
+<li>histogrammes</li>
+<li>boxplots</li>
+<li>interprétation écrite</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-41" aria-labelledby="slide-label-41" hidden><p class="question-kicker" id="slide-label-41">Cours détaillé <span class="pill">41 / 41</span></p><div class="prose">
+<h2 id="r%C3%A9sum%C3%A9-1">Résumé</h2>
+<ol>
+<li>La moyenne décrit le <strong>niveau</strong></li>
+<li>L'écart-type décrit la <strong>dispersion</strong></li>
+<li>L'asymétrie décrit la <strong>forme</strong></li>
+<li>Les outliers nécessitent <strong>analyse critique</strong></li>
+<li>Les graphiques sont <strong>indispensables</strong></li>
+</ol>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button primary" href="03_correlation_intro_stat.html">Corrélation et régression →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 41</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="index.html">Comprendre, puis pratiquer.</a></footer><script src="assets/slides.js" defer></script></body></html>

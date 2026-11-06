@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>✅ Correction complète pour Notebook — Point selle en Machine Learning · Le labo maths</title><link rel="stylesheet" href="../../../assets/site.css"><link rel="stylesheet" href="../../../assets/katex/katex.min.css"><link rel="stylesheet" href="../../../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page reading-mode" data-deck="Derivation/Corrections/gradient.md"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../../../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../../../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Corrections</p><h1>✅ Correction complète pour Notebook — Point selle en Machine Learning</h1><p>Derivation / Corrections / gradient.md</p></div><span class="chapter-count">12 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="false">Slides</button><button id="mode-reading" aria-pressed="true">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 12</span><span id="progress-label">8 %</span></div><progress id="progress" max="12" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Correction complète pour Notebook — Point selle en Machine Learning</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Cellule 1 — Introduction (Markdown)</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Cellule 2 — Calcul NumPy</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Cellule 3 — Surface 3D</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>Interprétation (Markdown)</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Cellule 4 — Courbes de niveau</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Interprétation (Markdown)</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Cellule 5 — Champ de gradient</span></a><a class="slide-link" href="#9" data-slide-link="9"><small>09</small><span>Interprétation (Markdown)</span></a><a class="slide-link" href="#10" data-slide-link="10"><small>10</small><span>Cellule 6 — Analyse du Hessien</span></a><a class="slide-link" href="#11" data-slide-link="11"><small>11</small><span>Interprétation (Markdown)</span></a><a class="slide-link" href="#12" data-slide-link="12"><small>12</small><span>Cellule 7 — Conclusion finale (Markdown)</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../../../sources/Derivation/Corrections/gradient.md" download>Source Markdown ↓</a><a class="source-link" href="../../../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../../../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Corrections <span class="pill">01 / 12</span></p><div class="prose">
+<h1 id="%E2%9C%85-correction-compl%C3%A8te-pour-notebook--point-selle-en-machine-learning"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> <strong>Correction complète pour Notebook — Point selle en Machine Learning</strong></h1>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2"><p class="question-kicker" id="slide-label-2">Corrections <span class="pill">02 / 12</span></p><div class="prose">
+<h2 id="%F0%9F%9F%A6-cellule-1--introduction-markdown"><img class="emoji" draggable="false" alt="🟦" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e6.svg" data-marp-twemoji=""/> <strong>Cellule 1 — Introduction (Markdown)</strong></h2>
+<pre tabindex="0"><code class="language-markdown"><span class="hljs-section"># Correction : étude d’un point selle en 3D dans un contexte Machine Learning</span>
+
+Nous étudions la fonction :
+
+\[
+f(x, y) = x^2 - y^4.
+\]
+
+Cette fonction présente un <span class="hljs-strong">**point critique en (0,0)**</span> qui est un <span class="hljs-strong">**point selle plat**</span>.  
+C’est un comportement fréquent des fonctions de perte en Machine Learning, où la descente de gradient peut <span class="hljs-strong">**ralentir ou stagner**</span> autour de points selles.
+
+L&#x27;objectif est de :
+
+<span class="hljs-bullet">-</span> visualiser la surface en 3D,
+<span class="hljs-bullet">-</span> tracer les courbes de niveaux,
+<span class="hljs-bullet">-</span> représenter le gradient,
+<span class="hljs-bullet">-</span> analyser mathématiquement le point critique,
+<span class="hljs-bullet">-</span> comprendre l’impact en optimisation ML.
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3"><p class="question-kicker" id="slide-label-3">Corrections <span class="pill">03 / 12</span></p><div class="prose">
+<h2 id="%F0%9F%9F%A6-cellule-2--calcul-numpy"><img class="emoji" draggable="false" alt="🟦" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e6.svg" data-marp-twemoji=""/> <strong>Cellule 2 — Calcul NumPy</strong></h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">from</span> mpl_toolkits.mplot3d <span class="hljs-keyword">import</span> Axes3D
+
+<span class="hljs-comment"># Création des vecteurs x et y</span>
+x = np.linspace(-<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">300</span>)
+y = np.linspace(-<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">300</span>)
+
+<span class="hljs-comment"># Grille 2D de points</span>
+X, Y = np.meshgrid(x, y)
+
+<span class="hljs-comment"># Fonction f(x,y) = x^2 - y^4</span>
+Z = X**<span class="hljs-number">2</span> - Y**<span class="hljs-number">4</span>
+
+Z[:<span class="hljs-number">5</span>, :<span class="hljs-number">5</span>]  <span class="hljs-comment"># aperçu</span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4"><p class="question-kicker" id="slide-label-4">Corrections <span class="pill">04 / 12</span></p><div class="prose">
+<h2 id="%F0%9F%9F%A6-cellule-3--surface-3d"><img class="emoji" draggable="false" alt="🟦" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e6.svg" data-marp-twemoji=""/> <strong>Cellule 3 — Surface 3D</strong></h2>
+<pre tabindex="0"><code class="language-python">fig = plt.figure(figsize=(<span class="hljs-number">10</span>, <span class="hljs-number">7</span>))
+ax = fig.add_subplot(<span class="hljs-number">111</span>, projection=<span class="hljs-string">&#x27;3d&#x27;</span>)
+
+<span class="hljs-comment"># Surface</span>
+ax.plot_surface(X, Y, Z, cmap=<span class="hljs-string">&#x27;coolwarm&#x27;</span>, alpha=<span class="hljs-number">0.8</span>)
+
+<span class="hljs-comment"># Point selle</span>
+ax.scatter(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, color=<span class="hljs-string">&quot;black&quot;</span>, s=<span class="hljs-number">70</span>)
+
+<span class="hljs-comment"># Labels</span>
+ax.set_xlabel(<span class="hljs-string">&quot;x&quot;</span>)
+ax.set_ylabel(<span class="hljs-string">&quot;y&quot;</span>)
+ax.set_zlabel(<span class="hljs-string">&quot;f(x,y)&quot;</span>)
+ax.set_title(<span class="hljs-string">&quot;Surface 3D de f(x,y) = x^2 - y^4&quot;</span>)
+
+plt.tight_layout()
+plt.show()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5"><p class="question-kicker" id="slide-label-5">Corrections <span class="pill">05 / 12</span></p><div class="prose">
+<h2 id="%E2%9C%8D%EF%B8%8F-interpr%C3%A9tation-markdown"><img class="emoji" draggable="false" alt="✍️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/270d.svg" data-marp-twemoji=""/> <strong>Interprétation (Markdown)</strong></h2>
+<pre tabindex="0"><code class="language-markdown">La surface montre une zone qui se creuse selon l’axe y (concave) et qui se relève selon l’axe x (convexe).
+
+Le point (0,0,0) n’est ni un minimum ni un maximum :
+<span class="hljs-bullet">-</span> dans la direction x : la fonction ressemble à un <span class="hljs-strong">**minimum**</span> local (car x²),
+<span class="hljs-bullet">-</span> dans la direction y : la fonction ressemble à un <span class="hljs-strong">**maximum**</span> local (car -y⁴).
+
+C’est exactement la définition d’un <span class="hljs-strong">**point selle**</span>.
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6"><p class="question-kicker" id="slide-label-6">Corrections <span class="pill">06 / 12</span></p><div class="prose">
+<h2 id="%F0%9F%9F%A6-cellule-4--courbes-de-niveau"><img class="emoji" draggable="false" alt="🟦" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e6.svg" data-marp-twemoji=""/> <strong>Cellule 4 — Courbes de niveau</strong></h2>
+<pre tabindex="0"><code class="language-python">plt.figure(figsize=(<span class="hljs-number">7</span>,<span class="hljs-number">6</span>))
+plt.contour(X, Y, Z, levels=<span class="hljs-number">20</span>, cmap=<span class="hljs-string">&quot;coolwarm&quot;</span>)
+plt.scatter(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,color=<span class="hljs-string">&quot;black&quot;</span>,s=<span class="hljs-number">40</span>)
+plt.title(<span class="hljs-string">&quot;Courbes de niveau de f(x,y) = x^2 - y^4&quot;</span>)
+plt.xlabel(<span class="hljs-string">&quot;x&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;y&quot;</span>)
+plt.axis(<span class="hljs-string">&quot;equal&quot;</span>)
+plt.show()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7"><p class="question-kicker" id="slide-label-7">Corrections <span class="pill">07 / 12</span></p><div class="prose">
+<h2 id="%E2%9C%8D%EF%B8%8F-interpr%C3%A9tation-markdown-1"><img class="emoji" draggable="false" alt="✍️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/270d.svg" data-marp-twemoji=""/> <strong>Interprétation (Markdown)</strong></h2>
+<pre tabindex="0"><code class="language-markdown">Les courbes de niveau sont caractéristiques d’un point selle : elles forment une structure en &quot;X&quot; déformé.
+
+Selon les directions, les niveaux s’écartent (direction +x) ou se rapprochent (direction +y).
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8"><p class="question-kicker" id="slide-label-8">Corrections <span class="pill">08 / 12</span></p><div class="prose">
+<h2 id="%F0%9F%9F%A6-cellule-5--champ-de-gradient"><img class="emoji" draggable="false" alt="🟦" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e6.svg" data-marp-twemoji=""/> <strong>Cellule 5 — Champ de gradient</strong></h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># Dérivées partielles analytiques</span>
+Fx = <span class="hljs-number">2</span>*X          <span class="hljs-comment"># df/dx</span>
+Fy = -<span class="hljs-number">4</span>*Y**<span class="hljs-number">3</span>      <span class="hljs-comment"># df/dy</span>
+
+<span class="hljs-comment"># Champ de gradient</span>
+plt.figure(figsize=(<span class="hljs-number">7</span>,<span class="hljs-number">6</span>))
+plt.quiver(X[::<span class="hljs-number">20</span>, ::<span class="hljs-number">20</span>], Y[::<span class="hljs-number">20</span>, ::<span class="hljs-number">20</span>],
+           Fx[::<span class="hljs-number">20</span>, ::<span class="hljs-number">20</span>], Fy[::<span class="hljs-number">20</span>, ::<span class="hljs-number">20</span>])
+
+plt.title(<span class="hljs-string">&quot;Champ de gradient de f(x,y)&quot;</span>)
+plt.xlabel(<span class="hljs-string">&quot;x&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;y&quot;</span>)
+plt.axhline(<span class="hljs-number">0</span>, color=<span class="hljs-string">&quot;black&quot;</span>, linewidth=<span class="hljs-number">0.8</span>)
+plt.axvline(<span class="hljs-number">0</span>, color=<span class="hljs-string">&quot;black&quot;</span>, linewidth=<span class="hljs-number">0.8</span>)
+plt.show()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-9" aria-labelledby="slide-label-9"><p class="question-kicker" id="slide-label-9">Corrections <span class="pill">09 / 12</span></p><div class="prose">
+<h2 id="%E2%9C%8D%EF%B8%8F-interpr%C3%A9tation-markdown-2"><img class="emoji" draggable="false" alt="✍️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/270d.svg" data-marp-twemoji=""/> <strong>Interprétation (Markdown)</strong></h2>
+<pre tabindex="0"><code class="language-markdown">Le gradient est nul uniquement au point (0,0).
+
+Autour du point selle :
+
+<span class="hljs-bullet">-</span> le gradient <span class="hljs-strong">**pousse vers x ≠ 0**</span>, car 2x s’éloigne rapidement de 0,
+<span class="hljs-bullet">-</span> le gradient est <span class="hljs-strong">**faible**</span> pour y ≈ 0 car -4y³ devient très petit.
+
+Ce comportement est typique des <span class="hljs-strong">**plateaux en Machine Learning**</span> :
+le gradient ne donne qu’un signal très faible même si on n’est pas dans un minimum.
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-10" aria-labelledby="slide-label-10"><p class="question-kicker" id="slide-label-10">Corrections <span class="pill">10 / 12</span></p><div class="prose">
+<h2 id="%F0%9F%9F%A6-cellule-6--analyse-du-hessien"><img class="emoji" draggable="false" alt="🟦" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e6.svg" data-marp-twemoji=""/> <strong>Cellule 6 — Analyse du Hessien</strong></h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># Hessien analytique</span>
+H = np.array([[<span class="hljs-number">2</span>, <span class="hljs-number">0</span>],
+              [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>]])   <span class="hljs-comment"># au point (0,0)</span>
+
+H
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-11" aria-labelledby="slide-label-11"><p class="question-kicker" id="slide-label-11">Corrections <span class="pill">11 / 12</span></p><div class="prose">
+<h2 id="%E2%9C%8D%EF%B8%8F-interpr%C3%A9tation-markdown-3"><img class="emoji" draggable="false" alt="✍️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/270d.svg" data-marp-twemoji=""/> <strong>Interprétation (Markdown)</strong></h2>
+<pre tabindex="0"><code class="language-markdown">Le Hessien au point (0,0) vaut :
+
+\[
+H(0,0) = 
+\begin{pmatrix}
+2 &amp; 0 \\
+0 &amp; 0
+\end{pmatrix}
+\]
+
+Valeurs propres : 2 et 0.
+
+<span class="hljs-bullet">-</span> Une direction <span class="hljs-strong">**strictement convexe**</span> (x),
+<span class="hljs-bullet">-</span> Une direction <span class="hljs-strong">**plate**</span> (y),
+<span class="hljs-bullet">-</span> Pas de positivité / négativité définie → <span class="hljs-strong">**point selle plat**</span>.
+
+Dans l’apprentissage profond :
+<span class="hljs-bullet">-</span> ces points selles ralentissent les optimisations,
+<span class="hljs-bullet">-</span> la descente de gradient peut sembler &quot;bloquée&quot;,
+<span class="hljs-bullet">-</span> mais il ne s’agit pas d’un minimum local.
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-12" aria-labelledby="slide-label-12"><p class="question-kicker" id="slide-label-12">Corrections <span class="pill">12 / 12</span></p><div class="prose">
+<h2 id="%F0%9F%9F%A6-cellule-7--conclusion-finale-markdown"><img class="emoji" draggable="false" alt="🟦" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f7e6.svg" data-marp-twemoji=""/> <strong>Cellule 7 — Conclusion finale (Markdown)</strong></h2>
+<pre tabindex="0"><code class="language-markdown"><span class="hljs-section"># Conclusion</span>
+
+L’étude de la fonction f(x,y) = x² - y⁴ montre :
+
+<span class="hljs-bullet">-</span> un <span class="hljs-strong">**point critique**</span> en (0,0),
+<span class="hljs-bullet">-</span> une surface 3D présentant un <span class="hljs-strong">**point selle**</span>,
+<span class="hljs-bullet">-</span> une convexité selon x et une concavité selon y,
+<span class="hljs-bullet">-</span> un Hessien <span class="hljs-strong">**indéfini**</span>, typique des points selles,
+<span class="hljs-bullet">-</span> un gradient qui devient très faible autour du point, ce qui <span class="hljs-strong">**ralentit la descente de gradient**</span>.
+
+Ce type de géométrie apparaît très fréquemment dans les fonctions de perte des réseaux neuronaux, et explique pourquoi l&#x27;optimisation peut être lente ou chaotique.
+</code></pre>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../../../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 12</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../../../index.html">Comprendre, puis pratiquer.</a></footer><script src="../../../assets/slides.js" defer></script></body></html>

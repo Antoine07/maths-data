@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Centrage et réduction · Le labo maths</title><link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="../assets/katex/katex.min.css"><link rel="stylesheet" href="../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page" data-deck="stat/03_centrage_reduction"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Statistiques avec NumPy</p><h1>Centrage et réduction</h1><p>Comparer les données sur une échelle commune.</p></div><span class="chapter-count">9 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="true">Slides</button><button id="mode-reading" aria-pressed="false">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 9</span><span id="progress-label">11 %</span></div><progress id="progress" max="9" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Centrage et reduction</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Jeu de donnees 1 - Temperatures</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Centrage</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Detection simple des jours froids / chauds</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>Jeu de donnees 2 - Temperature et frequence cardiaque</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Centrage des deux variables</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Reduction (standardisation)</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Interpretation</span></a><a class="slide-link" href="#9" data-slide-link="9"><small>09</small><span>Resume</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../sources/Slides/stat/03_centrage_reduction.md" download>Source Markdown ↓</a><a class="source-link" href="../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Transformation <span class="pill">01 / 9</span></p><div class="prose">
+<h1 id="centrage-et-reduction">Centrage et reduction</h1>
+<h2 id="cours">Cours</h2>
+<figure class="math-figure cover-illustration"><a href="../assets/images/couverture-centrage.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="../assets/images/couverture-centrage.svg" alt="Les valeurs 8 et 12 deviennent -2 et +2 après centrage, puis -1 et +1 après réduction." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2" hidden><p class="question-kicker" id="slide-label-2">Transformation <span class="pill">02 / 9</span></p><div class="prose">
+<h2 id="jeu-de-donnees-1---temperatures">Jeu de donnees 1 - Temperatures</h2>
+<pre tabindex="0"><code class="language-python">temps = np.array([
+    <span class="hljs-number">15.2</span>, <span class="hljs-number">15.5</span>, <span class="hljs-number">15.1</span>, <span class="hljs-number">15.3</span>, <span class="hljs-number">15.4</span>,
+    <span class="hljs-number">25.8</span>, <span class="hljs-number">26.1</span>, <span class="hljs-number">25.9</span>,
+    <span class="hljs-number">15.2</span>, <span class="hljs-number">15.3</span>, <span class="hljs-number">15.1</span>
+])
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3" hidden><p class="question-kicker" id="slide-label-3">Transformation <span class="pill">03 / 9</span></p><div class="prose">
+<h2 id="centrage">Centrage</h2>
+<p>Formule :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>x</mi><mi>c</mi></msub><mo>=</mo><mi>x</mi><mo>−</mo><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover></mrow><annotation encoding="application/x-tex">x_c = x - \bar{x}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5678em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span></span></span></p><p>Consigne :</p>
+<ol>
+<li>Calculez <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5678em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span></span></li>
+<li>Construisez <code>temps_centered = temps - np.mean(temps)</code></li>
+<li>Interpretez les signes (positif/negatif)</li>
+</ol>
+<details>
+<summary>Afficher la correction</summary>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover><mo>≈</mo><mn>18.173</mn></mrow><annotation encoding="application/x-tex">\bar{x}\approx 18.173
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5678em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">18.173</span></span></span></span></span></p><p><code>temps_centered</code> (arrondi) :<br />
+<code>[-2.973, -2.673, -3.073, -2.873, -2.773, 7.627, 7.927, 7.727, -2.973, -2.873, -3.073]</code></p>
+<p>Valeur negative : en dessous de la moyenne.<br />
+Valeur positive : au dessus de la moyenne.</p>
+</details>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4" hidden><p class="question-kicker" id="slide-label-4">Transformation <span class="pill">04 / 9</span></p><div class="prose">
+<h2 id="detection-simple-des-jours-froids--chauds">Detection simple des jours froids / chauds</h2>
+<p>Avec un seuil <code>threshold = 2</code> :</p>
+<pre tabindex="0"><code class="language-python">cold_idx = np.where(temps_centered &lt; -<span class="hljs-number">2</span>)[<span class="hljs-number">0</span>]
+hot_idx  = np.where(temps_centered &gt;  <span class="hljs-number">2</span>)[<span class="hljs-number">0</span>]
+</code></pre>
+<p>Consigne :</p>
+<ol>
+<li>Trouvez <code>cold_idx</code></li>
+<li>Trouvez <code>hot_idx</code></li>
+<li>Comparez avec les temperatures d'origine</li>
+</ol>
+<details>
+<summary>Afficher la correction</summary>
+<p><code>cold_idx = [0, 1, 2, 3, 4, 8, 9, 10]</code></p>
+<p><code>hot_idx = [5, 6, 7]</code></p>
+</details>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5" hidden><p class="question-kicker" id="slide-label-5">Transformation <span class="pill">05 / 9</span></p><div class="prose">
+<h2 id="jeu-de-donnees-2---temperature-et-frequence-cardiaque">Jeu de donnees 2 - Temperature et frequence cardiaque</h2>
+<pre tabindex="0"><code class="language-python">temperature = np.array([<span class="hljs-number">36.8</span>, <span class="hljs-number">37.1</span>, <span class="hljs-number">36.9</span>, <span class="hljs-number">37.5</span>, <span class="hljs-number">38.2</span>, <span class="hljs-number">36.7</span>, <span class="hljs-number">37.0</span>])
+heart_rate  = np.array([<span class="hljs-number">62</span>, <span class="hljs-number">70</span>, <span class="hljs-number">65</span>, <span class="hljs-number">74</span>, <span class="hljs-number">90</span>, <span class="hljs-number">60</span>, <span class="hljs-number">68</span>])
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6" hidden><p class="question-kicker" id="slide-label-6">Transformation <span class="pill">06 / 9</span></p><div class="prose">
+<h2 id="centrage-des-deux-variables">Centrage des deux variables</h2>
+<pre tabindex="0"><code class="language-python">temp_centered  = temperature - np.mean(temperature)
+heart_centered = heart_rate  - np.mean(heart_rate)
+</code></pre>
+<p>Consigne :</p>
+<ol>
+<li>Calculez <code>temp_centered</code></li>
+<li>Calculez <code>heart_centered</code></li>
+<li>Comparez les amplitudes des deux variables</li>
+</ol>
+<details>
+<summary>Afficher la correction</summary>
+<p><code>temp_centered = [-0.371, -0.071, -0.271, 0.329, 1.029, -0.471, -0.171]</code></p>
+<p><code>heart_centered = [-7.857, 0.143, -4.857, 4.143, 20.143, -9.857, -1.857]</code></p>
+<p>Amplitude plus forte pour la frequence cardiaque avant reduction.</p>
+</details>
+</div></article>
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7" hidden><p class="question-kicker" id="slide-label-7">Transformation <span class="pill">07 / 9</span></p><div class="prose">
+<h2 id="reduction-standardisation">Reduction (standardisation)</h2>
+<pre tabindex="0"><code class="language-python">temp_scaled  = temp_centered  / np.std(temp_centered)
+heart_scaled = heart_centered / np.std(heart_centered)
+</code></pre>
+<p>Consigne :</p>
+<ol>
+<li>Calculez <code>temp_scaled</code></li>
+<li>Calculez <code>heart_scaled</code></li>
+<li>Relevez les valeurs proches de 0, &gt; +1 et &lt; -1</li>
+</ol>
+<details>
+<summary>Afficher la correction</summary>
+<p><code>temp_scaled = [-0.769, -0.148, -0.562, 0.680, 2.129, -0.976, -0.355]</code></p>
+<p><code>heart_scaled = [-0.842, 0.015, -0.521, 0.444, 2.160, -1.057, -0.199]</code></p>
+<p>Valeurs &gt; +1 : individu 4 sur les deux variables.<br />
+Valeur &lt; -1 : individu 5 sur la frequence cardiaque.</p>
+</details>
+</div></article>
+<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8" hidden><p class="question-kicker" id="slide-label-8">Transformation <span class="pill">08 / 9</span></p><div class="prose">
+<h2 id="interpretation">Interpretation</h2>
+<ol>
+<li>Valeur &gt; <code>+1</code> : atypiquement elevee</li>
+<li>Valeur &lt; <code>-1</code> : atypiquement faible</li>
+<li>Valeur proche de <code>0</code> : proche de la moyenne</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-9" aria-labelledby="slide-label-9" hidden><p class="question-kicker" id="slide-label-9">Transformation <span class="pill">09 / 9</span></p><div class="prose">
+<h2 id="resume">Resume</h2>
+<ol>
+<li>Centrer : retirer la moyenne</li>
+<li>Reduire : diviser par l'ecart-type</li>
+<li>Apres centrage-reduction : moyenne = 0, ecart-type = 1</li>
+<li>On peut comparer des variables sur des echelles differentes</li>
+</ol>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button primary" href="04_acp_intro.html">Premiers pas en ACP →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 9</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../index.html">Comprendre, puis pratiquer.</a></footer><script src="../assets/slides.js" defer></script></body></html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Exercice – Analyse de performance sportive par ACP · Le labo maths</title><link rel="stylesheet" href="../../../assets/site.css"><link rel="stylesheet" href="../../../assets/katex/katex.min.css"><link rel="stylesheet" href="../../../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page reading-mode" data-deck="Statistiques/TPs/01_TP_ACP.md"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../../../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../../../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Travaux pratiques</p><h1>Exercice – Analyse de performance sportive par ACP</h1><p>Statistiques / TPs / 01_TP_ACP.md</p></div><span class="chapter-count">6 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="false">Slides</button><button id="mode-reading" aria-pressed="true">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 6</span><span id="progress-label">17 %</span></div><progress id="progress" max="6" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Exercice – Analyse de performance sportive par ACP</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Travail demandé</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>2. ACP : extraction des axes principaux</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>3. Projection des individus</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>4. Cercle de corrélation</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>5. Analyse finale (2–3 phrases)</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../../../sources/Statistiques/TPs/01_TP_ACP.md" download>Source Markdown ↓</a><a class="source-link" href="../../../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../../../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card exercise" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Travaux pratiques <span class="pill">01 / 6</span></p><div class="prose">
+<h1 id="exercice-%E2%80%93-analyse-de-performance-sportive-par-acp"><strong>Exercice – Analyse de performance sportive par ACP</strong></h1>
+<p>On étudie un groupe d’athlètes évalués selon quatre critères :</p>
+<ol>
+<li><strong>Vitesse</strong> (km/h)</li>
+<li><strong>Force</strong> (kg soulevés)</li>
+<li><strong>Endurance</strong> (score sur 100)</li>
+<li><strong>Agilité</strong> (score sur 100)</li>
+</ol>
+<p>Les données suivantes décrivent 10 athlètes :</p>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+X = np.array([
+    [<span class="hljs-number">29</span>, <span class="hljs-number">118</span>, <span class="hljs-number">45</span>, <span class="hljs-number">72</span>],
+    [<span class="hljs-number">27</span>, <span class="hljs-number">110</span>, <span class="hljs-number">40</span>, <span class="hljs-number">65</span>],
+    [<span class="hljs-number">31</span>, <span class="hljs-number">125</span>, <span class="hljs-number">48</span>, <span class="hljs-number">78</span>],
+    [<span class="hljs-number">26</span>, <span class="hljs-number">105</span>, <span class="hljs-number">37</span>, <span class="hljs-number">63</span>],
+    [<span class="hljs-number">30</span>, <span class="hljs-number">120</span>, <span class="hljs-number">46</span>, <span class="hljs-number">74</span>],
+    [<span class="hljs-number">28</span>, <span class="hljs-number">115</span>, <span class="hljs-number">44</span>, <span class="hljs-number">70</span>],
+    [<span class="hljs-number">32</span>, <span class="hljs-number">130</span>, <span class="hljs-number">50</span>, <span class="hljs-number">80</span>],
+    [<span class="hljs-number">25</span>, <span class="hljs-number">100</span>, <span class="hljs-number">35</span>, <span class="hljs-number">60</span>],
+    [<span class="hljs-number">27</span>, <span class="hljs-number">108</span>, <span class="hljs-number">39</span>, <span class="hljs-number">66</span>],
+    [<span class="hljs-number">29</span>, <span class="hljs-number">117</span>, <span class="hljs-number">42</span>, <span class="hljs-number">68</span>]
+], dtype=<span class="hljs-built_in">float</span>)
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2"><p class="question-kicker" id="slide-label-2">Travaux pratiques <span class="pill">02 / 6</span></p><div class="prose">
+<h1 id="travail-demand%C3%A9"><strong>Travail demandé</strong></h1>
+<h2 id="1-pr%C3%A9paration-des-donn%C3%A9es"><strong>1. Préparation des données</strong></h2>
+<ol>
+<li>Centrez et réduisez la matrice <code>X</code>.</li>
+<li>Expliquez en une phrase pourquoi cette étape est indispensable en ACP.</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3"><p class="question-kicker" id="slide-label-3">Travaux pratiques <span class="pill">03 / 6</span></p><div class="prose">
+<h2 id="2-acp--extraction-des-axes-principaux"><strong>2. ACP : extraction des axes principaux</strong></h2>
+<ol>
+<li>Calculez la matrice de covariance des données standardisées.</li>
+<li>Calculez les <strong>valeurs propres</strong> et <strong>vecteurs propres</strong>.</li>
+<li>Classez les axes principaux par importance décroissante.</li>
+</ol>
+<p><strong>Questions :</strong></p>
+<ul>
+<li data-marpit-fragment="1">Que représente la valeur propre associée à PC1 ?</li>
+<li data-marpit-fragment="2">Que peut-on dire si PC1 explique plus de 80 % de la variance totale ?</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4"><p class="question-kicker" id="slide-label-4">Travaux pratiques <span class="pill">04 / 6</span></p><div class="prose">
+<h2 id="3-projection-des-individus"><strong>3. Projection des individus</strong></h2>
+<ol>
+<li>Projetez <code>X</code> sur PC1 et PC2.</li>
+<li>Tracez le nuage des individus dans le plan PC1–PC2.</li>
+</ol>
+<p><strong>Questions :</strong></p>
+<ul>
+<li data-marpit-fragment="1">Quelles sont les deux performances les plus corrélées entre elles ?</li>
+<li data-marpit-fragment="2">Les athlètes semblent-ils former des groupes ?</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5"><p class="question-kicker" id="slide-label-5">Travaux pratiques <span class="pill">05 / 6</span></p><div class="prose">
+<h2 id="4-cercle-de-corr%C3%A9lation"><strong>4. Cercle de corrélation</strong></h2>
+<ol>
+<li>Calculez les coordonnées des 4 variables dans le cercle de corrélation.</li>
+<li>Tracez le cercle complet (unit circle + flèches).</li>
+</ol>
+<p><strong>Questions d’interprétation :</strong></p>
+<ul>
+<li data-marpit-fragment="1">Quelles variables sont <strong>fortement corrélées</strong> ?</li>
+<li data-marpit-fragment="2">Quelles variables contribuent le plus à PC1 ?</li>
+<li data-marpit-fragment="3">Une variable s’écarte-t-elle des autres dans sa direction ? Que signifie cela ?</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6"><p class="question-kicker" id="slide-label-6">Travaux pratiques <span class="pill">06 / 6</span></p><div class="prose">
+<h2 id="5-analyse-finale-2%E2%80%933-phrases"><strong>5. Analyse finale (2–3 phrases)</strong></h2>
+<p>Rédigez une conclusion décrivant :</p>
+<ul>
+<li data-marpit-fragment="1">l'information principale révélée par l’ACP,</li>
+<li data-marpit-fragment="2">le type d’athlètes mis en évidence (par exemple : explosifs, endurants…),</li>
+<li data-marpit-fragment="3">comment le cercle de corrélation aide à interpréter les axes.</li>
+</ul>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../../../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 6</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../../../index.html">Comprendre, puis pratiquer.</a></footer><script src="../../../assets/slides.js" defer></script></body></html>

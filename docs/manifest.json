@@ -1,0 +1,127 @@
+[
+  {
+    "file": "revision.html",
+    "source": "Slides/revision.md",
+    "slides": 23
+  },
+  {
+    "file": "01_derivation.html",
+    "source": "Slides/01_derivation.md",
+    "slides": 18
+  },
+  {
+    "file": "02_derivation.html",
+    "source": "Slides/02_derivation.md",
+    "slides": 30
+  },
+  {
+    "file": "01_modelisation.html",
+    "source": "Slides/01_modelisation.md",
+    "slides": 7
+  },
+  {
+    "file": "02_modelisation.html",
+    "source": "Slides/02_modelisation.md",
+    "slides": 8
+  },
+  {
+    "file": "matrice.html",
+    "source": "Slides/matrice.md",
+    "slides": 60
+  },
+  {
+    "file": "calcul_matriciel.html",
+    "source": "scripts/data/legacy-slides.json",
+    "slides": 17
+  },
+  {
+    "file": "avance/01_geometrie_donnees.html",
+    "source": "Slides/avance/01_geometrie_donnees.md",
+    "slides": 29
+  },
+  {
+    "file": "avance/02_moindres_carres.html",
+    "source": "Slides/avance/02_moindres_carres.md",
+    "slides": 30
+  },
+  {
+    "file": "stat/01_stat_descriptive.html",
+    "source": "Slides/stat/01_stat_descriptive.md",
+    "slides": 27
+  },
+  {
+    "file": "stat/probabilites.html",
+    "source": "Slides/stat/probabilites.md",
+    "slides": 22
+  },
+  {
+    "file": "stat/02_covariance_correlation.html",
+    "source": "Slides/stat/02_covariance_correlation.md",
+    "slides": 11
+  },
+  {
+    "file": "stat/03_centrage_reduction.html",
+    "source": "Slides/stat/03_centrage_reduction.md",
+    "slides": 9
+  },
+  {
+    "file": "stat/04_acp_intro.html",
+    "source": "Slides/stat/04_acp_intro.md",
+    "slides": 9
+  },
+  {
+    "file": "avance/03_svd_acp.html",
+    "source": "Slides/avance/03_svd_acp.md",
+    "slides": 31
+  },
+  {
+    "file": "gradient.html",
+    "source": "Slides/gradient.md",
+    "slides": 36
+  },
+  {
+    "file": "avance/04_calcul_differentiel.html",
+    "source": "Slides/avance/04_calcul_differentiel.md",
+    "slides": 30
+  },
+  {
+    "file": "avance/05_optimisation.html",
+    "source": "Slides/avance/05_optimisation.md",
+    "slides": 34
+  },
+  {
+    "file": "avance/06_retropropagation.html",
+    "source": "Slides/avance/06_retropropagation.md",
+    "slides": 34
+  },
+  {
+    "file": "01_introduction_stat.html",
+    "source": "Slides/01_introduction_stat.md",
+    "slides": 40
+  },
+  {
+    "file": "02_dipersion_stat.html",
+    "source": "Slides/02_dipersion_stat.md",
+    "slides": 41
+  },
+  {
+    "file": "03_correlation_intro_stat.html",
+    "source": "Slides/03_correlation_intro_stat.md",
+    "slides": 21
+  },
+  {
+    "file": "03_covariance_anova.html",
+    "source": "Slides/03_covariance_anova.md",
+    "slides": 84
+  },
+  {
+    "file": "modelisation.html",
+    "source": "scripts/data/legacy-slides.json",
+    "slides": 14
+  },
+  {
+    "file": "statistiques.html",
+    "source": "Slides/01_introduction_stat.md",
+    "slides": 40
+  }
+]

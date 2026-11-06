@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="390" viewBox="0 0 960 390" role="img" aria-labelledby="titre description">
+<title id="titre">Graphe de calcul d'un réseau à une couche cachée</title>
+<desc id="description">X entre dans une transformation affine, puis tanh, puis une seconde transformation affine produisant des logits. La perte binaire reçoit les logits et les classes. Les gradients traversent les mêmes étapes en sens inverse.</desc>
+<defs><marker id="fleche" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="none" stroke="#275c47" stroke-width="1.4"/></marker></defs>
+<rect width="960" height="390" rx="24" fill="#f7f8f2"/>
+<g font-family="Arial,sans-serif" fill="#203b36" text-anchor="middle">
+<text x="480" y="35" font-size="19" font-weight="700">Un réseau est un ensemble d'opérations que l'on peut dériver</text>
+<g fill="#fff" stroke="#dce2d9"><rect x="25" y="100" width="125" height="125" rx="14"/><rect x="200" y="100" width="150" height="125" rx="14"/><rect x="400" y="100" width="150" height="125" rx="14" fill="#ddf18a"/><rect x="600" y="100" width="150" height="125" rx="14"/><rect x="800" y="100" width="135" height="125" rx="14"/></g>
+<text x="87" y="147" font-size="23">X</text><text x="87" y="180" font-size="16">n × p</text>
+<text x="275" y="145" font-size="19">XW₁ + b₁</text><text x="275" y="180" font-size="16">n × h</text>
+<text x="475" y="145" font-size="22">tanh</text><text x="475" y="180" font-size="16">H : n × h</text>
+<text x="675" y="145" font-size="19">HW₂ + b₂</text><text x="675" y="180" font-size="16">logits : n × 1</text>
+<text x="868" y="145" font-size="20">Perte</text><text x="868" y="180" font-size="16">un nombre</text>
+<path d="M155 160H190 M355 160H390 M555 160H590 M755 160H790" stroke="#275c47" stroke-width="2" marker-end="url(#fleche)"/>
+<text x="480" y="74" font-size="15" fill="#63716a">Propagation des valeurs →</text>
+<path d="M868 240V275H275V240" stroke="#275c47" stroke-width="2" fill="none" marker-end="url(#fleche)"/>
+<text x="530" y="305" font-size="17">← Règle de chaîne et gradients des quatre tableaux de paramètres</text>
+<text x="480" y="350" font-size="16" fill="#63716a">La mise à jour des paramètres vient ensuite, dans l'optimiseur.</text>
+</g></svg>

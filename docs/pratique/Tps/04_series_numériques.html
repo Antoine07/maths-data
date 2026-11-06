@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Normalisation et comparaison graphique de deux séries de données · Le labo maths</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="../../assets/katex/katex.min.css"><link rel="stylesheet" href="../../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page reading-mode" data-deck="Tps/04_series_numériques.md"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Travaux pratiques</p><h1>Normalisation et comparaison graphique de deux séries de données</h1><p>Tps / 04_series_numériques.md</p></div><span class="chapter-count">3 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="false">Slides</button><button id="mode-reading" aria-pressed="true">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 3</span><span id="progress-label">33 %</span></div><progress id="progress" max="3" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Normalisation et comparaison graphique de deux séries de données</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Études</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Représentation graphique</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../../sources/Tps/04_series_numériques.md" download>Source Markdown ↓</a><a class="source-link" href="../../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Travaux pratiques <span class="pill">01 / 3</span></p><div class="prose">
+<h2 id="normalisation-et-comparaison-graphique-de-deux-s%C3%A9ries-de-donn%C3%A9es"><strong>Normalisation et comparaison graphique de deux séries de données</strong></h2>
+<p>On s'intéresse à deux séries de mesures provenant de deux capteurs différents.<br />
+Ces capteurs ne mesurent pas dans les mêmes unités, ce qui empêche toute comparaison directe.</p>
+<p>On travaille avec les deux séries suivantes :</p>
+<pre tabindex="0"><code class="language-python">A = [
+    <span class="hljs-number">12</span>, <span class="hljs-number">18</span>, <span class="hljs-number">25</span>, <span class="hljs-number">30</span>, <span class="hljs-number">35</span>, <span class="hljs-number">40</span>, <span class="hljs-number">41</span>, <span class="hljs-number">42</span>, <span class="hljs-number">45</span>, <span class="hljs-number">50</span>,
+    <span class="hljs-number">53</span>, <span class="hljs-number">57</span>, <span class="hljs-number">60</span>, <span class="hljs-number">62</span>, <span class="hljs-number">65</span>, <span class="hljs-number">68</span>, <span class="hljs-number">70</span>, <span class="hljs-number">72</span>, <span class="hljs-number">75</span>, <span class="hljs-number">78</span>,
+    <span class="hljs-number">80</span>, <span class="hljs-number">83</span>, <span class="hljs-number">85</span>, <span class="hljs-number">88</span>, <span class="hljs-number">90</span>, <span class="hljs-number">92</span>, <span class="hljs-number">95</span>, <span class="hljs-number">97</span>, <span class="hljs-number">100</span>, <span class="hljs-number">103</span>
+]
+B = [
+    <span class="hljs-number">100</span>, <span class="hljs-number">110</span>, <span class="hljs-number">95</span>, <span class="hljs-number">120</span>, <span class="hljs-number">130</span>, <span class="hljs-number">140</span>, <span class="hljs-number">125</span>, <span class="hljs-number">135</span>, <span class="hljs-number">150</span>, <span class="hljs-number">160</span>,
+    <span class="hljs-number">155</span>, <span class="hljs-number">165</span>, <span class="hljs-number">170</span>, <span class="hljs-number">158</span>, <span class="hljs-number">175</span>, <span class="hljs-number">180</span>, <span class="hljs-number">168</span>, <span class="hljs-number">185</span>, <span class="hljs-number">190</span>, <span class="hljs-number">200</span>,
+    <span class="hljs-number">195</span>, <span class="hljs-number">205</span>, <span class="hljs-number">210</span>, <span class="hljs-number">198</span>, <span class="hljs-number">215</span>, <span class="hljs-number">220</span>, <span class="hljs-number">230</span>, <span class="hljs-number">225</span>, <span class="hljs-number">240</span>, <span class="hljs-number">250</span>
+]
+</code></pre>
+<p>Objectifs :</p>
+<ol>
+<li>Normaliser les deux séries dans une échelle commune, d'abord par centrage-réduction puis par min–max.</li>
+<li>Représenter graphiquement les séries normalisées.</li>
+<li>Comparer les distributions à l'aide d'un boxplot ou d'une courbe.</li>
+<li>Interpréter les différences observées.</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2"><p class="question-kicker" id="slide-label-2">Travaux pratiques <span class="pill">02 / 3</span></p><div class="prose">
+<h2 id="%C3%A9tudes"><strong>Études</strong></h2>
+<ol>
+<li>
+<p>Calculer, pour chaque série A et B :</p>
+<ul>
+<li data-marpit-fragment="1">le minimum et le maximum.</li>
+<li data-marpit-fragment="2">la moyenne <code>mu</code>.</li>
+<li data-marpit-fragment="3">l'écart-type <code>sigma</code>.</li>
+</ul>
+</li>
+<li>
+<p>Normalisez (centré-réduire)</p>
+<p>Questions :</p>
+<ul>
+<li data-marpit-fragment="4">Qu'observe-t-on sur les moyennes des séries centrées-réduites ?</li>
+<li data-marpit-fragment="5">Que peut-on dire de leurs écarts-types ?</li>
+<li data-marpit-fragment="6">Les deux séries deviennent-elles comparables en termes de forme de distribution ?</li>
+</ul>
+</li>
+<li>
+<p>Normalisation <code>min–max</code></p>
+<p>Calculer pour chaque valeur</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>x</mi><mrow><mi>min</mi><mo>⁡</mo><mi>max</mi><mo>⁡</mo></mrow></msub><mo>=</mo><mfrac><mrow><mi>x</mi><mo>−</mo><msub><mi>x</mi><mi>min</mi><mo>⁡</mo></msub></mrow><mrow><msub><mi>x</mi><mi>max</mi><mo>⁡</mo></msub><mo>−</mo><msub><mi>x</mi><mi>min</mi><mo>⁡</mo></msub></mrow></mfrac><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">x_{\min\max} = \frac{x - x_{\min}}{x_{\max} - x_{\min}}.
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mtight">m</span><span class="mtight">i</span><span class="mtight">n</span></span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mop mtight"><span class="mtight">m</span><span class="mtight">a</span><span class="mtight">x</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mtight">m</span><span class="mtight">a</span><span class="mtight">x</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mtight">m</span><span class="mtight">i</span><span class="mtight">n</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mtight">m</span><span class="mtight">i</span><span class="mtight">n</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord">.</span></span></span></span></span></p><p>Questions :</p>
+<ul>
+<li data-marpit-fragment="7">Les deux séries sont-elles maintenant sur la même échelle <code>[0, 1]</code> ?</li>
+<li data-marpit-fragment="8">Quelle information conserve-t-on avec cette normalisation ?</li>
+</ul>
+</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3"><p class="question-kicker" id="slide-label-3">Travaux pratiques <span class="pill">03 / 3</span></p><div class="prose">
+<h2 id="repr%C3%A9sentation-graphique"><strong>Représentation graphique</strong></h2>
+<h3 id="consigne">Consigne</h3>
+<p>Représenter les deux séries normalisées sur un même graphique :</p>
+<ul>
+<li data-marpit-fragment="1">soit en boxplots comparatifs (deux boxplots côte à côte) ;</li>
+<li data-marpit-fragment="2">soit en courbes représentant les valeurs dans l'ordre des observations.</li>
+</ul>
+<p>Représentations à produire :</p>
+<ol>
+<li>Un graphique avec les deux séries centrées-réduites.</li>
+<li>Un graphique avec les deux séries normalisées min–max.</li>
+</ol>
+<h2 id="interpr%C3%A9tation-des-r%C3%A9sultats"><strong>Interprétation des résultats</strong></h2>
+<p>Répondez aux questions suivantes :</p>
+<ol>
+<li>Les médianes sont-elles proches dans les différentes normalisations ?<br />
+Cela signifie-t-il que les séries ont des niveaux comparables une fois standardisées ?</li>
+</ol>
+<h2 id="partie-facultative">Partie facultative</h2>
+<ol start="2">
+<li>
+<p>Quelle série est la plus dispersée ?<br />
+Observer la longueur des moustaches dans les boxplots min–max.</p>
+</li>
+<li>
+<p>Observe-t-on des valeurs atypiques (outliers) dans l'une ou l'autre normalisation ?</p>
+</li>
+<li>
+<p>Les courbes présentent-elles la même dynamique dans le temps ?</p>
+<ul>
+<li data-marpit-fragment="3">Évolution régulière ou irrégulière ?</li>
+<li data-marpit-fragment="4">Présence de pics isolés ?</li>
+<li data-marpit-fragment="5">La normalisation modifie-t-elle l'interprétation visuelle ?</li>
+</ul>
+</li>
+</ol>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 3</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../../index.html">Comprendre, puis pratiquer.</a></footer><script src="../../assets/slides.js" defer></script></body></html>

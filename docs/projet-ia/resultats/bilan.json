@@ -1,0 +1,108 @@
+{
+  "donnees": "240 journées simulées ; aucune mesure réelle",
+  "partitions": {
+    "apprentissage": 144,
+    "validation": 48,
+    "test": 48
+  },
+  "jalon_1": {
+    "jour_similaire": 54,
+    "cosinus": 0.9960616435503267
+  },
+  "jalon_2": {
+    "rang": 4,
+    "conditionnement": 1.248739566261347,
+    "rmse_validation": 2.3438574782154853
+  },
+  "jalon_3": {
+    "variance_expliquee": [
+      0.4023676086576431,
+      0.3395970057532463,
+      0.2580353855891107
+    ],
+    "k_95": 3,
+    "erreur_reconstruction_validation": 3.694610300127245e-31
+  },
+  "jalon_4": {
+    "ecart_gradient_max": 1.6920296275202418e-09
+  },
+  "jalon_5": {
+    "lambda": 0.1,
+    "pas": 0.6120406016294295,
+    "cout_initial": 26.54892861212509,
+    "cout_final": 4.401043534656026,
+    "ecart_gd_ridge": 4.218847493575595e-15,
+    "rmse_test": 2.1087202768497515,
+    "rmse_reference_test": 7.987761370858397
+  },
+  "jalon_6": {
+    "seuil_kwh": 13.231508,
+    "effectifs_classes": {
+      "apprentissage": [
+        72,
+        72
+      ],
+      "validation": [
+        27,
+        21
+      ],
+      "test": [
+        5,
+        43
+      ]
+    },
+    "reference": {
+      "confusion_lignes_reelles_colonnes_predites": [
+        [
+          5,
+          0
+        ],
+        [
+          43,
+          0
+        ]
+      ],
+      "rappel_par_classe": [
+        1.0,
+        0.0
+      ],
+      "exactitude": 0.10416666666666667
+    },
+    "logistique": {
+      "confusion_lignes_reelles_colonnes_predites": [
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          43
+        ]
+      ],
+      "rappel_par_classe": [
+        1.0,
+        1.0
+      ],
+      "exactitude": 1.0
+    },
+    "reseau": {
+      "confusion_lignes_reelles_colonnes_predites": [
+        [
+          5,
+          0
+        ],
+        [
+          1,
+          42
+        ]
+      ],
+      "rappel_par_classe": [
+        1.0,
+        0.9767441860465116
+      ],
+      "exactitude": 0.9791666666666666
+    },
+    "iterations_logistique": 2000,
+    "iterations_reseau": 2000
+  }
+}

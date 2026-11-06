@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Raw temperature data · Le labo maths</title><link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="../../assets/katex/katex.min.css"><link rel="stylesheet" href="../../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page reading-mode" data-deck="Corrections/08_statistiques.md"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Corrections</p><h1>Raw temperature data</h1><p>Corrections / 08_statistiques.md</p></div><span class="chapter-count">1 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="false">Slides</button><button id="mode-reading" aria-pressed="true">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 1</span><span id="progress-label">100 %</span></div><progress id="progress" max="1" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Centrer réduire</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../../sources/Corrections/08_statistiques.md" download>Source Markdown ↓</a><a class="source-link" href="../../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Corrections <span class="pill">01 / 1</span></p><div class="prose">
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-comment"># Raw temperature data</span>
+temps = np.array([
+    <span class="hljs-number">15.2</span>, <span class="hljs-number">15.5</span>, <span class="hljs-number">15.1</span>, <span class="hljs-number">15.3</span>, <span class="hljs-number">15.4</span>,
+    <span class="hljs-number">25.8</span>, <span class="hljs-number">26.1</span>, <span class="hljs-number">25.9</span>,
+    <span class="hljs-number">15.2</span>, <span class="hljs-number">15.3</span>, <span class="hljs-number">15.1</span>
+])
+
+<span class="hljs-comment"># 1) Center the data</span>
+mean_temp = np.mean(temps)
+temps_centered = temps - mean_temp
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Mean temperature:&quot;</span>, mean_temp)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Centered temperatures:&quot;</span>, temps_centered)
+
+threshold = <span class="hljs-number">2</span>
+
+cold_idx = np.where(temps_centered &lt; -threshold)[<span class="hljs-number">0</span>]
+hot_idx  = np.where(temps_centered &gt;  threshold)[<span class="hljs-number">0</span>]
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Cold days (indices):&quot;</span>, cold_idx)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hot days (indices):&quot;</span>, hot_idx)
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Cold temperatures:&quot;</span>, temps[cold_idx])
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hot temperatures:&quot;</span>, temps[hot_idx])
+
+</code></pre>
+<h2 id="centrer-r%C3%A9duire">Centrer réduire</h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-comment"># -----------------------------</span>
+<span class="hljs-comment"># Données initiales</span>
+<span class="hljs-comment"># -----------------------------</span>
+temperature = np.array([<span class="hljs-number">36.8</span>, <span class="hljs-number">37.1</span>, <span class="hljs-number">36.9</span>, <span class="hljs-number">37.5</span>, <span class="hljs-number">38.2</span>, <span class="hljs-number">36.7</span>, <span class="hljs-number">37.0</span>])
+heart_rate  = np.array([<span class="hljs-number">62</span>, <span class="hljs-number">70</span>, <span class="hljs-number">65</span>, <span class="hljs-number">74</span>, <span class="hljs-number">90</span>, <span class="hljs-number">60</span>, <span class="hljs-number">68</span>])
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Données brutes :&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Températures :&quot;</span>, temperature)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Fréquences cardiaques :&quot;</span>, heart_rate)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">40</span>)
+
+<span class="hljs-comment"># -----------------------------</span>
+<span class="hljs-comment"># 1) Centrage</span>
+<span class="hljs-comment"># -----------------------------</span>
+temp_centered = temperature - np.mean(temperature)
+heart_centered = heart_rate - np.mean(heart_rate)
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Températures centrées :&quot;</span>, np.<span class="hljs-built_in">round</span>(temp_centered, <span class="hljs-number">3</span>))
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Cardiaques centrées   :&quot;</span>, np.<span class="hljs-built_in">round</span>(heart_centered, <span class="hljs-number">3</span>))
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">40</span>)
+
+<span class="hljs-comment"># Interprétation automatique</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">interpret_centered</span>(<span class="hljs-params">arr, label</span>):
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Interprétation pour <span class="hljs-subst">{label}</span>:&quot;</span>)
+    <span class="hljs-keyword">for</span> i, val <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(arr):
+        <span class="hljs-keyword">if</span> val &gt; <span class="hljs-number">0</span>:
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot; - Individu <span class="hljs-subst">{i}</span>: au-dessus de la moyenne (<span class="hljs-subst">{val:<span class="hljs-number">.2</span>f}</span>)&quot;</span>)
+        <span class="hljs-keyword">elif</span> val &lt; <span class="hljs-number">0</span>:
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot; - Individu <span class="hljs-subst">{i}</span>: en-dessous de la moyenne (<span class="hljs-subst">{val:<span class="hljs-number">.2</span>f}</span>)&quot;</span>)
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot; - Individu <span class="hljs-subst">{i}</span>: exactement la moyenne&quot;</span>)
+    <span class="hljs-built_in">print</span>()
+
+interpret_centered(temp_centered, <span class="hljs-string">&quot;Température&quot;</span>)
+interpret_centered(heart_centered, <span class="hljs-string">&quot;Fréquence cardiaque&quot;</span>)
+
+<span class="hljs-comment"># -----------------------------</span>
+<span class="hljs-comment"># 2) Réduction (centrage + division par l&#x27;écart-type)</span>
+<span class="hljs-comment"># -----------------------------</span>
+temp_scaled = temp_centered / np.std(temp_centered)
+heart_scaled = heart_centered / np.std(heart_centered)
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">40</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Températures centrées-réduites :&quot;</span>, np.<span class="hljs-built_in">round</span>(temp_scaled, <span class="hljs-number">3</span>))
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Cardiaques centrées-réduites   :&quot;</span>, np.<span class="hljs-built_in">round</span>(heart_scaled, <span class="hljs-number">3</span>))
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;-&quot;</span> * <span class="hljs-number">40</span>)
+
+<span class="hljs-comment"># Interprétation automatique</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">interpret_scaled</span>(<span class="hljs-params">arr, label</span>):
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Interprétation (centrées-réduites) pour <span class="hljs-subst">{label}</span>:&quot;</span>)
+    <span class="hljs-keyword">for</span> i, val <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(arr):
+        <span class="hljs-keyword">if</span> val &gt; <span class="hljs-number">1</span>:
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot; - Individu <span class="hljs-subst">{i}</span>: valeur très élevée (+<span class="hljs-subst">{val:<span class="hljs-number">.2</span>f}</span> écarts-types)&quot;</span>)
+        <span class="hljs-keyword">elif</span> val &lt; -<span class="hljs-number">1</span>:
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot; - Individu <span class="hljs-subst">{i}</span>: valeur très faible (<span class="hljs-subst">{val:<span class="hljs-number">.2</span>f}</span> écarts-types)&quot;</span>)
+        <span class="hljs-keyword">elif</span> <span class="hljs-built_in">abs</span>(val) &lt; <span class="hljs-number">0.5</span>:
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot; - Individu <span class="hljs-subst">{i}</span>: proche de la moyenne (<span class="hljs-subst">{val:<span class="hljs-number">.2</span>f}</span>)&quot;</span>)
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot; - Individu <span class="hljs-subst">{i}</span>: légèrement atypique (<span class="hljs-subst">{val:<span class="hljs-number">.2</span>f}</span>)&quot;</span>)
+    <span class="hljs-built_in">print</span>()
+
+interpret_scaled(temp_scaled, <span class="hljs-string">&quot;Température&quot;</span>)
+interpret_scaled(heart_scaled, <span class="hljs-string">&quot;Fréquence cardiaque&quot;</span>)
+
+<span class="hljs-comment"># -----------------------------</span>
+<span class="hljs-comment"># Conclusion automatique</span>
+<span class="hljs-comment"># -----------------------------</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;=&quot;</span> * <span class="hljs-number">60</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Conclusion :&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Les données centrées-réduites ont une moyenne de 0 et un écart-type de 1.&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Elles permettent de comparer température et fréquence cardiaque sur la&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;même échelle (les écarts-types).&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;On peut maintenant identifier les individus vraiment atypiques.&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;=&quot;</span> * <span class="hljs-number">60</span>)
+</code></pre>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 1</span><button class="button primary" id="next" disabled>Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../../index.html">Comprendre, puis pratiquer.</a></footer><script src="../../assets/slides.js" defer></script></body></html>

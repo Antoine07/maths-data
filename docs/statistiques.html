@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Centrer, réduire, explorer · Le labo maths</title><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page" data-deck="01_introduction_stat"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Approfondir les statistiques</p><h1>Centrer, réduire, explorer</h1><p>Exemples et interprétations autour des données.</p></div><span class="chapter-count">40 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="true">Slides</button><button id="mode-reading" aria-pressed="false">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 40</span><span id="progress-label">3 %</span></div><progress id="progress" max="40" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Statistiques</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Questions</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Jeu de données très simple</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Centrer</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>Centrer — suite</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Centrer — suite</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Réduire</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Réduire — suite</span></a><a class="slide-link" href="#9" data-slide-link="9"><small>09</small><span>Interprétation intuitive</span></a><a class="slide-link" href="#10" data-slide-link="10"><small>10</small><span>Pourquoi est-ce intéressant ?</span></a><a class="slide-link" href="#11" data-slide-link="11"><small>11</small><span>Ce que la réduction “corrige” que le centrage seul ne corrige pas</span></a><a class="slide-link" href="#12" data-slide-link="12"><small>12</small><span>Ce que la réduction “corrige” que le centrage seul ne corrige pas — suite</span></a><a class="slide-link" href="#13" data-slide-link="13"><small>13</small><span>Résumé pédagogique</span></a><a class="slide-link" href="#14" data-slide-link="14"><small>14</small><span>Comprendre l&#39;intérêt du centrage-réduction</span></a><a class="slide-link" href="#15" data-slide-link="15"><small>15</small><span>Grandeurs</span></a><a class="slide-link" href="#16" data-slide-link="16"><small>16</small><span>Questions</span></a><a class="slide-link" href="#17" data-slide-link="17"><small>17</small><span>Réduire normalisation de l&#39;écart-type</span></a><a class="slide-link" href="#18" data-slide-link="18"><small>18</small><span>Résumé de la méthode</span></a><a class="slide-link" href="#19" data-slide-link="19"><small>19</small><span>ACP</span></a><a class="slide-link" href="#20" data-slide-link="20"><small>20</small><span>ACP  1/2</span></a><a class="slide-link" href="#21" data-slide-link="21"><small>21</small><span>ACP  2/2</span></a><a class="slide-link" href="#22" data-slide-link="22"><small>22</small><span>Numpy projeter les données sur PC1 et PC2</span></a><a class="slide-link" href="#23" data-slide-link="23"><small>23</small><span>Numpy projeter les données sur PC1 et PC2 — suite</span></a><a class="slide-link" href="#24" data-slide-link="24"><small>24</small><span>3 variables : taille, poids, âge</span></a><a class="slide-link" href="#25" data-slide-link="25"><small>25</small><span>Centrer les données</span></a><a class="slide-link" href="#26" data-slide-link="26"><small>26</small><span>Matrice de covariance</span></a><a class="slide-link" href="#27" data-slide-link="27"><small>27</small><span>Calcul valeurs propres / vecteurs propres</span></a><a class="slide-link" href="#28" data-slide-link="28"><small>28</small><span>Projection des données sur les composantes principales</span></a><a class="slide-link" href="#29" data-slide-link="29"><small>29</small><span>Synthèse</span></a><a class="slide-link" href="#30" data-slide-link="30"><small>30</small><span>Les nouvelles coordonnées X_proj sont :</span></a><a class="slide-link" href="#31" data-slide-link="31"><small>31</small><span>Exercice corrigé</span></a><a class="slide-link" href="#32" data-slide-link="32"><small>32</small><span>Centrer réduire</span></a><a class="slide-link" href="#33" data-slide-link="33"><small>33</small><span>Matrice de covariance</span></a><a class="slide-link" href="#34" data-slide-link="34"><small>34</small><span>Cercle de corrélation</span></a><a class="slide-link" href="#35" data-slide-link="35"><small>35</small><span>Interprétation simple pour les étudiants</span></a><a class="slide-link" href="#36" data-slide-link="36"><small>36</small><span>En résumé</span></a><a class="slide-link" href="#37" data-slide-link="37"><small>37</small><span>Représentation graphique</span></a><a class="slide-link" href="#38" data-slide-link="38"><small>38</small><span>Résumé</span></a><a class="slide-link" href="#39" data-slide-link="39"><small>39</small><span>Code complet Numpy</span></a><a class="slide-link" href="#40" data-slide-link="40"><small>40</small><span>TP</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="sources/Slides/01_introduction_stat.md" download>Source Markdown ↓</a><a class="source-link" href="problemes.html">Tous les problèmes ↗</a><a class="source-link" href="ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Cours détaillé <span class="pill">01 / 40</span></p><div class="prose">
+<h1 id="statistiques">Statistiques</h1>
+<h2 id="centrer-les-donn%C3%A9es">Centrer les données</h2>
+<pre tabindex="0"><code class="language-python">temps = np.array([<span class="hljs-number">15.2</span>, <span class="hljs-number">15.5</span>, <span class="hljs-number">15.1</span>, <span class="hljs-number">15.3</span>, <span class="hljs-number">15.4</span>, 
+                  <span class="hljs-number">25.8</span>, <span class="hljs-number">26.1</span>, <span class="hljs-number">25.9</span>, 
+                  <span class="hljs-number">15.2</span>, <span class="hljs-number">15.3</span>, <span class="hljs-number">15.1</span>])
+</code></pre>
+<ol>
+<li>Centrez les données</li>
+</ol>
+<p>Méthode: retirer la moyenne des températures aux températures de <code>temps</code>.</p>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># TODO </span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2" hidden><p class="question-kicker" id="slide-label-2">Cours détaillé <span class="pill">02 / 40</span></p><div class="prose">
+<h1 id="questions">Questions</h1>
+<ol>
+<li>
+<p>Que représente maintenant une valeur positive ? Une valeur négative ?</p>
+</li>
+<li>
+<p>Trouvez les températures basses et hautes ?</p>
+</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3" hidden><p class="question-kicker" id="slide-label-3">Cours détaillé <span class="pill">03 / 40</span></p><div class="prose">
+<h1 id="jeu-de-donn%C3%A9es-tr%C3%A8s-simple">Jeu de données très simple</h1>
+<p>On prend deux valeurs :</p>
+<pre tabindex="0"><code class="language-python">x = [<span class="hljs-number">8</span>, <span class="hljs-number">12</span>]
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4" hidden><p class="question-kicker" id="slide-label-4">Cours détaillé <span class="pill">04 / 40</span></p><div class="prose">
+<h1 id="centrer"><strong>Centrer</strong></h1>
+<p>On enlève la moyenne.</p>
+<p>La moyenne vaut :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>μ</mi><mo>=</mo><mfrac><mrow><mn>8</mn><mo>+</mo><mn>12</mn></mrow><mn>2</mn></mfrac><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">\mu = \frac{8+12}{2} = 10
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">μ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">8</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">12</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span></span></p></div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5" hidden><p class="question-kicker" id="slide-label-5">Cours détaillé <span class="pill">05 / 40</span></p><div class="prose">
+<p>Données centrées :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>x</mi><mi>c</mi></msub><mo>=</mo><mo stretchy="false">[</mo><mo separator="true">,</mo><mn>8</mn><mo>−</mo><mn>10</mn><mo separator="true">,</mo><mo separator="true">;</mo><mn>12</mn><mo>−</mo><mn>10</mn><mo separator="true">,</mo><mo stretchy="false">]</mo><mo>=</mo><mo stretchy="false">[</mo><mo>−</mo><mn>2</mn><mo separator="true">,</mo><mo separator="true">;</mo><mo>+</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">x_c = [,8-10,;12-10,] = [-2,; +2]
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">10</span><span class="mpunct">,;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">12</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">10</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">2</span><span class="mpunct">,;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">+</span><span class="mord">2</span><span class="mclose">]</span></span></span></span></span></p></div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6" hidden><p class="question-kicker" id="slide-label-6">Cours détaillé <span class="pill">06 / 40</span></p><div class="prose">
+<p>Centrer = déplacer les données pour les ramener autour de 0.<br />
+Mais <strong>l'écart entre les valeurs reste le même</strong> (4 unités).</p>
+</div></article>
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7" hidden><p class="question-kicker" id="slide-label-7">Cours détaillé <span class="pill">07 / 40</span></p><div class="prose">
+<h1 id="r%C3%A9duire"><strong>Réduire</strong></h1>
+<p>On divise par l'écart-type :</p>
+<p>Écart-type des valeurs <code>[8, 12]</code> :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>σ</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\sigma = 2
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span></span></p></div></article>
+<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8" hidden><p class="question-kicker" id="slide-label-8">Cours détaillé <span class="pill">08 / 40</span></p><div class="prose">
+<p>Réduction :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>x</mi><mi>s</mi></msub><mo>=</mo><mfrac><msub><mi>x</mi><mi>c</mi></msub><mi>σ</mi></mfrac><mo>=</mo><mo stretchy="false">[</mo><mo>−</mo><mn>2</mn><mi mathvariant="normal">/</mi><mn>2</mn><mo separator="true">,</mo><mo separator="true">;</mo><mo>+</mo><mn>2</mn><mi mathvariant="normal">/</mi><mn>2</mn><mo stretchy="false">]</mo><mo>=</mo><mo stretchy="false">[</mo><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mo separator="true">;</mo><mo>+</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">x_s = \frac{x_c}{\sigma}
+= [-2/2,; +2/2]
+= [-1,; +1]
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.7936em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">2/2</span><span class="mpunct">,;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">+</span><span class="mord">2/2</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">1</span><span class="mpunct">,;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">+</span><span class="mord">1</span><span class="mclose">]</span></span></span></span></span></p></div></article>
+<article class="slide-card" id="slide-9" aria-labelledby="slide-label-9" hidden><p class="question-kicker" id="slide-label-9">Cours détaillé <span class="pill">09 / 40</span></p><div class="prose">
+<h1 id="interpr%C3%A9tation-intuitive"><strong>Interprétation intuitive</strong></h1>
+<p>Après réduction, les données deviennent :</p>
+<pre tabindex="0"><code class="language-python">[-<span class="hljs-number">1</span>, +<span class="hljs-number">1</span>]
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-10" aria-labelledby="slide-label-10" hidden><p class="question-kicker" id="slide-label-10">Cours détaillé <span class="pill">10 / 40</span></p><div class="prose">
+<h3 id="pourquoi-est-ce-int%C3%A9ressant">Pourquoi est-ce intéressant ?</h3>
+<ol>
+<li>La <strong>moyenne devient 0</strong></li>
+<li>L'<strong>écart-type devient 1</strong></li>
+<li>Les valeurs ne s'expriment plus “en unités (km/h, kg, degrés…)”<br />
+mais en <strong>écarts-types par rapport à la moyenne</strong></li>
+</ol>
+<p>Donc :</p>
+<ol>
+<li>–1 = <em>une valeur située un écart-type sous la moyenne</em></li>
+<li>+1 = <em>une valeur située un écart-type au-dessus de la moyenne</em></li>
+</ol>
+<p><strong>On ne regarde plus l'unité, mais la position relative.</strong></p>
+</div></article>
+<article class="slide-card" id="slide-11" aria-labelledby="slide-label-11" hidden><p class="question-kicker" id="slide-label-11">Cours détaillé <span class="pill">11 / 40</span></p><div class="prose">
+<h1 id="ce-que-la-r%C3%A9duction-corrige-que-le-centrage-seul-ne-corrige-pas">Ce que la réduction “corrige” que le centrage seul ne corrige pas</h1>
+<h3 id="exemple">Exemple :</h3>
+<p>Données A : <code>x = [50, 60]</code><br />
+Données B : <code>y = [1, 2]</code></p>
+<p>Si on les centre :</p>
+<p>x_c = [-5, +5]<br />
+y_c = [-0.5, +0.5]</p>
+</div></article>
+<article class="slide-card" id="slide-12" aria-labelledby="slide-label-12" hidden><p class="question-kicker" id="slide-label-12">Cours détaillé <span class="pill">12 / 40</span></p><div class="prose">
+<p>On ne peut <strong>toujours pas</strong> les comparer :<br />
+les deux variables ont des amplitudes différentes (10 vs 1).</p>
+<p><strong>La réduction met les deux variables sur la même échelle</strong>,<br />
+avec un écart-type de 1.</p>
+</div></article>
+<article class="slide-card" id="slide-13" aria-labelledby="slide-label-13" hidden><p class="question-kicker" id="slide-label-13">Cours détaillé <span class="pill">13 / 40</span></p><div class="prose">
+<h1 id="r%C3%A9sum%C3%A9-p%C3%A9dagogique">Résumé pédagogique</h1>
+<ol>
+<li><strong>Centrer</strong> → enlever la moyenne → ramener les données autour de 0.</li>
+<li><strong>Réduire</strong> → diviser par l'écart-type → mettre les données sur une échelle comparable.</li>
+<li>Après centrage-réduction :</li>
+</ol>
+<p>moyenne = 0<br />
+écart-type = 1<br />
+les valeurs expriment <em>combien d'écarts-types elles s'éloignent de la moyenne</em>.</p>
+</div></article>
+<article class="slide-card" id="slide-14" aria-labelledby="slide-label-14" hidden><p class="question-kicker" id="slide-label-14">Cours détaillé <span class="pill">14 / 40</span></p><div class="prose">
+<h2 id="comprendre-lint%C3%A9r%C3%AAt-du-centrage-r%C3%A9duction"><strong>Comprendre l'intérêt du centrage-réduction</strong></h2>
+<p>On dispose de deux jeux de données mesurés sur les mêmes individus :</p>
+<ol>
+<li><strong>Température corporelle (°C)</strong></li>
+<li><strong>Fréquence cardiaque (bpm)</strong></li>
+</ol>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+temp = np.array([<span class="hljs-number">36.8</span>, <span class="hljs-number">37.1</span>, <span class="hljs-number">36.9</span>, <span class="hljs-number">37.5</span>, <span class="hljs-number">38.2</span>, <span class="hljs-number">36.7</span>, <span class="hljs-number">37.0</span>])
+heart = np.array([<span class="hljs-number">62</span>, <span class="hljs-number">70</span>, <span class="hljs-number">65</span>, <span class="hljs-number">74</span>, <span class="hljs-number">90</span>, <span class="hljs-number">60</span>, <span class="hljs-number">68</span>])
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-15" aria-labelledby="slide-label-15" hidden><p class="question-kicker" id="slide-label-15">Cours détaillé <span class="pill">15 / 40</span></p><div class="prose">
+<h2 id="grandeurs">Grandeurs</h2>
+<p>Les deux grandeurs ne sont <strong>pas du tout sur la même échelle</strong> :</p>
+<ol>
+<li>la température varie autour de <strong>37°C</strong>,</li>
+<li>la fréquence cardiaque varie autour de <strong>65–80 bpm</strong>.</li>
+</ol>
+<p>Donc on ne peut pas les comparer directement.</p>
+<p>Centrez les données</p>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># TODO</span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-16" aria-labelledby="slide-label-16" hidden><p class="question-kicker" id="slide-label-16">Cours détaillé <span class="pill">16 / 40</span></p><div class="prose">
+<h1 id="questions-1">Questions</h1>
+<ol>
+<li>Que représente maintenant une valeur positive ?</li>
+<li>Et une valeur négative ?</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-17" aria-labelledby="slide-label-17" hidden><p class="question-kicker" id="slide-label-17">Cours détaillé <span class="pill">17 / 40</span></p><div class="prose">
+<h2 id="r%C3%A9duire-normalisation-de-l%C3%A9cart-type"><strong>Réduire normalisation de l'écart-type</strong></h2>
+<p>On divise chaque série centrée par son écart-type, utilisez <code>np.std</code></p>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment">#TODO temp_scaled et heart_scaled</span>
+</code></pre>
+<p>Pourquoi est-il maintenant pertinent de comparer <code>temp_scaled</code> et <code>heart_scaled</code> ?</p>
+<p>Identifier dans chaque série normalisée :</p>
+<ol>
+<li>les valeurs proches de <strong>0</strong></li>
+<li>les valeurs supérieures à <strong>+1</strong></li>
+<li>les valeurs inférieures à <strong>–1</strong></li>
+</ol>
+<p>Que peut-on conclure ?</p>
+</div></article>
+<article class="slide-card" id="slide-18" aria-labelledby="slide-label-18" hidden><p class="question-kicker" id="slide-label-18">Cours détaillé <span class="pill">18 / 40</span></p><div class="prose">
+<h2 id="r%C3%A9sum%C3%A9-de-la-m%C3%A9thode">Résumé de la méthode</h2>
+<p>Les données centrées-réduites ont :</p>
+<ol>
+<li><strong>moyenne = 0</strong></li>
+<li><strong>écart-type = 1</strong></li>
+<li>les valeurs s'expriment en <strong>écarts-types par rapport à la moyenne</strong></li>
+</ol>
+<p>Ainsi :</p>
+<ol>
+<li><code>+2</code> signifie : <em>2 écarts-types au-dessus de la moyenne</em> → valeur <strong>très atypique</strong></li>
+<li><code>–1</code> signifie : <em>1 écart-type en dessous de la moyenne</em> → valeur <strong>un peu faible</strong></li>
+<li><code>0</code> signifie : <em>dans la moyenne</em></li>
+</ol>
+<p>Les deux variables sont maintenant exprimées <strong>sur la même échelle</strong>, donc comparables.</p>
+</div></article>
+<article class="slide-card" id="slide-19" aria-labelledby="slide-label-19" hidden><p class="question-kicker" id="slide-label-19">Cours détaillé <span class="pill">19 / 40</span></p><div class="prose">
+<h1 id="acp"><strong>ACP</strong></h1>
+<p>L'ACP = <em>Analyse en Composantes Principales</em></p>
+<p>Objectif : <strong>résumer un jeu de données</strong> tout en gardant l'essentiel de l'information.</p>
+<blockquote>
+<p>L'ACP ne travaille pas sur des matrices forcéments carrées, mais sur des matrices de dimensions <code>nxp </code></p>
+</blockquote>
+<blockquote>
+<p><code>n = nombre d'individus / observations</code><br />
+<code>p = nombre de variables explicatives</code></p>
+</blockquote>
+</div></article>
+<article class="slide-card" id="slide-20" aria-labelledby="slide-label-20" hidden><p class="question-kicker" id="slide-label-20">Cours détaillé <span class="pill">20 / 40</span></p><div class="prose">
+<h2 id="acp-12">ACP  1/2</h2>
+<ol>
+<li>On a souvent plusieurs variables → taille, poids, âge…</li>
+<li>Elles sont liées → les gens plus grands pèsent souvent plus.</li>
+<li>L'ACP cherche <strong>les directions où les données varient le plus</strong>.</li>
+<li>Ces directions s'appellent <strong>les composantes principales</strong> (PC1, PC2…).</li>
+<li>On commence par <strong>centrer les données</strong> pour éliminer l'effet du niveau moyen.</li>
+<li>On calcule ensuite la <strong>matrice de covariance</strong> qui mesure comment les variables varient ensemble.</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-21" aria-labelledby="slide-label-21" hidden><p class="question-kicker" id="slide-label-21">Cours détaillé <span class="pill">21 / 40</span></p><div class="prose">
+<h2 id="acp-22">ACP  2/2</h2>
+<ol start="7">
+<li>Les <strong>vecteurs propres</strong> de cette matrice donnent les directions principales.</li>
+<li>Les <strong>valeurs propres</strong> indiquent l'importance de chaque direction (PC1 explique le plus).</li>
+<li>On <strong>projette les données</strong> sur ces directions pour obtenir de nouvelles coordonnées (PC1, PC2).</li>
+<li>Cela permet de <strong>résumer l'information</strong> avec moins de dimensions (souvent 2 au lieu de plusieurs).</li>
+<li>On peut alors <strong>visualiser</strong>, <strong>comparer</strong>, ou <strong>détecter des tendances</strong> beaucoup plus facilement.</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-22" aria-labelledby="slide-label-22" hidden><p class="question-kicker" id="slide-label-22">Cours détaillé <span class="pill">22 / 40</span></p><div class="prose">
+<h2 id="numpy-projeter-les-donn%C3%A9es-sur-pc1-et-pc2">Numpy projeter les données sur PC1 et PC2</h2>
+<p><code>Xc</code> matrice centrée<br />
+<code>eigvecs</code> vecteurs propres</p>
+<pre tabindex="0"><code class="language-python">X_proj = Xc @ eigvecs
+</code></pre>
+<blockquote>
+<p>ACP : réécrire les données dans les directions les plus importantes.</p>
+</blockquote>
+</div></article>
+<article class="slide-card" id="slide-23" aria-labelledby="slide-label-23" hidden><p class="question-kicker" id="slide-label-23">Cours détaillé <span class="pill">23 / 40</span></p><div class="prose">
+<p>En résumé :</p>
+<blockquote>
+<p>L'ACP tourne le nuage de points pour le regarder selon les directions qui expliquent le plus de variation.<br />
+L'ACP garde les individus mais remplace les variables d'origine par 2 nouvelles variables (PC1 et PC2) qui résument presque toute l'information.</p>
+</blockquote>
+</div></article>
+<article class="slide-card" id="slide-24" aria-labelledby="slide-label-24" hidden><p class="question-kicker" id="slide-label-24">Cours détaillé <span class="pill">24 / 40</span></p><div class="prose">
+<h2 id="3-variables--taille-poids-%C3%A2ge">3 variables : taille, poids, âge</h2>
+<p>Les données</p>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-comment"># Données : [taille (cm), poids (kg), âge (ans)]</span>
+X = np.array([
+    [<span class="hljs-number">170</span>, <span class="hljs-number">65</span>, <span class="hljs-number">25</span>],
+    [<span class="hljs-number">180</span>, <span class="hljs-number">80</span>, <span class="hljs-number">32</span>],
+    [<span class="hljs-number">160</span>, <span class="hljs-number">55</span>, <span class="hljs-number">22</span>],
+    [<span class="hljs-number">175</span>, <span class="hljs-number">75</span>, <span class="hljs-number">29</span>],
+    [<span class="hljs-number">165</span>, <span class="hljs-number">60</span>, <span class="hljs-number">24</span>]
+], dtype=<span class="hljs-built_in">float</span>)
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-25" aria-labelledby="slide-label-25" hidden><p class="question-kicker" id="slide-label-25">Cours détaillé <span class="pill">25 / 40</span></p><div class="prose">
+<h2 id="centrer-les-donn%C3%A9es-1">Centrer les données</h2>
+<pre tabindex="0"><code class="language-python">X_mean = X.mean(axis=<span class="hljs-number">0</span>)
+X_centered = X - X_mean
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-26" aria-labelledby="slide-label-26" hidden><p class="question-kicker" id="slide-label-26">Cours détaillé <span class="pill">26 / 40</span></p><div class="prose">
+<h2 id="matrice-de-covariance">Matrice de covariance</h2>
+<pre tabindex="0"><code class="language-python">Cov = np.cov(X_centered, rowvar=<span class="hljs-literal">False</span>)
+</code></pre>
+<p>Cette matrice indique comment les variables varient ensemble.</p>
+<p>Cov(taille, poids) → grande valeur positive<br />
+Cov(taille, âge) → valeur positive modérée<br />
+Cov(poids, âge) → valeur positive modérée</p>
+</div></article>
+<article class="slide-card" id="slide-27" aria-labelledby="slide-label-27" hidden><p class="question-kicker" id="slide-label-27">Cours détaillé <span class="pill">27 / 40</span></p><div class="prose">
+<h2 id="calcul-valeurs-propres--vecteurs-propres">Calcul valeurs propres / vecteurs propres</h2>
+<pre tabindex="0"><code class="language-python">vals, P = np.linalg.eig(C)
+</code></pre>
+<p>PC1 = la direction de variation la plus importante<br />
+PC2 = la direction secondaire<br />
+PC3 = la direction la moins importante</p>
+</div></article>
+<article class="slide-card" id="slide-28" aria-labelledby="slide-label-28" hidden><p class="question-kicker" id="slide-label-28">Cours détaillé <span class="pill">28 / 40</span></p><div class="prose">
+<h2 id="projection-des-donn%C3%A9es-sur-les-composantes-principales">Projection des données sur les composantes principales</h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># Tri par importance décroissante</span>
+idx = np.argsort(vals)[::-<span class="hljs-number">1</span>]
+vals = vals[idx]
+P = P[:, idx]
+
+<span class="hljs-comment"># Projection</span>
+X_proj = Xc @ P
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-29" aria-labelledby="slide-label-29" hidden><p class="question-kicker" id="slide-label-29">Cours détaillé <span class="pill">29 / 40</span></p><div class="prose">
+<h2 id="synth%C3%A8se">Synthèse</h2>
+<ol>
+<li>
+<p>PC1 sépare majoritairement les personnes selon taille + poids<br />
+(souvent très corrélés, la principale source de variation).</p>
+</li>
+<li>
+<p>PC2 capture ce qui varie indépendamment de PC1<br />
+(par exemple l'âge si moins corrélé aux deux autres).</p>
+</li>
+<li>
+<p>PC3 explique très peu → bruit résiduel.</p>
+</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-30" aria-labelledby="slide-label-30" hidden><p class="question-kicker" id="slide-label-30">Cours détaillé <span class="pill">30 / 40</span></p><div class="prose">
+<h2 id="les-nouvelles-coordonn%C3%A9es-x_proj-sont">Les nouvelles coordonnées X_proj sont :</h2>
+<ol>
+<li>
+<p>PC1 → résumé principal de la morphologie</p>
+</li>
+<li>
+<p>PC2 → variation secondaire</p>
+</li>
+<li>
+<p>PC3 → très peu d'information utile</p>
+</li>
+</ol>
+</div></article>
+<article class="slide-card exercise" id="slide-31" aria-labelledby="slide-label-31" hidden><p class="question-kicker" id="slide-label-31">Cours détaillé <span class="pill">31 / 40</span></p><div class="prose">
+<h2 id="exercice-corrig%C3%A9">Exercice corrigé</h2>
+<p>Vitesse, force, endurance, agilité.</p>
+<p>Utilisez l'APC</p>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+X = np.array([
+    [<span class="hljs-number">28</span>, <span class="hljs-number">110</span>, <span class="hljs-number">42</span>, <span class="hljs-number">70</span>],
+    [<span class="hljs-number">26</span>, <span class="hljs-number">105</span>, <span class="hljs-number">38</span>, <span class="hljs-number">65</span>],
+    [<span class="hljs-number">30</span>, <span class="hljs-number">120</span>, <span class="hljs-number">46</span>, <span class="hljs-number">72</span>],
+    [<span class="hljs-number">24</span>, <span class="hljs-number">100</span>, <span class="hljs-number">35</span>, <span class="hljs-number">60</span>],
+    [<span class="hljs-number">29</span>, <span class="hljs-number">115</span>, <span class="hljs-number">44</span>, <span class="hljs-number">68</span>],
+    [<span class="hljs-number">27</span>, <span class="hljs-number">108</span>, <span class="hljs-number">40</span>, <span class="hljs-number">66</span>],
+    [<span class="hljs-number">31</span>, <span class="hljs-number">125</span>, <span class="hljs-number">48</span>, <span class="hljs-number">75</span>],
+    [<span class="hljs-number">25</span>, <span class="hljs-number">102</span>, <span class="hljs-number">36</span>, <span class="hljs-number">62</span>]
+], dtype=<span class="hljs-built_in">float</span>)
+
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-32" aria-labelledby="slide-label-32" hidden><p class="question-kicker" id="slide-label-32">Cours détaillé <span class="pill">32 / 40</span></p><div class="prose">
+<h2 id="centrer-r%C3%A9duire">Centrer réduire</h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># 1) Centrer</span>
+Xc = X - X.mean(axis=<span class="hljs-number">0</span>)
+
+<span class="hljs-comment"># 2) Réduire</span>
+Xs = Xc / X.std(axis=<span class="hljs-number">0</span>)
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-33" aria-labelledby="slide-label-33" hidden><p class="question-kicker" id="slide-label-33">Cours détaillé <span class="pill">33 / 40</span></p><div class="prose">
+<h2 id="matrice-de-covariance-1">Matrice de covariance</h2>
+<pre tabindex="0"><code class="language-python">Cov = np.cov(Xs, rowvar=<span class="hljs-literal">False</span>)
+vals, vecs = np.linalg.eig(Cov)
+
+<span class="hljs-comment"># Trier par importance décroissante</span>
+idx = np.argsort(vals)[::-<span class="hljs-number">1</span>]
+vals = vals[idx]
+vecs = vecs[:, idx]
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-34" aria-labelledby="slide-label-34" hidden><p class="question-kicker" id="slide-label-34">Cours détaillé <span class="pill">34 / 40</span></p><div class="prose">
+<h2 id="cercle-de-corr%C3%A9lation">Cercle de corrélation</h2>
+<pre tabindex="0"><code class="language-python">corr = vecs * np.sqrt(vals)
+corr_circle = corr[:, :<span class="hljs-number">2</span>]
+<span class="hljs-built_in">print</span>(corr_circle)
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-35" aria-labelledby="slide-label-35" hidden><p class="question-kicker" id="slide-label-35">Cours détaillé <span class="pill">35 / 40</span></p><div class="prose">
+<h2 id="interpr%C3%A9tation-simple-pour-les-%C3%A9tudiants">Interprétation simple pour les étudiants</h2>
+<p>Chaque ligne correspond à une variable (vitesse, force, endurance, agilité).<br />
+Chaque colonne correspond à PC1 et PC2.<br />
+Une valeur proche de +1 ou –1 = variable fortement liée à la composante.<br />
+Une valeur proche de 0 = variable peu liée à cette composante.<br />
+On place ces points sur un cercle de rayon = 1.<br />
+Si deux variables sont proches dans le cercle → fortement corrélées entre elles.</p>
+</div></article>
+<article class="slide-card" id="slide-36" aria-labelledby="slide-label-36" hidden><p class="question-kicker" id="slide-label-36">Cours détaillé <span class="pill">36 / 40</span></p><div class="prose">
+<h2 id="en-r%C3%A9sum%C3%A9">En résumé</h2>
+<p>PC1 capture surtout les variables qui ont une grande coordonnée dans la colonne PC1.<br />
+PC2 capture celles alignées verticalement dans la colonne PC2.<br />
+Les variables proches en angle → corrélées.</p>
+</div></article>
+<article class="slide-card" id="slide-37" aria-labelledby="slide-label-37" hidden><p class="question-kicker" id="slide-label-37">Cours détaillé <span class="pill">37 / 40</span></p><div class="prose">
+<h2 id="repr%C3%A9sentation-graphique">Représentation graphique</h2>
+<img src="assets/images/cercle.png" width="600" />
+</div></article>
+<article class="slide-card" id="slide-38" aria-labelledby="slide-label-38" hidden><p class="question-kicker" id="slide-label-38">Cours détaillé <span class="pill">38 / 40</span></p><div class="prose">
+<h2 id="r%C3%A9sum%C3%A9">Résumé</h2>
+<ol>
+<li>Vitesse, Force, Endurance sont fortement corrélées entre elles et alignées sur PC1.</li>
+<li>Agilité suit globalement la même direction mais avec une composante PC2 plus négative.</li>
+<li>Toutes les variables étant proches du cercle, elles sont bien expliquées par les deux premières composantes principales.</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-39" aria-labelledby="slide-label-39" hidden><p class="question-kicker" id="slide-label-39">Cours détaillé <span class="pill">39 / 40</span></p><div class="prose">
+<h2 id="code-complet-numpy">Code complet Numpy</h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+<span class="hljs-comment"># ---------------------------------------------------------</span>
+<span class="hljs-comment"># 1. Données</span>
+<span class="hljs-comment"># ---------------------------------------------------------</span>
+X = np.array([
+    [<span class="hljs-number">28</span>, <span class="hljs-number">110</span>, <span class="hljs-number">42</span>, <span class="hljs-number">70</span>],
+    [<span class="hljs-number">26</span>, <span class="hljs-number">105</span>, <span class="hljs-number">38</span>, <span class="hljs-number">65</span>],
+    [<span class="hljs-number">30</span>, <span class="hljs-number">120</span>, <span class="hljs-number">46</span>, <span class="hljs-number">72</span>],
+    [<span class="hljs-number">24</span>, <span class="hljs-number">100</span>, <span class="hljs-number">35</span>, <span class="hljs-number">60</span>],
+    [<span class="hljs-number">29</span>, <span class="hljs-number">115</span>, <span class="hljs-number">44</span>, <span class="hljs-number">68</span>],
+    [<span class="hljs-number">27</span>, <span class="hljs-number">108</span>, <span class="hljs-number">40</span>, <span class="hljs-number">66</span>],
+    [<span class="hljs-number">31</span>, <span class="hljs-number">125</span>, <span class="hljs-number">48</span>, <span class="hljs-number">75</span>],
+    [<span class="hljs-number">25</span>, <span class="hljs-number">102</span>, <span class="hljs-number">36</span>, <span class="hljs-number">62</span>]
+], dtype=<span class="hljs-built_in">float</span>)
+
+variables = [<span class="hljs-string">&quot;Vitesse&quot;</span>, <span class="hljs-string">&quot;Force&quot;</span>, <span class="hljs-string">&quot;Endurance&quot;</span>, <span class="hljs-string">&quot;Agilité&quot;</span>]
+
+<span class="hljs-comment"># ---------------------------------------------------------</span>
+<span class="hljs-comment"># 2. Centrer et réduire</span>
+<span class="hljs-comment"># ---------------------------------------------------------</span>
+Xc = X - X.mean(axis=<span class="hljs-number">0</span>)
+Xs = Xc / X.std(axis=<span class="hljs-number">0</span>)
+
+<span class="hljs-comment"># ---------------------------------------------------------</span>
+<span class="hljs-comment"># 3. Matrice de covariance + ACP</span>
+<span class="hljs-comment"># ---------------------------------------------------------</span>
+Cov = np.cov(Xs, rowvar=<span class="hljs-literal">False</span>)
+vals, vecs = np.linalg.eig(Cov)
+
+<span class="hljs-comment"># tri décroissant</span>
+idx = np.argsort(vals)[::-<span class="hljs-number">1</span>]
+vals = vals[idx]
+vecs = vecs[:, idx]
+
+<span class="hljs-comment"># ---------------------------------------------------------</span>
+<span class="hljs-comment"># 4. Cercle de corrélation : PC1 &amp; PC2</span>
+<span class="hljs-comment"># ---------------------------------------------------------</span>
+corr = vecs * np.sqrt(vals)      <span class="hljs-comment"># corrélations variables &lt;-&gt; axes</span>
+corr_circle = corr[:, :<span class="hljs-number">2</span>]        <span class="hljs-comment"># coordonnées pour le cercle</span>
+
+<span class="hljs-comment"># ---------------------------------------------------------</span>
+<span class="hljs-comment"># 5. Tracé du cercle de corrélation</span>
+<span class="hljs-comment"># ---------------------------------------------------------</span>
+fig, ax = plt.subplots(figsize=(<span class="hljs-number">6</span>, <span class="hljs-number">6</span>))
+
+<span class="hljs-comment"># cercle unité</span>
+theta = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>*np.pi, <span class="hljs-number">300</span>)
+ax.plot(np.cos(theta), np.sin(theta), color=<span class="hljs-string">&quot;orange&quot;</span>)
+
+<span class="hljs-comment"># axes principaux</span>
+ax.axhline(<span class="hljs-number">0</span>, color=<span class="hljs-string">&quot;orange&quot;</span>)
+ax.axvline(<span class="hljs-number">0</span>, color=<span class="hljs-string">&quot;orange&quot;</span>)
+
+<span class="hljs-comment"># flèches des variables</span>
+<span class="hljs-keyword">for</span> i, var <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(variables):
+    x, y = corr_circle[i]
+    ax.arrow(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, x, y, head_width=<span class="hljs-number">0.03</span>, length_includes_head=<span class="hljs-literal">True</span>)
+    ax.text(x * <span class="hljs-number">1.08</span>, y * <span class="hljs-number">1.08</span>, var)
+
+ax.set_title(<span class="hljs-string">&quot;Cercle de corrélation (PC1-PC2)&quot;</span>)
+ax.set_xlabel(<span class="hljs-string">&quot;PC1&quot;</span>)
+ax.set_ylabel(<span class="hljs-string">&quot;PC2&quot;</span>)
+ax.set_aspect(<span class="hljs-string">&quot;equal&quot;</span>)
+
+plt.grid(<span class="hljs-literal">False</span>)
+plt.show()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-40" aria-labelledby="slide-label-40" hidden><p class="question-kicker" id="slide-label-40">Cours détaillé <span class="pill">40 / 40</span></p><div class="prose">
+<h2 id="tp">TP</h2>
+<p><a href="pratique/Statistiques/TPs/01_TP_ACP.html">Dynamique des espèces</a></p>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button primary" href="02_dipersion_stat.html">Comprendre la dispersion →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 40</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="index.html">Comprendre, puis pratiquer.</a></footer><script src="assets/slides.js" defer></script></body></html>

@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Covariance, ANOVA et ACP · Le labo maths</title><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page" data-deck="03_covariance_anova"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Approfondir les statistiques</p><h1>Covariance, ANOVA et ACP</h1><p>Comparer des groupes et explorer plusieurs variables.</p></div><span class="chapter-count">84 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="true">Slides</button><button id="mode-reading" aria-pressed="false">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 84</span><span id="progress-label">1 %</span></div><progress id="progress" max="84" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Covariance et ANOVA</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Pourquoi ce chapitre ?</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>PARTIE 1 — COVARIANCE</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Problème posé</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>Exemple simple</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Visualisation indispensable</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Intuition de la covariance</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Définition mathématique</span></a><a class="slide-link" href="#9" data-slide-link="9"><small>09</small><span>Lecture intuitive du produit</span></a><a class="slide-link" href="#10" data-slide-link="10"><small>10</small><span>Calcul en Python</span></a><a class="slide-link" href="#11" data-slide-link="11"><small>11</small><span>Problème majeur de la covariance</span></a><a class="slide-link" href="#12" data-slide-link="12"><small>12</small><span>Exercice 1 — Covariance</span></a><a class="slide-link" href="#13" data-slide-link="13"><small>13</small><span>Résumé Covariance</span></a><a class="slide-link" href="#14" data-slide-link="14"><small>14</small><span>PARTIE 2 — ANOVA (Analyse de la variance)</span></a><a class="slide-link" href="#15" data-slide-link="15"><small>15</small><span>Problème posé</span></a><a class="slide-link" href="#16" data-slide-link="16"><small>16</small><span>Exemple concret</span></a><a class="slide-link" href="#17" data-slide-link="17"><small>17</small><span>Moyennes par groupe</span></a><a class="slide-link" href="#18" data-slide-link="18"><small>18</small><span>Pourquoi le hasard peut tromper</span></a><a class="slide-link" href="#19" data-slide-link="19"><small>19</small><span>Principe fondamental de l&#39;ANOVA</span></a><a class="slide-link" href="#20" data-slide-link="20"><small>20</small><span>Intuition clé</span></a><a class="slide-link" href="#21" data-slide-link="21"><small>21</small><span>Schéma conceptuel</span></a><a class="slide-link" href="#22" data-slide-link="22"><small>22</small><span>Lire la séparation entre les groupes</span></a><a class="slide-link" href="#23" data-slide-link="23"><small>23</small><span>Hypothèses statistiques</span></a><a class="slide-link" href="#24" data-slide-link="24"><small>24</small><span>Statistique F</span></a><a class="slide-link" href="#25" data-slide-link="25"><small>25</small><span>ANOVA en Python (SciPy)</span></a><a class="slide-link" href="#26" data-slide-link="26"><small>26</small><span>Interprétation de la p-value</span></a><a class="slide-link" href="#27" data-slide-link="27"><small>27</small><span>Exercice 2 — ANOVA</span></a><a class="slide-link" href="#28" data-slide-link="28"><small>28</small><span>Conditions d&#39;application (simplifiées)</span></a><a class="slide-link" href="#29" data-slide-link="29"><small>29</small><span>Lien avec ce que vous connaissez déjà</span></a><a class="slide-link" href="#30" data-slide-link="30"><small>30</small><span>Résumé général</span></a><a class="slide-link" href="#31" data-slide-link="31"><small>31</small><span>Corrélation et ACP</span></a><a class="slide-link" href="#32" data-slide-link="32"><small>32</small><span>PARTIE 1 — CORRÉLATION</span></a><a class="slide-link" href="#33" data-slide-link="33"><small>33</small><span>Problème de la covariance (rappel)</span></a><a class="slide-link" href="#34" data-slide-link="34"><small>34</small><span>Idée clé de la corrélation</span></a><a class="slide-link" href="#35" data-slide-link="35"><small>35</small><span>Formule de la corrélation de Pearson</span></a><a class="slide-link" href="#36" data-slide-link="36"><small>36</small><span>Propriétés fondamentales</span></a><a class="slide-link" href="#37" data-slide-link="37"><small>37</small><span>Intuition géométrique (très importante)</span></a><a class="slide-link" href="#38" data-slide-link="38"><small>38</small><span>Une corrélation nulle peut masquer une relation</span></a><a class="slide-link" href="#39" data-slide-link="39"><small>39</small><span>Une corrélation nulle peut masquer une relation — suite</span></a><a class="slide-link" href="#40" data-slide-link="40"><small>40</small><span>Corrélation = covariance de données centrées-réduites</span></a><a class="slide-link" href="#41" data-slide-link="41"><small>41</small><span>Calcul en Python</span></a><a class="slide-link" href="#42" data-slide-link="42"><small>42</small><span>Exercice 1 — Corrélation</span></a><a class="slide-link" href="#43" data-slide-link="43"><small>43</small><span>Corrélation ≠ causalité (rappel essentiel)</span></a><a class="slide-link" href="#44" data-slide-link="44"><small>44</small><span>PARTIE 2 — MATRICES &amp; COVARIANCE MULTIVARIÉE</span></a><a class="slide-link" href="#45" data-slide-link="45"><small>45</small><span>Plusieurs variables = matrice de données</span></a><a class="slide-link" href="#46" data-slide-link="46"><small>46</small><span>Matrice de covariance</span></a><a class="slide-link" href="#47" data-slide-link="47"><small>47</small><span>Lecture de la matrice de covariance</span></a><a class="slide-link" href="#48" data-slide-link="48"><small>48</small><span>Version normalisée : matrice de corrélation</span></a><a class="slide-link" href="#49" data-slide-link="49"><small>49</small><span>PARTIE 3 — ACP (Analyse en Composantes Principales)</span></a><a class="slide-link" href="#50" data-slide-link="50"><small>50</small><span>Problème posé par l&#39;ACP</span></a><a class="slide-link" href="#51" data-slide-link="51"><small>51</small><span>Idée géométrique centrale</span></a><a class="slide-link" href="#52" data-slide-link="52"><small>52</small><span>Mesurer la perte lors de la réduction</span></a><a class="slide-link" href="#53" data-slide-link="53"><small>53</small><span>Étape 1 — Centrage (obligatoire)</span></a><a class="slide-link" href="#54" data-slide-link="54"><small>54</small><span>Étape 2 — (souvent) Réduction</span></a><a class="slide-link" href="#55" data-slide-link="55"><small>55</small><span>Étape 3 — Matrice de covariance</span></a><a class="slide-link" href="#56" data-slide-link="56"><small>56</small><span>Étape 4 — Valeurs propres et vecteurs propres</span></a><a class="slide-link" href="#57" data-slide-link="57"><small>57</small><span>Sens géométrique</span></a><a class="slide-link" href="#58" data-slide-link="58"><small>58</small><span>Étape 5 — Tri par importance</span></a><a class="slide-link" href="#59" data-slide-link="59"><small>59</small><span>Étape 6 — Projection des données</span></a><a class="slide-link" href="#60" data-slide-link="60"><small>60</small><span>Exercice 2 — ACP minimale</span></a><a class="slide-link" href="#61" data-slide-link="61"><small>61</small><span>Combien de composantes garder ?</span></a><a class="slide-link" href="#62" data-slide-link="62"><small>62</small><span>Résumé ACP</span></a><a class="slide-link" href="#63" data-slide-link="63"><small>63</small><span>Résumé global du chapitre</span></a><a class="slide-link" href="#64" data-slide-link="64"><small>64</small><span>ACP</span></a><a class="slide-link" href="#65" data-slide-link="65"><small>65</small><span>Cercle de corrélation</span></a><a class="slide-link" href="#66" data-slide-link="66"><small>66</small><span>Pourquoi le cercle de corrélation ?</span></a><a class="slide-link" href="#67" data-slide-link="67"><small>67</small><span>Idée clé (à retenir absolument)</span></a><a class="slide-link" href="#68" data-slide-link="68"><small>68</small><span>Pourquoi un cercle de rayon 1 ?</span></a><a class="slide-link" href="#69" data-slide-link="69"><small>69</small><span>Schéma conceptuel</span></a><a class="slide-link" href="#70" data-slide-link="70"><small>70</small><span>Lire les flèches dans le cercle précédent</span></a><a class="slide-link" href="#71" data-slide-link="71"><small>71</small><span>Construction mathématique (simple)</span></a><a class="slide-link" href="#72" data-slide-link="72"><small>72</small><span>Coordonnées pour PC1–PC2</span></a><a class="slide-link" href="#73" data-slide-link="73"><small>73</small><span>Exemple concret</span></a><a class="slide-link" href="#74" data-slide-link="74"><small>74</small><span>Exemple concret — suite</span></a><a class="slide-link" href="#75" data-slide-link="75"><small>75</small><span>Lecture fondamentale — longueur de la flèche</span></a><a class="slide-link" href="#76" data-slide-link="76"><small>76</small><span>Lecture fondamentale — angle entre deux flèches</span></a><a class="slide-link" href="#77" data-slide-link="77"><small>77</small><span>Interprétation visuelle</span></a><a class="slide-link" href="#78" data-slide-link="78"><small>78</small><span>Relier les individus aux variables</span></a><a class="slide-link" href="#79" data-slide-link="79"><small>79</small><span>Exemple d&#39;interprétation (typique)</span></a><a class="slide-link" href="#80" data-slide-link="80"><small>80</small><span>Code complet de tracé</span></a><a class="slide-link" href="#81" data-slide-link="81"><small>81</small><span>Erreurs fréquentes à éviter</span></a><a class="slide-link" href="#82" data-slide-link="82"><small>82</small><span>Exercice 1 — Lecture guidée</span></a><a class="slide-link" href="#83" data-slide-link="83"><small>83</small><span>Exercice 2 — Analyse complète</span></a><a class="slide-link" href="#84" data-slide-link="84"><small>84</small><span>Résumé</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="sources/Slides/03_covariance_anova.md" download>Source Markdown ↓</a><a class="source-link" href="problemes.html">Tous les problèmes ↗</a><a class="source-link" href="ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Cours détaillé <span class="pill">01 / 84</span></p><div class="prose">
+<h1 id="covariance-et-anova">Covariance et ANOVA</h1>
+<p><strong>Comprendre le lien entre variables et comparer des groupes</strong></p>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2" hidden><p class="question-kicker" id="slide-label-2">Cours détaillé <span class="pill">02 / 84</span></p><div class="prose">
+<h2 id="pourquoi-ce-chapitre">Pourquoi ce chapitre ?</h2>
+<p>Jusqu'ici, vous savez :</p>
+<ul>
+<li>décrire une variable (moyenne, dispersion),</li>
+<li>visualiser des distributions.</li>
+</ul>
+<p>On va maintenant répondre à deux nouvelles questions :</p>
+<ol>
+<li><strong>Deux variables évoluent-elles ensemble ?</strong> → <em>Covariance</em></li>
+<li><strong>Plusieurs groupes ont-ils la même moyenne ?</strong> → <em>ANOVA</em></li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3" hidden><p class="question-kicker" id="slide-label-3">Cours détaillé <span class="pill">03 / 84</span></p><div class="prose">
+<h1 id="partie-1--covariance">PARTIE 1 — COVARIANCE</h1>
+</div></article>
+<article class="slide-card exercise" id="slide-4" aria-labelledby="slide-label-4" hidden><p class="question-kicker" id="slide-label-4">Cours détaillé <span class="pill">04 / 84</span></p><div class="prose">
+<h2 id="probl%C3%A8me-pos%C3%A9">Problème posé</h2>
+<p>On observe deux variables sur les mêmes individus :</p>
+<ul>
+<li>taille et poids</li>
+<li>temps d'entraînement et performance</li>
+<li>âge et salaire</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> <strong>Quand l'une augmente, que fait l'autre ?</strong></p>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5" hidden><p class="question-kicker" id="slide-label-5">Cours détaillé <span class="pill">05 / 84</span></p><div class="prose">
+<h2 id="exemple-simple">Exemple simple</h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>])   <span class="hljs-comment"># heures de travail</span>
+y = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">12</span>, <span class="hljs-number">15</span>, <span class="hljs-number">18</span>, <span class="hljs-number">20</span>])  <span class="hljs-comment"># score</span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6" hidden><p class="question-kicker" id="slide-label-6">Cours détaillé <span class="pill">06 / 84</span></p><div class="prose">
+<h2 id="visualisation-indispensable">Visualisation indispensable</h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+plt.scatter(x, y)
+plt.xlabel(<span class="hljs-string">&quot;x&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;y&quot;</span>)
+plt.show()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7" hidden><p class="question-kicker" id="slide-label-7">Cours détaillé <span class="pill">07 / 84</span></p><div class="prose">
+<h2 id="intuition-de-la-covariance">Intuition de la covariance</h2>
+<blockquote>
+<p>La covariance mesure <strong>si deux variables varient ensemble</strong>.</p>
+</blockquote>
+<ul>
+<li>si x ↑ et y ↑ → covariance <strong>positive</strong></li>
+<li>si x ↑ et y ↓ → covariance <strong>négative</strong></li>
+<li>si pas de lien clair → covariance ≈ 0</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8" hidden><p class="question-kicker" id="slide-label-8">Cours détaillé <span class="pill">08 / 84</span></p><div class="prose">
+<h2 id="d%C3%A9finition-math%C3%A9matique">Définition mathématique</h2>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Cov</mtext><mo stretchy="false">(</mo><mi>X</mi><mo separator="true">,</mo><mi>Y</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo>∑</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msub><mi>y</mi><mi>i</mi></msub><mo>−</mo><mover accent="true"><mi>y</mi><mo>ˉ</mo></mover><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{Cov}(X,Y)
+= \frac{1}{n} \sum (x_i - \bar x)(y_i - \bar y)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Cov</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">n</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">ˉ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p><p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> On compare les <strong>écarts à la moyenne</strong>.</p>
+</div></article>
+<article class="slide-card" id="slide-9" aria-labelledby="slide-label-9" hidden><p class="question-kicker" id="slide-label-9">Cours détaillé <span class="pill">09 / 84</span></p><div class="prose">
+<h2 id="lecture-intuitive-du-produit">Lecture intuitive du produit</h2>
+<ul>
+<li>(x − moyenne) et (y − moyenne) <strong>même signe</strong> → produit positif</li>
+<li>signes opposés → produit négatif</li>
+</ul>
+<p>Donc :</p>
+<ul>
+<li>majorité de produits positifs → covariance positive</li>
+<li>majorité négatifs → covariance négative</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-10" aria-labelledby="slide-label-10" hidden><p class="question-kicker" id="slide-label-10">Cours détaillé <span class="pill">10 / 84</span></p><div class="prose">
+<h2 id="calcul-en-python">Calcul en Python</h2>
+<pre tabindex="0"><code class="language-python">np.cov(x, y)
+</code></pre>
+<p>La covariance recherchée est :</p>
+<pre tabindex="0"><code class="language-python">np.cov(x, y)[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]
+</code></pre>
+</div></article>
+<article class="slide-card exercise" id="slide-11" aria-labelledby="slide-label-11" hidden><p class="question-kicker" id="slide-label-11">Cours détaillé <span class="pill">11 / 84</span></p><div class="prose">
+<h2 id="probl%C3%A8me-majeur-de-la-covariance-%E2%9A%A0%EF%B8%8F">Problème majeur de la covariance <img class="emoji" draggable="false" alt="⚠️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" data-marp-twemoji=""/></h2>
+<blockquote>
+<p><strong>La covariance dépend des unités.</strong></p>
+</blockquote>
+<p>Exemple :</p>
+<ul>
+<li>cm × kg</li>
+<li>heures × points</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> Impossible de comparer directement deux covariances.</p>
+<p>C'est pour cela que l'on introduira ensuite la <strong>corrélation</strong>.</p>
+</div></article>
+<article class="slide-card exercise" id="slide-12" aria-labelledby="slide-label-12" hidden><p class="question-kicker" id="slide-label-12">Cours détaillé <span class="pill">12 / 84</span></p><div class="prose">
+<h2 id="exercice-1--covariance">Exercice 1 — Covariance</h2>
+<pre tabindex="0"><code class="language-python">a = np.array([<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">8</span>])
+b = np.array([<span class="hljs-number">8</span>, <span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">2</span>])
+</code></pre>
+<ol>
+<li>Tracez le nuage de points</li>
+<li>Calculez la covariance</li>
+<li>Interprétez le signe</li>
+</ol>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># TODO</span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-13" aria-labelledby="slide-label-13" hidden><p class="question-kicker" id="slide-label-13">Cours détaillé <span class="pill">13 / 84</span></p><div class="prose">
+<h2 id="r%C3%A9sum%C3%A9-covariance">Résumé Covariance</h2>
+<ol>
+<li>Mesure la variation conjointe de deux variables</li>
+<li>Signe → sens de la relation</li>
+<li>Valeur brute → dépend des unités</li>
+<li>Outil fondamental avant corrélation et ACP</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-14" aria-labelledby="slide-label-14" hidden><p class="question-kicker" id="slide-label-14">Cours détaillé <span class="pill">14 / 84</span></p><div class="prose">
+<h1 id="partie-2--anova-analyse-de-la-variance">PARTIE 2 — ANOVA (Analyse de la variance)</h1>
+</div></article>
+<article class="slide-card exercise" id="slide-15" aria-labelledby="slide-label-15" hidden><p class="question-kicker" id="slide-label-15">Cours détaillé <span class="pill">15 / 84</span></p><div class="prose">
+<h2 id="probl%C3%A8me-pos%C3%A9-1">Problème posé</h2>
+<p>On a <strong>plusieurs groupes</strong> et on veut savoir :</p>
+<blockquote>
+<p><strong>Ont-ils la même moyenne ou pas ?</strong></p>
+</blockquote>
+<p>Exemples :</p>
+<ul>
+<li>méthodes pédagogiques</li>
+<li>traitements médicaux</li>
+<li>machines</li>
+<li>groupes d'individus</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-16" aria-labelledby="slide-label-16" hidden><p class="question-kicker" id="slide-label-16">Cours détaillé <span class="pill">16 / 84</span></p><div class="prose">
+<h2 id="exemple-concret">Exemple concret</h2>
+<pre tabindex="0"><code class="language-python">A = np.array([<span class="hljs-number">12</span>, <span class="hljs-number">13</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>])
+B = np.array([<span class="hljs-number">16</span>, <span class="hljs-number">17</span>, <span class="hljs-number">15</span>, <span class="hljs-number">16</span>])
+C = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">9</span>, <span class="hljs-number">11</span>, <span class="hljs-number">10</span>])
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-17" aria-labelledby="slide-label-17" hidden><p class="question-kicker" id="slide-label-17">Cours détaillé <span class="pill">17 / 84</span></p><div class="prose">
+<h2 id="moyennes-par-groupe">Moyennes par groupe</h2>
+<pre tabindex="0"><code class="language-python">A.mean(), B.mean(), C.mean()
+</code></pre>
+<p>On observe des différences…<br />
+<img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> mais sont-elles <strong>réelles</strong> ou <strong>dues au hasard</strong> ?</p>
+</div></article>
+<article class="slide-card" id="slide-18" aria-labelledby="slide-label-18" hidden><p class="question-kicker" id="slide-label-18">Cours détaillé <span class="pill">18 / 84</span></p><div class="prose">
+<h2 id="pourquoi-le-hasard-peut-tromper">Pourquoi le hasard peut tromper</h2>
+<p>Même si les <strong>vraies moyennes</strong> sont égales :</p>
+<ul>
+<li>les données sont dispersées,</li>
+<li>les moyennes observées fluctuent.</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> L'ANOVA sert à décider <strong>objectivement</strong>.</p>
+</div></article>
+<article class="slide-card" id="slide-19" aria-labelledby="slide-label-19" hidden><p class="question-kicker" id="slide-label-19">Cours détaillé <span class="pill">19 / 84</span></p><div class="prose">
+<h2 id="principe-fondamental-de-lanova">Principe fondamental de l'ANOVA</h2>
+<p>L'ANOVA compare :</p>
+<ol>
+<li>la <strong>variabilité entre les groupes</strong></li>
+<li>la <strong>variabilité à l'intérieur des groupes</strong></li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-20" aria-labelledby="slide-label-20" hidden><p class="question-kicker" id="slide-label-20">Cours détaillé <span class="pill">20 / 84</span></p><div class="prose">
+<h2 id="intuition-cl%C3%A9">Intuition clé</h2>
+<blockquote>
+<p>Si les groupes sont très différents <strong>entre eux</strong>,<br />
+mais homogènes <strong>en leur sein</strong>,<br />
+alors les moyennes sont probablement différentes.</p>
+</blockquote>
+</div></article>
+<article class="slide-card" id="slide-21" aria-labelledby="slide-label-21" hidden><p class="question-kicker" id="slide-label-21">Cours détaillé <span class="pill">21 / 84</span></p><div class="prose">
+<h2 id="sch%C3%A9ma-conceptuel">Schéma conceptuel</h2>
+<figure class="math-figure"><a href="assets/images/anova-dispersion.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/images/anova-dispersion.svg" alt="Deux exemples ANOVA avec la même dispersion interne et des écarts entre moyennes différents." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+</div></article>
+<article class="slide-card" id="slide-22" aria-labelledby="slide-label-22" hidden><p class="question-kicker" id="slide-label-22">Cours détaillé <span class="pill">22 / 84</span></p><div class="prose">
+<h2 id="lire-la-s%C3%A9paration-entre-les-groupes">Lire la séparation entre les groupes</h2>
+<p>Comparer les deux panneaux précédents : les écarts entre moyennes ont changé, la dispersion interne est identique.</p>
+<ul>
+<li>dispersion interne = bruit</li>
+<li>dispersion entre groupes = signal</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-23" aria-labelledby="slide-label-23" hidden><p class="question-kicker" id="slide-label-23">Cours détaillé <span class="pill">23 / 84</span></p><div class="prose">
+<h2 id="hypoth%C3%A8ses-statistiques">Hypothèses statistiques</h2>
+<ul>
+<li><strong>H₀</strong> : toutes les moyennes sont égales</li>
+<li><strong>H₁</strong> : au moins une moyenne est différente</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-24" aria-labelledby="slide-label-24" hidden><p class="question-kicker" id="slide-label-24">Cours détaillé <span class="pill">24 / 84</span></p><div class="prose">
+<h2 id="statistique-f">Statistique F</h2>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>F</mi><mo>=</mo><mfrac><mtext>Variance entre groupes</mtext><mtext>Variance intra-groupes</mtext></mfrac></mrow><annotation encoding="application/x-tex">F = \frac{\text{Variance entre groupes}}
+{\text{Variance intra-groupes}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2408em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Variance intra-groupes</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Variance entre groupes</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p><ul>
+<li>F ≈ 1 → pas de différence claire</li>
+<li>F grand → différence probable</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-25" aria-labelledby="slide-label-25" hidden><p class="question-kicker" id="slide-label-25">Cours détaillé <span class="pill">25 / 84</span></p><div class="prose">
+<h2 id="anova-en-python-scipy">ANOVA en Python (SciPy)</h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">from</span> scipy.stats <span class="hljs-keyword">import</span> f_oneway
+
+f_stat, p_value = f_oneway(A, B, C)
+f_stat, p_value
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-26" aria-labelledby="slide-label-26" hidden><p class="question-kicker" id="slide-label-26">Cours détaillé <span class="pill">26 / 84</span></p><div class="prose">
+<h2 id="interpr%C3%A9tation-de-la-p-value">Interprétation de la p-value</h2>
+<ul>
+<li>p &lt; 0.05 → différence significative</li>
+<li>p ≥ 0.05 → pas de conclusion claire</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> <strong>ANOVA ≠ dire quels groupes diffèrent</strong>,<br />
+mais <strong>dire qu'il existe une différence</strong>.</p>
+</div></article>
+<article class="slide-card exercise" id="slide-27" aria-labelledby="slide-label-27" hidden><p class="question-kicker" id="slide-label-27">Cours détaillé <span class="pill">27 / 84</span></p><div class="prose">
+<h2 id="exercice-2--anova">Exercice 2 — ANOVA</h2>
+<pre tabindex="0"><code class="language-python">G1 = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">10</span>, <span class="hljs-number">9</span>])
+G2 = np.array([<span class="hljs-number">12</span>, <span class="hljs-number">13</span>, <span class="hljs-number">14</span>, <span class="hljs-number">13</span>])
+G3 = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">9</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>])
+</code></pre>
+<ol>
+<li>Calculez les moyennes</li>
+<li>Lancez l'ANOVA</li>
+<li>Concluez</li>
+</ol>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># TODO</span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-28" aria-labelledby="slide-label-28" hidden><p class="question-kicker" id="slide-label-28">Cours détaillé <span class="pill">28 / 84</span></p><div class="prose">
+<h2 id="conditions-dapplication-simplifi%C3%A9es">Conditions d'application (simplifiées)</h2>
+<p>ANOVA est pertinente si :</p>
+<ol>
+<li>données quantitatives</li>
+<li>groupes indépendants</li>
+<li>distributions à peu près normales</li>
+<li>dispersions comparables</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-29" aria-labelledby="slide-label-29" hidden><p class="question-kicker" id="slide-label-29">Cours détaillé <span class="pill">29 / 84</span></p><div class="prose">
+<h2 id="lien-avec-ce-que-vous-connaissez-d%C3%A9j%C3%A0">Lien avec ce que vous connaissez déjà</h2>
+<ul>
+<li>variance → dispersion</li>
+<li>écart-type → homogénéité</li>
+<li>centrage-réduction → comparaison équitable</li>
+<li>ANOVA → généralisation du test de moyenne</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-30" aria-labelledby="slide-label-30" hidden><p class="question-kicker" id="slide-label-30">Cours détaillé <span class="pill">30 / 84</span></p><div class="prose">
+<h2 id="r%C3%A9sum%C3%A9-g%C3%A9n%C3%A9ral">Résumé général</h2>
+<h3 id="covariance">Covariance</h3>
+<ul>
+<li>mesure la variation conjointe</li>
+<li>dépend des unités</li>
+<li>base de la corrélation</li>
+</ul>
+<h3 id="anova">ANOVA</h3>
+<ul>
+<li>compare plusieurs moyennes</li>
+<li>s'appuie sur la variance</li>
+<li>distingue hasard / effet réel</li>
+</ul>
+<p>Parfait. Voici la <strong>suite naturelle du cours</strong>, toujours <strong>débutant Bac S</strong>, structurée <strong>comme vos slides</strong>, avec <strong>intuition → maths → Python → exercices</strong>, couvrant :</p>
+<ol>
+<li><strong>Corrélation = covariance normalisée</strong></li>
+<li><strong>Lien covariance <img class="emoji" draggable="false" alt="↔" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2194.svg" data-marp-twemoji=""/> matrice</strong></li>
+<li><strong>ACP avec matrices, valeurs propres et vecteurs propres (sans lourdeur inutile)</strong></li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-31" aria-labelledby="slide-label-31" hidden><p class="question-kicker" id="slide-label-31">Cours détaillé <span class="pill">31 / 84</span></p><div class="prose">
+<h1 id="corr%C3%A9lation-et-acp">Corrélation et ACP</h1>
+<p><strong>Du lien entre variables à la réduction de dimension</strong></p>
+</div></article>
+<article class="slide-card" id="slide-32" aria-labelledby="slide-label-32" hidden><p class="question-kicker" id="slide-label-32">Cours détaillé <span class="pill">32 / 84</span></p><div class="prose">
+<h1 id="partie-1--corr%C3%A9lation">PARTIE 1 — CORRÉLATION</h1>
+<p><em>(normalisation de la covariance)</em></p>
+</div></article>
+<article class="slide-card exercise" id="slide-33" aria-labelledby="slide-label-33" hidden><p class="question-kicker" id="slide-label-33">Cours détaillé <span class="pill">33 / 84</span></p><div class="prose">
+<h2 id="probl%C3%A8me-de-la-covariance-rappel">Problème de la covariance (rappel)</h2>
+<p>La covariance indique :</p>
+<ul>
+<li>le <strong>sens</strong> du lien,</li>
+<li>mais dépend des <strong>unités</strong>.</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> Impossible de dire si une covariance est “forte” ou “faible”.</p>
+</div></article>
+<article class="slide-card" id="slide-34" aria-labelledby="slide-label-34" hidden><p class="question-kicker" id="slide-label-34">Cours détaillé <span class="pill">34 / 84</span></p><div class="prose">
+<h2 id="id%C3%A9e-cl%C3%A9-de-la-corr%C3%A9lation">Idée clé de la corrélation</h2>
+<blockquote>
+<p><strong>La corrélation est une covariance rendue sans unité.</strong></p>
+</blockquote>
+<p>On divise la covariance par les dispersions des deux variables.</p>
+</div></article>
+<article class="slide-card" id="slide-35" aria-labelledby="slide-label-35" hidden><p class="question-kicker" id="slide-label-35">Cours détaillé <span class="pill">35 / 84</span></p><div class="prose">
+<h2 id="formule-de-la-corr%C3%A9lation-de-pearson">Formule de la corrélation de Pearson</h2>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>r</mi><mo>=</mo><mfrac><mrow><mtext>Cov</mtext><mo stretchy="false">(</mo><mi>X</mi><mo separator="true">,</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow><mrow><msub><mi>σ</mi><mi>X</mi></msub><msub><mi>σ</mi><mi>Y</mi></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">r = \frac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.263em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">X</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.22222em;">Y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">Cov</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p><p>où :</p>
+<ul>
+<li>(\sigma_X) = écart-type de X</li>
+<li>(\sigma_Y) = écart-type de Y</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-36" aria-labelledby="slide-label-36" hidden><p class="question-kicker" id="slide-label-36">Cours détaillé <span class="pill">36 / 84</span></p><div class="prose">
+<h2 id="propri%C3%A9t%C3%A9s-fondamentales">Propriétés fondamentales</h2>
+<ul>
+<li>( -1 \le r \le 1 )</li>
+<li>r &gt; 0 → lien croissant</li>
+<li>r &lt; 0 → lien décroissant</li>
+<li>r ≈ 0 → pas de lien linéaire</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-37" aria-labelledby="slide-label-37" hidden><p class="question-kicker" id="slide-label-37">Cours détaillé <span class="pill">37 / 84</span></p><div class="prose">
+<h2 id="intuition-g%C3%A9om%C3%A9trique-tr%C3%A8s-importante">Intuition géométrique (très importante)</h2>
+<blockquote>
+<p>La corrélation mesure <strong>l'alignement</strong> des points.</p>
+</blockquote>
+<figure class="math-figure"><a href="assets/images/correlations.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/images/correlations.svg" alt="Quatre relations illustratives : croissante, décroissante, quadratique et tirages indépendants." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+</div></article>
+<article class="slide-card" id="slide-38" aria-labelledby="slide-label-38" hidden><p class="question-kicker" id="slide-label-38">Cours détaillé <span class="pill">38 / 84</span></p><div class="prose">
+<h2 id="une-corr%C3%A9lation-nulle-peut-masquer-une-relation">Une corrélation nulle peut masquer une relation</h2>
+<p>Dans le panneau quadratique précédent, la relation y = x² est exacte mais sa corrélation linéaire est nulle. Toujours examiner le nuage de points.</p>
+</div></article>
+<article class="slide-card" id="slide-39" aria-labelledby="slide-label-39" hidden><p class="question-kicker" id="slide-label-39">Cours détaillé <span class="pill">39 / 84</span></p><div class="prose">
+<ul>
+<li>nuage aligné → |r| proche de 1</li>
+<li>nuage circulaire → r proche de 0</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-40" aria-labelledby="slide-label-40" hidden><p class="question-kicker" id="slide-label-40">Cours détaillé <span class="pill">40 / 84</span></p><div class="prose">
+<h2 id="corr%C3%A9lation--covariance-de-donn%C3%A9es-centr%C3%A9es-r%C3%A9duites">Corrélation = covariance de données centrées-réduites</h2>
+<p>Si X et Y sont <strong>centrées-réduites</strong> :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Cov</mtext><mo stretchy="false">(</mo><mi>X</mi><mo separator="true">,</mo><mi>Y</mi><mo stretchy="false">)</mo><mo>=</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">\text{Cov}(X,Y) = r
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Cov</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span></span></p><p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> C'est pour cela que la <strong>corrélation est centrale en ACP</strong>.</p>
+</div></article>
+<article class="slide-card" id="slide-41" aria-labelledby="slide-label-41" hidden><p class="question-kicker" id="slide-label-41">Cours détaillé <span class="pill">41 / 84</span></p><div class="prose">
+<h2 id="calcul-en-python-1">Calcul en Python</h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>])
+y = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">12</span>, <span class="hljs-number">15</span>, <span class="hljs-number">18</span>, <span class="hljs-number">20</span>])
+
+np.corrcoef(x, y)[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]
+</code></pre>
+</div></article>
+<article class="slide-card exercise" id="slide-42" aria-labelledby="slide-label-42" hidden><p class="question-kicker" id="slide-label-42">Cours détaillé <span class="pill">42 / 84</span></p><div class="prose">
+<h2 id="exercice-1--corr%C3%A9lation">Exercice 1 — Corrélation</h2>
+<pre tabindex="0"><code class="language-python">a = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>])
+b = np.array([<span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>])
+</code></pre>
+<ol>
+<li>Calculez la corrélation</li>
+<li>Interprétez le signe et la valeur</li>
+</ol>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># TODO</span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-43" aria-labelledby="slide-label-43" hidden><p class="question-kicker" id="slide-label-43">Cours détaillé <span class="pill">43 / 84</span></p><div class="prose">
+<h2 id="corr%C3%A9lation-%E2%89%A0-causalit%C3%A9-rappel-essentiel">Corrélation ≠ causalité (rappel essentiel)</h2>
+<ul>
+<li>forte corrélation ≠ cause</li>
+<li>corrélation mesure <strong>co-variation</strong>, pas mécanisme</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> Toujours regarder le <strong>contexte</strong> et le <strong>nuage de points</strong>.</p>
+</div></article>
+<article class="slide-card" id="slide-44" aria-labelledby="slide-label-44" hidden><p class="question-kicker" id="slide-label-44">Cours détaillé <span class="pill">44 / 84</span></p><div class="prose">
+<h1 id="partie-2--matrices--covariance-multivari%C3%A9e">PARTIE 2 — MATRICES &amp; COVARIANCE MULTIVARIÉE</h1>
+</div></article>
+<article class="slide-card" id="slide-45" aria-labelledby="slide-label-45" hidden><p class="question-kicker" id="slide-label-45">Cours détaillé <span class="pill">45 / 84</span></p><div class="prose">
+<h2 id="plusieurs-variables--matrice-de-donn%C3%A9es">Plusieurs variables = matrice de données</h2>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>X</mi><mo>=</mo><mrow><mo fence="true">(</mo><mtable rowspacing="0.16em" columnalign="center center center center center center center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>x</mi><mn>11</mn></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>x</mi><mn>12</mn></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>…</mo><mtext> </mtext><msub><mi>x</mi><mn>21</mn></msub></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><msub><mi>x</mi><mn>22</mn></msub></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>…</mo><mtext> </mtext><mrow><mi mathvariant="normal">⋮</mi><mpadded height="0em" voffset="0em"><mspace mathbackground="black" width="0em" height="1.5em"></mspace></mpadded></mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi mathvariant="normal">⋮</mi><mpadded height="0em" voffset="0em"><mspace mathbackground="black" width="0em" height="1.5em"></mspace></mpadded></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mo lspace="0em" rspace="0em">⋱</mo></mstyle></mtd></mtr></mtable><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">X =
+\begin{pmatrix}
+x_{11} &amp; x_{12} &amp; \dots \
+x_{21} &amp; x_{22} &amp; \dots \
+\vdots &amp; \vdots &amp; \ddots
+\end{pmatrix}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.86em;vertical-align:-0.68em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size2">(</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.18em;"><span style="top:-3.18em;"><span class="pstrut" style="height:3.5em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">11</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.68em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.18em;"><span style="top:-3.18em;"><span class="pstrut" style="height:3.5em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">12</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.68em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.18em;"><span style="top:-3.18em;"><span class="pstrut" style="height:3.5em;"></span><span class="mord"><span class="minner">…</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">21</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.68em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.18em;"><span style="top:-3.18em;"><span class="pstrut" style="height:3.5em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">22</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.68em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.18em;"><span style="top:-3.3675em;"><span class="pstrut" style="height:3.6875em;"></span><span class="mord"><span class="minner">…</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord">⋮</span><span class="mord rule" style="border-right-width:0em;border-top-width:1.5em;bottom:0em;"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.68em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.18em;"><span style="top:-3.3675em;"><span class="pstrut" style="height:3.6875em;"></span><span class="mord"><span class="mord"><span class="mord">⋮</span><span class="mord rule" style="border-right-width:0em;border-top-width:1.5em;bottom:0em;"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.68em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.18em;"><span style="top:-3.18em;"><span class="pstrut" style="height:3.5em;"></span><span class="mord"><span class="minner">⋱</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.68em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size2">)</span></span></span></span></span></span></span></p><ul>
+<li>lignes → individus</li>
+<li>colonnes → variables</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-46" aria-labelledby="slide-label-46" hidden><p class="question-kicker" id="slide-label-46">Cours détaillé <span class="pill">46 / 84</span></p><div class="prose">
+<h2 id="matrice-de-covariance">Matrice de covariance</h2>
+<blockquote>
+<p>Généralisation de la variance et de la covariance.</p>
+</blockquote>
+<pre tabindex="0"><code class="language-python">Xc = X - X.mean(axis=<span class="hljs-number">0</span>)
+Cov = np.cov(Xc, rowvar=<span class="hljs-literal">False</span>)
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-47" aria-labelledby="slide-label-47" hidden><p class="question-kicker" id="slide-label-47">Cours détaillé <span class="pill">47 / 84</span></p><div class="prose">
+<h2 id="lecture-de-la-matrice-de-covariance">Lecture de la matrice de covariance</h2>
+<ul>
+<li>diagonale → variances</li>
+<li>hors diagonale → covariances</li>
+<li>symétrique</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-48" aria-labelledby="slide-label-48" hidden><p class="question-kicker" id="slide-label-48">Cours détaillé <span class="pill">48 / 84</span></p><div class="prose">
+<h2 id="version-normalis%C3%A9e--matrice-de-corr%C3%A9lation">Version normalisée : matrice de corrélation</h2>
+<pre tabindex="0"><code class="language-python">Corr = np.corrcoef(X, rowvar=<span class="hljs-literal">False</span>)
+</code></pre>
+<ul>
+<li>diagonale = 1</li>
+<li>valeurs entre −1 et 1</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> <strong>Base de l'ACP normalisée</strong></p>
+</div></article>
+<article class="slide-card" id="slide-49" aria-labelledby="slide-label-49" hidden><p class="question-kicker" id="slide-label-49">Cours détaillé <span class="pill">49 / 84</span></p><div class="prose">
+<h1 id="partie-3--acp-analyse-en-composantes-principales">PARTIE 3 — ACP (Analyse en Composantes Principales)</h1>
+</div></article>
+<article class="slide-card exercise" id="slide-50" aria-labelledby="slide-label-50" hidden><p class="question-kicker" id="slide-label-50">Cours détaillé <span class="pill">50 / 84</span></p><div class="prose">
+<h2 id="probl%C3%A8me-pos%C3%A9-par-lacp">Problème posé par l'ACP</h2>
+<ul>
+<li>beaucoup de variables</li>
+<li>variables corrélées</li>
+<li>difficile à visualiser</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> <strong>résumer l'information sans trop la perdre</strong></p>
+</div></article>
+<article class="slide-card" id="slide-51" aria-labelledby="slide-label-51" hidden><p class="question-kicker" id="slide-label-51">Cours détaillé <span class="pill">51 / 84</span></p><div class="prose">
+<h2 id="id%C3%A9e-g%C3%A9om%C3%A9trique-centrale">Idée géométrique centrale</h2>
+<blockquote>
+<p>L'ACP cherche <strong>les directions où les données varient le plus</strong>.</p>
+</blockquote>
+<figure class="math-figure"><a href="assets/images/acp-individus.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/images/acp-individus.svg" alt="Projection sur les deux premiers axes ACP des journées simulées du projet, après standardisation sur l’apprentissage." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+</div></article>
+<article class="slide-card" id="slide-52" aria-labelledby="slide-label-52" hidden><p class="question-kicker" id="slide-label-52">Cours détaillé <span class="pill">52 / 84</span></p><div class="prose">
+<h2 id="mesurer-la-perte-lors-de-la-r%C3%A9duction">Mesurer la perte lors de la réduction</h2>
+<figure class="math-figure"><a href="assets/images/svd-variance.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/images/svd-variance.svg" alt="Variance expliquée et erreur de reconstruction des journées simulées du projet." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+</div></article>
+<article class="slide-card" id="slide-53" aria-labelledby="slide-label-53" hidden><p class="question-kicker" id="slide-label-53">Cours détaillé <span class="pill">53 / 84</span></p><div class="prose">
+<h2 id="%C3%A9tape-1--centrage-obligatoire">Étape 1 — Centrage (obligatoire)</h2>
+<pre tabindex="0"><code class="language-python">Xc = X - X.mean(axis=<span class="hljs-number">0</span>)
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-54" aria-labelledby="slide-label-54" hidden><p class="question-kicker" id="slide-label-54">Cours détaillé <span class="pill">54 / 84</span></p><div class="prose">
+<h2 id="%C3%A9tape-2--souvent-r%C3%A9duction">Étape 2 — (souvent) Réduction</h2>
+<pre tabindex="0"><code class="language-python">Xs = Xc / X.std(axis=<span class="hljs-number">0</span>)
+</code></pre>
+<p>Utilisée quand :</p>
+<ul>
+<li>unités différentes</li>
+<li>échelles incomparables</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-55" aria-labelledby="slide-label-55" hidden><p class="question-kicker" id="slide-label-55">Cours détaillé <span class="pill">55 / 84</span></p><div class="prose">
+<h2 id="%C3%A9tape-3--matrice-de-covariance">Étape 3 — Matrice de covariance</h2>
+<pre tabindex="0"><code class="language-python">Cov = np.cov(Xs, rowvar=<span class="hljs-literal">False</span>)
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-56" aria-labelledby="slide-label-56" hidden><p class="question-kicker" id="slide-label-56">Cours détaillé <span class="pill">56 / 84</span></p><div class="prose">
+<h2 id="%C3%A9tape-4--valeurs-propres-et-vecteurs-propres">Étape 4 — Valeurs propres et vecteurs propres</h2>
+<pre tabindex="0"><code class="language-python">vals, vecs = np.linalg.eig(Cov)
+</code></pre>
+<h3 id="interpr%C3%A9tation">Interprétation</h3>
+<ul>
+<li><strong>vecteurs propres</strong> → directions principales</li>
+<li>*<strong>valeurs propres</strong> → quantité de variance expliquée</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-57" aria-labelledby="slide-label-57" hidden><p class="question-kicker" id="slide-label-57">Cours détaillé <span class="pill">57 / 84</span></p><div class="prose">
+<h2 id="sens-g%C3%A9om%C3%A9trique">Sens géométrique</h2>
+<ul>
+<li>vecteur propre = axe de projection</li>
+<li>valeur propre = importance de cet axe</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> PC1 = direction la plus “longue” du nuage</p>
+</div></article>
+<article class="slide-card" id="slide-58" aria-labelledby="slide-label-58" hidden><p class="question-kicker" id="slide-label-58">Cours détaillé <span class="pill">58 / 84</span></p><div class="prose">
+<h2 id="%C3%A9tape-5--tri-par-importance">Étape 5 — Tri par importance</h2>
+<pre tabindex="0"><code class="language-python">idx = np.argsort(vals)[::-<span class="hljs-number">1</span>]
+vals = vals[idx]
+vecs = vecs[:, idx]
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-59" aria-labelledby="slide-label-59" hidden><p class="question-kicker" id="slide-label-59">Cours détaillé <span class="pill">59 / 84</span></p><div class="prose">
+<h2 id="%C3%A9tape-6--projection-des-donn%C3%A9es">Étape 6 — Projection des données</h2>
+<pre tabindex="0"><code class="language-python">X_proj = Xs @ vecs
+</code></pre>
+<ul>
+<li>nouvelles coordonnées</li>
+<li>mêmes individus</li>
+<li>nouvelles variables : PC1, PC2, …</li>
+</ul>
+</div></article>
+<article class="slide-card exercise" id="slide-60" aria-labelledby="slide-label-60" hidden><p class="question-kicker" id="slide-label-60">Cours détaillé <span class="pill">60 / 84</span></p><div class="prose">
+<h2 id="exercice-2--acp-minimale">Exercice 2 — ACP minimale</h2>
+<pre tabindex="0"><code class="language-python">X = np.array([
+    [<span class="hljs-number">170</span>, <span class="hljs-number">65</span>],
+    [<span class="hljs-number">180</span>, <span class="hljs-number">80</span>],
+    [<span class="hljs-number">160</span>, <span class="hljs-number">55</span>],
+    [<span class="hljs-number">175</span>, <span class="hljs-number">75</span>]
+], dtype=<span class="hljs-built_in">float</span>)
+</code></pre>
+<ol>
+<li>Centrez les données</li>
+<li>Calculez la covariance</li>
+<li>Trouvez PC1</li>
+<li>Projetez les données</li>
+</ol>
+<pre tabindex="0"><code class="language-python"><span class="hljs-comment"># TODO</span>
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-61" aria-labelledby="slide-label-61" hidden><p class="question-kicker" id="slide-label-61">Cours détaillé <span class="pill">61 / 84</span></p><div class="prose">
+<h2 id="combien-de-composantes-garder">Combien de composantes garder ?</h2>
+<p>Variance expliquée :</p>
+<pre tabindex="0"><code class="language-python">vals / vals.<span class="hljs-built_in">sum</span>()
+</code></pre>
+<ul>
+<li>PC1 + PC2 ≈ 80–90 % → souvent suffisant</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-62" aria-labelledby="slide-label-62" hidden><p class="question-kicker" id="slide-label-62">Cours détaillé <span class="pill">62 / 84</span></p><div class="prose">
+<h2 id="r%C3%A9sum%C3%A9-acp">Résumé ACP</h2>
+<ol>
+<li>
+<p>L'ACP travaille sur les <strong>corrélations</strong></p>
+</li>
+<li>
+<p>Elle cherche des <strong>axes optimaux</strong></p>
+</li>
+<li>
+<p>Elle remplace plusieurs variables par quelques-unes</p>
+</li>
+<li>
+<p>Elle repose sur :</p>
+<ul>
+<li>matrices</li>
+<li>valeurs propres</li>
+<li>vecteurs propres</li>
+</ul>
+</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-63" aria-labelledby="slide-label-63" hidden><p class="question-kicker" id="slide-label-63">Cours détaillé <span class="pill">63 / 84</span></p><div class="prose">
+<h2 id="r%C3%A9sum%C3%A9-global-du-chapitre">Résumé global du chapitre</h2>
+<h3 id="corr%C3%A9lation">Corrélation</h3>
+<ul>
+<li>covariance normalisée</li>
+<li>sans unité</li>
+<li>base de l'analyse multivariée</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-64" aria-labelledby="slide-label-64" hidden><p class="question-kicker" id="slide-label-64">Cours détaillé <span class="pill">64 / 84</span></p><div class="prose">
+<h3 id="acp">ACP</h3>
+<ul>
+<li>rotation du nuage</li>
+<li>réduction de dimension</li>
+<li>outil central en data science</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-65" aria-labelledby="slide-label-65" hidden><p class="question-kicker" id="slide-label-65">Cours détaillé <span class="pill">65 / 84</span></p><div class="prose">
+<h1 id="cercle-de-corr%C3%A9lation">Cercle de corrélation</h1>
+<p><strong>Interprétation graphique de l'ACP</strong></p>
+</div></article>
+<article class="slide-card" id="slide-66" aria-labelledby="slide-label-66" hidden><p class="question-kicker" id="slide-label-66">Cours détaillé <span class="pill">66 / 84</span></p><div class="prose">
+<h2 id="pourquoi-le-cercle-de-corr%C3%A9lation">Pourquoi le cercle de corrélation ?</h2>
+<p>Après l'ACP, on a :</p>
+<ul>
+<li>des <strong>individus projetés</strong> (PC1, PC2),</li>
+<li>mais aussi des <strong>variables d'origine</strong>.</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> Le cercle de corrélation sert à répondre à ces questions :</p>
+<ol>
+<li>Quelles variables expliquent <strong>PC1</strong> ? <strong>PC2</strong> ?</li>
+<li>Quelles variables sont <strong>corrélées entre elles</strong> ?</li>
+<li>Quelles variables sont <strong>indépendantes</strong> ?</li>
+<li>Quelles variables sont <strong>bien ou mal représentées</strong> ?</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-67" aria-labelledby="slide-label-67" hidden><p class="question-kicker" id="slide-label-67">Cours détaillé <span class="pill">67 / 84</span></p><div class="prose">
+<h2 id="id%C3%A9e-cl%C3%A9-%C3%A0-retenir-absolument">Idée clé (à retenir absolument)</h2>
+<blockquote>
+<p>Le cercle de corrélation représente <strong>les corrélations entre les variables d'origine et les axes principaux (PC1, PC2)</strong>.</p>
+</blockquote>
+<p>Ce ne sont <strong>pas les individus</strong>,<br />
+ce sont <strong>les variables</strong>.</p>
+</div></article>
+<article class="slide-card" id="slide-68" aria-labelledby="slide-label-68" hidden><p class="question-kicker" id="slide-label-68">Cours détaillé <span class="pill">68 / 84</span></p><div class="prose">
+<h2 id="pourquoi-un-cercle-de-rayon-1">Pourquoi un cercle de rayon 1 ?</h2>
+<p>Les données sont <strong>centrées-réduites</strong> :</p>
+<ul>
+<li>variance = 1</li>
+<li>corrélations ∈ [−1, +1]</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> Les coordonnées des variables sont des <strong>corrélations</strong><br />
+<img class="emoji" draggable="false" alt="👉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f449.svg" data-marp-twemoji=""/> Elles sont donc <strong>bornées par 1</strong></p>
+</div></article>
+<article class="slide-card" id="slide-69" aria-labelledby="slide-label-69" hidden><p class="question-kicker" id="slide-label-69">Cours détaillé <span class="pill">69 / 84</span></p><div class="prose">
+<h2 id="sch%C3%A9ma-conceptuel-1">Schéma conceptuel</h2>
+<figure class="math-figure"><a href="assets/images/acp-cercle.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/images/acp-cercle.svg" alt="Cercle de corrélations calculé sur les trois variables standardisées du projet consommation." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+</div></article>
+<article class="slide-card" id="slide-70" aria-labelledby="slide-label-70" hidden><p class="question-kicker" id="slide-label-70">Cours détaillé <span class="pill">70 / 84</span></p><div class="prose">
+<h2 id="lire-les-fl%C3%A8ches-dans-le-cercle-pr%C3%A9c%C3%A9dent">Lire les flèches dans le cercle précédent</h2>
+<ul>
+<li>chaque flèche = une variable</li>
+<li>longueur = qualité de représentation</li>
+<li>angle = corrélation entre variables</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-71" aria-labelledby="slide-label-71" hidden><p class="question-kicker" id="slide-label-71">Cours détaillé <span class="pill">71 / 84</span></p><div class="prose">
+<h2 id="construction-math%C3%A9matique-simple">Construction mathématique (simple)</h2>
+<p>Après l'ACP :</p>
+<ul>
+<li><code>vecs</code> = vecteurs propres</li>
+<li><code>vals</code> = valeurs propres</li>
+</ul>
+<p>Les coordonnées des variables dans le cercle :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>corr</mtext><mo stretchy="false">(</mo><msub><mi>X</mi><mi>j</mi></msub><mo separator="true">,</mo><mi>P</mi><msub><mi>C</mi><mi>k</mi></msub><mo stretchy="false">)</mo><mo>=</mo><msqrt><msub><mi>λ</mi><mi>k</mi></msub></msqrt><mo>⋅</mo><msub><mi>v</mi><mrow><mi>j</mi><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\text{corr}(X_j, PC_k) = \sqrt{\lambda_k} \cdot v_{jk}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord text"><span class="mord">corr</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.2339em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0061em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathnormal">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.9661em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2339em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">jk</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span></p><p>En Python :</p>
+<pre tabindex="0"><code class="language-python">corr = vecs * np.sqrt(vals)
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-72" aria-labelledby="slide-label-72" hidden><p class="question-kicker" id="slide-label-72">Cours détaillé <span class="pill">72 / 84</span></p><div class="prose">
+<h2 id="coordonn%C3%A9es-pour-pc1%E2%80%93pc2">Coordonnées pour PC1–PC2</h2>
+<pre tabindex="0"><code class="language-python">corr_circle = corr[:, :<span class="hljs-number">2</span>]
+</code></pre>
+<p>Chaque ligne :</p>
+<ul>
+<li>une variable</li>
+<li>colonne 1 → PC1</li>
+<li>colonne 2 → PC2</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-73" aria-labelledby="slide-label-73" hidden><p class="question-kicker" id="slide-label-73">Cours détaillé <span class="pill">73 / 84</span></p><div class="prose">
+<h2 id="exemple-concret-1">Exemple concret</h2>
+<p>Variables :</p>
+<ul>
+<li>Vitesse</li>
+<li>Force</li>
+<li>Endurance</li>
+<li>Agilité</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-74" aria-labelledby="slide-label-74" hidden><p class="question-kicker" id="slide-label-74">Cours détaillé <span class="pill">74 / 84</span></p><div class="prose">
+<p>Coordonnées possibles :</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>PC1</th>
+<th>PC2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vitesse</td>
+<td>0.85</td>
+<td>0.10</td>
+</tr>
+<tr>
+<td>Force</td>
+<td>0.88</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>Endurance</td>
+<td>0.82</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td>Agilité</td>
+<td>0.60</td>
+<td>−0.60</td>
+</tr>
+</tbody>
+</table></div>
+</div></article>
+<article class="slide-card" id="slide-75" aria-labelledby="slide-label-75" hidden><p class="question-kicker" id="slide-label-75">Cours détaillé <span class="pill">75 / 84</span></p><div class="prose">
+<h2 id="lecture-fondamentale--longueur-de-la-fl%C3%A8che">Lecture fondamentale — longueur de la flèche</h2>
+<blockquote>
+<p>Plus une flèche est proche du cercle unité,<br />
+mieux la variable est expliquée par PC1 et PC2.</p>
+</blockquote>
+<ul>
+<li>proche du cercle → information bien résumée</li>
+<li>proche du centre → information mal captée</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-76" aria-labelledby="slide-label-76" hidden><p class="question-kicker" id="slide-label-76">Cours détaillé <span class="pill">76 / 84</span></p><div class="prose">
+<h2 id="lecture-fondamentale--angle-entre-deux-fl%C3%A8ches">Lecture fondamentale — angle entre deux flèches</h2>
+<blockquote>
+<p>L'angle entre deux variables ≈ corrélation entre elles</p>
+</blockquote>
+<ul>
+<li>angle ≈ 0° → corrélation forte positive</li>
+<li>angle ≈ 180° → corrélation forte négative</li>
+<li>angle ≈ 90° → variables non corrélées</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-77" aria-labelledby="slide-label-77" hidden><p class="question-kicker" id="slide-label-77">Cours détaillé <span class="pill">77 / 84</span></p><div class="prose">
+<h2 id="interpr%C3%A9tation-visuelle">Interprétation visuelle</h2>
+<figure class="math-figure"><a href="assets/images/acp-individus.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/images/acp-individus.svg" alt="Les journées du projet consommation représentées dans le plan PC1-PC2." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+</div></article>
+<article class="slide-card" id="slide-78" aria-labelledby="slide-label-78" hidden><p class="question-kicker" id="slide-label-78">Cours détaillé <span class="pill">78 / 84</span></p><div class="prose">
+<h2 id="relier-les-individus-aux-variables">Relier les individus aux variables</h2>
+<figure class="math-figure"><a href="assets/images/acp-cercle.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/images/acp-cercle.svg" alt="Corrélations des variables température, occupation et équipements avec les axes de la même ACP du projet." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+</div></article>
+<article class="slide-card" id="slide-79" aria-labelledby="slide-label-79" hidden><p class="question-kicker" id="slide-label-79">Cours détaillé <span class="pill">79 / 84</span></p><div class="prose">
+<h2 id="exemple-dinterpr%C3%A9tation-typique">Exemple d'interprétation (typique)</h2>
+<ol>
+<li>
+<p>Vitesse, Force, Endurance :</p>
+<ul>
+<li>flèches longues</li>
+<li>même direction<br />
+→ <strong>fortement corrélées</strong><br />
+→ expliquent principalement PC1</li>
+</ul>
+</li>
+<li>
+<p>Agilité :</p>
+<ul>
+<li>orientation différente</li>
+<li>composante PC2 marquée<br />
+→ information complémentaire</li>
+</ul>
+</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-80" aria-labelledby="slide-label-80" hidden><p class="question-kicker" id="slide-label-80">Cours détaillé <span class="pill">80 / 84</span></p><div class="prose">
+<h2 id="code-complet-de-trac%C3%A9">Code complet de tracé</h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+fig, ax = plt.subplots(figsize=(<span class="hljs-number">6</span>, <span class="hljs-number">6</span>))
+
+theta = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>*np.pi, <span class="hljs-number">300</span>)
+ax.plot(np.cos(theta), np.sin(theta))
+
+ax.axhline(<span class="hljs-number">0</span>)
+ax.axvline(<span class="hljs-number">0</span>)
+
+<span class="hljs-keyword">for</span> i, var <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(variables):
+    x, y = corr_circle[i]
+    ax.arrow(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, x, y, head_width=<span class="hljs-number">0.03</span>, length_includes_head=<span class="hljs-literal">True</span>)
+    ax.text(x*<span class="hljs-number">1.1</span>, y*<span class="hljs-number">1.1</span>, var)
+
+ax.set_aspect(<span class="hljs-string">&quot;equal&quot;</span>)
+ax.set_xlabel(<span class="hljs-string">&quot;PC1&quot;</span>)
+ax.set_ylabel(<span class="hljs-string">&quot;PC2&quot;</span>)
+ax.set_title(<span class="hljs-string">&quot;Cercle de corrélation&quot;</span>)
+plt.show()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-81" aria-labelledby="slide-label-81" hidden><p class="question-kicker" id="slide-label-81">Cours détaillé <span class="pill">81 / 84</span></p><div class="prose">
+<h2 id="erreurs-fr%C3%A9quentes-%C3%A0-%C3%A9viter">Erreurs fréquentes à éviter</h2>
+<p><img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" data-marp-twemoji=""/> Confondre individus et variables<br />
+<img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" data-marp-twemoji=""/> Interpréter une flèche courte<br />
+<img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" data-marp-twemoji=""/> Oublier le centrage-réduction<br />
+<img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" data-marp-twemoji=""/> Interpréter PC3 sur un cercle PC1–PC2</p>
+</div></article>
+<article class="slide-card exercise" id="slide-82" aria-labelledby="slide-label-82" hidden><p class="question-kicker" id="slide-label-82">Cours détaillé <span class="pill">82 / 84</span></p><div class="prose">
+<h2 id="exercice-1--lecture-guid%C3%A9e">Exercice 1 — Lecture guidée</h2>
+<p>On observe un cercle où :</p>
+<ul>
+<li>A et B sont alignées</li>
+<li>C est orthogonale à A</li>
+<li>D est proche du centre</li>
+</ul>
+<p>Questions :</p>
+<ol>
+<li>Quelles variables sont corrélées ?</li>
+<li>Quelle variable est mal expliquée ?</li>
+<li>Quelle variable explique PC2 ?</li>
+</ol>
+</div></article>
+<article class="slide-card exercise" id="slide-83" aria-labelledby="slide-label-83" hidden><p class="question-kicker" id="slide-label-83">Cours détaillé <span class="pill">83 / 84</span></p><div class="prose">
+<h2 id="exercice-2--analyse-compl%C3%A8te">Exercice 2 — Analyse complète</h2>
+<p>À partir du cercle de corrélation que vous avez obtenu :</p>
+<ol>
+<li>Identifiez les groupes de variables corrélées</li>
+<li>Donnez une interprétation de PC1</li>
+<li>Donnez une interprétation de PC2</li>
+<li>Proposez un nom à chaque axe</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-84" aria-labelledby="slide-label-84" hidden><p class="question-kicker" id="slide-label-84">Cours détaillé <span class="pill">84 / 84</span></p><div class="prose">
+<h2 id="r%C3%A9sum%C3%A9">Résumé</h2>
+<ol>
+<li>Le cercle représente les <strong>variables</strong></li>
+<li>Les coordonnées sont des <strong>corrélations</strong></li>
+<li>Longueur = qualité de représentation</li>
+<li>Angle = corrélation entre variables</li>
+<li>PC1 et PC2 résument l'essentiel</li>
+</ol>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 84</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="index.html">Comprendre, puis pratiquer.</a></footer><script src="assets/slides.js" defer></script></body></html>

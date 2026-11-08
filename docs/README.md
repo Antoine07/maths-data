@@ -8,6 +8,8 @@ Les 25 présentations reprennent les sources de `Slides/` et les supports HTML h
 
 Les nouveaux contenus sont intercalés dans le parcours : géométrie et moindres carrés après les matrices ; SVD après les statistiques et l'ACP ; calcul différentiel, optimisation et rétropropagation après le gradient. Le projet de consommation électrique se télécharge avec son CSV, son code et ses notebooks depuis la page des ressources.
 
+Les révisions comprennent deux démonstrations guidées : le crible d'Ératosthène après les priorités de calcul, puis la somme de deux entiers pairs après la factorisation. Chaque activité propose des indices et une correction dépliable. Le programme Python du crible et la preuve Lean 4 avec Mathlib sont disponibles dans `exemples/revision/`. La grille du crible reste compacte et peut s'ouvrir en grand.
+
 Les supports incluent 25 figures SVG générées avec Matplotlib : tangentes, limites, transformations, résidus, ACP, courbure, optimisation, classification et problèmes. Cliquer sur une figure permet de l'ouvrir en grand.
 
 Huit illustrations compactes accompagnent les couvertures Matrices, Gradient, Statistiques, Corrélation, Centrage-réduction, ACP, Probabilités et Réseau. Sept dessins complètent les transformations, les limites, l'histogramme, la boîte à moustaches et les degrés de liberté. Leur hauteur est plafonnée dans la page : 220 px pour les couvertures et 250 px pour ces dessins de cours, puis 150 et 190 px sur mobile. Les SVG restent accessibles en grand au clic.

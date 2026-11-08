@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="280" viewBox="0 0 720 280" role="img" aria-labelledby="titre description">
+<title id="titre">Le crible d'Ératosthène de 1 à 30</title>
+<desc id="description">1 est exclu. Les nombres premiers 2, 3, 5, 7, 11, 13, 17, 19, 23 et 29 sont entourés en vert. Les autres sont barrés : ils sont composés.</desc>
+<rect x="1" y="1" width="718" height="278" rx="18" fill="#f7f8f2" stroke="#dbe2d1"/>
+<g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+<text x="360" y="30" font-size="19" font-weight="700" fill="#203b36">Barrer les multiples. Conserver les nombres premiers.</text>
+
+<g><title>1, ni premier ni composé</title><rect x="26" y="54" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="56.5" y="83" font-size="22" font-weight="400" fill="#7b887e">1</text>
+<path d="M42 86 L71 66" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>2, nombre premier</title><rect x="93" y="54" width="61" height="43" rx="12" fill="#ddf18a" stroke="#275c47" stroke-width="2"/><text x="123.5" y="83" font-size="22" font-weight="700" fill="#203b36">2</text>
+</g>
+<g><title>3, nombre premier</title><rect x="160" y="54" width="61" height="43" rx="12" fill="#ddf18a" stroke="#275c47" stroke-width="2"/><text x="190.5" y="83" font-size="22" font-weight="700" fill="#203b36">3</text>
+</g>
+<g><title>4, nombre composé</title><rect x="227" y="54" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="257.5" y="83" font-size="22" font-weight="400" fill="#7b887e">4</text>
+<path d="M243 86 L272 66" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>5, nombre premier</title><rect x="294" y="54" width="61" height="43" rx="12" fill="#ddf18a" stroke="#275c47" stroke-width="2"/><text x="324.5" y="83" font-size="22" font-weight="700" fill="#203b36">5</text>
+</g>
+<g><title>6, nombre composé</title><rect x="361" y="54" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="391.5" y="83" font-size="22" font-weight="400" fill="#7b887e">6</text>
+<path d="M377 86 L406 66" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>7, nombre premier</title><rect x="428" y="54" width="61" height="43" rx="12" fill="#ddf18a" stroke="#275c47" stroke-width="2"/><text x="458.5" y="83" font-size="22" font-weight="700" fill="#203b36">7</text>
+</g>
+<g><title>8, nombre composé</title><rect x="495" y="54" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="525.5" y="83" font-size="22" font-weight="400" fill="#7b887e">8</text>
+<path d="M511 86 L540 66" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>9, nombre composé</title><rect x="562" y="54" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="592.5" y="83" font-size="22" font-weight="400" fill="#7b887e">9</text>
+<path d="M578 86 L607 66" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>10, nombre composé</title><rect x="629" y="54" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="659.5" y="83" font-size="22" font-weight="400" fill="#7b887e">10</text>
+<path d="M645 86 L674 66" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>11, nombre premier</title><rect x="26" y="110" width="61" height="43" rx="12" fill="#ddf18a" stroke="#275c47" stroke-width="2"/><text x="56.5" y="139" font-size="22" font-weight="700" fill="#203b36">11</text>
+</g>
+<g><title>12, nombre composé</title><rect x="93" y="110" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="123.5" y="139" font-size="22" font-weight="400" fill="#7b887e">12</text>
+<path d="M109 142 L138 122" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>13, nombre premier</title><rect x="160" y="110" width="61" height="43" rx="12" fill="#ddf18a" stroke="#275c47" stroke-width="2"/><text x="190.5" y="139" font-size="22" font-weight="700" fill="#203b36">13</text>
+</g>
+<g><title>14, nombre composé</title><rect x="227" y="110" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="257.5" y="139" font-size="22" font-weight="400" fill="#7b887e">14</text>
+<path d="M243 142 L272 122" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>15, nombre composé</title><rect x="294" y="110" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="324.5" y="139" font-size="22" font-weight="400" fill="#7b887e">15</text>
+<path d="M310 142 L339 122" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>16, nombre composé</title><rect x="361" y="110" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="391.5" y="139" font-size="22" font-weight="400" fill="#7b887e">16</text>
+<path d="M377 142 L406 122" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>17, nombre premier</title><rect x="428" y="110" width="61" height="43" rx="12" fill="#ddf18a" stroke="#275c47" stroke-width="2"/><text x="458.5" y="139" font-size="22" font-weight="700" fill="#203b36">17</text>
+</g>
+<g><title>18, nombre composé</title><rect x="495" y="110" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="525.5" y="139" font-size="22" font-weight="400" fill="#7b887e">18</text>
+<path d="M511 142 L540 122" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>19, nombre premier</title><rect x="562" y="110" width="61" height="43" rx="12" fill="#ddf18a" stroke="#275c47" stroke-width="2"/><text x="592.5" y="139" font-size="22" font-weight="700" fill="#203b36">19</text>
+</g>
+<g><title>20, nombre composé</title><rect x="629" y="110" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="659.5" y="139" font-size="22" font-weight="400" fill="#7b887e">20</text>
+<path d="M645 142 L674 122" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>21, nombre composé</title><rect x="26" y="166" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="56.5" y="195" font-size="22" font-weight="400" fill="#7b887e">21</text>
+<path d="M42 198 L71 178" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>22, nombre composé</title><rect x="93" y="166" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="123.5" y="195" font-size="22" font-weight="400" fill="#7b887e">22</text>
+<path d="M109 198 L138 178" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>23, nombre premier</title><rect x="160" y="166" width="61" height="43" rx="12" fill="#ddf18a" stroke="#275c47" stroke-width="2"/><text x="190.5" y="195" font-size="22" font-weight="700" fill="#203b36">23</text>
+</g>
+<g><title>24, nombre composé</title><rect x="227" y="166" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="257.5" y="195" font-size="22" font-weight="400" fill="#7b887e">24</text>
+<path d="M243 198 L272 178" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>25, nombre composé</title><rect x="294" y="166" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="324.5" y="195" font-size="22" font-weight="400" fill="#7b887e">25</text>
+<path d="M310 198 L339 178" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>26, nombre composé</title><rect x="361" y="166" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="391.5" y="195" font-size="22" font-weight="400" fill="#7b887e">26</text>
+<path d="M377 198 L406 178" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>27, nombre composé</title><rect x="428" y="166" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="458.5" y="195" font-size="22" font-weight="400" fill="#7b887e">27</text>
+<path d="M444 198 L473 178" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>28, nombre composé</title><rect x="495" y="166" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="525.5" y="195" font-size="22" font-weight="400" fill="#7b887e">28</text>
+<path d="M511 198 L540 178" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<g><title>29, nombre premier</title><rect x="562" y="166" width="61" height="43" rx="12" fill="#ddf18a" stroke="#275c47" stroke-width="2"/><text x="592.5" y="195" font-size="22" font-weight="700" fill="#203b36">29</text>
+</g>
+<g><title>30, nombre composé</title><rect x="629" y="166" width="61" height="43" rx="12" fill="#edf0e7" stroke="#dbe2d1" stroke-width="1"/><text x="659.5" y="195" font-size="22" font-weight="400" fill="#7b887e">30</text>
+<path d="M645 198 L674 178" stroke="#8d998d" stroke-width="1.8"/>
+</g>
+<rect x="150" y="237" width="16" height="16" rx="5" fill="#ddf18a" stroke="#275c47"/>
+<text x="235" y="250" font-size="14" fill="#275c47">10 nombres premiers</text>
+<path d="M351 251 L365 238" stroke="#8d998d" stroke-width="2"/>
+<text x="473" y="250" font-size="14" fill="#65756b">1 exclu · composés barrés</text>
+</g></svg>

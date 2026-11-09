@@ -19,8 +19,6 @@ Reconnaître un groupe de transformations sur un exemple simple et distinguer **
 
 Prérequis : produit matrice-vecteur, produit de matrices, identité et coordonnées du plan. Aucune connaissance préalable des groupes n'est nécessaire.
 
-Durée indicative : 2 h, dont trois exercices et un atelier sur les données du fil rouge.
-
 ---
 
 ## Résumé général

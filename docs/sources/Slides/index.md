@@ -56,7 +56,7 @@ Objectif : comprendre et vérifier comment un modèle apprend.
 
 Chaque nouveau chapitre contient trois exercices progressifs, des corrections dépliables, des questions de révision et cinq QCM.
 
-Le [projet fil rouge](../Projet_IA/README.md) fournit les données simulées, un point de départ, les six jalons, une correction exécutable et les critères de validation. Compter environ 24 à 30 h pour les nouveaux chapitres avec les TP, selon les prérequis.
+Le [projet fil rouge](../Projet_IA/README.md) fournit les données simulées, un point de départ, les six jalons, une correction exécutable et les critères de validation.
 
 Les approfondissements statistiques existants restent disponibles depuis l’accueil HTML.
 
@@ -79,6 +79,6 @@ Inspirés de l'idée de *The Tail End*, ces problèmes originaux sont placés ap
 
 Les cartes lavande apparaissent après le cours associé : rencontres et dix minutes après les révisions ; fréquence après dérivation ; Simpson après les statistiques ; bus et dîner après les probabilités ; événement rare après SVD ; planning et Braess après optimisation ; fausses alertes après classification.
 
-Chaque carte précise la question, les notions, le prérequis et la durée. Le badge « Approfondissement » distingue le problème de Braess.
+Chaque carte précise la question, les notions et le prérequis. Le badge « Approfondissement » distingue le problème de Braess.
 
 [Ouvrir le catalogue des dix problèmes](../docs/problemes.html).

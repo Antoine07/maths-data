@@ -17,8 +17,6 @@ Décomposer une matrice, relier ses valeurs singulières à la variance et chois
 
 Nous voulons distinguer **expliquer la variance**, **reconstruire les données** et **améliorer une prédiction** : ces objectifs ne sont pas équivalents.
 
-Durée indicative : 4 h avec les exercices et un TP de compression.
-
 ---
 
 ## Résumé général

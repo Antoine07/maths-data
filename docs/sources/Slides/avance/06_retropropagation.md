@@ -19,8 +19,6 @@ Comprendre le trajet d'une observation dans un petit réseau, puis celui des gra
 
 Nous commencerons par une classification logistique et ajouterons une seule couche cachée. Les calculs NumPy seront vérifiés numériquement ; une comparaison avec PyTorch est proposée en extension.
 
-Durée indicative : 5 h avec le TP et son interprétation.
-
 ---
 
 ## Résumé général

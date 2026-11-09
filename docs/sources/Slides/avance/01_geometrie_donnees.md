@@ -17,7 +17,7 @@ Choisir une notion de proximité adaptée à une question métier et calculer un
 
 À la fin : expliquer la différence entre **proximité en valeur** et **ressemblance de direction**, sans confondre leurs usages.
 
-Prérequis : vecteurs, transposée, produit matrice-vecteur et racine carrée. Durée indicative : 3 h, exercices compris.
+Prérequis : vecteurs, transposée, produit matrice-vecteur et racine carrée.
 
 ---
 

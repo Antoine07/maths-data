@@ -2,7 +2,7 @@
 
 ## Objectif et prérequis
 
-**Après :** [classification et rétropropagation](../../Slides/avance/06_retropropagation.md) et [probabilités essentielles](../../Slides/stat/probabilites.md). **Durée :** 60 min.
+**Après :** [classification et rétropropagation](../../Slides/avance/06_retropropagation.md) et [probabilités essentielles](../../Slides/stat/probabilites.md).
 
 **Objectif :** relier fréquence de base, précision, rappel et exactitude. Le problème introduit la formule de Bayes à partir d'un tableau d'effectifs.
 

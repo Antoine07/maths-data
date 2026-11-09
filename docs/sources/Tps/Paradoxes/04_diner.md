@@ -2,7 +2,7 @@
 
 ## Objectif et prérequis
 
-**Après :** [probabilités essentielles](../../Slides/stat/probabilites.md). **Durée :** 45 min.
+**Après :** [probabilités essentielles](../../Slides/stat/probabilites.md).
 
 **Objectif :** distinguer disponibilité individuelle, nombre moyen de personnes présentes et disponibilité simultanée du groupe.
 

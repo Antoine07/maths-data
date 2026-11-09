@@ -17,8 +17,6 @@ Prédire une consommation avec plusieurs variables, résoudre les moindres carr�
 
 Nous allons expliquer ce que calcule un solveur, pourquoi une inversion explicite est fragile et pourquoi une bonne prédiction ne rend pas tous les coefficients interprétables.
 
-Durée indicative : 4 h avec les exercices et le jalon 2.
-
 ---
 
 ## Résumé général

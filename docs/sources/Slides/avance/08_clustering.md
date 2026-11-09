@@ -19,7 +19,7 @@ Expliquer et programmer les deux étapes de k-means, puis interpréter ses résu
 
 Prérequis : moyenne, distance euclidienne, centrage-réduction, indexation NumPy ; ACP pour la visualisation.
 
-Durée indicative : 3 h, exercices et atelier compris. Le calcul obligatoire utilise uniquement NumPy.
+Le calcul obligatoire utilise uniquement NumPy.
 
 ---
 

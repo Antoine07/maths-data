@@ -16,7 +16,7 @@ Le scénario est fictif ; l'horizon de 60 ans est fixé pour l'exercice et n'est
 
 **Prérequis :** [révisions d'algèbre](../../Slides/revision.md), multiplication et pourcentages. Aucune probabilité n'est nécessaire.
 
-**Durée indicative :** 45 minutes. **Travail attendu :** calcul manuel puis contrôle numérique.
+**Travail attendu :** calcul manuel puis contrôle numérique.
 
 ---
 

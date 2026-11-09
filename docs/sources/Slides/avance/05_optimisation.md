@@ -17,8 +17,6 @@ Implémenter une descente de gradient, expliquer son comportement et choisir une
 
 Nous distinguerons trois questions : le programme minimise-t-il l'objectif choisi ? Cet objectif est-il bien conditionné ? Le modèle prévoit-il correctement de nouvelles observations ?
 
-Durée indicative : 4 h avec les exercices et le jalon 5.
-
 ---
 
 ## Résumé général

@@ -17,7 +17,7 @@ Calculer un gradient vectorisé, lire une Jacobienne et propager une dérivée �
 
 Nous vérifierons les formules par différences finies avant de les utiliser pour entraîner un modèle.
 
-Prérequis : dérivées partielles, gradient, transposée, moindres carrés et produits matriciels. Durée indicative : 4 h.
+Prérequis : dérivées partielles, gradient, transposée, moindres carrés et produits matriciels.
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Objectif et prérequis
 
-**Après :** [optimisation](../../Slides/avance/05_optimisation.md). **Approfondissement facultatif :** 75 min.
+**Après :** [optimisation](../../Slides/avance/05_optimisation.md). **Approfondissement facultatif.**
 
 **Objectif :** distinguer un équilibre de choix individuels et un objectif collectif. Les graphes nécessaires sont introduits dans l'énoncé.
 

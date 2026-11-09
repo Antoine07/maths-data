@@ -2,7 +2,7 @@
 
 ## Objectif et prérequis
 
-**Après :** [statistiques descriptives](../../Slides/stat/01_stat_descriptive.md) et [probabilités essentielles](../../Slides/stat/probabilites.md). **Durée :** 45 min.
+**Après :** [statistiques descriptives](../../Slides/stat/01_stat_descriptive.md) et [probabilités essentielles](../../Slides/stat/probabilites.md).
 
 **Objectif :** distinguer une moyenne calculée par intervalle d'une moyenne observée à un instant choisi au hasard.
 

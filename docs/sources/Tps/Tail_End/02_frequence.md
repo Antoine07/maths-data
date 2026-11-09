@@ -14,7 +14,7 @@ Mais un déménagement et des emplois du temps différents pourraient rendre les
 
 **Prérequis :** [dérivation](../../Slides/01_derivation.md), exponentielle, logarithme et dérivée d'une fonction composée.
 
-**Durée indicative :** 60 à 75 minutes. Les notions nécessaires sur le cumul sont introduites ci-dessous.
+Les notions nécessaires sur le cumul sont introduites ci-dessous.
 
 ---
 

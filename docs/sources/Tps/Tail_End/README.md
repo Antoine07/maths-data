@@ -8,12 +8,12 @@ Les horizons sont des hypothèses de scénario. Ils ne sont ni des prévisions i
 
 ## Où les placer dans le parcours ?
 
-| Problème | Après quel cours ? | Question mathématique | Durée indicative |
-|---|---|---|---|
-| [1 — La moitié des années, combien de rencontres ?](01_rencontres.md) | Révisions d'algèbre | Produits, pourcentages, unités et changement de dénominateur | 45 min |
-| [2 — Et si les occasions devenaient moins fréquentes ?](02_frequence.md) | Dérivation | Exponentielle, fréquence, cumul et dérivée | 60 à 75 min |
-| [3 — Une rencontre peut-elle disparaître dans 99 % de variance ?](03_evenement_rare.md) | SVD, après statistiques et ACP | Centrage, projection, reconstruction et choix de métrique | 75 min |
-| [4 — Vingt-quatre demi-journées à répartir](04_planning.md) | Optimisation et régularisation | Contrainte linéaire, concavité et optimum entier | 75 min |
+| Problème | Après quel cours ? | Question mathématique |
+|---|---|---|
+| [1 — La moitié des années, combien de rencontres ?](01_rencontres.md) | Révisions d'algèbre | Produits, pourcentages, unités et changement de dénominateur |
+| [2 — Et si les occasions devenaient moins fréquentes ?](02_frequence.md) | Dérivation | Exponentielle, fréquence, cumul et dérivée |
+| [3 — Une rencontre peut-elle disparaître dans 99 % de variance ?](03_evenement_rare.md) | SVD, après statistiques et ACP | Centrage, projection, reconstruction et choix de métrique |
+| [4 — Vingt-quatre demi-journées à répartir](04_planning.md) | Optimisation et régularisation | Contrainte linéaire, concavité et optimum entier |
 
 ## Méthode commune
 

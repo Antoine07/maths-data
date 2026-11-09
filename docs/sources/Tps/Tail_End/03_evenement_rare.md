@@ -16,7 +16,7 @@ Le tableau est fictif et toutes les semaines sont connues pour cet exercice desc
 
 **Prérequis :** [centrage-réduction](../../Slides/stat/03_centrage_reduction.md), [ACP](../../Slides/stat/04_acp_intro.md) et [SVD](../../Slides/avance/03_svd_acp.md).
 
-**Durée indicative :** 75 minutes. Le sens des colonnes est choisi pour illustrer le problème ; il ne leur attribue pas de valeur universelle.
+Le sens des colonnes est choisi pour illustrer le problème ; il ne leur attribue pas de valeur universelle.
 
 ---
 

@@ -4,7 +4,7 @@
 
 **Après :** [révisions d'algèbre](../../Slides/revision.md), en prolongement du [problème des rencontres](../Tail_End/01_rencontres.md).
 
-**Durée :** 20 min. **Objectif :** convertir un petit temps quotidien en un ordre de grandeur cumulé, sans changer d'unité au milieu du raisonnement.
+**Objectif :** convertir un petit temps quotidien en un ordre de grandeur cumulé, sans changer d'unité au milieu du raisonnement.
 
 ## La situation
 

@@ -17,7 +17,7 @@ Après les [statistiques descriptives](01_stat_descriptive.md), un court bloc po
 
 Décrire un événement, calculer une probabilité simple, distinguer conditionnement et indépendance, puis vérifier un modèle par simulation.
 
-Prérequis : fractions, pourcentages et moyenne. Durée indicative : 60 min avec exercices courts. Les hypothèses de hasard seront toujours explicites.
+Prérequis : fractions, pourcentages et moyenne. Les hypothèses de hasard seront toujours explicites.
 
 ---
 

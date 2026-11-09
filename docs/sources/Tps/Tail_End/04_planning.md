@@ -14,7 +14,7 @@ Une visite consomme deux demi-journées, une sortie en consomme une. Ce sont des
 
 **Prérequis :** équations linéaires, dérivée du logarithme, dérivées composées et [optimisation](../../Slides/avance/05_optimisation.md).
 
-**Durée indicative :** 75 minutes. Le score proposé sert à travailler les mathématiques ; il ne mesure pas le bonheur.
+Le score proposé sert à travailler les mathématiques ; il ne mesure pas le bonheur.
 
 ---
 

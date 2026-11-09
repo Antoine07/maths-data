@@ -2,7 +2,7 @@
 
 ## Objectif et prérequis
 
-**Après :** [statistiques descriptives](../../Slides/stat/01_stat_descriptive.md). **Durée :** 45 min.
+**Après :** [statistiques descriptives](../../Slides/stat/01_stat_descriptive.md).
 
 **Objectif :** calculer des taux pondérés et identifier un changement de composition. Aucune probabilité avancée n'est nécessaire.
 

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="268" viewBox="0 0 760 268" role="img" aria-labelledby="titre description">
+  <title id="titre">Pourquoi commencer à p carré : exemple avec p égal à 7</title>
+  <desc id="description">Avant de traiter 7, les multiples 14, 21, 28, 35 et 42 sont déjà barrés : ils sont divisibles par 2, 3 ou 5. Le premier multiple de 7 encore non barré est 49, égal à 7 fois 7. Cet exemple suppose une borne du crible au moins égale à 49 ; jusqu'à 30, on s'arrête après 5.</desc>
+  <rect x="1" y="1" width="758" height="266" rx="18" fill="#f7f8f2" stroke="#dbe2d1"/>
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="380" y="30" font-size="21" font-weight="700" fill="#203b36">Au passage de 7, commencer à 7 × 7 = 49</text>
+    <text x="380" y="54" font-size="15" fill="#63716a">Exemple avec une borne au moins égale à 49.</text>
+    <g>
+      <title>14, égal à 2 fois 7 : déjà barré au passage de 2</title>
+      <rect x="20" y="76" width="110" height="126" rx="12" fill="#edf0e7" stroke="#dbe2d1"/>
+      <text x="75" y="100" font-size="17" fill="#63716a">2 × 7</text>
+      <text x="75" y="145" font-size="34" font-weight="700" fill="#63716a">14</text>
+      <path d="M49 151 L101 119" stroke="#63716a" stroke-width="2.5"/>
+      <text x="75" y="184" font-size="16" fill="#275c47">barré par 2</text>
+    </g>
+    <g>
+      <title>21, égal à 3 fois 7 : déjà barré au passage de 3</title>
+      <rect x="142" y="76" width="110" height="126" rx="12" fill="#edf0e7" stroke="#dbe2d1"/>
+      <text x="197" y="100" font-size="17" fill="#63716a">3 × 7</text>
+      <text x="197" y="145" font-size="34" font-weight="700" fill="#63716a">21</text>
+      <path d="M171 151 L223 119" stroke="#63716a" stroke-width="2.5"/>
+      <text x="197" y="184" font-size="16" fill="#275c47">barré par 3</text>
+    </g>
+    <g>
+      <title>28, égal à 4 fois 7 et à 2 fois 14 : déjà barré au passage de 2</title>
+      <rect x="264" y="76" width="110" height="126" rx="12" fill="#edf0e7" stroke="#dbe2d1"/>
+      <text x="319" y="100" font-size="17" fill="#63716a">4 × 7</text>
+      <text x="319" y="145" font-size="34" font-weight="700" fill="#63716a">28</text>
+      <path d="M293 151 L345 119" stroke="#63716a" stroke-width="2.5"/>
+      <text x="319" y="184" font-size="16" fill="#275c47">barré par 2</text>
+    </g>
+    <g>
+      <title>35, égal à 5 fois 7 : déjà barré au passage de 5</title>
+      <rect x="386" y="76" width="110" height="126" rx="12" fill="#edf0e7" stroke="#dbe2d1"/>
+      <text x="441" y="100" font-size="17" fill="#63716a">5 × 7</text>
+      <text x="441" y="145" font-size="34" font-weight="700" fill="#63716a">35</text>
+      <path d="M415 151 L467 119" stroke="#63716a" stroke-width="2.5"/>
+      <text x="441" y="184" font-size="16" fill="#275c47">barré par 5</text>
+    </g>
+    <g>
+      <title>42, égal à 6 fois 7 et à 2 fois 21 : déjà barré au passage de 2</title>
+      <rect x="508" y="76" width="110" height="126" rx="12" fill="#edf0e7" stroke="#dbe2d1"/>
+      <text x="563" y="100" font-size="17" fill="#63716a">6 × 7</text>
+      <text x="563" y="145" font-size="34" font-weight="700" fill="#63716a">42</text>
+      <path d="M537 151 L589 119" stroke="#63716a" stroke-width="2.5"/>
+      <text x="563" y="184" font-size="16" fill="#275c47">barré par 2</text>
+    </g>
+    <g>
+      <title>49, égal à 7 fois 7 : premier multiple à barrer au passage de 7</title>
+      <rect x="630" y="76" width="110" height="126" rx="12" fill="#ddf18a" stroke="#275c47" stroke-width="2"/>
+      <text x="685" y="100" font-size="17" font-weight="700" fill="#203b36">7 × 7</text>
+      <text x="685" y="145" font-size="34" font-weight="700" fill="#203b36">49</text>
+      <text x="685" y="184" font-size="16" font-weight="700" fill="#275c47">à barrer ici</text>
+    </g>
+    <path d="M26 213 V222 H612 V213" fill="none" stroke="#8d998d" stroke-width="1.5"/>
+    <text x="319" y="248" font-size="16" fill="#63716a">Déjà éliminés avec les nombres premiers 2, 3 et 5.</text>
+    <text x="685" y="244" font-size="20" font-weight="700" fill="#275c47">p²</text>
+  </g>
+</svg>

@@ -212,6 +212,12 @@ Un entier **composé** est un entier supérieur ou égal à 2 qui n'est pas prem
 
 **Pourquoi commencer à $p^2$ ?** Les multiples $2p, 3p, \ldots, (p-1)p$ ont déjà été barrés par un facteur premier plus petit que $p$.
 
+![Au passage de 7, les multiples 14, 21, 28, 35 et 42 sont déjà barrés par 2, 3 ou 5. Le premier nouveau multiple à barrer est 49, égal à 7 au carré.](images/crible-depart-carre.svg)
+
+**À lire sur le dessin :** $28=4\times7=2\times14$ et $42=6\times7=2\times21$ ont déjà été barrés au passage de 2. Le multiplicateur n'a pas besoin d'être premier.
+
+Ici, on imagine un crible allant au moins jusqu'à 49. **Pour la grille limitée à 30, on s'arrête après 5**, puisque $7^2>30$.
+
 ---
 
 # Le crible · Du raisonnement au code

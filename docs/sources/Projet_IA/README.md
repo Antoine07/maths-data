@@ -25,6 +25,8 @@ Les données sont pédagogiques : aucune conclusion opérationnelle sur un bâti
 5. Comparer résolution directe, descente et pénalité L2.
 6. Comparer une classification logistique et un petit réseau.
 
+Deux ateliers transversaux complètent les six jalons : vérifier la cohérence d'un réordonnement des journées et regrouper des profils sans utiliser leur consommation.
+
 ## Modèle de données ou objets principaux
 
 Le fichier [consommation.csv](data/consommation.csv) contient :
@@ -140,6 +142,43 @@ Après [Classification et rétropropagation](../Slides/avance/06_retropropagatio
 **Livrable :** pertes de validation, matrices de confusion, fréquences des classes et commentaire des erreurs. **Erreurs à observer :** fuite de la cible, surinterprétation de 48 exemples et affirmation systématique que le réseau est meilleur.
 
 ---
+
+## Ateliers transversaux
+
+### Atelier A — Groupes, symétries et cohérence des lignes
+
+Après [Groupes, symétries et données](../Slides/avance/07_groupes_symetries.md), puis en reprise après le réseau du jalon 6.
+
+**Notions mobilisées :** composition, identité, inverse, invariance et équivariance. **Fonctionnalité à produire :** contrôler qu'une prédiction indépendante par ligne suit la permutation de cette ligne et que l'erreur moyenne ne change pas si les cibles suivent aussi.
+
+**Consigne :** vérifier les quatre rotations de $C_4$ sur des coordonnées du plan, puis revenir à la table énergétique. Fixer les partitions chronologiques avant de permuter les seules lignes d'apprentissage. Réutiliser les mêmes colonnes dans le même ordre. Ne pas appliquer une rotation arbitraire aux colonnes température, occupation et équipements : elle ne conserve pas leur sens métier.
+
+**Résultat vérifiable :** identité après quatre quarts de tour ; compositions et inverses corrects ; prédictions initiales retrouvées par la permutation inverse ; erreur identique avec les cibles alignées. **Erreurs à observer :** puissance coefficient par coefficient, cibles désalignées, confusion entre changement de représentation et changement de tâche.
+
+**Livrable :** contrôles NumPy et deux exemples de transformations admissibles ou interdites. La [correction exécutable](groupes_symetries.py) utilise des poids fixés pour isoler le contrôle de cohérence : elle ne prétend pas ajuster un modèle prédictif.
+
+### Atelier B — Clustering des journées après le jalon 3
+
+Après [Clustering et profils de consommation](../Slides/avance/08_clustering.md).
+
+**Notions mobilisées :** distance euclidienne, standardisation, centroïdes, inertie et alternance de Lloyd. **Fonctionnalité à produire :** apprendre des profils sur les jours 1–144 et affecter les jours 145–192 à ces profils.
+
+**Consigne :** continuer `depart.py` en réutilisant son chargement et ses partitions. Choisir les seules colonnes température, occupation et équipements. Ajuster les échelles uniquement sur l'apprentissage ; traiter les colonnes constantes. Comparer $k=2,3,4$, plusieurs initialisations et des graines documentées. Garder le centre précédent en cas de cluster vide et signaler cette limite. Sur validation, appliquer les échelles et les centres figés, sans les réapprendre ; ne pas consulter le test pour régler l'atelier.
+
+**Résultat vérifiable :** une étiquette par ligne, centres finis, historique d'inertie non croissant et affectations cohérentes avec les centres retournés. Examiner l'indicateur de convergence si la limite d'itérations est atteinte. Reconvertir les centres en °C, occupation et indice d'équipements pour les commenter. Comparer aussi les effectifs d'apprentissage et de validation : la saisonnalité simulée peut changer leur répartition.
+
+**Livrable :** tableau pour les trois valeurs de $k$, effectifs, centres en unités initiales, graines et justification d'une description utile. **Erreurs à observer :** consommation incluse dans les distances, validation utilisée pour réajuster, numéros pris pour des niveaux ordonnés et plus grand $k$ choisi uniquement grâce à l'inertie. Il n'existe pas de « vrai k » imposé pour ces données.
+
+La [correction exécutable](clustering.py) fournit `affecter`, `lloyd`, `kmeans` et un bilan des trois valeurs de $k$. Elle ne lit pas la consommation pour construire les groupes et ne consulte pas les journées de test.
+
+Depuis le dossier décompressé `Projet_IA` :
+
+```sh
+python3 groupes_symetries.py
+python3 clustering.py
+```
+
+**Extensions facultatives :** projeter les clusters avec l'ACP apprise au jalon 3 ; comparer les partitions à permutation de numéros près ; discuter les symétries du réseau après le jalon 6. L'ajout de ces ateliers conserve les six étapes du projet initial.
 
 ## Livrables
 

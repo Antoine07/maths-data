@@ -4,13 +4,15 @@ Ouvrir `index.html` dans un navigateur. Le dossier `docs/` peut aussi être publ
 
 Ce dossier est la distribution autonome des supports. Les instructions de génération ci-dessous concernent le projet de travail complet : les scripts de construction et les originaux ne sont pas inclus dans le dépôt de publication. Les copies Markdown consultables sont livrées dans `sources/`.
 
-Les 25 présentations reprennent les sources de `Slides/` et les supports HTML historiques. Six chapitres avancés relient l'algèbre et l'analyse à l'apprentissage automatique ; un court support de probabilités prépare les nouveaux problèmes. Les TP et corrections sont accessibles depuis « Exercices & ressources ».
+Les 27 présentations reprennent les sources de `Slides/` et les supports HTML historiques. Huit chapitres avancés relient l'algèbre et l'analyse à l'apprentissage automatique ; un court support de probabilités prépare les nouveaux problèmes. Les TP et corrections sont accessibles depuis « Exercices & ressources ».
 
 Les nouveaux contenus sont intercalés dans le parcours : géométrie et moindres carrés après les matrices ; SVD après les statistiques et l'ACP ; calcul différentiel, optimisation et rétropropagation après le gradient. Le projet de consommation électrique se télécharge avec son CSV, son code et ses notebooks depuis la page des ressources.
 
+« Groupes, symétries et données » s'insère après le calcul matriciel : rotations du carré, composition, inverses, invariance et équivariance, puis contrôle du réordonnement des lignes du projet. Une ouverture reprend ces notions après la rétropropagation. « Clustering et profils de consommation » suit la SVD : k-means en NumPy, mise à l'échelle, inertie, plusieurs départs et interprétation prudente. Chaque chapitre comprend trois exercices corrigés et cinq QCM. Les scripts `projet-ia/groupes_symetries.py` et `projet-ia/clustering.py` sont inclus dans l'archive ; les six jalons du projet restent complétés par ces deux ateliers. Le fil rouge reste en fin de page d'accueil.
+
 Les révisions comprennent deux démonstrations guidées : le crible d'Ératosthène après les priorités de calcul, puis la somme de deux entiers pairs après la factorisation. Chaque activité propose des indices et une correction dépliable. Le programme Python du crible et la preuve Lean 4 avec Mathlib sont disponibles dans `exemples/revision/`. La grille du crible reste compacte et peut s'ouvrir en grand.
 
-Les supports incluent 25 figures SVG générées avec Matplotlib : tangentes, limites, transformations, résidus, ACP, courbure, optimisation, classification et problèmes. Cliquer sur une figure permet de l'ouvrir en grand.
+Les supports incluent 28 figures SVG générées avec Matplotlib : tangentes, limites, transformations, résidus, ACP, courbure, optimisation, classification, rotations, clustering et problèmes. Cliquer sur une figure permet de l'ouvrir en grand.
 
 Huit illustrations compactes accompagnent les couvertures Matrices, Gradient, Statistiques, Corrélation, Centrage-réduction, ACP, Probabilités et Réseau. Sept dessins complètent les transformations, les limites, l'histogramme, la boîte à moustaches et les degrés de liberté. Leur hauteur est plafonnée dans la page : 220 px pour les couvertures et 250 px pour ces dessins de cours, puis 150 et 190 px sur mobile. Les SVG restent accessibles en grand au clic.
 
@@ -63,4 +65,4 @@ Les fichiers Markdown font référence pour les contenus ; leurs copies sous `so
 
 Les formules, les polices KaTeX, les figures et les styles sont locaux. Les illustrations web du chapitre covariance/ANOVA/ACP ont été remplacées par des figures originales calculées, dont les légendes distinguent les données du projet et les exemples illustratifs.
 
-`npm run check` vérifie les liens locaux, les ancres, les formules, les fichiers de style, la structure de navigation, la syntaxe JavaScript, l'ordre des prérequis et l'intégrité des copies des sources. `npm run check:ia` exécute les exemples NumPy des six chapitres, le notebook corrigé et les contrôles numériques du projet. Ces contrôles ne remplacent pas une vérification visuelle dans un navigateur.
+`npm run check` vérifie les liens locaux, les ancres, les formules, les fichiers de style, la structure de navigation, la syntaxe JavaScript, l'ordre des prérequis et l'intégrité des copies des sources. `npm run check:ia` exécute les exemples NumPy des huit chapitres, les ateliers, le notebook corrigé et les contrôles numériques du projet, y compris depuis l'archive téléchargée. Ces contrôles ne remplacent pas une vérification visuelle dans un navigateur.

@@ -405,8 +405,8 @@ Objectif : distinguer la fidélité globale d'une reconstruction et la préserva
 
 La SVD relie rang, stabilité, ACP et reconstruction.
 Réduire la dimension est un choix mesurable, pas une obligation.
-Nous allons maintenant apprendre les paramètres d'un modèle en calculant comment son erreur varie.
+Nous pouvons maintenant regrouper les observations et interpréter les profils obtenus, avant d'apprendre les paramètres des modèles prédictifs.
 
-Reprendre [gradient et Hessienne](../gradient.md), puis [calcul différentiel matriciel](04_calcul_differentiel.md).
+[Continuer : clustering et profils de consommation](08_clustering.md). Le parcours reprendra ensuite le [gradient et la Hessienne](../gradient.md).
 
 Références : [NumPy — SVD](https://numpy.org/doc/stable/reference/generated/numpy.linalg.svd.html), [scikit-learn — ACP](https://scikit-learn.org/stable/modules/decomposition.html#pca).

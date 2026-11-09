@@ -12,6 +12,8 @@ print("Données :", X.shape, y.shape)
 # Jalon 1 : définir une distance et comparer des journées sans utiliser y.
 # Jalon 2 : ajouter la constante et résoudre les moindres carrés sur train.
 # Jalon 3 : après le cours de statistiques, standardiser et réaliser la SVD.
+# Atelier clustering après le jalon 3 : comparer k=2,3,4 avec clustering.py.
+# Atelier symétries : contrôler les permutations avec groupes_symetries.py.
 # Jalon 4 : écrire la perte et son gradient, puis les vérifier numériquement.
 # Jalon 5 : entraîner, choisir lambda sur validation et figer les paramètres.
 # Jalon 6 : classifier les journées, comparer au modèle de référence sur test.

@@ -4,8 +4,7 @@
 
 Dans cet exercice, vous allez :
 
-1. **simuler des données de température** sur 48 heures, utilisez une sinusoïde chaude en journée et froide la nuit, ajoutez du bruit avec une fonction normale.
-*La loi normale est utilisée parce qu'elle modélise bien les petits écarts fréquents et les grands écarts rares, ce qui correspond au comportement naturel de nombreuses données physiques.*
+1. **simuler des données de température** sur 48 heures avec un cycle sinusoïdal idéal et un bruit gaussien. La loi normale est ici une hypothèse de simulation ; elle ne décrit pas à elle seule toute la variabilité météo réelle.
 2. **nettoyer** ces données ;
 3. **construire une matrice NumPy** représentant les mesures ;
 4. **calculer la dérivée numérique** de la température ;
@@ -34,7 +33,9 @@ Pour guider votre travail, vous êtes autorisés à utiliser **uniquement** les 
 * `np.sin`, `np.cos`
 * `np.abs`
 * `np.diff`
-* `np.mean`
+* `np.mean`, `np.std`, `np.var`
+* `np.random.seed`, `np.random.normal`
+* Constante `np.pi`
 
 ###  Extraction / filtrage
 
@@ -42,10 +43,11 @@ Pour guider votre travail, vous êtes autorisés à utiliser **uniquement** les 
   `mask = (T < seuil)`
   `T[mask] = valeur`
 * `np.where`
+* `np.argmax`, `np.argmin` (indices des extrema)
 
 ### Affichage / informations
 
-* `.shape`
+* `.shape`, `.size`
 * `T[:10]` (slicing)
 * `print`
 
@@ -56,6 +58,7 @@ Pour guider votre travail, vous êtes autorisés à utiliser **uniquement** les 
 * `plt.figure`
 * `plt.subplot`
 * `plt.grid`
+* `plt.xlabel`, `plt.ylabel`, `plt.title`, `plt.legend`
 * `plt.show`
 
 Ces fonctions suffisent pour réaliser tout le TP.
@@ -68,14 +71,26 @@ Vous devez :
 
 1. Créer un vecteur `t` contenant les heures de 0 à 47.
 
-2. Simuler une température réaliste à l'aide :
+2. Exécuter le modèle simplifié suivant (temps en heures, températures en °C) :
 
-   * d'une **sinusoïde** (variation jour/nuit),
-   * d'un **bruit aléatoire** (variations naturelles).
+```python
+import numpy as np
 
-3. Visualiser les 10 premières valeurs.
+t = np.arange(48, dtype=float)
+np.random.seed(7)
+noise = np.random.normal(loc=0.0, scale=0.5, size=t.size)
+T_raw = 10 + 5 * np.sin((2*np.pi/24)*t) + noise
+```
 
-> *But : obtenir une série temporelle bruitée.*
+3. Afficher les 10 premières valeurs, puis tracer séparément le signal idéal, le bruit et `T_raw`.
+4. Expliquer pourquoi $2\pi/24$ donne une période de 24 h. Remplacer 24 par 12 en gardant **le même tableau `noise`**, puis comparer les cycles, les amplitudes et les niveaux centraux.
+5. Donner l'écart-type et la variance **théoriques** du bruit, avec leurs unités, puis comparer à `np.std(noise)` et `np.var(noise)` sur cet échantillon. Justifier les éventuelles différences.
+
+**Réserve scientifique :** le sinus représente un cycle quotidien idéal, et le bruit simule des fluctuations aléatoires. Le cycle réel n'est pas parfaitement sinusoïdal. Dans cette formule, le maximum sans bruit est à 6 h ; pour le placer à 14 h, on pourrait utiliser $t-8$ dans le sinus. La phase, la période et l'amplitude jouent des rôles différents.
+
+[Reprendre les questions et la correction de l'exercice 5](../../Slides/01_derivation.md).
+
+> But : obtenir et comprendre une série temporelle simulée, sans la confondre avec des mesures météo réelles.
 
 ---
 
@@ -88,7 +103,7 @@ température > 35
 2. Créer un masque booléen.
 3. Remplacer toute valeur aberrante par la moyenne de ses deux voisins immédiats.
 
-> *But : obtenir une série réaliste et continue.*
+> Le modèle peut ne produire aucune valeur hors de ces seuils : c'est un résultat valide. Pour tester le nettoyage, injecter volontairement une anomalie dans une copie de la série. Préciser le traitement des extrémités et des anomalies voisines avant de remplacer des valeurs.
 
 ---
 
@@ -121,15 +136,17 @@ Puis afficher :
 
 # **Dérivée numérique**
 
-On calcule une dérivée discrète :
+On approche la dérivée par un taux de variation entre deux mesures :
 
 $$
-T'(t_i) \approx T(t_{i+1}) - T(t_i)
+T'(t_i) \approx \frac{T(t_{i+1}) - T(t_i)}{t_{i+1}-t_i}
 $$
+
+L'écart de temps vaut ici 1 h : la différence de températures donne numériquement un taux en °C/h. Sur un autre pas, il faut diviser par `np.diff(t)`. Les 48 mesures produisent 47 taux, associés aux intervalles entre mesures.
 
 Vous devez :
 
-1. Utiliser `np.diff` pour obtenir toutes les variations ;
+1. Utiliser `np.diff(T) / np.diff(t)` pour obtenir ces taux ;
 2. Créer un vecteur des heures correspondantes ;
 3. Visualiser les 10 premières valeurs de la dérivée.
 
@@ -223,3 +240,6 @@ Ajouter dans votre rapport :
 3. Quelles limites a le nettoyage par moyenne locale ?
 4. Comment améliorer l'analyse (ex : moyenne glissante) ?
 5. Comment généraliser ce TP à des données météo réelles ?
+6. Quel lien unit période, fréquence et pulsation ? Pourquoi une période de 12 h double-t-elle la fréquence du signal de 24 h ?
+7. Pourquoi `scale=0.5` correspond-il à une variance de 0,25 °C² ? Pourquoi ce n'est pas une borne du bruit ?
+8. Pourquoi simuler une série n'est-il pas déjà prédire ses valeurs futures ? Comment préserver l'ordre chronologique lors d'une future évaluation ?

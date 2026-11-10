@@ -1,0 +1,261 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Entraîner le réseau avec PyTorch · Maths & IA</title><link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="../assets/slides.css"><link rel="stylesheet" href="../assets/katex/katex.min.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page" data-deck="maths-ia/07_entrainer_pytorch"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><nav class="header-actions" aria-label="Navigation principale"><a class="back-link" href="index.html">Les deux semaines</a><a class="back-link" href="programme.html">Programme</a><a class="back-link" href="examen.html">Examen</a></nav></header><main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">S2 · Michel 2</p><h1>Entraîner le réseau avec PyTorch</h1><p>Tenseurs, logits, autograd et boucle d&#39;entraînement reproductible.</p></div><span class="chapter-count">26 slides</span></div><div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d'affichage"><button id="mode-slides" aria-pressed="true">Slides</button><button id="mode-reading" aria-pressed="false">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire</button><button class="text-button" id="fullscreen">Plein écran</button><button class="text-button" id="print">Imprimer / PDF</button></div></div><div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 26</span><span id="progress-label">4 %</span></div><progress id="progress" max="26" value="1" aria-label="Progression du chapitre"></progress><div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CETTE SÉANCE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Entraîner le réseau avec PyTorch</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Objectif</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Résumé général</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Concepts essentiels — Tenseurs et paramètres</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>Lecture des formules — Retrouver les dimensions</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Concepts essentiels — Logits et perte binaire</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Explication détaillée — Ce que fait autograd</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Lecture du code — Une boucle minimale</span></a><a class="slide-link" href="#9" data-slide-link="9"><small>09</small><span>Exemple concret — Le réseau du fil rouge</span></a><a class="slide-link" href="#10" data-slide-link="10"><small>10</small><span>Concepts essentiels — Évaluer pendant l'apprentissage</span></a><a class="slide-link" href="#11" data-slide-link="11"><small>11</small><span>Algorithme expliqué — Entraîner le réseau du projet</span></a><a class="slide-link" href="#12" data-slide-link="12"><small>12</small><span>Erreurs fréquentes</span></a><a class="slide-link" href="#13" data-slide-link="13"><small>13</small><span>Exercice 1 — Lire les formes d'un réseau</span></a><a class="slide-link" href="#14" data-slide-link="14"><small>14</small><span>Correction — Lire les formes d'un réseau</span></a><a class="slide-link" href="#15" data-slide-link="15"><small>15</small><span>Exercice 2 — Observer l'accumulation des gradients</span></a><a class="slide-link" href="#16" data-slide-link="16"><small>16</small><span>Correction — Observer l'accumulation des gradients</span></a><a class="slide-link" href="#17" data-slide-link="17"><small>17</small><span>Exercice 3 — Corriger et contrôler un entraînement</span></a><a class="slide-link" href="#18" data-slide-link="18"><small>18</small><span>Correction — Corriger et contrôler un entraînement</span></a><a class="slide-link" href="#19" data-slide-link="19"><small>19</small><span>Projet fil rouge</span></a><a class="slide-link" href="#20" data-slide-link="20"><small>20</small><span>Projet fil rouge — Livrables et validation</span></a><a class="slide-link" href="#21" data-slide-link="21"><small>21</small><span>Cas d'usage réels</span></a><a class="slide-link" href="#22" data-slide-link="22"><small>22</small><span>Fiche de révision</span></a><a class="slide-link" href="#23" data-slide-link="23"><small>23</small><span>Questions de révision</span></a><a class="slide-link" href="#24" data-slide-link="24"><small>24</small><span>QCM — Questions 1 à 2</span></a><a class="slide-link" href="#25" data-slide-link="25"><small>25</small><span>QCM — Questions 3 à 5</span></a><a class="slide-link" href="#26" data-slide-link="26"><small>26</small><span>Résumé final</span></a></nav><p><a href="supports/07_entrainer_pytorch.md" download>Support Markdown ↓</a></p><p><a href="pratique.zip" download>Projet et notebooks ↓</a></p></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">S2 · Michel 2 <span class="pill">1 / 26</span></p><div class="prose">
+<h1 id="entra%C3%AEner-le-r%C3%A9seau-avec-pytorch">Entraîner le réseau avec PyTorch</h1>
+<p>S2 · Michel 2 · Michel</p>
+<p>Tenseurs, logits, autograd et boucle d'entraînement reproductible.</p>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2" hidden><p class="question-kicker" id="slide-label-2">S2 · Michel 2 <span class="pill">2 / 26</span></p><div class="prose">
+<h2 id="objectif">Objectif</h2>
+<p>Traduire le réseau NumPy en PyTorch, expliquer autograd et exécuter une boucle d'entraînement correcte. Choisir les itérations et réglages sur validation.</p>
+<p><strong>Prérequis :</strong> Propagation avant, logits, règle de chaîne, descente de gradient, pénalité et préparation des partitions. PyTorch CPU est installé dans l'environnement.</p>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3" hidden><p class="question-kicker" id="slide-label-3">S2 · Michel 2 <span class="pill">3 / 26</span></p><div class="prose">
+<h2 id="r%C3%A9sum%C3%A9-g%C3%A9n%C3%A9ral">Résumé général</h2>
+<p>PyTorch représente les tableaux par des tenseurs et peut calculer automatiquement les gradients d'un calcul suivi. Un module contient les paramètres ; une perte mesure les erreurs ; l'optimiseur utilise les gradients. Le même réseau et les mêmes partitions sont conservés.</p>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4" hidden><p class="question-kicker" id="slide-label-4">S2 · Michel 2 <span class="pill">4 / 26</span></p><div class="prose">
+<h2 id="concepts-essentiels--tenseurs-et-param%C3%A8tres">Concepts essentiels — Tenseurs et paramètres</h2>
+<p>Un tenseur représente un tableau de nombres, avec une forme et un type. Pour nos calculs, les entrées et étiquettes deviennent des tenseurs flottants <code>float32</code>.</p>
+<p>Un <code>nn.Module</code> rassemble des opérations et des paramètres. <code>nn.Linear(3,4)</code> transforme trois entrées en quatre sorties et contient un biais par sortie.</p>
+<p>Les paramètres d'une couche PyTorch sont déjà suivis pour le calcul des gradients. Les entrées n'ont pas besoin de demander un gradient pour entraîner les poids.</p>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5" hidden><p class="question-kicker" id="slide-label-5">S2 · Michel 2 <span class="pill">5 / 26</span></p><div class="prose">
+<h2 id="lecture-des-formules--retrouver-les-dimensions">Lecture des formules — Retrouver les dimensions</h2>
+<p>Dans les supports NumPy, une couche s'écrit <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mi>W</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">XW+b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> avec W de forme (entrées, sorties). <code>nn.Linear</code> stocke au contraire ses poids dans la forme (sorties, entrées) et calcule l'équivalent de <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><msup><mi>W</mi><mi>T</mi></msup><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">XW^T+b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9247em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>.</p>
+<p>Pour deux observations et trois entrées, X est de forme (2,3). Une couche 3→4 possède des poids (4,3), un biais (4,) et produit (2,4).</p>
+<p>Ces conventions représentent le même calcul. Il faut les connaître pour comparer les poids d'une réalisation NumPy et ceux d'une réalisation PyTorch.</p>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6" hidden><p class="question-kicker" id="slide-label-6">S2 · Michel 2 <span class="pill">6 / 26</span></p><div class="prose">
+<h2 id="concepts-essentiels--logits-et-perte-binaire">Concepts essentiels — Logits et perte binaire</h2>
+<p>Notre dernière couche retourne un logit par observation, de forme (n,1). Les cibles binaires doivent avoir la même forme et un type flottant.</p>
+<p><code>BCEWithLogitsLoss</code> combine une perte binaire et le traitement du logit de manière numérique stable. On lui fournit le logit directement, sans appliquer une sigmoïde avant.</p>
+<p>Pour lire les probabilités lors de l'évaluation, on applique ensuite <code>torch.sigmoid</code> aux logits. Pour un logit nul et une classe 1, la perte vaut <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>0,5</mn><mo stretchy="false">)</mo><mo>≈</mo><mn>0,693</mn></mrow><annotation encoding="application/x-tex">-\log(0{,}5)\approx0{,}693</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mord">0</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">5</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">693</span></span></span></span>.</p>
+</div></article>
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7" hidden><p class="question-kicker" id="slide-label-7">S2 · Michel 2 <span class="pill">7 / 26</span></p><div class="prose">
+<h2 id="explication-d%C3%A9taill%C3%A9e--ce-que-fait-autograd">Explication détaillée — Ce que fait autograd</h2>
+<p>Pendant le calcul suivi, PyTorch construit les dépendances nécessaires à la différentiation. <code>loss.backward()</code> calcule les gradients des paramètres ayant contribué à la perte.</p>
+<p>Les gradients sont accumulés dans <code>.grad</code>. <code>zero_grad()</code> remet ces accumulations à zéro avant le calcul suivant. <code>step()</code> utilise ensuite les gradients pour modifier les paramètres.</p>
+<p>Le trio ne remplit donc pas trois fois le même rôle : effacer l'ancien gradient, calculer le nouveau, puis mettre à jour.</p>
+</div></article>
+<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8" hidden><p class="question-kicker" id="slide-label-8">S2 · Michel 2 <span class="pill">8 / 26</span></p><div class="prose">
+<h2 id="lecture-du-code--une-boucle-minimale">Lecture du code — Une boucle minimale</h2>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> torch
+<span class="hljs-keyword">from</span> torch <span class="hljs-keyword">import</span> nn
+torch.manual_seed(<span class="hljs-number">7</span>)
+X = torch.tensor([[<span class="hljs-number">0.</span>, <span class="hljs-number">0.</span>], [<span class="hljs-number">0.</span>, <span class="hljs-number">1.</span>], [<span class="hljs-number">1.</span>, <span class="hljs-number">0.</span>], [<span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>]])
+y = torch.tensor([[<span class="hljs-number">0.</span>], [<span class="hljs-number">0.</span>], [<span class="hljs-number">1.</span>], [<span class="hljs-number">1.</span>]])
+modele, perte = nn.Linear(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>), nn.BCEWithLogitsLoss()
+optimiseur = torch.optim.SGD(modele.parameters(), lr=<span class="hljs-number">.1</span>)
+avant = <span class="hljs-built_in">float</span>(perte(modele(X), y).detach())
+<span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">50</span>):
+    optimiseur.zero_grad()
+    cout = perte(modele(X), y)
+    cout.backward()
+    optimiseur.step()
+apres = <span class="hljs-built_in">float</span>(perte(modele(X), y).detach())
+<span class="hljs-built_in">print</span>(apres &lt; avant)
+</code></pre>
+<p><strong>Fonctionnement :</strong> ce petit exemple illustre les opérations sur quatre points, avant de revenir au même jeu de consommation.</p>
+<p><strong>Résultat attendu :</strong> <code>True</code>. La perte diminue sur les quatre observations utilisées ; ce constat n'évalue pas une généralisation.</p>
+<p><strong>Erreur fréquente :</strong> oublier <code>zero_grad()</code>, inverser <code>backward()</code> et <code>step()</code>, ou transformer les logits en probabilités avant cette perte.</p>
+</div></article>
+<article class="slide-card" id="slide-9" aria-labelledby="slide-label-9" hidden><p class="question-kicker" id="slide-label-9">S2 · Michel 2 <span class="pill">9 / 26</span></p><div class="prose">
+<h2 id="exemple-concret--le-r%C3%A9seau-du-fil-rouge">Exemple concret — Le réseau du fil rouge</h2>
+<p>L'architecture est 3→4→1 : trois caractéristiques standardisées, une couche ReLU et une sortie logit. Une régression logistique 3→1 constitue une référence plus simple.</p>
+<p>La réalisation <code>entrainer</code> du fichier <code>parcours.py</code> apprend sur train et suit la validation. Elle garde une copie du meilleur état et le restaure après l'arrêt.</p>
+<p>La pénalité utilise la convention lambda/2 fois la somme des carrés des poids ; les biais sont placés dans un groupe non pénalisé. Cette convention correspond à l'ajout lambda×poids au gradient par SGD.</p>
+</div></article>
+<article class="slide-card" id="slide-10" aria-labelledby="slide-label-10" hidden><p class="question-kicker" id="slide-label-10">S2 · Michel 2 <span class="pill">10 / 26</span></p><div class="prose">
+<h2 id="concepts-essentiels--%C3%A9valuer-pendant-lapprentissage">Concepts essentiels — Évaluer pendant l'apprentissage</h2>
+<p><code>modele.train()</code> et <code>modele.eval()</code> fixent le comportement de modules qui dépendent du mode, comme dropout. Notre petit réseau linéaire/ReLU ne change pas de calcul entre ces modes, mais le protocole est déjà explicite.</p>
+<p><code>torch.no_grad()</code> désactive le suivi des gradients pour un calcul d'évaluation. Il ne remplace pas <code>eval()</code> : ces deux outils ont des rôles différents.</p>
+<p>Une graine fixée rend l'expérience plus facile à reproduire dans cet environnement CPU. Elle ne garantit pas des résultats identiques entre toutes les versions et toutes les machines.</p>
+</div></article>
+<article class="slide-card" id="slide-11" aria-labelledby="slide-label-11" hidden><p class="question-kicker" id="slide-label-11">S2 · Michel 2 <span class="pill">11 / 26</span></p><div class="prose">
+<h2 id="algorithme-expliqu%C3%A9--entra%C3%AEner-le-r%C3%A9seau-du-projet">Algorithme expliqué — Entraîner le réseau du projet</h2>
+<p><strong>Objectif :</strong> apprendre des paramètres et sélectionner une itération sans accès au test. <strong>Entrées :</strong> données préparées, architecture et grille annoncée.</p>
+<p><strong>Traitement :</strong> initialiser ; prédire sur train ; calculer la perte ; remettre les gradients à zéro ; rétropropager ; mettre à jour ; évaluer la validation sans gradient ; sauvegarder le meilleur état ; appliquer la règle d'arrêt.</p>
+<p><strong>Sortie :</strong> paramètres restaurés, pertes et réglages. Exemple : si la meilleure validation est à l'itération 120 et que l'arrêt survient à 200, le modèle rendu est celui de 120.</p>
+<p>Références : <a href="https://docs.pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html">PyTorch — autograd</a>, <a href="https://docs.pytorch.org/tutorials/beginner/basics/optimization_tutorial.html">boucle d'optimisation</a>.</p>
+</div></article>
+<article class="slide-card" id="slide-12" aria-labelledby="slide-label-12" hidden><p class="question-kicker" id="slide-label-12">S2 · Michel 2 <span class="pill">12 / 26</span></p><div class="prose">
+<h2 id="erreurs-fr%C3%A9quentes">Erreurs fréquentes</h2>
+<ul>
+<li>Passer des probabilités à BCEWithLogitsLoss.</li>
+<li>Fournir des cibles de forme (n,) face à une sortie (n,1).</li>
+<li>Accumuler les gradients par oubli de zero_grad.</li>
+<li>Croire que backward modifie automatiquement les poids.</li>
+<li>Garder les derniers poids sans appliquer la règle de sélection.</li>
+</ul>
+</div></article>
+<article class="slide-card exercise" id="slide-13" aria-labelledby="slide-label-13" hidden><p class="question-kicker" id="slide-label-13">S2 · Michel 2 <span class="pill">13 / 26</span></p><div class="prose">
+<h2 id="exercice-1--lire-les-formes-dun-r%C3%A9seau">Exercice 1 — Lire les formes d'un réseau</h2>
+<p><strong>Objectif pédagogique :</strong> Relier NumPy et PyTorch. <strong>Prérequis :</strong> Matrices et nn.Linear.</p>
+<p><strong>Énoncé :</strong> Pour X de forme (5,3), donner les formes des poids, biais et sorties d'une couche Linear(3,4), puis de Linear(4,1). Combien de paramètres ?</p>
+<p><strong>Contraintes :</strong> Préciser la convention de stockage PyTorch.</p>
+<p><strong>Livrable attendu :</strong> Tableau des formes et total.</p>
+<p><strong>Critères de réussite :</strong> Sortie finale (5,1) et 21 paramètres.</p>
+<details><summary>Indices gradués</summary>
+<ol>
+<li>Le poids PyTorch est stocké sorties×entrées.</li>
+<li>Chaque sortie d'une couche possède un biais.</li>
+</ol>
+</details>
+</div></article>
+<article class="slide-card" id="slide-14" aria-labelledby="slide-label-14" hidden><p class="question-kicker" id="slide-label-14">S2 · Michel 2 <span class="pill">14 / 26</span></p><div class="prose">
+<h2 id="correction--lire-les-formes-dun-r%C3%A9seau">Correction — Lire les formes d'un réseau</h2>
+<details><summary>Afficher la correction</summary>
+<p>Première couche : poids (4,3), biais (4,), sortie (5,4). Seconde : poids (1,4), biais (1,), sortie (5,1). Total 12+4+4+1=21. Les cinq observations ne multiplient pas le nombre de paramètres.</p>
+</details>
+</div></article>
+<article class="slide-card exercise" id="slide-15" aria-labelledby="slide-label-15" hidden><p class="question-kicker" id="slide-label-15">S2 · Michel 2 <span class="pill">15 / 26</span></p><div class="prose">
+<h2 id="exercice-2--observer-laccumulation-des-gradients">Exercice 2 — Observer l'accumulation des gradients</h2>
+<p><strong>Objectif pédagogique :</strong> Expliquer zero_grad. <strong>Prérequis :</strong> Dérivée d'un carré et autograd.</p>
+<p><strong>Énoncé :</strong> Créer w=2 avec suivi de gradient. Calculer deux fois la dérivée de (w−3)² sans effacer .grad, puis recommencer après effacement. Prédire les valeurs.</p>
+<p><strong>Contraintes :</strong> Recalculer une nouvelle perte avant chaque backward.</p>
+<p><strong>Livrable attendu :</strong> Trois gradients et une explication.</p>
+<p><strong>Critères de réussite :</strong> Valeurs -2, -4 puis -2.</p>
+<details><summary>Indices gradués</summary>
+<ol>
+<li>La dérivée vaut -2 au point w=2.</li>
+<li>Les appels à backward ajoutent leur contribution au gradient existant.</li>
+</ol>
+</details>
+</div></article>
+<article class="slide-card" id="slide-16" aria-labelledby="slide-label-16" hidden><p class="question-kicker" id="slide-label-16">S2 · Michel 2 <span class="pill">16 / 26</span></p><div class="prose">
+<h2 id="correction--observer-laccumulation-des-gradients">Correction — Observer l'accumulation des gradients</h2>
+<details><summary>Afficher la correction</summary>
+<p>La variable reste à 2 ; seuls ses gradients s'accumulent.</p>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> torch
+w = torch.tensor(<span class="hljs-number">2.</span>, requires_grad=<span class="hljs-literal">True</span>)
+((w-<span class="hljs-number">3</span>)**<span class="hljs-number">2</span>).backward()
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">float</span>(w.grad))
+((w-<span class="hljs-number">3</span>)**<span class="hljs-number">2</span>).backward()
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">float</span>(w.grad))
+w.grad = <span class="hljs-literal">None</span>
+((w-<span class="hljs-number">3</span>)**<span class="hljs-number">2</span>).backward()
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">float</span>(w.grad))
+</code></pre>
+<p>L'affichage est -2, -4, -2. Il n'y a aucune mise à jour des poids sans optimiseur ou opération explicite.</p>
+</details>
+</div></article>
+<article class="slide-card exercise" id="slide-17" aria-labelledby="slide-label-17" hidden><p class="question-kicker" id="slide-label-17">S2 · Michel 2 <span class="pill">17 / 26</span></p><div class="prose">
+<h2 id="exercice-3--corriger-et-contr%C3%B4ler-un-entra%C3%AEnement">Exercice 3 — Corriger et contrôler un entraînement</h2>
+<p><strong>Objectif pédagogique :</strong> Déboguer une boucle et garder le bon état. <strong>Prérequis :</strong> Perte, backward, step et validation.</p>
+<p><strong>Énoncé :</strong> Une boucle appelle step avant backward, n'efface jamais les gradients et retourne systématiquement les derniers poids. Décrire les corrections puis entraîner la référence logistique du projet.</p>
+<p><strong>Contraintes :</strong> Ne pas consulter le test. Utiliser la validation pour choisir l'itération.</p>
+<p><strong>Livrable attendu :</strong> Boucle ordonnée, courbes et itération sélectionnée.</p>
+<p><strong>Critères de réussite :</strong> Gradient remis à zéro avant le backward ; meilleur état restauré.</p>
+<details><summary>Indices gradués</summary>
+<ol>
+<li>Repartir de l'ordre calcul avant → perte → gradients → mise à jour.</li>
+<li>La meilleure validation peut précéder l'arrêt.</li>
+</ol>
+</details>
+</div></article>
+<article class="slide-card" id="slide-18" aria-labelledby="slide-label-18" hidden><p class="question-kicker" id="slide-label-18">S2 · Michel 2 <span class="pill">18 / 26</span></p><div class="prose">
+<h2 id="correction--corriger-et-contr%C3%B4ler-un-entra%C3%AEnement">Correction — Corriger et contrôler un entraînement</h2>
+<details><summary>Afficher la correction</summary>
+<p>La fonction fournie applique la séquence et garde le meilleur état.</p>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">from</span> parcours <span class="hljs-keyword">import</span> preparer, entrainer
+d = preparer()
+r = entrainer(d[<span class="hljs-string">&#x27;Z&#x27;</span>], d[<span class="hljs-string">&#x27;classes&#x27;</span>], architecture=<span class="hljs-string">&#x27;logistique&#x27;</span>, iterations=<span class="hljs-number">80</span>, patience=<span class="hljs-number">30</span>)
+<span class="hljs-keyword">assert</span> <span class="hljs-number">1</span> &lt;= r[<span class="hljs-string">&#x27;iteration&#x27;</span>] &lt;= <span class="hljs-built_in">len</span>(r[<span class="hljs-string">&#x27;trace&#x27;</span>])
+<span class="hljs-keyword">assert</span> r[<span class="hljs-string">&#x27;perte_validation&#x27;</span>] &lt;= r[<span class="hljs-string">&#x27;trace&#x27;</span>][<span class="hljs-number">0</span>, <span class="hljs-number">2</span>] + <span class="hljs-number">1e-7</span>
+<span class="hljs-built_in">print</span>(r[<span class="hljs-string">&#x27;architecture&#x27;</span>], r[<span class="hljs-string">&#x27;iteration&#x27;</span>])
+</code></pre>
+<p>Le résultat contient les paramètres restaurés et une trace. Aucun score test n'est calculé dans cette fonction.</p>
+</details>
+</div></article>
+<article class="slide-card" id="slide-19" aria-labelledby="slide-label-19" hidden><p class="question-kicker" id="slide-label-19">S2 · Michel 2 <span class="pill">19 / 26</span></p><div class="prose">
+<h2 id="projet-fil-rouge">Projet fil rouge</h2>
+<h3 id="contexte-et-utilisateurs">Contexte et utilisateurs</h3>
+<p>Une équipe de gestion énergétique souhaite comprendre des profils de journées et préparer une prévision. Les 240 journées sont entièrement simulées ; les résultats ne constituent pas une étude de bâtiment réel.</p>
+<h3 id="probl%C3%A8me-%C3%A0-r%C3%A9soudre-et-fonctionnalit%C3%A9s-cibles">Problème à résoudre et fonctionnalités cibles</h3>
+<p>Reprendre les données et le réseau de la semaine 1. Entraîner une logistique et le réseau 3→4→1 ; comparer la petite grille de pas sur validation et conserver les courbes.</p>
+<h3 id="mod%C3%A8le-de-donn%C3%A9es-et-architecture-attendue">Modèle de données et architecture attendue</h3>
+<p>Réutiliser <code>pratique/depart.py</code>, <code>pratique/parcours.py</code> et le même notebook. Les entrées sont température, occupation et équipements. La consommation est la cible, jamais une entrée du classificateur. Les jours 1–144 servent à apprendre, 145–192 à valider, 193–240 au bilan final.</p>
+</div></article>
+<article class="slide-card" id="slide-20" aria-labelledby="slide-label-20" hidden><p class="question-kicker" id="slide-label-20">S2 · Michel 2 <span class="pill">20 / 26</span></p><div class="prose">
+<h2 id="projet-fil-rouge--livrables-et-validation">Projet fil rouge — Livrables et validation</h2>
+<h3 id="jalon-reli%C3%A9-%C3%A0-la-s%C3%A9ance">Jalon relié à la séance</h3>
+<p>Annoncer les réglages et la graine, sauvegarder les pertes et le meilleur état, puis expliquer une ligne de la boucle. À observer : double sigmoïde, cibles de mauvaise forme, accumulation et test utilisé pour choisir.</p>
+<h3 id="livrables">Livrables</h3>
+<p>Ajouter le code et son commentaire au notebook existant. Conserver les dimensions, les unités, la partition utilisée et les contrôles effectués.</p>
+<h3 id="crit%C3%A8res-de-validation">Critères de validation</h3>
+<p>Le notebook se relance dans l'ordre. Les calculs manuels concordent avec le code. Les transformations et réglages ne sont jamais appris sur le test. Expliquer les erreurs plutôt que supprimer les observations gênantes.</p>
+<h3 id="extensions-facultatives">Extensions facultatives</h3>
+<p>Reprendre les supports du <a href="../index.html">catalogue général</a> pour approfondir une notion. Les groupes, l'ACP, la SVD et le clustering sont des compléments ; leur étude complète n'est pas nécessaire pour ce parcours court.</p>
+</div></article>
+<article class="slide-card" id="slide-21" aria-labelledby="slide-label-21" hidden><p class="question-kicker" id="slide-label-21">S2 · Michel 2 <span class="pill">21 / 26</span></p><div class="prose">
+<h2 id="cas-dusage-r%C3%A9els">Cas d'usage réels</h2>
+<p><strong>Organisation :</strong> service de gestion énergétique, scénario pédagogique.</p>
+<p><strong>Problème :</strong> transformer des mesures hétérogènes en une décision interprétable.</p>
+<p><strong>Solution étudiée :</strong> Tenseurs, logits, autograd et boucle d'entraînement reproductible.</p>
+<p><strong>Bénéfice attendu :</strong> comprendre les hypothèses et contrôler les résultats avant une utilisation sur des données réelles. Une amélioration numérique ne démontre pas une économie d'énergie ni une causalité.</p>
+</div></article>
+<article class="slide-card" id="slide-22" aria-labelledby="slide-label-22" hidden><p class="question-kicker" id="slide-label-22">S2 · Michel 2 <span class="pill">22 / 26</span></p><div class="prose">
+<h2 id="fiche-de-r%C3%A9vision">Fiche de révision</h2>
+<ul>
+<li>PyTorch conserve les conventions de calcul mais automatise les gradients.</li>
+<li>Logits et cibles doivent avoir des formes compatibles.</li>
+<li>zero_grad, backward et step remplissent des rôles distincts.</li>
+<li>L'état retenu provient de la validation et doit être restauré.</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-23" aria-labelledby="slide-label-23" hidden><p class="question-kicker" id="slide-label-23">S2 · Michel 2 <span class="pill">23 / 26</span></p><div class="prose">
+<h2 id="questions-de-r%C3%A9vision">Questions de révision</h2>
+<ol>
+<li>Que stocke nn.Linear dans weight ?</li>
+<li>Pourquoi ne faut-il pas appliquer la sigmoïde avant BCEWithLogitsLoss ?</li>
+<li>Que fait backward et que fait step ?</li>
+<li>Quelle différence existe entre eval et no_grad ?</li>
+<li>Pourquoi sauvegarder une copie de l'état et non une référence mutable ?</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-24" aria-labelledby="slide-label-24" hidden><p class="question-kicker" id="slide-label-24">S2 · Michel 2 <span class="pill">24 / 26</span></p><div class="prose">
+<h2 id="qcm--questions-1-%C3%A0-2">QCM — Questions 1 à 2</h2>
+<p><strong>1. Linear(3,4) stocke un poids de forme</strong></p>
+<p>A. (3,4) ; B. (4,3) ; C. (3,3) ; D. (4,4).</p>
+<p><strong>2. BCEWithLogitsLoss reçoit</strong></p>
+<p>A. les logits ; B. les décisions arrondies ; C. la matrice de confusion ; D. une sigmoïde déjà appliquée.</p>
+<details><summary>Afficher la correction</summary>
+<ol>
+<li>
+<p><strong>B</strong> : les sorties sont la première dimension des poids PyTorch</p>
+</li>
+<li>
+<p><strong>A</strong> : la fonction intègre le traitement stable des logits</p>
+</li>
+</ol>
+</details>
+</div></article>
+<article class="slide-card" id="slide-25" aria-labelledby="slide-label-25" hidden><p class="question-kicker" id="slide-label-25">S2 · Michel 2 <span class="pill">25 / 26</span></p><div class="prose">
+<h2 id="qcm--questions-3-%C3%A0-5">QCM — Questions 3 à 5</h2>
+<p><strong>3. backward calcule</strong></p>
+<p>A. le meilleur seuil ; B. la partition ; C. les gradients ; D. la sauvegarde finale.</p>
+<p><strong>4. step réalise</strong></p>
+<p>A. la création des étiquettes ; B. une nouvelle standardisation ; C. la sélection du test ; D. la mise à jour des paramètres.</p>
+<p><strong>5. Le meilleur état du projet est choisi sur</strong></p>
+<p>A. la dernière ligne du CSV ; B. la perte de validation ; C. l'exactitude test ; D. le nombre de paramètres seul.</p>
+<details><summary>Afficher la correction</summary>
+<ol start="3">
+<li>
+<p><strong>C</strong> : il remonte les dépendances du calcul</p>
+</li>
+<li>
+<p><strong>D</strong> : l'optimiseur utilise les gradients disponibles</p>
+</li>
+<li>
+<p><strong>B</strong> : la règle d'arrêt et de choix ne consulte pas le test</p>
+</li>
+</ol>
+</details>
+</div></article>
+<article class="slide-card" id="slide-26" aria-labelledby="slide-label-26" hidden><p class="question-kicker" id="slide-label-26">S2 · Michel 2 <span class="pill">26 / 26</span></p><div class="prose">
+<h2 id="r%C3%A9sum%C3%A9-final">Résumé final</h2>
+<p>PyTorch conserve les conventions de calcul mais automatise les gradients.<br />
+Logits et cibles doivent avoir des formes compatibles.<br />
+zero_grad, backward et step remplissent des rôles distincts.<br />
+L'état retenu provient de la validation et doit être restauré.</p>
+<p><a href="08_evaluer.html">Continuer le parcours</a> · <a href="programme.html">Programme et livrables</a>.</p>
+</div><div class="chapter-end"><p>Contrôler les acquis avant de continuer.</p><a class="button primary" href="08_evaluer.html">Évaluer et argumenter la généralisation →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 26</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections des exercices s'ouvrent au clic. Le corrigé de l'examen est remis séparément.</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA · Maths & IA</span><a href="index.html">Comprendre, construire et évaluer.</a></footer><script src="../assets/slides.js" defer></script></body></html>

@@ -1,0 +1,253 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Optimisation et régularisation · Maths & IA</title><link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="../assets/slides.css"><link rel="stylesheet" href="../assets/katex/katex.min.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page" data-deck="maths-ia/06_optimiser"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><nav class="header-actions" aria-label="Navigation principale"><a class="back-link" href="index.html">Les deux semaines</a><a class="back-link" href="programme.html">Programme</a><a class="back-link" href="examen.html">Examen</a></nav></header><main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">S2 · Maths E</p><h1>Optimisation et régularisation</h1><p>Descente, pas, pénalité et sélection des réglages sur validation.</p></div><span class="chapter-count">27 slides</span></div><div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d'affichage"><button id="mode-slides" aria-pressed="true">Slides</button><button id="mode-reading" aria-pressed="false">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire</button><button class="text-button" id="fullscreen">Plein écran</button><button class="text-button" id="print">Imprimer / PDF</button></div></div><div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 27</span><span id="progress-label">4 %</span></div><progress id="progress" max="27" value="1" aria-label="Progression du chapitre"></progress><div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CETTE SÉANCE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Optimisation et régularisation</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Objectif</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Résumé général</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Concepts essentiels — Paramètres et réglages</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>Lecture des formules — Descente de gradient</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Exemple concret — Trois comportements</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Voir les calculs</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Lecture des formules — Une pénalité L2 explicite</span></a><a class="slide-link" href="#9" data-slide-link="9"><small>09</small><span>Explication détaillée — Apprentissage, validation et arrêt</span></a><a class="slide-link" href="#10" data-slide-link="10"><small>10</small><span>Lecture du code — Observer une descente</span></a><a class="slide-link" href="#11" data-slide-link="11"><small>11</small><span>Concepts essentiels — Lots et coût de calcul</span></a><a class="slide-link" href="#12" data-slide-link="12"><small>12</small><span>Algorithme expliqué — Choisir sans consulter le test</span></a><a class="slide-link" href="#13" data-slide-link="13"><small>13</small><span>Erreurs fréquentes</span></a><a class="slide-link" href="#14" data-slide-link="14"><small>14</small><span>Exercice 1 — Comparer deux pas</span></a><a class="slide-link" href="#15" data-slide-link="15"><small>15</small><span>Correction — Comparer deux pas</span></a><a class="slide-link" href="#16" data-slide-link="16"><small>16</small><span>Exercice 2 — Ajouter la contribution L2</span></a><a class="slide-link" href="#17" data-slide-link="17"><small>17</small><span>Correction — Ajouter la contribution L2</span></a><a class="slide-link" href="#18" data-slide-link="18"><small>18</small><span>Exercice 3 — Réparer une descente qui monte</span></a><a class="slide-link" href="#19" data-slide-link="19"><small>19</small><span>Correction — Réparer une descente qui monte</span></a><a class="slide-link" href="#20" data-slide-link="20"><small>20</small><span>Projet fil rouge</span></a><a class="slide-link" href="#21" data-slide-link="21"><small>21</small><span>Projet fil rouge — Livrables et validation</span></a><a class="slide-link" href="#22" data-slide-link="22"><small>22</small><span>Cas d'usage réels</span></a><a class="slide-link" href="#23" data-slide-link="23"><small>23</small><span>Fiche de révision</span></a><a class="slide-link" href="#24" data-slide-link="24"><small>24</small><span>Questions de révision</span></a><a class="slide-link" href="#25" data-slide-link="25"><small>25</small><span>QCM — Questions 1 à 2</span></a><a class="slide-link" href="#26" data-slide-link="26"><small>26</small><span>QCM — Questions 3 à 5</span></a><a class="slide-link" href="#27" data-slide-link="27"><small>27</small><span>Résumé final</span></a></nav><p><a href="supports/06_optimiser.md" download>Support Markdown ↓</a></p><p><a href="pratique.zip" download>Projet et notebooks ↓</a></p></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">S2 · Maths E <span class="pill">1 / 27</span></p><div class="prose">
+<h1 id="optimisation-et-r%C3%A9gularisation">Optimisation et régularisation</h1>
+<p>S2 · Maths E · Antoine</p>
+<p>Descente, pas, pénalité et sélection des réglages sur validation.</p>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2" hidden><p class="question-kicker" id="slide-label-2">S2 · Maths E <span class="pill">2 / 27</span></p><div class="prose">
+<h2 id="objectif">Objectif</h2>
+<p>Choisir un pas de descente, observer une convergence ou une instabilité et expliquer le rôle d'une pénalité. Préparer la sélection des réglages avant PyTorch.</p>
+<p><strong>Prérequis :</strong> Perte, gradient, règle de chaîne, partitions et standardisation.</p>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3" hidden><p class="question-kicker" id="slide-label-3">S2 · Maths E <span class="pill">3 / 27</span></p><div class="prose">
+<h2 id="r%C3%A9sum%C3%A9-g%C3%A9n%C3%A9ral">Résumé général</h2>
+<p>Un gradient indique une direction locale ; le pas détermine le déplacement. La régularisation modifie l'objectif optimisé et peut limiter des poids trop grands. Les réglages sont comparés sur validation ; un modèle n'est retenu ni sur sa seule perte d'apprentissage ni sur son test.</p>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4" hidden><p class="question-kicker" id="slide-label-4">S2 · Maths E <span class="pill">4 / 27</span></p><div class="prose">
+<h2 id="concepts-essentiels--param%C3%A8tres-et-r%C3%A9glages">Concepts essentiels — Paramètres et réglages</h2>
+<p>Les poids et biais sont des paramètres ajustés pendant l'apprentissage. Le pas, la pénalité, le nombre de neurones et la règle d'arrêt sont des réglages choisis dans le protocole.</p>
+<p>La validation aide à comparer des réglages. Fixer une petite grille avant de regarder les résultats facilite l'interprétation et évite une recherche opportuniste sur le test.</p>
+<p>Les expériences utilisent des graines annoncées pour pouvoir être relancées. Une seule graine ne décrit pas toute la variabilité d'un entraînement.</p>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5" hidden><p class="question-kicker" id="slide-label-5">S2 · Maths E <span class="pill">5 / 27</span></p><div class="prose">
+<h2 id="lecture-des-formules--descente-de-gradient">Lecture des formules — Descente de gradient</h2>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>θ</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>θ</mi><mi>t</mi></msub><mo>−</mo><mi>η</mi><mi mathvariant="normal">∇</mi><mi>L</mi><mo stretchy="false">(</mo><msub><mi>θ</mi><mi>t</mi></msub><mo stretchy="false">)</mo><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\theta_{t+1}=\theta_t-\eta\nabla L(\theta_t).
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9028em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="mord">∇</span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">.</span></span></span></span></span></p><p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\theta_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> contient les paramètres à l'itération t ; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\eta&gt;0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> est le pas. Le gradient est recalculé aux paramètres courants.</p>
+<p>Pour <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mi>w</mi><mo>−</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">L(w)=(w-3)^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>, le gradient vaut <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo stretchy="false">(</mo><mi>w</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2(w-3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mclose">)</span></span></span></span>. Depuis w=0 et avec un pas de 0,25, le nouveau poids vaut 1,5 et la perte passe de 9 à 2,25.</p>
+<p>Cette formule donne une direction locale. Elle ne garantit pas qu'un pas quelconque fasse diminuer une perte non linéaire.</p>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6" hidden><p class="question-kicker" id="slide-label-6">S2 · Maths E <span class="pill">6 / 27</span></p><div class="prose">
+<h2 id="exemple-concret--trois-comportements">Exemple concret — Trois comportements</h2>
+<p>Sur la même parabole, un pas de 0,25 produit les poids 0, 1,5, 2,25, 2,625 : ils se rapprochent de 3.</p>
+<p>Un pas de 1 produit 0, 6, 0, 6 : on oscille sans se rapprocher du minimum. Un pas de 1,1 s'éloigne du minimum avec des oscillations croissantes.</p>
+<p>Un pas très petit peut donner une progression lente. La bonne valeur dépend aussi des échelles des entrées et de la géométrie de la perte.</p>
+</div></article>
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7" hidden><p class="question-kicker" id="slide-label-7">S2 · Maths E <span class="pill">7 / 27</span></p><div class="prose">
+<h2 id="voir-les-calculs">Voir les calculs</h2>
+<figure class="math-figure lesson-illustration"><a href="assets/descente.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/descente.svg" alt="La descente sur une parabole converge avec un pas de 0,25 et oscille avec un pas de 1." /></a><figcaption>Ouvrir en grand ↗</figcaption></figure>
+</div></article>
+<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8" hidden><p class="question-kicker" id="slide-label-8">S2 · Maths E <span class="pill">8 / 27</span></p><div class="prose">
+<h2 id="lecture-des-formules--une-p%C3%A9nalit%C3%A9-l2-explicite">Lecture des formules — Une pénalité L2 explicite</h2>
+<p>Notre convention est :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>L</mi><mi>λ</mi></msub><mo>=</mo><msub><mi>L</mi><mrow><mi>d</mi><mi>o</mi><mi>n</mi><mi>n</mi><mi>e</mi><mi>e</mi><mi>s</mi></mrow></msub><mo>+</mo><mfrac><mi>λ</mi><mn>2</mn></mfrac><munder><mo>∑</mo><mi>j</mi></munder><msubsup><mi>w</mi><mi>j</mi><mn>2</mn></msubsup><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">L_\lambda=L_{donnees}+\frac\lambda2\sum_j w_j^2.
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">λ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">nn</span><span class="mord mathnormal mtight">ees</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.7852em;vertical-align:-1.4138em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">λ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.4138em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-2.453em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3831em;"><span></span></span></span></span></span></span><span class="mord">.</span></span></span></span></span></p><p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lambda\geq0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.136em;"></span><span class="mord mathnormal">λ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> règle la force de la pénalité ; les poids w sont pénalisés, les biais ne le sont pas dans notre réalisation de référence.</p>
+<p>La contribution de la pénalité au gradient d'un poids est <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><msub><mi>w</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\lambda w_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">λ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>. Pour w=(1,2) et lambda=0,2, la pénalité vaut 0,5 et sa contribution au gradient vaut (0,2 ; 0,4).</p>
+<p>Avec une convention sans facteur 1/2, le gradient aurait un facteur 2 supplémentaire : toujours lire la définition de l'objectif.</p>
+</div></article>
+<article class="slide-card" id="slide-9" aria-labelledby="slide-label-9" hidden><p class="question-kicker" id="slide-label-9">S2 · Maths E <span class="pill">9 / 27</span></p><div class="prose">
+<h2 id="explication-d%C3%A9taill%C3%A9e--apprentissage-validation-et-arr%C3%AAt">Explication détaillée — Apprentissage, validation et arrêt</h2>
+<p>Une perte d'apprentissage qui baisse pendant que la perte de validation remonte peut signaler un surapprentissage. Il faut examiner les courbes et les distributions, pas une seule valeur.</p>
+<p>On peut conserver une copie des paramètres obtenus à la meilleure perte de validation. Une règle de patience arrête ensuite l'entraînement si cette perte n'améliore plus son meilleur niveau.</p>
+<p>Restaurer les meilleurs paramètres est indispensable : la dernière itération n'est pas nécessairement celle choisie par la règle.</p>
+</div></article>
+<article class="slide-card" id="slide-10" aria-labelledby="slide-label-10" hidden><p class="question-kicker" id="slide-label-10">S2 · Maths E <span class="pill">10 / 27</span></p><div class="prose">
+<h2 id="lecture-du-code--observer-une-descente">Lecture du code — Observer une descente</h2>
+<pre tabindex="0"><code class="language-python">w, pas = <span class="hljs-number">0.</span>, <span class="hljs-number">.25</span>
+historique = [w]
+<span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>):
+    gradient = <span class="hljs-number">2</span>*(w-<span class="hljs-number">3</span>)
+    w -= pas*gradient
+    historique.append(w)
+<span class="hljs-built_in">print</span>(historique)
+<span class="hljs-built_in">print</span>([(v-<span class="hljs-number">3</span>)**<span class="hljs-number">2</span> <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> historique])
+</code></pre>
+<p><strong>Fonctionnement :</strong> la boucle recalcule la dérivée avant chaque mise à jour et mémorise les valeurs.</p>
+<p><strong>Résultat :</strong> poids <code>[0,1.5,2.25,2.625]</code>, pertes <code>[9,2.25,0.5625,0.140625]</code>.</p>
+<p><strong>Erreur fréquente :</strong> ajouter le gradient ou réutiliser indéfiniment le gradient du point initial.</p>
+</div></article>
+<article class="slide-card" id="slide-11" aria-labelledby="slide-label-11" hidden><p class="question-kicker" id="slide-label-11">S2 · Maths E <span class="pill">11 / 27</span></p><div class="prose">
+<h2 id="concepts-essentiels--lots-et-co%C3%BBt-de-calcul">Concepts essentiels — Lots et coût de calcul</h2>
+<p>Une époque correspond à un parcours des données d'apprentissage. Une itération correspond à une mise à jour ; avec des mini-lots, plusieurs itérations peuvent appartenir à une même époque.</p>
+<p>Notre petit jeu permet de calculer le gradient sur les 144 journées à chaque itération. Cette version en lot complet facilite la lecture et la reproductibilité.</p>
+<p>Les mini-lots sont une extension utile pour des jeux plus grands. Ils ne changent pas la séparation entre propagation avant, calcul de gradients et mise à jour.</p>
+</div></article>
+<article class="slide-card" id="slide-12" aria-labelledby="slide-label-12" hidden><p class="question-kicker" id="slide-label-12">S2 · Maths E <span class="pill">12 / 27</span></p><div class="prose">
+<h2 id="algorithme-expliqu%C3%A9--choisir-sans-consulter-le-test">Algorithme expliqué — Choisir sans consulter le test</h2>
+<p><strong>Objectif :</strong> sélectionner un réglage et une itération. <strong>Entrées :</strong> train, validation et une grille fixée.</p>
+<p><strong>Traitement :</strong> entraîner chaque candidat sur train ; suivre la perte de validation ; garder une copie de son meilleur état ; comparer les candidats sur validation ; figer les choix.</p>
+<p><strong>Sortie :</strong> paramètres et réglages sélectionnés. Si les pertes de validation de deux candidats sont 0,35 et 0,42, la règle annoncée retient le premier.</p>
+<p>Le test n'intervient qu'après cette sélection. Une régularisation plus forte ne garantit pas une meilleure performance.</p>
+</div></article>
+<article class="slide-card" id="slide-13" aria-labelledby="slide-label-13" hidden><p class="question-kicker" id="slide-label-13">S2 · Maths E <span class="pill">13 / 27</span></p><div class="prose">
+<h2 id="erreurs-fr%C3%A9quentes">Erreurs fréquentes</h2>
+<ul>
+<li>Assimiler un petit coût d'apprentissage à une bonne généralisation.</li>
+<li>Choisir un pas sur le test.</li>
+<li>Confondre époque et itération.</li>
+<li>Oublier de restaurer le meilleur état de validation.</li>
+<li>Changer la convention de pénalité sans adapter le gradient.</li>
+</ul>
+</div></article>
+<article class="slide-card exercise" id="slide-14" aria-labelledby="slide-label-14" hidden><p class="question-kicker" id="slide-label-14">S2 · Maths E <span class="pill">14 / 27</span></p><div class="prose">
+<h2 id="exercice-1--comparer-deux-pas">Exercice 1 — Comparer deux pas</h2>
+<p><strong>Objectif pédagogique :</strong> Identifier convergence et oscillation. <strong>Prérequis :</strong> Dérivée d'une parabole.</p>
+<p><strong>Énoncé :</strong> Pour L(w)=(w−3)² depuis w=0, calculer trois mises à jour avec les pas 0,25 puis 1.</p>
+<p><strong>Contraintes :</strong> Calculer les pertes et ne pas conclure à partir du seul signe du gradient.</p>
+<p><strong>Livrable attendu :</strong> Deux trajectoires commentées.</p>
+<p><strong>Critères de réussite :</strong> Convergence vers 3 dans le premier cas et oscillation 0<img class="emoji" draggable="false" alt="↔" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2194.svg" data-marp-twemoji=""/>6 dans le second.</p>
+<details><summary>Indices gradués</summary>
+<ol>
+<li>Recalculer 2(w−3) après chaque mise à jour.</li>
+<li>Comparer les distances à 3.</li>
+</ol>
+</details>
+</div></article>
+<article class="slide-card" id="slide-15" aria-labelledby="slide-label-15" hidden><p class="question-kicker" id="slide-label-15">S2 · Maths E <span class="pill">15 / 27</span></p><div class="prose">
+<h2 id="correction--comparer-deux-pas">Correction — Comparer deux pas</h2>
+<details><summary>Afficher la correction</summary>
+<p>Pas 0,25 : poids 0→1,5→2,25→2,625 ; pertes 9→2,25→0,5625→0,140625. Pas 1 : 0→6→0→6 ; la perte reste 9. Sur cette fonction, le second pas ne produit aucune convergence.</p>
+</details>
+</div></article>
+<article class="slide-card exercise" id="slide-16" aria-labelledby="slide-label-16" hidden><p class="question-kicker" id="slide-label-16">S2 · Maths E <span class="pill">16 / 27</span></p><div class="prose">
+<h2 id="exercice-2--ajouter-la-contribution-l2">Exercice 2 — Ajouter la contribution L2</h2>
+<p><strong>Objectif pédagogique :</strong> Respecter une convention de pénalité. <strong>Prérequis :</strong> Gradient et carré.</p>
+<p><strong>Énoncé :</strong> Le gradient des données vaut (3,4), les poids valent (1,2) et lambda=0,2. Ajouter le gradient de la pénalité lambda||w||²/2 et calculer cette pénalité.</p>
+<p><strong>Contraintes :</strong> Ne pas pénaliser le biais et ne pas ajouter un facteur 2 absent de la convention.</p>
+<p><strong>Livrable attendu :</strong> Gradient total et valeur de la pénalité.</p>
+<p><strong>Critères de réussite :</strong> Gradient (3,2 ; 4,4) et pénalité 0,5.</p>
+<details><summary>Indices gradués</summary>
+<ol>
+<li>La dérivée de lambda × w²/2 est lambda × w.</li>
+<li>Ajouter les contributions composante par composante.</li>
+</ol>
+</details>
+</div></article>
+<article class="slide-card" id="slide-17" aria-labelledby="slide-label-17" hidden><p class="question-kicker" id="slide-label-17">S2 · Maths E <span class="pill">17 / 27</span></p><div class="prose">
+<h2 id="correction--ajouter-la-contribution-l2">Correction — Ajouter la contribution L2</h2>
+<details><summary>Afficher la correction</summary>
+<p>Le gradient total est (3,4)+0,2(1,2)=(3,2 ; 4,4). La pénalité vaut 0,2/2×(1+4)=0,5.</p>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+w, gradient_donnees, penalite = np.array([<span class="hljs-number">1.</span>, <span class="hljs-number">2.</span>]), np.array([<span class="hljs-number">3.</span>, <span class="hljs-number">4.</span>]), <span class="hljs-number">.2</span>
+<span class="hljs-built_in">print</span>(gradient_donnees + penalite*w, penalite/<span class="hljs-number">2</span> * (w @ w))
+</code></pre>
+<p>La valeur du coût et son gradient ont des rôles différents : on ne soustrait pas directement la pénalité scalaire à chaque poids.</p>
+</details>
+</div></article>
+<article class="slide-card exercise" id="slide-18" aria-labelledby="slide-label-18" hidden><p class="question-kicker" id="slide-label-18">S2 · Maths E <span class="pill">18 / 27</span></p><div class="prose">
+<h2 id="exercice-3--r%C3%A9parer-une-descente-qui-monte">Exercice 3 — Réparer une descente qui monte</h2>
+<p><strong>Objectif pédagogique :</strong> Déboguer une mise à jour. <strong>Prérequis :</strong> Gradient et sens de variation.</p>
+<p><strong>Énoncé :</strong> Pour la perte (w−3)², un code met à jour <code>w += pas * gradient</code>. Corriger et montrer l'effet du premier pas depuis w=0 avec pas=0,25.</p>
+<p><strong>Contraintes :</strong> Comparer les pertes avant et après.</p>
+<p><strong>Livrable attendu :</strong> Code corrigé et diagnostic.</p>
+<p><strong>Critères de réussite :</strong> Le poids passe à 1,5 et la perte diminue à 2,25.</p>
+<details><summary>Indices gradués</summary>
+<ol>
+<li>Le gradient initial vaut -6.</li>
+<li>La descente suit l'opposé du gradient.</li>
+</ol>
+</details>
+</div></article>
+<article class="slide-card" id="slide-19" aria-labelledby="slide-label-19" hidden><p class="question-kicker" id="slide-label-19">S2 · Maths E <span class="pill">19 / 27</span></p><div class="prose">
+<h2 id="correction--r%C3%A9parer-une-descente-qui-monte">Correction — Réparer une descente qui monte</h2>
+<details><summary>Afficher la correction</summary>
+<p>Le signe doit être négatif.</p>
+<pre tabindex="0"><code class="language-python">w, pas = <span class="hljs-number">0.</span>, <span class="hljs-number">.25</span>
+avant = (w-<span class="hljs-number">3</span>)**<span class="hljs-number">2</span>
+w -= pas * (<span class="hljs-number">2</span>*(w-<span class="hljs-number">3</span>))
+<span class="hljs-built_in">print</span>(avant, w, (w-<span class="hljs-number">3</span>)**<span class="hljs-number">2</span>)
+</code></pre>
+<p>La sortie est <code>9.0 1.5 2.25</code>. Le code initial aurait donné w=-1,5 et une perte de 20,25.</p>
+</details>
+</div></article>
+<article class="slide-card" id="slide-20" aria-labelledby="slide-label-20" hidden><p class="question-kicker" id="slide-label-20">S2 · Maths E <span class="pill">20 / 27</span></p><div class="prose">
+<h2 id="projet-fil-rouge">Projet fil rouge</h2>
+<h3 id="contexte-et-utilisateurs">Contexte et utilisateurs</h3>
+<p>Une équipe de gestion énergétique souhaite comprendre des profils de journées et préparer une prévision. Les 240 journées sont entièrement simulées ; les résultats ne constituent pas une étude de bâtiment réel.</p>
+<h3 id="probl%C3%A8me-%C3%A0-r%C3%A9soudre-et-fonctionnalit%C3%A9s-cibles">Problème à résoudre et fonctionnalités cibles</h3>
+<p>Annoncer la grille des réglages, les graines et la règle d'arrêt que Michel réutilisera pour l'entraînement PyTorch. Comparer une descente simple à ses contrôles analytiques.</p>
+<h3 id="mod%C3%A8le-de-donn%C3%A9es-et-architecture-attendue">Modèle de données et architecture attendue</h3>
+<p>Réutiliser <code>pratique/depart.py</code>, <code>pratique/parcours.py</code> et le même notebook. Les entrées sont température, occupation et équipements. La consommation est la cible, jamais une entrée du classificateur. Les jours 1–144 servent à apprendre, 145–192 à valider, 193–240 au bilan final.</p>
+</div></article>
+<article class="slide-card" id="slide-21" aria-labelledby="slide-label-21" hidden><p class="question-kicker" id="slide-label-21">S2 · Maths E <span class="pill">21 / 27</span></p><div class="prose">
+<h2 id="projet-fil-rouge--livrables-et-validation">Projet fil rouge — Livrables et validation</h2>
+<h3 id="jalon-reli%C3%A9-%C3%A0-la-s%C3%A9ance">Jalon relié à la séance</h3>
+<p>Produire une trajectoire de perte, un contrôle du signe de mise à jour et une fiche de protocole. À observer : réglage choisi sur test, convention L2 non annoncée et meilleurs poids non restaurés.</p>
+<h3 id="livrables">Livrables</h3>
+<p>Ajouter le code et son commentaire au notebook existant. Conserver les dimensions, les unités, la partition utilisée et les contrôles effectués.</p>
+<h3 id="crit%C3%A8res-de-validation">Critères de validation</h3>
+<p>Le notebook se relance dans l'ordre. Les calculs manuels concordent avec le code. Les transformations et réglages ne sont jamais appris sur le test. Expliquer les erreurs plutôt que supprimer les observations gênantes.</p>
+<h3 id="extensions-facultatives">Extensions facultatives</h3>
+<p>Reprendre les supports du <a href="../index.html">catalogue général</a> pour approfondir une notion. Les groupes, l'ACP, la SVD et le clustering sont des compléments ; leur étude complète n'est pas nécessaire pour ce parcours court.</p>
+</div></article>
+<article class="slide-card" id="slide-22" aria-labelledby="slide-label-22" hidden><p class="question-kicker" id="slide-label-22">S2 · Maths E <span class="pill">22 / 27</span></p><div class="prose">
+<h2 id="cas-dusage-r%C3%A9els">Cas d'usage réels</h2>
+<p><strong>Organisation :</strong> service de gestion énergétique, scénario pédagogique.</p>
+<p><strong>Problème :</strong> transformer des mesures hétérogènes en une décision interprétable.</p>
+<p><strong>Solution étudiée :</strong> Descente, pas, pénalité et sélection des réglages sur validation.</p>
+<p><strong>Bénéfice attendu :</strong> comprendre les hypothèses et contrôler les résultats avant une utilisation sur des données réelles. Une amélioration numérique ne démontre pas une économie d'énergie ni une causalité.</p>
+</div></article>
+<article class="slide-card" id="slide-23" aria-labelledby="slide-label-23" hidden><p class="question-kicker" id="slide-label-23">S2 · Maths E <span class="pill">23 / 27</span></p><div class="prose">
+<h2 id="fiche-de-r%C3%A9vision">Fiche de révision</h2>
+<ul>
+<li>La descente recalcule le gradient aux paramètres courants.</li>
+<li>Le pas peut produire convergence, lenteur ou instabilité.</li>
+<li>La pénalité doit avoir une convention explicite.</li>
+<li>Les réglages et l'arrêt sont choisis sur validation, avant le test.</li>
+</ul>
+</div></article>
+<article class="slide-card" id="slide-24" aria-labelledby="slide-label-24" hidden><p class="question-kicker" id="slide-label-24">S2 · Maths E <span class="pill">24 / 27</span></p><div class="prose">
+<h2 id="questions-de-r%C3%A9vision">Questions de révision</h2>
+<ol>
+<li>Pourquoi un pas trop grand peut-il faire monter la perte ?</li>
+<li>Quelle différence existe entre paramètres et réglages ?</li>
+<li>Pourquoi copier les meilleurs poids ?</li>
+<li>Quelle contribution L2 ajoute notre convention au gradient ?</li>
+<li>Le lot complet et les mini-lots ont-ils le même nombre d'itérations par époque ?</li>
+</ol>
+</div></article>
+<article class="slide-card" id="slide-25" aria-labelledby="slide-label-25" hidden><p class="question-kicker" id="slide-label-25">S2 · Maths E <span class="pill">25 / 27</span></p><div class="prose">
+<h2 id="qcm--questions-1-%C3%A0-2">QCM — Questions 1 à 2</h2>
+<p><strong>1. Le pas règle</strong></p>
+<p>A. l'amplitude du déplacement ; B. le nombre de classes ; C. l'unité de la cible ; D. la partition test.</p>
+<p><strong>2. Une perte de validation qui remonte peut signaler</strong></p>
+<p>A. une garantie de convergence ; B. un surapprentissage ; C. une preuve de causalité ; D. une absence de biais.</p>
+<details><summary>Afficher la correction</summary>
+<ol>
+<li>
+<p><strong>A</strong> : il multiplie le gradient dans la mise à jour</p>
+</li>
+<li>
+<p><strong>B</strong> : elle peut révéler une dégradation hors apprentissage</p>
+</li>
+</ol>
+</details>
+</div></article>
+<article class="slide-card" id="slide-26" aria-labelledby="slide-label-26" hidden><p class="question-kicker" id="slide-label-26">S2 · Maths E <span class="pill">26 / 27</span></p><div class="prose">
+<h2 id="qcm--questions-3-%C3%A0-5">QCM — Questions 3 à 5</h2>
+<p><strong>3. Pour lambda||w||²/2, le gradient ajouté est</strong></p>
+<p>A. lambda ; B. 2lambda ; C. lambda × w ; D. la perte entière.</p>
+<p><strong>4. Le meilleur état se choisit ici sur</strong></p>
+<p>A. le test ; B. la taille du fichier ; C. la dernière itération systématiquement ; D. la validation.</p>
+<p><strong>5. Une pénalité plus forte</strong></p>
+<p>A. améliore toujours le test ; B. peut aussi trop contraindre le modèle ; C. supprime les données ; D. ne change jamais les poids.</p>
+<details><summary>Afficher la correction</summary>
+<ol start="3">
+<li>
+<p><strong>C</strong> : la dérivée du carré annule le facteur 1/2</p>
+</li>
+<li>
+<p><strong>D</strong> : cette règle est fixée avant le bilan test</p>
+</li>
+<li>
+<p><strong>B</strong> : elle peut conduire à un sous-apprentissage</p>
+</li>
+</ol>
+</details>
+</div></article>
+<article class="slide-card" id="slide-27" aria-labelledby="slide-label-27" hidden><p class="question-kicker" id="slide-label-27">S2 · Maths E <span class="pill">27 / 27</span></p><div class="prose">
+<h2 id="r%C3%A9sum%C3%A9-final">Résumé final</h2>
+<p>La descente recalcule le gradient aux paramètres courants.<br />
+Le pas peut produire convergence, lenteur ou instabilité.<br />
+La pénalité doit avoir une convention explicite.<br />
+Les réglages et l'arrêt sont choisis sur validation, avant le test.</p>
+<p><a href="07_entrainer_pytorch.html">Continuer le parcours</a> · <a href="programme.html">Programme et livrables</a>.</p>
+</div><div class="chapter-end"><p>Contrôler les acquis avant de continuer.</p><a class="button primary" href="07_entrainer_pytorch.html">Entraîner le réseau avec PyTorch →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 27</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections des exercices s'ouvrent au clic. Le corrigé de l'examen est remis séparément.</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA · Maths & IA</span><a href="index.html">Comprendre, construire et évaluer.</a></footer><script src="../assets/slides.js" defer></script></body></html>

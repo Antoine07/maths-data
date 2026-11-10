@@ -1,10 +1,14 @@
 # Le labo maths — CODA
 
+Sur la branche **maths-ia**, ouvrir [le parcours sur deux semaines](maths-ia/index.html). Il comprend huit séances détaillées, un programme de coordination Antoine/Michel, un notebook fil rouge et un examen de première semaine. L'introduction aux réseaux vient après « 03 / Décrire et interpréter » ; l'entraînement et l'évaluation suivent le gradient.
+
+La répartition de l'examen est 90 minutes de mathématiques, 30 minutes d'IA et 60 minutes de pratique Python, sur 20 points. L'épreuve précède les contenus avancés de semaine 2 et ne les évalue pas. Le corrigé reste local dans `sandbox_jupyter/correction/maths-ia/`, absent de cette distribution et des archives étudiants.
+
 Ouvrir `index.html` dans un navigateur. Le dossier `docs/` peut aussi être publié tel quel avec GitHub Pages.
 
 Ce dossier est la distribution autonome des supports. Les instructions de génération ci-dessous concernent le projet de travail complet : les scripts de construction et les originaux ne sont pas inclus dans le dépôt de publication. Les copies Markdown consultables sont livrées dans `sources/`.
 
-Les 27 présentations reprennent les sources de `Slides/` et les supports HTML historiques. Huit chapitres avancés relient l'algèbre et l'analyse à l'apprentissage automatique ; un court support de probabilités prépare les nouveaux problèmes. Les TP et corrections sont accessibles depuis « Exercices & ressources ».
+Les 27 présentations du catalogue initial reprennent les sources de `Slides/` et les supports HTML historiques. Huit chapitres avancés relient l'algèbre et l'analyse à l'apprentissage automatique ; un court support de probabilités prépare les nouveaux problèmes. Les TP et corrections sont accessibles depuis « Exercices & ressources ».
 
 Les nouveaux contenus sont intercalés dans le parcours : géométrie et moindres carrés après les matrices ; SVD après les statistiques et l'ACP ; calcul différentiel, optimisation et rétropropagation après le gradient. Le projet de consommation électrique se télécharge avec son CSV, son code et ses notebooks depuis la page des ressources.
 
@@ -42,6 +46,7 @@ Depuis la racine du projet :
 ```sh
 npm install
 npm run build
+node docs/maths-ia/build.cjs
 npm run check
 npm run check:ia
 npm run check:figures
@@ -50,6 +55,8 @@ npm run check:statistiques
 ```
 
 La génération fonctionne aussi avec une installation globale de Marp CLI fournissant `@marp-team/marp-core`. Les fichiers générés s’ouvrent directement, sans installation.
+
+La commande `node docs/maths-ia/build.cjs` concerne cette branche uniquement. Elle s'exécute après le générateur historique. Les supports Markdown modifiables de cette extension sont dans `maths-ia/supports/` ; son manifeste et son générateur sont versionnés avec elle. Un retour à l'ancienne branche restaure les anciennes pages, sans dépendre d'une modification des scripts de travail locaux.
 
 Pour régénérer les courbes et illustrations, installer `../scripts/requirements-figures.txt` avec pip puis lancer `npm run figures` et `npm run illustrations` depuis la racine, avant `npm run build`. Matplotlib n'est pas nécessaire pour consulter les figures livrées ni pour reconstruire le HTML à partir des SVG existants.
 

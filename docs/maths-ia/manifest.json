@@ -21,7 +21,7 @@
     "repere": "Neurones et activations",
     "objectif": "Poids, biais, activations et prédictions avec NumPy, après les statistiques.",
     "file": "03_comprendre_reseau.html",
-    "slides": 28
+    "slides": 31
   },
   {
     "id": "04_preparer_donnees",
@@ -53,7 +53,7 @@
     "repere": "PyTorch",
     "objectif": "Tenseurs, logits, autograd et boucle d'entraînement reproductible.",
     "file": "07_entrainer_pytorch.html",
-    "slides": 26
+    "slides": 27
   },
   {
     "id": "08_evaluer",

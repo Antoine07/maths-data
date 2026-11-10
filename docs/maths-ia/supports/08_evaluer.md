@@ -83,9 +83,51 @@ La validation est utilisée pour choisir ; elle n'est donc pas un bilan totaleme
 
 ---
 
-## Voir les calculs
+## Observer — Quand la validation cesse de progresser
 
-![Pertes d’apprentissage et de validation calculées sur les journées simulées pour la logistique et le réseau.](../assets/apprentissage-validation.svg)
+Voici un exemple volontairement petit : un neurone linéaire prédit $\widehat y=wx$, avec $x=1$ et un biais fixé à 0. Les cibles d’apprentissage sont $(3,3)$ ; celles de validation sont $(1,3)$. Il s’agit de quatre observations illustratives, distinctes du fil rouge.
+
+La perte est ici une **MSE**, et non la perte binaire du projet. Le poids commence à 0 et reçoit 30 mises à jour par descente, avec un pas de 0,1.
+
+![Sur cet exemple calculé, la perte d’apprentissage continue de diminuer ; la perte de validation baisse d’abord puis remonte.](../assets/reseau-arret-validation.svg)
+
+1. À partir de quelle zone les deux courbes cessent-elles de s’améliorer ensemble ?
+2. Quelle itération conserver selon le critère de meilleure validation ? Est-ce la dernière ?
+3. Une remontée de validation suffit-elle, sur des données réelles, à prouver que le réseau est trop complexe ?
+
+<details><summary>Afficher la correction</summary>
+
+La prédiction vaut $w$ pour toutes les entrées. Les pertes se calculent exactement :
+
+$$
+L_{app}(w)=(w-3)^2,\qquad
+L_{val}(w)=\frac{(w-1)^2+(w-3)^2}{2}=(w-2)^2+1.
+$$
+
+La descente rapproche $w$ de 3, ce qui réduit continûment la perte d’apprentissage. Mais la validation est minimale en $w=2$ : continuer vers 3 finit par la dégrader. Parmi les états calculés, la meilleure validation apparaît à **l’itération 5**, avec $w\approx2{,}01696$ et une perte de validation d’environ 1,0003.
+
+```python
+import numpy as np
+w = 0.
+y_app, y_val = np.array([3., 3.]), np.array([1., 3.])
+historique = []
+for iteration in range(31):
+    app = np.mean((w - y_app)**2)
+    val = np.mean((w - y_val)**2)
+    historique.append((iteration, w, app, val))
+    if iteration < 30:
+        w -= .1 * 2 * (w - 3)
+meilleur = min(historique, key=lambda ligne: ligne[3])
+print(meilleur[0], round(meilleur[1], 5))
+```
+
+**Résultat :** `5 2.01696`. L’itération 0 désigne l’état initial. Dans le graphique, les pertes proviennent de ces calculs, pas de courbes dessinées arbitrairement. Le choix sur validation se traduit par une sauvegarde puis une restauration de cet état ; on n’entraîne pas les poids sur les cibles de validation.
+
+L’exemple montre comment l’ajustement à un petit échantillon peut cesser d’améliorer la validation, même avec un seul paramètre. Il ne démontre pas qu’une architecture complexe soit toujours en cause : les deux petits échantillons ont des moyennes différentes.
+
+Sur un vrai projet, la divergence des courbes est un **signal à examiner** : surapprentissage possible, mais aussi fluctuations, changement de distribution, transformations incohérentes ou optimisation instable. La validation utilisée pour choisir ne remplace pas un bilan sur le test final.
+
+</details>
 
 ---
 

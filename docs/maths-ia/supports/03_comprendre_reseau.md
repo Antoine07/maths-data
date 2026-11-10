@@ -13,7 +13,7 @@ Poids, biais, activations et prédictions avec NumPy, après les statistiques.
 
 ## Objectif
 
-Expliquer les paramètres d'un réseau, calculer une propagation avant et distinguer cette opération de l'entraînement. Cette introduction suit le bloc « Décrire et interpréter ».
+Expliquer les paramètres d'un réseau, calculer une propagation avant et distinguer cette opération de l'entraînement. Cette introduction s’appuie sur la description des données et la notion de perte.
 
 **Prérequis :** Vecteurs, matrices, fonctions, statistiques descriptives et notion de perte. Les chapitres complets d'ACP/SVD et de clustering sont des compléments.
 
@@ -49,6 +49,54 @@ Pour notre classificateur, la couche cachée utilise ReLU et la dernière couche
 
 ---
 
+## Observer — Sigmoïde et ReLU
+
+![À gauche, la sigmoïde croît entre 0 et 1 et vaut 0,5 en zéro. À droite, ReLU est nulle pour les scores négatifs, puis égale au score positif.](../assets/reseau-activations.svg)
+
+1. Comparer les sorties des deux fonctions pour un score de -2, puis de 2.
+2. Pourquoi une sortie ReLU de 2 ne peut-elle pas être interprétée comme une probabilité ?
+3. Les deux fonctions traitent-elles les scores négatifs de la même façon ? Attention aux échelles verticales.
+
+<details><summary>Afficher la correction</summary>
+
+Pour -2, la sigmoïde vaut environ 0,119 et ReLU vaut 0. Pour 2, la sigmoïde vaut environ 0,881 et ReLU vaut 2.
+
+La sigmoïde reste strictement entre 0 et 1 pour un score réel fini. ReLU n’est pas bornée au-dessus : sa sortie est une activation intermédiaire, pas une probabilité. Sur les scores négatifs, ReLU est constante à 0 ; la sigmoïde reste positive et continue à varier.
+
+Dans notre classificateur, ReLU transforme les scores de la couche cachée. La sigmoïde sert ensuite à lire le logit final comme une probabilité estimée. Le choix de l’activation dépend donc aussi du rôle de la couche.
+
+</details>
+
+---
+
+## Observer — Que changent le poids et le biais ?
+
+Pour une seule entrée, le neurone calcule $p=\sigma(wx+b)$. Chaque courbe correspond à des paramètres **fournis**, sans apprentissage.
+
+![À gauche, varier le poids change la pente et éventuellement le sens de variation de la sigmoïde. À droite, varier le biais avec un poids égal à 1 déplace le passage par 0,5.](../assets/reseau-poids-biais.svg)
+
+1. À biais nul, que change le signe de $w$ ? Comparer aussi les poids 0,5 et 2.
+2. À poids fixé à 1, où la sortie vaut-elle 0,5 pour les biais -2, 0 et 2 ?
+3. Changer ces paramètres à la main suffit-il à dire que le neurone a appris ?
+
+<details><summary>Afficher la correction</summary>
+
+À biais nul, toutes les courbes passent par $(0,0{,}5)$. Un poids positif donne une courbe croissante ; un poids négatif une courbe décroissante. Un poids de plus grande valeur absolue rend la transition plus rapide autour du seuil.
+
+La sigmoïde vaut 0,5 lorsque son score vaut 0. Pour $w\ne0$ :
+
+$$
+wx+b=0\quad\Longleftrightarrow\quad x=-\frac bw.
+$$
+
+Avec $w=1$, les biais -2, 0 et 2 placent donc ce passage en 2, 0 et -2. Augmenter le biais déplace ici la courbe vers la gauche. Il ne change pas le poids.
+
+Manipuler les paramètres permet de comprendre leur effet. Apprendre suppose de les ajuster à partir des données et d’une perte, selon une procédure définie.
+
+</details>
+
+---
+
 ## Concepts essentiels — Une couche cachée
 
 Une couche de plusieurs neurones calcule plusieurs combinaisons des mêmes entrées. Le réseau les transforme puis les combine à nouveau.
@@ -66,6 +114,47 @@ Les entrées (0,0) et (1,1) ont pour classe 0 ; (0,1) et (1,0) ont pour classe 1
 Ce petit exemple illustre l'intérêt d'une non-linéarité. Ce n'est pas un second projet à entraîner pendant cette séance : le fil rouge reste la consommation.
 
 Un réseau plus expressif peut représenter davantage de fonctions. Cela ne garantit ni un entraînement réussi ni une meilleure généralisation.
+
+---
+
+## Observer — Une droite ou une frontière non linéaire ?
+
+Le fond indique la **classe prédite** ; les ronds et triangles indiquent les **classes réelles** des quatre points XOR. Le trait correspond au seuil $p=0{,}5$.
+
+![Sur XOR, une frontière affine se trompe sur le point (1,1). Le réseau ReLU à paramètres fournis produit deux frontières et classe correctement les quatre points.](../assets/reseau-frontieres-xor.svg)
+
+1. Quel point le modèle affine classe-t-il mal ?
+2. Pourquoi la région de classe 1 du réseau peut-elle former une bande entre deux frontières ?
+3. Quatre points correctement classés prouvent-ils un apprentissage ou une bonne généralisation ?
+
+<details><summary>Afficher la correction</summary>
+
+Le modèle affine choisi utilise $z=4(x_1+x_2-0{,}5)$. En $(1,1)$, son score est positif : il prédit 1 alors que la classe réelle est 0. Il classe correctement les trois autres points. Une autre droite pourrait se tromper ailleurs ; aucune droite ne sépare parfaitement XOR.
+
+Le petit réseau de droite utilise deux neurones cachés :
+
+$$
+h_1=\operatorname{ReLU}(x_1+x_2),\quad
+h_2=\operatorname{ReLU}(x_1+x_2-1),\quad
+z=8h_1-16h_2-4.
+$$
+
+La classe 1 correspond ici à $0{,}5\leq x_1+x_2\leq1{,}5$, ce qui donne une bande. Les deux points de classe 1 y appartiennent ; les deux autres restent à l’extérieur. ReLU apporte la non-linéarité ; la sigmoïde finale ne change pas l’emplacement de la frontière $z=0$.
+
+```python
+import numpy as np
+X = np.array([[0., 0.], [0., 1.], [1., 0.], [1., 1.]])
+W1 = np.array([[1., 1.], [1., 1.]])
+H = np.maximum(0., X @ W1 + np.array([0., -1.]))
+z = H @ np.array([8., -16.]) - 4.
+print(z, (z >= 0).astype(int))
+```
+
+**Résultat :** logits `[-4,4,4,-4]`, décisions `[0,1,1,0]`. Comme la sigmoïde est croissante, $p\geq0{,}5$ équivaut à $z\geq0$.
+
+Les paramètres sont choisis pour illustrer une fonction possible : aucun entraînement n’a eu lieu. Le résultat concerne ces quatre points et ne constitue pas une mesure de généralisation. Cet exemple à deux entrées reste une illustration ; le fil rouge conserve ses trois caractéristiques.
+
+</details>
 
 ---
 
@@ -143,7 +232,7 @@ Dans le fil rouge, la classe « forte consommation » dépend d'un seuil de cons
 
 **Sortie :** une probabilité et une décision par observation. Sur l'exemple, p=0,5 et la décision vaut 1.
 
-Ne pas modifier les poids au hasard pour conclure que le modèle a appris. La semaine suivante reliera une perte, ses dérivées et une mise à jour organisée.
+Ne pas modifier les poids au hasard pour conclure que le modèle a appris. Les chapitres suivants relieront une perte, ses dérivées et une mise à jour organisée.
 
 ---
 

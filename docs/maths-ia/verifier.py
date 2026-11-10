@@ -76,6 +76,20 @@ else:
 
 for path in (BASE/'assets').glob('*.svg'):
     assert ET.parse(path).getroot().tag.endswith('svg')
+# Les valeurs et frontières des nouveaux graphiques concordent avec les corrections.
+from graphiques_reseaux import sigmoide, logits_xor, trace_validation
+assert np.isclose(sigmoide(0), .5)
+assert np.allclose(sigmoide(np.array([-2., 2.])), [.119202922, .880797078])
+xor = np.array([[0.,0.],[0.,1.],[1.,0.],[1.,1.]])
+assert np.allclose(logits_xor(xor), [-4,4,4,-4])
+assert np.array_equal(logits_xor(xor) >= 0, [False,True,True,False])
+assert np.allclose(logits_xor([[.25,.25],[.75,.75]]), 0)
+iterations, poids, cout_app, cout_val = trace_validation()
+assert np.all(np.diff(cout_app) < 0)
+assert int(iterations[np.argmin(cout_val)]) == 5
+assert np.isclose(poids[5], 2.01696)
+assert cout_val[-1] > cout_val[5]
+assert np.allclose(cout_val, (poids-2)**2+1)
 for folder in ['pratique','evaluation']:
     for path in (BASE/folder).glob('*.ipynb'):
         notebook = nbformat.read(path,as_version=4)
@@ -115,4 +129,4 @@ assert '07_entrainer_pytorch.html' in home and '08_evaluer.html' in home
 assert home.index('Fil rouge · 6 jalons') > home.rfind('</section>')
 assert 'Correction enseignant' not in (BASE/'examen.html').read_text()
 print(f'OK : 8 séances, 24 exercices, 40 QCM, {snippets} extraits Python exécutés ; données, gradients, PyTorch et archives vérifiés.')
-print('Ordre des prérequis, examen de 180 minutes, notebook fil rouge et absence de corrigé dans les distributions étudiantes vérifiés.')
+print('Graphiques, ordre des prérequis, examen de 180 minutes, notebook fil rouge et absence de corrigé dans les distributions étudiantes vérifiés.')

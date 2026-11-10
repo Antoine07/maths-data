@@ -125,6 +125,30 @@ Références : [PyTorch — autograd](https://docs.pytorch.org/tutorials/beginne
 
 ---
 
+## Observer — Les courbes de l’entraînement
+
+Ces courbes proviennent du code du fil rouge : 240 journées simulées, graine 7, pas 0,1. Le réseau utilise une pénalité de 0,001 sur les poids ; la logistique est présentée sans pénalité.
+
+![Pour la logistique et le réseau, les pertes binaires d’apprentissage et de validation sont tracées en fonction des itérations. Une verticale indique l’état retenu sur validation.](../assets/apprentissage-validation.svg)
+
+1. Quelle partition intervient dans `backward()` ? Pourquoi tracer aussi l’autre courbe ?
+2. Que représente la verticale pointillée ? Pourquoi sauvegarder cet état plutôt que conserver automatiquement le dernier ?
+3. Une baisse des deux pertes prouve-t-elle que le réseau sera meilleur sur des journées inconnues ?
+
+<details><summary>Afficher la correction</summary>
+
+La perte d’apprentissage fournit les gradients. La validation est calculée sans rétropropagation : elle sert à choisir l’état et les réglages, pas à effectuer directement les mises à jour.
+
+La verticale indique l’itération retenue pour sa perte de validation. Si la meilleure validation est atteinte avant l’arrêt, on restaure les paramètres de cet état. Si elle est atteinte à la dernière itération affichée, cela ne prouve pas que l’entraînement a atteint un optimum global.
+
+Les courbes montrent la perte binaire moyenne **sans ajouter le terme de pénalité** ; la pénalité agit néanmoins sur les mises à jour des poids du réseau. Les effectifs et distributions des deux partitions diffèrent : leur ordre relatif ne doit pas être supposé à l’avance.
+
+Une baisse sur apprentissage et validation est une observation utile, pas une garantie sur toutes les journées futures. La validation a participé aux choix. Le bilan final utilisera des modèles figés et le test réservé à cet usage. Ces courbes n’utilisent pas le test.
+
+</details>
+
+---
+
 ## Erreurs fréquentes
 
 - Passer des probabilités à BCEWithLogitsLoss.

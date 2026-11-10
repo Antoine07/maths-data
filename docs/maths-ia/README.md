@@ -24,3 +24,5 @@ Après `npm run build`, relancer ce générateur pour réappliquer l'insertion d
 Dans la sandbox équipée de PyTorch, lancer `python /workspace/docs/maths-ia/verifier.py`. Les snippets sont exécutés, les conventions de perte et les formes sont contrôlées, ainsi que les partitions, les archives et le barème global.
 
 Les figures sont calculées avec `python docs/maths-ia/figures.py` dans ce même environnement. Les SVG pédagogiques de réseau et de partitions sont des dessins vectoriels décrits dans leurs textes alternatifs.
+
+Quatre graphiques supplémentaires accompagnent les questions d’observation : activations, effet du poids et du biais, frontières sur XOR et choix d’un état sur validation. Les réponses sont dépliables. Ils se régénèrent avec `python docs/maths-ia/graphiques_reseaux.py` (NumPy et Matplotlib). L’exemple XOR utilise des paramètres fournis ; l’arrêt sur validation est illustré par une descente calculée sur quatre observations, distinctes du fil rouge. Les courbes binaires du projet proviennent de `figures.py`.

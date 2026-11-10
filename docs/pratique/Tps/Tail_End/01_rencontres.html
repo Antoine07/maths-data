@@ -1,22 +1,22 @@
 <!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Problème 1 — La moitié des années, combien de rencontres ? · Le labo maths</title><link rel="stylesheet" href="../../../assets/site.css"><link rel="stylesheet" href="../../../assets/katex/katex.min.css"><link rel="stylesheet" href="../../../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page reading-mode" data-deck="Tps/Tail_End/01_rencontres.md"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../../../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../../../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
-<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Travaux pratiques</p><h1>Problème 1 — La moitié des années, combien de rencontres ?</h1><p>Tps / Tail_End / 01_rencontres.md</p></div><span class="chapter-count">9 slides</span></div>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Travaux pratiques</p><h1>Problème 1 — La moitié des années, combien de rencontres ?</h1><p>Tps / Tail_End / 01_rencontres.md</p></div><span class="chapter-count">10 slides</span></div>
 <div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="false">Slides</button><button id="mode-reading" aria-pressed="true">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
-<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 9</span><span id="progress-label">11 %</span></div><progress id="progress" max="9" value="1" aria-label="Progression du chapitre"></progress>
-<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Problème 1 — La moitié des années, combien de rencontres ?</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Objectif et prérequis</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Données et unités</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Énoncé</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>Contraintes, livrables et critères de réussite</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Correction — Calculs et représentation</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Correction — Changer le futur sans réécrire le passé</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Correction — Contrôle avec Python</span></a><a class="slide-link" href="#9" data-slide-link="9"><small>09</small><span>Discussion — Ce que cet indicateur raconte</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../../../sources/Tps/Tail_End/01_rencontres.md" download>Source Markdown ↓</a><a class="source-link" href="../../../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../../../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card exercise" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Travaux pratiques <span class="pill">01 / 9</span></p><div class="prose">
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 10</span><span id="progress-label">10 %</span></div><progress id="progress" max="10" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Problème 1 — La moitié des années, combien de rencontres ?</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>Objectif et prérequis</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Données et unités</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Énoncé</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>À réaliser — Un script avec NumPy et Matplotlib</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Contraintes, livrables et critères de réussite</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Correction — Calculs et représentation</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Correction — Changer le futur sans réécrire le passé</span></a><a class="slide-link" href="#9" data-slide-link="9"><small>09</small><span>Correction — Script NumPy et Matplotlib</span></a><a class="slide-link" href="#10" data-slide-link="10"><small>10</small><span>Discussion — Ce que cet indicateur raconte</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../../../sources/Tps/Tail_End/01_rencontres.md" download>Source Markdown ↓</a><a class="source-link" href="../../../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../../../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card exercise" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Travaux pratiques <span class="pill">01 / 10</span></p><div class="prose">
 <h1 id="probl%C3%A8me-1--la-moiti%C3%A9-des-ann%C3%A9es-combien-de-rencontres">Problème 1 — La moitié des années, combien de rencontres ?</h1>
 <h2 id="le-point-de-d%C3%A9part">Le point de départ</h2>
 <p>Léa a 30 ans. Elle pense : « Si je regarde jusqu'à mes 60 ans, il reste autant de temps qu'il en est passé. »</p>
 <p>Ce raisonnement compte des années. Mais Léa veut maintenant compter les journées où elle voit un proche. Elle n'a pas toujours vécu au même endroit.</p>
 <p>Le scénario est fictif ; l'horizon de 60 ans est fixé pour l'exercice et n'est pas une prévision de durée de vie.</p>
 </div></article>
-<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2"><p class="question-kicker" id="slide-label-2">Travaux pratiques <span class="pill">02 / 9</span></p><div class="prose">
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2"><p class="question-kicker" id="slide-label-2">Travaux pratiques <span class="pill">02 / 10</span></p><div class="prose">
 <h2 id="objectif-et-pr%C3%A9requis">Objectif et prérequis</h2>
 <p><strong>Objectif pédagogique :</strong> définir un indicateur, vérifier ses unités et comprendre le rôle du dénominateur.</p>
 <p><strong>Prérequis :</strong> <a href="../../../revision.html">révisions d'algèbre</a>, multiplication et pourcentages. Aucune probabilité n'est nécessaire.</p>
-<p><strong>Travail attendu :</strong> calcul manuel puis contrôle numérique.</p>
+<p><strong>Travail attendu :</strong> calcul manuel, puis script Python utilisant NumPy pour les tableaux et les calculs, et Matplotlib pour les graphiques. Les opérations nécessaires sont rappelées dans l’activité ci-dessous.</p>
 </div></article>
-<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3"><p class="question-kicker" id="slide-label-3">Travaux pratiques <span class="pill">03 / 9</span></p><div class="prose">
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3"><p class="question-kicker" id="slide-label-3">Travaux pratiques <span class="pill">03 / 10</span></p><div class="prose">
 <h2 id="donn%C3%A9es-et-unit%C3%A9s">Données et unités</h2>
 <div class="table-wrap" tabindex="0"><table>
 <thead>
@@ -47,7 +47,7 @@
 <p>Une journée où plusieurs rencontres ont lieu ne compte qu'une fois. Les journées ne sont pas des durées de 24 h passées ensemble : c'est notre unité de comptage.</p>
 <p>Les fréquences sont supposées constantes à l'intérieur de chaque période. Le modèle ne pondère ni la durée ni la qualité des rencontres.</p>
 </div></article>
-<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4"><p class="question-kicker" id="slide-label-4">Travaux pratiques <span class="pill">04 / 9</span></p><div class="prose">
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4"><p class="question-kicker" id="slide-label-4">Travaux pratiques <span class="pill">04 / 10</span></p><div class="prose">
 <h2 id="%C3%A9nonc%C3%A9">Énoncé</h2>
 <ol>
 <li>Calculer le nombre de journées de rencontre de chaque période, puis les totaux passé et futur.</li>
@@ -57,11 +57,35 @@
 <li>Formuler une conclusion conditionnelle : qu'affirme le calcul et qu'ignore-t-il ?</li>
 </ol>
 </div></article>
-<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5"><p class="question-kicker" id="slide-label-5">Travaux pratiques <span class="pill">05 / 9</span></p><div class="prose">
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5"><p class="question-kicker" id="slide-label-5">Travaux pratiques <span class="pill">05 / 10</span></p><div class="prose">
+<h2 id="%C3%A0-r%C3%A9aliser--un-script-avec-numpy-et-matplotlib">À réaliser — Un script avec NumPy et Matplotlib</h2>
+<p>Écrire un script autonome à partir des paramètres suivants, <strong>après les calculs manuels</strong> :</p>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+age_actuel = <span class="hljs-number">30</span>
+age_fin = <span class="hljs-number">60</span>
+rencontres_enfance = <span class="hljs-number">300</span>
+rencontres_adulte = <span class="hljs-number">12</span>
+rencontres_futures = <span class="hljs-number">12</span>
+</code></pre>
+<ol>
+<li>Construire <code>ages</code> avec <code>np.arange(age_fin)</code>, puis un tableau <code>rencontres</code> contenant une valeur par année : 18 valeurs pour l’enfance, <code>age_actuel - 18</code> pour la vie adulte passée et <code>age_fin - age_actuel</code> pour le futur. Utiliser <code>np.full</code> et <code>np.concatenate</code>. Vérifier que les deux tableaux ont la forme <code>(60,)</code>.</li>
+<li>Séparer passé et futur par <strong>slicing</strong> à l’indice <code>age_actuel</code>. Calculer les trois totaux avec <code>np.sum</code>, puis les pourcentages d’années restantes et de journées futures.</li>
+<li>Retrouver le nombre de points de la grille pour une unité de 12 journées. Vérifier que les totaux sont divisibles par 12 avant d’utiliser <code>//</code> : une division entière peut sinon masquer un reste.</li>
+<li>Créer une <strong>copie</strong> du tableau, doubler uniquement les valeurs futures, puis recalculer le total et la part future. Vérifier que le tableau initial et le passé restent inchangés.</li>
+<li>Comparer les fréquences <code>np.array([6, 12, 24, 36, 52, 100])</code>. Calculer les journées futures, les totaux et les proportions par <strong>opérations vectorisées</strong>, sans boucle de calcul. Une boucle est autorisée pour afficher le tableau des résultats.</li>
+<li>Tracer trois graphiques : journées de rencontre par année, comparaison des totaux passé/futur et part future en fonction de la fréquence. Sur le premier, séparer passé et futur par une ligne à <code>age_actuel - 0.5</code>. Sur le dernier, ajouter un repère horizontal à 50 %.</li>
+<li>Afficher une conclusion qui distingue les années et les journées de rencontre, puis rappelle les hypothèses du modèle.</li>
+</ol>
+<p><strong>Repères NumPy :</strong> <code>np.full(n, valeur)</code> répète une valeur ; <code>np.concatenate</code> assemble les blocs. <code>tableau[:indice]</code> sélectionne ce qui précède l’indice, et <code>tableau[indice:]</code> ce qui le suit, indice compris. <code>np.sum</code> additionne un tableau ; <code>copy()</code> permet de modifier un scénario sans écraser l’original. Une opération entre un tableau et un scalaire s’applique à chaque élément.</p>
+<p><strong>Lecture des âges :</strong> la case d’indice 0 représente l’année de 0 à 1 an, et la case 59 celle de 59 à 60 ans. L’âge de fin n’est pas inclus dans <code>np.arange</code> ; on compte bien 60 années, sans ajouter une année supplémentaire.</p>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6"><p class="question-kicker" id="slide-label-6">Travaux pratiques <span class="pill">06 / 10</span></p><div class="prose">
 <h2 id="contraintes-livrables-et-crit%C3%A8res-de-r%C3%A9ussite">Contraintes, livrables et critères de réussite</h2>
 <p><strong>Contraintes :</strong> annoncer toutes les unités ; conserver les jours passés lorsque le futur change ; ne pas transformer un horizon fixé en certitude.</p>
-<p><strong>Livrables :</strong> tableau de calcul, grille de points, deux pourcentages comparés et conclusion de cinq lignes.</p>
-<p><strong>Critères de réussite :</strong> nombres cohérents avec les trois périodes, dénominateur recomputé dans le second scénario et représentation dont la légende indique l'unité de chaque point.</p>
+<p><strong>Livrables :</strong> tableau de calcul manuel, grille de points, script <code>.py</code> exécutable, tableau des six scénarios, trois graphiques légendés et conclusion de cinq lignes.</p>
+<p><strong>Critères de réussite :</strong> nombres cohérents avec les trois périodes, dénominateur recalculé dans chaque scénario, tableau initial conservé, calcul vectorisé des six fréquences et axes avec unités. La légende de la grille indique l’unité de chaque point.</p>
 <details><summary>Indices gradués</summary>
 <ol>
 <li>Pour chaque période : années × journées par an = journées.</li>
@@ -70,7 +94,7 @@
 </ol>
 </details>
 </div></article>
-<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6"><p class="question-kicker" id="slide-label-6">Travaux pratiques <span class="pill">06 / 9</span></p><div class="prose">
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7"><p class="question-kicker" id="slide-label-7">Travaux pratiques <span class="pill">07 / 10</span></p><div class="prose">
 <h2 id="correction--calculs-et-repr%C3%A9sentation">Correction — Calculs et représentation</h2>
 <details><summary>Afficher la correction</summary>
 <p>Enfance : <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>18</mn><mo>×</mo><mn>300</mn><mo>=</mo><mn>5</mn><mtext> </mtext><mn>400</mn></mrow><annotation encoding="application/x-tex">18\times300=5\,400</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">18</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">300</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">400</span></span></span></span> journées. Vie adulte passée : <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12</mn><mo>×</mo><mn>12</mn><mo>=</mo><mn>144</mn></mrow><annotation encoding="application/x-tex">12\times12=144</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">12</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">144</span></span></span></span> journées. Le passé total vaut donc <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mtext> </mtext><mn>544</mn></mrow><annotation encoding="application/x-tex">5\,544</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">544</span></span></span></span> journées.</p>
@@ -81,7 +105,7 @@
 <p>La grille contient <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mtext> </mtext><mn>904</mn><mi mathvariant="normal">/</mi><mn>12</mn><mo>=</mo><mn>492</mn></mrow><annotation encoding="application/x-tex">5\,904/12=492</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">904/12</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">492</span></span></span></span> points : 462 pour le passé et 30 pour le futur. Les points représentent des journées de rencontre, pas des années de vie.</p>
 </details>
 </div></article>
-<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7"><p class="question-kicker" id="slide-label-7">Travaux pratiques <span class="pill">07 / 9</span></p><div class="prose">
+<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8"><p class="question-kicker" id="slide-label-8">Travaux pratiques <span class="pill">08 / 10</span></p><div class="prose">
 <h2 id="correction--changer-le-futur-sans-r%C3%A9%C3%A9crire-le-pass%C3%A9">Correction — Changer le futur sans réécrire le passé</h2>
 <details><summary>Afficher la correction</summary>
 <p>Avec 24 journées par an, le futur vaut 720 journées et le total vaut <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mtext> </mtext><mn>544</mn><mo>+</mo><mn>720</mn><mo>=</mo><mn>6</mn><mtext> </mtext><mn>264</mn></mrow><annotation encoding="application/x-tex">5\,544+720=6\,264</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">544</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">720</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">264</span></span></span></span> journées.</p>
@@ -90,23 +114,182 @@
 <p>Conclusion possible : <strong>si</strong> les fréquences et l'horizon fixés se réalisent, le modèle compte 360 journées futures dans le scénario de base. Il ne mesure ni la qualité des relations, ni la durée des visites, ni les événements qui pourraient modifier les fréquences.</p>
 </details>
 </div></article>
-<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8"><p class="question-kicker" id="slide-label-8">Travaux pratiques <span class="pill">08 / 9</span></p><div class="prose">
-<h2 id="correction--contr%C3%B4le-avec-python">Correction — Contrôle avec Python</h2>
+<article class="slide-card" id="slide-9" aria-labelledby="slide-label-9"><p class="question-kicker" id="slide-label-9">Travaux pratiques <span class="pill">09 / 10</span></p><div class="prose">
+<h2 id="correction--script-numpy-et-matplotlib">Correction — Script NumPy et Matplotlib</h2>
 <details><summary>Afficher la correction</summary>
-<pre tabindex="0"><code class="language-python">passe = <span class="hljs-number">18</span> * <span class="hljs-number">300</span> + <span class="hljs-number">12</span> * <span class="hljs-number">12</span>
-<span class="hljs-keyword">for</span> frequence <span class="hljs-keyword">in</span> (<span class="hljs-number">12</span>, <span class="hljs-number">24</span>):
-    futur = <span class="hljs-number">30</span> * frequence
-    total = passe + futur
-    <span class="hljs-built_in">print</span>(futur, total, <span class="hljs-built_in">round</span>(<span class="hljs-number">100</span>*futur/total, <span class="hljs-number">2</span>))
+<p><a href="../../../exemples/rencontres/rencontres_numpy.py">Télécharger le script Python complet</a>.</p>
+<p><strong>Résultats attendus :</strong> 5 544 journées passées, 360 futures et 5 904 au total ; 50 % des années restent, mais environ 6,10 % des journées de rencontre. La grille compte 462 points passés et 30 futurs, soit 492 points. Avec 24 journées par an dans le futur : 720 journées futures, un total de 6 264 et une part d’environ 11,49 %.</p>
+<p><strong>Lecture du code :</strong> <code>ages</code> et <code>rencontres</code> ont la forme <code>(60,)</code>. Les deux premières tranches forment le passé ; la dernière forme le futur. Les durées des blocs sont calculées à partir des âges pour rester cohérentes si l’on adapte le scénario, avec <code>18 &lt;= age_actuel &lt; age_fin</code>.</p>
+<p><code>rencontres.copy()</code> conserve les données initiales. L’affectation sur la tranche future ne change que le scénario copié. Dans la comparaison vectorisée, <code>frequences</code>, <code>jours_futurs_scenarios</code>, <code>totaux</code> et <code>proportions</code> ont la forme <code>(6,)</code>. La boucle finale sert uniquement à présenter les résultats déjà calculés.</p>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+<span class="hljs-comment"># ============================================================</span>
+<span class="hljs-comment"># TP — La moitié des années, combien de rencontres ?</span>
+<span class="hljs-comment"># NumPy + Matplotlib</span>
+<span class="hljs-comment"># ============================================================</span>
+
+<span class="hljs-comment"># 1. PARAMÈTRES DU MODÈLE</span>
+
+age_actuel = <span class="hljs-number">30</span>
+age_fin = <span class="hljs-number">60</span>
+
+<span class="hljs-comment"># Nombre de journées de rencontre par an</span>
+rencontres_enfance = <span class="hljs-number">300</span>    <span class="hljs-comment"># De 0 à 18 ans</span>
+rencontres_adulte = <span class="hljs-number">12</span>      <span class="hljs-comment"># De 18 ans à l&#x27;âge actuel</span>
+rencontres_futures = <span class="hljs-number">12</span>     <span class="hljs-comment"># De l&#x27;âge actuel à l&#x27;âge de fin</span>
+
+<span class="hljs-comment"># 2. CONSTRUIRE LE TABLEAU NUMPY</span>
+
+ages = np.arange(age_fin)
+
+rencontres = np.concatenate([
+    np.full(<span class="hljs-number">18</span>, rencontres_enfance),
+    np.full(age_actuel - <span class="hljs-number">18</span>, rencontres_adulte),
+    np.full(age_fin - age_actuel, rencontres_futures)
+])
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Tableau des rencontres :&quot;</span>)
+<span class="hljs-built_in">print</span>(rencontres)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Nombre d&#x27;années :&quot;</span>, <span class="hljs-built_in">len</span>(rencontres))
+
+<span class="hljs-comment"># 3. CALCULER LE PASSÉ ET LE FUTUR</span>
+
+passe = rencontres[:age_actuel]
+futur = rencontres[age_actuel:]
+
+jours_passes = np.<span class="hljs-built_in">sum</span>(passe)
+jours_futurs = np.<span class="hljs-built_in">sum</span>(futur)
+jours_total = np.<span class="hljs-built_in">sum</span>(rencontres)
+
+part_annees = (age_fin - age_actuel) / age_fin * <span class="hljs-number">100</span>
+part_future = jours_futurs / jours_total * <span class="hljs-number">100</span>
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\n===== SITUATION INITIALE =====&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Journées passées : <span class="hljs-subst">{jours_passes}</span>&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Journées futures : <span class="hljs-subst">{jours_futurs}</span>&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Total : <span class="hljs-subst">{jours_total}</span>&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Années restantes : <span class="hljs-subst">{part_annees:<span class="hljs-number">.2</span>f}</span> %&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Rencontres futures : <span class="hljs-subst">{part_future:<span class="hljs-number">.2</span>f}</span> %&quot;</span>)
+
+<span class="hljs-comment"># 4. REPRÉSENTATION EN POINTS</span>
+<span class="hljs-comment"># 1 point = 12 journées de rencontre.</span>
+<span class="hljs-comment"># Ici les deux totaux sont divisibles par 12 : // ne perd aucun reste.</span>
+
+unite = <span class="hljs-number">12</span>
+points_passes = jours_passes // unite
+points_futurs = jours_futurs // unite
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\n===== REPRÉSENTATION EN POINTS =====&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Points passés : <span class="hljs-subst">{points_passes}</span>&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Points futurs : <span class="hljs-subst">{points_futurs}</span>&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Total : <span class="hljs-subst">{points_passes + points_futurs}</span>&quot;</span>)
+
+<span class="hljs-comment"># 5. SCÉNARIO : DOUBLER LES RENCONTRES FUTURES</span>
+
+nouvelles_rencontres = rencontres.copy()
+nouvelles_rencontres[age_actuel:] = <span class="hljs-number">2</span> * rencontres_futures
+
+nouveau_futur = np.<span class="hljs-built_in">sum</span>(nouvelles_rencontres[age_actuel:])
+nouveau_total = np.<span class="hljs-built_in">sum</span>(nouvelles_rencontres)
+nouvelle_part = nouveau_futur / nouveau_total * <span class="hljs-number">100</span>
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\n===== SCÉNARIO DOUBLÉ =====&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Journées futures : <span class="hljs-subst">{nouveau_futur}</span>&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Total : <span class="hljs-subst">{nouveau_total}</span>&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Part future : <span class="hljs-subst">{nouvelle_part:<span class="hljs-number">.2</span>f}</span> %&quot;</span>)
+
+<span class="hljs-comment"># 6. SIMULER PLUSIEURS FRÉQUENCES</span>
+<span class="hljs-comment"># Vectorisation NumPy : la boucle suivante sert seulement à l&#x27;affichage.</span>
+
+frequences = np.array([<span class="hljs-number">6</span>, <span class="hljs-number">12</span>, <span class="hljs-number">24</span>, <span class="hljs-number">36</span>, <span class="hljs-number">52</span>, <span class="hljs-number">100</span>])
+duree_future = age_fin - age_actuel
+jours_futurs_scenarios = frequences * duree_future
+totaux = jours_passes + jours_futurs_scenarios
+proportions = jours_futurs_scenarios / totaux * <span class="hljs-number">100</span>
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\n===== COMPARAISON DES SCÉNARIOS =====&quot;</span>)
+<span class="hljs-keyword">for</span> frequence, jours, proportion <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(
+    frequences, jours_futurs_scenarios, proportions
+):
+    <span class="hljs-built_in">print</span>(
+        <span class="hljs-string">f&quot;<span class="hljs-subst">{frequence:3d}</span> jours/an | &quot;</span>
+        <span class="hljs-string">f&quot;<span class="hljs-subst">{jours:4d}</span> jours futurs | &quot;</span>
+        <span class="hljs-string">f&quot;<span class="hljs-subst">{proportion:<span class="hljs-number">6.2</span>f}</span> %&quot;</span>
+    )
+
+<span class="hljs-comment"># 7. GRAPHIQUE 1 — RENCONTRES PAR ANNÉE</span>
+
+plt.figure(figsize=(<span class="hljs-number">11</span>, <span class="hljs-number">5</span>))
+plt.bar(ages, rencontres, color=<span class="hljs-string">&quot;steelblue&quot;</span>, label=<span class="hljs-string">&quot;Journées de rencontre&quot;</span>)
+plt.axvline(
+    age_actuel - <span class="hljs-number">0.5</span>, color=<span class="hljs-string">&quot;red&quot;</span>, linestyle=<span class="hljs-string">&quot;--&quot;</span>,
+    label=<span class="hljs-string">f&quot;Âge actuel : <span class="hljs-subst">{age_actuel}</span> ans&quot;</span>
+)
+plt.xlabel(<span class="hljs-string">&quot;Âge au début de l&#x27;année (ans)&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Journées de rencontre par an&quot;</span>)
+plt.title(<span class="hljs-string">&quot;Évolution des rencontres — scénario simulé&quot;</span>)
+plt.legend()
+plt.grid(axis=<span class="hljs-string">&quot;y&quot;</span>, alpha=<span class="hljs-number">0.3</span>)
+plt.tight_layout()
+plt.show()
+
+<span class="hljs-comment"># 8. GRAPHIQUE 2 — PASSÉ VS FUTUR</span>
+
+plt.figure(figsize=(<span class="hljs-number">7</span>, <span class="hljs-number">5</span>))
+plt.bar(
+    [<span class="hljs-string">&quot;Passé&quot;</span>, <span class="hljs-string">&quot;Futur&quot;</span>], [jours_passes, jours_futurs],
+    color=[<span class="hljs-string">&quot;steelblue&quot;</span>, <span class="hljs-string">&quot;orange&quot;</span>]
+)
+plt.ylabel(<span class="hljs-string">&quot;Nombre de journées de rencontre&quot;</span>)
+plt.title(<span class="hljs-string">&quot;Répartition des journées de rencontre — scénario simulé&quot;</span>)
+plt.grid(axis=<span class="hljs-string">&quot;y&quot;</span>, alpha=<span class="hljs-number">0.3</span>)
+plt.tight_layout()
+plt.show()
+
+<span class="hljs-comment"># 9. GRAPHIQUE 3 — COMPARER LES FRÉQUENCES</span>
+
+plt.figure(figsize=(<span class="hljs-number">9</span>, <span class="hljs-number">5</span>))
+plt.plot(frequences, proportions, marker=<span class="hljs-string">&quot;o&quot;</span>, linewidth=<span class="hljs-number">2</span>, color=<span class="hljs-string">&quot;darkgreen&quot;</span>)
+plt.axhline(<span class="hljs-number">50</span>, color=<span class="hljs-string">&quot;red&quot;</span>, linestyle=<span class="hljs-string">&quot;--&quot;</span>, label=<span class="hljs-string">&quot;50 %&quot;</span>)
+plt.xlabel(<span class="hljs-string">&quot;Journées de rencontre futures par an&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Part des journées de rencontre futures (%)&quot;</span>)
+plt.title(<span class="hljs-string">&quot;Influence de la fréquence — scénarios simulés&quot;</span>)
+plt.grid(alpha=<span class="hljs-number">0.3</span>)
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+<span class="hljs-comment"># 10. CONCLUSION</span>
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\n===== CONCLUSION =====&quot;</span>)
+<span class="hljs-built_in">print</span>(
+    <span class="hljs-string">f&quot;Il reste <span class="hljs-subst">{part_annees:<span class="hljs-number">.0</span>f}</span> % des années, &quot;</span>
+    <span class="hljs-string">f&quot;mais seulement <span class="hljs-subst">{part_future:<span class="hljs-number">.2</span>f}</span> % &quot;</span>
+    <span class="hljs-string">&quot;des journées de rencontre.&quot;</span>
+)
+<span class="hljs-built_in">print</span>(
+    <span class="hljs-string">f&quot;En doublant les rencontres futures, &quot;</span>
+    <span class="hljs-string">f&quot;cette proportion atteint <span class="hljs-subst">{nouvelle_part:<span class="hljs-number">.2</span>f}</span> %.&quot;</span>
+)
+<span class="hljs-built_in">print</span>(
+    <span class="hljs-string">&quot;Les résultats dépendent des hypothèses &quot;</span>
+    <span class="hljs-string">&quot;de fréquence et de durée retenues.&quot;</span>
+)
 </code></pre>
-<p><strong>Lecture du code :</strong> <code>passe</code> est fixé une fois ; la boucle compare deux hypothèses de fréquence future. Les sorties sont <code>360 5904 6.1</code> et <code>720 6264 11.49</code>.</p>
-<p><strong>Erreur fréquente :</strong> conserver le total 5 904 dans les deux scénarios. On comparerait alors des quantités définies sur des horizons d'événements différents.</p>
+<p><strong>Lire les graphiques.</strong> Le premier montre une fréquence annuelle, le deuxième des totaux en journées : les hauteurs ne représentent pas la même unité. La troisième courbe compare des hypothèses de fréquence future avec le même passé ; ses segments relient les scénarios calculés, sans représenter des observations réelles.</p>
+<figure class="math-figure"><a href="../../../assets/images/rencontres-annuelles.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="../../../assets/images/rencontres-annuelles.svg" alt="Journées de rencontre par année : 300 pour les années d’enfance, puis 12 par an ; séparation du passé et du futur à 30 ans." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+<figure class="math-figure"><a href="../../../assets/images/rencontres-passe-futur.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="../../../assets/images/rencontres-passe-futur.svg" alt="Totaux du scénario de base : 5 544 journées passées et 360 journées futures." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+<figure class="math-figure"><a href="../../../assets/images/rencontres-frequences.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="../../../assets/images/rencontres-frequences.svg" alt="Part future des journées pour six fréquences annuelles de 6 à 100, avec un repère à 50 %." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
+<p>À 100 journées par an pendant les 30 années futures, le modèle compte 3 000 journées futures sur 8 544, soit environ 35,11 %. Le repère à 50 % n’est donc atteint par aucun des six scénarios proposés.</p>
+<p><strong>Erreur fréquente :</strong> conserver le total 5 904 lorsque la fréquence future change. Le nombre futur et le dénominateur doivent être recalculés ensemble : doubler le nombre de journées futures ne double pas exactement leur proportion.</p>
+<p><strong>Limites :</strong> ces graphiques représentent un scénario fictif et des fréquences supposées. Ils ne mesurent ni la durée des visites ni la qualité des relations, et ne prédisent pas une trajectoire individuelle.</p>
 </details>
 </div></article>
-<article class="slide-card" id="slide-9" aria-labelledby="slide-label-9"><p class="question-kicker" id="slide-label-9">Travaux pratiques <span class="pill">09 / 9</span></p><div class="prose">
+<article class="slide-card" id="slide-10" aria-labelledby="slide-label-10"><p class="question-kicker" id="slide-label-10">Travaux pratiques <span class="pill">10 / 10</span></p><div class="prose">
 <h2 id="discussion--ce-que-cet-indicateur-raconte">Discussion — Ce que cet indicateur raconte</h2>
 <p>Les années et les rencontres ne sont pas réparties de la même façon. Pour rendre l'indicateur utile, il faut expliciter son unité, ses périodes et ses hypothèses.</p>
 <p>Une grille peut rendre un ordre de grandeur visible tout en donnant une impression de certitude. La légende et la conclusion conditionnelle font partie de la réponse mathématique.</p>
 <p><strong>Lien data :</strong> avant de construire un tableau de bord, définir précisément ce que représente une ligne, un point et un pourcentage.</p>
 <p><a href="README.html">Retour aux quatre problèmes</a>. Idée de départ : <a href="https://waitbutwhy.com/2015/12/the-tail-end.html">Tim Urban, <em>The Tail End</em></a> ; scénario et calculs originaux.</p>
-</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../../../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 9</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../../../index.html">Comprendre, puis pratiquer.</a></footer><script src="../../../assets/slides.js" defer></script></body></html>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button" href="../../../index.html">Revenir au parcours →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 10</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../../../index.html">Comprendre, puis pratiquer.</a></footer><script src="../../../assets/slides.js" defer></script></body></html>

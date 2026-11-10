@@ -222,7 +222,27 @@ Ici, on imagine un crible allant au moins jusqu'à 49. **Pour la grille limitée
 
 # Le crible · Du raisonnement au code
 
+**À vous de programmer le crible**, puis d'en analyser le coût en temps et en mémoire.
+
 **Entrée :** un entier naturel `n`. **Sortie :** la liste des nombres premiers inférieurs ou égaux à `n`.
+
+1. Écrire une fonction `crible(n)` à partir du raisonnement précédent, sans bibliothèque de génération de nombres premiers.
+2. Prévoir les cas `n = 0`, `1` et `2`. Commencer les barrages à $p^2$ et justifier la condition d'arrêt.
+3. Vérifier le résultat pour 30 et contrôler que 49 n'est pas déclaré premier.
+4. Ajouter temporairement un compteur : compter chaque écriture qui barre un multiple, même si ce multiple était déjà barré. Quel total obtient-on pour 30 ?
+5. Déterminer les complexités en temps et en mémoire lorsque `n` augmente. Distinguer l'initialisation, les barrages et la construction du résultat.
+
+**Livrable :** code, résultats des vérifications, compteur pour 30 et analyse argumentée des complexités. **Réussite :** borne incluse, aucun nombre premier barré et prise en compte de toutes les boucles et des listes utilisées.
+
+<details><summary>Indices gradués</summary>
+
+1. Utiliser une table dont la case d'indice `i` indique si `i` est encore candidat ; exclure 0 et 1.
+2. Ne barrer les multiples d'un candidat que si celui-ci n'a pas déjà été éliminé.
+3. Pour un premier $p$, estimer le nombre de barrages à l'aide de $n/p$, puis additionner les coûts des passages. Le nombre de tours de la seule boucle extérieure ne donne pas le coût total.
+
+</details>
+
+<details><summary>Afficher la correction · Algorithme, vérifications et complexités</summary>
 
 ```python
 def crible(n):
@@ -243,17 +263,31 @@ print(crible(30))
 
 `premier[i]` indique si `i` est encore candidat ; `p` parcourt les facteurs possibles. Le pas `p` du `range` parcourt les multiples ; `n + 1` permet d'inclure la borne `n`.
 
-**Avant d'exécuter :** prédire les résultats pour 1, 2 et 30. Quel nombre serait oublié avec `range(..., n, p)` lorsque `n` est un carré de premier ?
+**Résultats et piège de la borne.**
 
-<details><summary>Correction · Résultats et piège de la borne</summary>
-
-`crible(1)` donne `[]`, `crible(2)` donne `[2]` et `crible(30)` donne `[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]`.
+`crible(0)` et `crible(1)` donnent `[]`, `crible(2)` donne `[2]` et `crible(30)` donne `[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]`. Le nombre 49 est barré au passage de 7.
 
 Avec une borne de fin `n` au lieu de `n + 1`, le multiple `n` n'est pas traité. Par exemple, 25 resterait candidat au passage de 5 : le programme le déclarerait premier à tort.
 
-</details>
+**Compteur pour 30.** Au passage de 2, on effectue 14 écritures, de 4 à 30. Au passage de 3, on en effectue 8, de 9 à 30. Au passage de 5, on en effectue 2 : 25 et 30. Le total est donc **24 barrages**, en comptant les écritures répétées sur un même nombre.
+
+**Mémoire.** La table `premier` contient $n+1$ cases : la mémoire auxiliaire est **$O(n)$**. La liste renvoyée ne change pas cet ordre. Le crible stocke une table pour tout l'intervalle ; sa mémoire n'est donc pas constante.
+
+**Temps.** Initialiser la table et parcourir les indices pour construire le résultat coûtent chacun $O(n)$. Pour un premier $p\leq\sqrt n$, les barrages coûtent au plus $n/p$ opérations. Leur coût total est donc majoré par :
+
+$$
+n\sum_{\substack{p\leq\sqrt n\\p\text{ premier}}}\frac1p.
+$$
+
+En majorant cette somme par celle de tous les entiers de 2 à $\lfloor\sqrt n\rfloor$, on obtient une **borne simple $O(n\log n)$**. Une analyse plus fine de la somme sur les seuls nombres premiers donne **$O(n\log\log n)$** pour ce crible ; ce résultat est admis ici.
+
+La boucle extérieure s'arrête à la racine, mais chaque passage peut barrer de nombreux multiples : le crible complet n'est pas un algorithme en $O(\sqrt n)$.
+
+Référence pour l'analyse affinée : [CP-Algorithms — analyse du crible d'Ératosthène](https://cp-algorithms.com/algebra/sieve-of-eratosthenes.html#asymptotic-analysis).
 
 [Télécharger le programme Python](exemples/revision/crible.py).
+
+</details>
 
 ---
 

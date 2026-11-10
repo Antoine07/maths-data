@@ -685,6 +685,199 @@ $$
 
 ---
 
+# Fractions et racines · Choisir une méthode
+
+**Objectif :** simplifier des expressions exactes en utilisant les carrés, les racines et les identités remarquables.
+
+Pour un dénominateur non nul :
+
+$$
+\left(\frac{u}{v}\right)^2=\frac{u^2}{v^2}.
+$$
+
+Pour $a,b\geq0$, les expressions $\sqrt a+\sqrt b$ et $\sqrt a-\sqrt b$ sont **conjuguées** :
+
+$$
+(\sqrt a+\sqrt b)(\sqrt a-\sqrt b)=a-b.
+$$
+
+Si $a\ne b$, multiplier le numérateur et le dénominateur par l'expression conjuguée permet de supprimer les racines du dénominateur. Cette transformation s'appelle **rationaliser le dénominateur**.
+
+**Avant de développer :** chercher si les racines se simplifient déjà. Attention : $(u+v)^2\ne u^2+v^2$ en général ; le terme $2uv$ ne doit pas disparaître.
+
+---
+
+# Racines · Exercice A — Le carré d'un quotient
+
+Sans calculatrice, simplifier :
+
+$$
+A=\left(\frac{\sqrt6}{\sqrt3+\sqrt2}\right)^2.
+$$
+
+1. Vérifier que le dénominateur est non nul.
+2. Élever le numérateur et le dénominateur au carré, puis supprimer les racines du dénominateur.
+3. Donner une valeur exacte et justifier chaque égalité.
+
+**Livrable :** une chaîne de calcul sans racine au dénominateur. Une approximation décimale pourra servir de contrôle après le calcul exact.
+
+<details><summary>Indice</summary>
+
+Le carré du dénominateur vaut $5+2\sqrt6$. Quelle expression lui est conjuguée ?
+
+</details>
+
+<details><summary>Afficher la correction</summary>
+
+Le dénominateur est strictement positif. En développant son carré :
+
+$$
+(\sqrt3+\sqrt2)^2=3+2\sqrt6+2=5+2\sqrt6.
+$$
+
+Ainsi :
+
+$$
+A=\frac6{5+2\sqrt6}
+=\frac{6(5-2\sqrt6)}{(5+2\sqrt6)(5-2\sqrt6)}
+=\frac{6(5-2\sqrt6)}{25-24}.
+$$
+
+Le produit des conjugués vaut 1, donc le facteur utilisé n'est pas nul. On obtient :
+
+$$
+\boxed{A=30-12\sqrt6}.
+$$
+
+Pour contrôler : $A\approx0{,}6061$. Le résultat est positif, comme le carré de départ.
+
+</details>
+
+---
+
+# Racines · Exercice B — Simplifier avant de rationaliser
+
+Sans calculatrice, simplifier :
+
+$$
+B=\left(\frac{\sqrt2}{\sqrt3+1}\right)^2.
+$$
+
+Vérifier que l'expression est définie, développer le carré du dénominateur, puis donner une valeur exacte sans racine au dénominateur.
+
+<details><summary>Indice</summary>
+
+Après avoir élevé au carré, simplifier la fraction par 2. Utiliser ensuite le conjugué de $2+\sqrt3$.
+
+</details>
+
+<details><summary>Afficher la correction</summary>
+
+Comme $\sqrt3+1>0$, le quotient est défini. On calcule :
+
+$$
+B=\frac2{(\sqrt3+1)^2}
+=\frac2{4+2\sqrt3}
+=\frac1{2+\sqrt3}.
+$$
+
+Puis :
+
+$$
+B=\frac{2-\sqrt3}{(2+\sqrt3)(2-\sqrt3)}
+=\frac{2-\sqrt3}{4-3}
+=\boxed{2-\sqrt3}.
+$$
+
+Le produit au dénominateur vaut 1. Pour contrôler : $B\approx0{,}2679$.
+
+</details>
+
+---
+
+# Racines · Exercice C — Réduire les racines d'abord
+
+Sans calculatrice, simplifier :
+
+$$
+C=\left(\frac{\sqrt{12}}{\sqrt8-\sqrt2}\right)^2.
+$$
+
+Commencer par simplifier chaque racine. Vérifier que le dénominateur ne s'annule pas, puis chercher le chemin de calcul le plus court.
+
+<details><summary>Indice</summary>
+
+Écrire $12=4\times3$ et $8=4\times2$. Les deux termes du dénominateur deviennent des multiples de $\sqrt2$.
+
+</details>
+
+<details><summary>Afficher la correction</summary>
+
+On a $\sqrt{12}=2\sqrt3$ et $\sqrt8=2\sqrt2$. Le dénominateur vaut donc :
+
+$$
+\sqrt8-\sqrt2=2\sqrt2-\sqrt2=\sqrt2>0.
+$$
+
+Il suffit alors d'élever le quotient au carré :
+
+$$
+C=\left(\frac{2\sqrt3}{\sqrt2}\right)^2
+=\frac{(2\sqrt3)^2}{(\sqrt2)^2}
+=\frac{12}{2}
+=\boxed6.
+$$
+
+Ici, réduire les racines avant de calculer évite une rationalisation inutile. On n'a pas utilisé la fausse règle $\sqrt8-\sqrt2=\sqrt{8-2}$.
+
+</details>
+
+---
+
+# Racines · Exercice D — Un dénominateur avec une différence
+
+Sans calculatrice, simplifier :
+
+$$
+D=\left(\frac{\sqrt3}{\sqrt5-\sqrt2}\right)^2.
+$$
+
+Justifier que le quotient est défini. Développer le carré d'une différence, puis utiliser l'expression conjuguée pour donner une valeur exacte sans racine au dénominateur.
+
+<details><summary>Indice</summary>
+
+Le carré du dénominateur vaut $7-2\sqrt{10}$. Le produit avec son conjugué fait apparaître $49-40$.
+
+</details>
+
+<details><summary>Afficher la correction</summary>
+
+Comme $\sqrt5>\sqrt2$, le dénominateur est strictement positif. Le carré d'une différence donne :
+
+$$
+(\sqrt5-\sqrt2)^2=5-2\sqrt{10}+2=7-2\sqrt{10}.
+$$
+
+Ainsi :
+
+$$
+D=\frac3{7-2\sqrt{10}}
+=\frac{3(7+2\sqrt{10})}{(7-2\sqrt{10})(7+2\sqrt{10})}
+=\frac{3(7+2\sqrt{10})}{49-40}.
+$$
+
+Le produit des conjugués vaut 9. Il reste à simplifier le facteur 3 :
+
+$$
+\boxed{D=\frac{7+2\sqrt{10}}3}.
+$$
+
+Pour contrôler : $D\approx4{,}4415$. Attention au signe du terme croisé : dans $(u-v)^2$, il vaut $-2uv$.
+
+</details>
+
+---
+
 # 7. Logarithmes (règles essentielles)
 
 $$

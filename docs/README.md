@@ -18,6 +18,8 @@ La partie sur les nombres premiers distingue les diviseurs premiers des diviseur
 
 Les supports incluent 28 figures SVG générées avec Matplotlib : tangentes, limites, transformations, résidus, ACP, courbure, optimisation, classification, rotations, clustering et problèmes. Cliquer sur une figure permet de l'ouvrir en grand.
 
+Cinq graphiques supplémentaires accompagnent les exemples corrigés de fonctions : extrema locaux, quotient, composition, exercices d'extremums et température simulée. L'exercice de température relie période et fréquence, distingue écart-type et variance, et explicite les limites du modèle. Les scripts reproductibles et leur vérification sont dans [exemples/fonctions](exemples/fonctions/).
+
 Huit illustrations compactes accompagnent les couvertures Matrices, Gradient, Statistiques, Corrélation, Centrage-réduction, ACP, Probabilités et Réseau. Sept dessins complètent les transformations, les limites, l'histogramme, la boîte à moustaches et les degrés de liberté. Leur hauteur est plafonnée dans la page : 220 px pour les couvertures et 250 px pour ces dessins de cours, puis 150 et 190 px sur mobile. Les SVG restent accessibles en grand au clic.
 
 Le chapitre de statistiques descriptives part du besoin d'échantillonner et distingue description, estimation, sélection et fluctuation. Il explique ensuite la contrainte de somme nulle des écarts centrés, les `n−1` degrés de liberté et la correction d'estimation de variance. Une démonstration et l'énumération de 64 échantillons indépendants avec remise justifient la correction avant l'introduction de `ddof`. Le cas d'une vraie moyenne connue est distingué du centrage sur une moyenne estimée.

@@ -1,0 +1,27 @@
+[
+  {
+    "file": "fonctions-extrema.svg",
+    "title": "Relier les variations aux extrema locaux",
+    "description": "Aux points −1 et 1, la dérivée change de signe. La cubique est non bornée : ces extrema ne sont pas globaux sur ℝ."
+  },
+  {
+    "file": "fonctions-quotient.svg",
+    "title": "Une branche croissante de chaque côté du point interdit",
+    "description": "Les tracés ne relient jamais les deux branches à travers 0. La croissance est établie séparément sur ]−∞,0[ et ]0,+∞[."
+  },
+  {
+    "file": "fonctions-composition.svg",
+    "title": "Ne pas oublier la dérivée de la fonction intérieure",
+    "description": "En x = 0, la valeur vaut 1 et la pente vaut 3. L’exponentielle et sa dérivée restent strictement positives."
+  },
+  {
+    "file": "fonctions-exercice-extremums.svg",
+    "title": "Une dérivée nulle ne garantit pas un minimum",
+    "description": "Les valeurs et les changements de signe se justifient par le calcul. Une courbe sur une fenêtre finie ne prouve pas un extremum global."
+  },
+  {
+    "file": "fonctions-temperature.svg",
+    "title": "Séparer le cycle idéal et les fluctuations simulées",
+    "description": "Exemple reproductible, graine 7. Le cycle réel n’est pas parfaitement sinusoïdal ; le choix gaussien est une hypothèse de simulation."
+  }
+]

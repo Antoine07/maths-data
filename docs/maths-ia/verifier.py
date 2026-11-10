@@ -103,8 +103,18 @@ notebook = nbformat.read(BASE/'pratique/depart.ipynb',as_version=4)
 NotebookClient(notebook,timeout=120,kernel_name='python3',
                resources={'metadata':{'path':str(BASE/'pratique')}}).execute()
 home = (BASE.parent/'index.html').read_text()
-assert home.index('id="statistiques"') < home.index('id="decouvrir-reseaux"') < home.index('id="apprentissage"')
+assert home.index('id="algebre"') < home.index('id="decouvrir-reseaux"') < home.index('id="statistiques"')
 assert home.count('id="decouvrir-reseaux"') == 1
+bloc = home.split('<!-- maths-ia intro start -->')[1].split('<!-- maths-ia intro end -->')[0]
+precedent = -1
+for module in modules:
+    marqueur = 'data-course="maths-ia/'+module['id']+'"'
+    assert home.count(marqueur) == 1
+    position = bloc.index(marqueur)
+    assert position > precedent
+    precedent = position
+assert bloc.index('examen.html') > bloc.index('03_comprendre_reseau.html')
+assert bloc.index('examen.html') < bloc.index('04_preparer_donnees.html')
 assert '07_entrainer_pytorch.html' in home and '08_evaluer.html' in home
 assert home.index('Fil rouge · 6 jalons') > home.rfind('</section>')
 assert 'Correction enseignant' not in (BASE/'examen.html').read_text()

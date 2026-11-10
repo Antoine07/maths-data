@@ -7,7 +7,7 @@ html: true
 
 Deux semaines · Antoine et Michel · un projet de consommation simulée.
 
-Les réseaux sont introduits **après « 03 / Décrire et interpréter »**, puis leur apprentissage est approfondi après le gradient et l'optimisation.
+Le parcours complet est accessible directement dans l'accueil, **après « 02 / Représenter et ajuster »**, sous « 02 bis / Le cours maths et IA ». Ses huit séances sont présentées dans l'ordre des deux semaines. Les statistiques et la dérivée d'une erreur précèdent le premier réseau ; le gradient et l'optimisation précèdent son entraînement.
 
 ---
 

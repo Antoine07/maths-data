@@ -1,6 +1,6 @@
 # Le labo maths — CODA
 
-Cette branche **`maths-ia`** ajoute un [parcours détaillé sur deux semaines](docs/maths-ia/index.html), avec une introduction aux réseaux après les statistiques, les séances de pratique de Michel et un [examen individuel de 3 h](docs/maths-ia/examen.html). Les fichiers étudiants sont distribuables ; le corrigé d'examen reste dans le dossier local non versionné de la sandbox.
+Cette branche **`maths-ia`** affiche les huit séances du [cours détaillé directement après « 02 / Représenter et ajuster »](docs/index.html#decouvrir-reseaux). Le [parcours sur deux semaines](docs/maths-ia/index.html) regroupe aussi les supports, les séances de pratique de Michel et un [examen individuel de 3 h](docs/maths-ia/examen.html). Les fichiers étudiants sont distribuables ; le corrigé d'examen reste dans le dossier local non versionné de la sandbox.
 
 Le cours antérieur est conservé sur `main`. Le repère local `cours-avant-maths-ia` inclut aussi les dernières corrections de révision présentes au début de cette mise à jour. Les fichiers propres au nouveau parcours sont contenus dans `docs/maths-ia/` et versionnés sur cette branche.
 
@@ -56,4 +56,4 @@ node docs/maths-ia/build.cjs
 npm run check
 ```
 
-Le second programme génère les nouveaux supports, les archives étudiants et l'insertion des réseaux après le bloc 03. Il est réexécutable sans dupliquer les cartes. `python docs/maths-ia/verifier.py` contrôle les exemples, l'examen et la progression ; l'exécuter dans la sandbox équipée de PyTorch.
+Le second programme génère les nouveaux supports, les archives étudiants et l'insertion des huit séances après le bloc 02 de l'accueil. Il est réexécutable sans dupliquer les cartes. `python docs/maths-ia/verifier.py` contrôle les exemples, l'examen et la progression ; l'exécuter dans la sandbox équipée de PyTorch.

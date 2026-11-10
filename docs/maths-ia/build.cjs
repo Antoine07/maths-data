@@ -82,14 +82,21 @@ for (const name of ['index.html','stat/index.html']) {
     .replace(/<!-- maths-ia practice start -->[\s\S]*?<!-- maths-ia practice end -->/g,'')
     .replace(/<a class="button maths-ia-link"[^>]*>[\s\S]*?<\/a>/g,'')
     .replace(/<a href="#decouvrir-reseaux">[\s\S]*?<\/a>/g,'');
-  const intro=`<!-- maths-ia intro start --><section class="home-path-section" id="decouvrir-reseaux"><div class="section-heading"><div><p class="eyebrow">03 bis / Du neurone au réseau</p><h2>Découvrir les réseaux de neurones</h2></div><p>Après les statistiques : comprendre la propagation avant, puis revenir au gradient pour apprendre les paramètres.</p></div><nav class="path-grid" aria-label="Introduction aux réseaux de neurones">${card(config.modules[2],output)}</nav></section><!-- maths-ia intro end -->`;
-  html=html.replace(/(<section class="home-path-section" id="statistiques">[\s\S]*?<\/section>)/, '$1'+intro);
-  html=html.replace(/(<a href="#statistiques">[\s\S]*?<\/a>)/, '$1<a href="#decouvrir-reseaux">Découvrir les réseaux</a>');
   const programmeHref=relative(output,path.join(base,'index.html'));
+  const semaines=[1,2].map(semaine => {
+    const cours=config.modules.filter(m=>m.semaine===semaine).map(m=>card(m,output)).join('');
+    const examen=semaine===1?`<div class="project-banner"><div><p class="eyebrow">Fin de semaine 1</p><h3>Examen individuel de 3 h</h3><p>1 h 30 de mathématiques, 30 min d'IA et 1 h de pratique Python.</p></div><div class="project-actions"><a class="button" href="${relative(output,path.join(base,'examen.html'))}">Ouvrir le sujet →</a><a href="${relative(output,path.join(base,'examen-etudiant.zip'))}" download>Fichiers étudiants ↓</a></div></div>`:'';
+    return `<h3>Semaine ${semaine} · ${semaine===1?'Comprendre et construire':'Entraîner et évaluer'}</h3><nav class="path-grid" aria-label="Cours maths et IA de semaine ${semaine}">${cours}</nav>${examen}`;
+  }).join('');
+  const intro=`<!-- maths-ia intro start --><section class="home-path-section" id="decouvrir-reseaux"><div class="section-heading"><div><p class="eyebrow">02 bis / Le cours maths et IA</p><h2>Des mathématiques aux réseaux de neurones</h2></div><p>Le cours détaillé sur deux semaines, avec Antoine et Michel. Décrire les données et dériver une erreur avant le premier réseau, puis étudier le gradient avant son entraînement.</p></div><div class="actions"><a class="button" href="${relative(output,path.join(base,'programme.html'))}">Programme et répartition des séances →</a><a class="button" href="${relative(output,path.join(base,'pratique.zip'))}" download>Projet et notebooks ↓</a></div>${semaines}</section><!-- maths-ia intro end -->`;
+  // Le catalogue complet contient le bloc 02 ; la page de statistiques commence au bloc 03.
+  const apres=name==='index.html'?'algebre':'statistiques';
+  const ancre=new RegExp('(<section class="home-path-section" id="'+apres+'">[\\s\\S]*?<\\/section>)');
+  if (!ancre.test(html)) throw new Error(`Section ${apres} absente de ${name}`);
+  html=html.replace(ancre, '$1'+intro);
+  const lien=new RegExp('(<a href="#'+apres+'">[\\s\\S]*?<\\/a>)');
+  html=html.replace(lien, '$1<a href="#decouvrir-reseaux">Maths et IA</a>');
   html=html.replace('<div class="actions">', `<div class="actions"><a class="button maths-ia-link" href="${programmeHref}">Le parcours sur deux semaines →</a>`);
-  if (name==='index.html') {
-    html=html.replace(/(<section class="home-path-section" id="apprentissage">[\s\S]*?)(<\/nav><\/section>)/,(_,a,b)=>a+'<!-- maths-ia practice start -->'+config.modules.slice(6).map(m=>card(m,output)).join('')+'<!-- maths-ia practice end -->'+b);
-  }
   fs.writeFileSync(output,html);
 }
 fs.writeFileSync(path.join(base,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');

@@ -5,7 +5,7 @@ html: true
 
 # Évaluer et argumenter la généralisation
 
-S2 · Michel 3 · Michel
+Évaluation
 
 Courbes, matrice de confusion, références simples et bilan final.
 
@@ -366,4 +366,4 @@ Les références simples donnent un point de comparaison.
 Les choix sont figés avant le bilan test.
 La conclusion doit conserver les limites du jeu simulé et des effectifs.
 
-[Continuer le parcours](programme.md) · [Programme et livrables](programme.md).
+[Revenir au parcours](../index.html).

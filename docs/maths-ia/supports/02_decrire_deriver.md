@@ -5,7 +5,7 @@ html: true
 
 # Décrire les données et dériver une erreur
 
-S1 · Maths B · Antoine
+Statistiques et dérivation
 
 Moyenne, dispersion, dérivée et première amélioration d'un paramètre.
 
@@ -444,4 +444,4 @@ La MSE moyenne les carrés des résidus.
 La dérivée décrit une variation locale de la perte.
 Un premier pas doit être contrôlé par un nouveau calcul de perte.
 
-[Continuer le parcours](03_comprendre_reseau.md) · [Programme et livrables](programme.md).
+[Continuer le parcours](03_comprendre_reseau.md) · [Tous les chapitres](../index.html).

@@ -5,7 +5,7 @@ html: true
 
 # Du neurone au réseau : la propagation avant
 
-S1 · Michel 1 · Michel
+Neurones et activations
 
 Poids, biais, activations et prédictions avec NumPy, après les statistiques.
 
@@ -21,7 +21,7 @@ Expliquer les paramètres d'un réseau, calculer une propagation avant et distin
 
 ## Résumé général
 
-Un neurone combine ses entrées, ajoute un biais et applique une activation. Un réseau compose plusieurs couches. Les poids sont fournis dans cette séance : nous calculons les sorties sans encore coder leur apprentissage. Le gradient et la rétropropagation seront approfondis en semaine 2.
+Un neurone combine ses entrées, ajoute un biais et applique une activation. Un réseau compose plusieurs couches. Les poids sont fournis dans cette séance : nous calculons les sorties sans encore coder leur apprentissage. Le gradient et la rétropropagation seront approfondis dans les chapitres suivants.
 
 ---
 
@@ -280,7 +280,7 @@ Une équipe de gestion énergétique souhaite comprendre des profils de journée
 
 ### Problème à résoudre et fonctionnalités cibles
 
-Ajouter une propagation avant à trois entrées et quatre neurones cachés. Les poids sont fixés et explicitement illustratifs ; l'entraînement sera repris avec Michel après le gradient.
+Ajouter une propagation avant à trois entrées et quatre neurones cachés. Les poids sont fixés et explicitement illustratifs ; l'entraînement sera étudié après le gradient.
 
 ### Modèle de données et architecture attendue
 
@@ -392,4 +392,4 @@ La couche cachée utilise une activation non linéaire.
 Logit, probabilité et décision sont des objets distincts.
 Calculer une propagation avant ne suffit pas à apprendre les paramètres.
 
-[Continuer le parcours](04_preparer_donnees.md) · [Programme et livrables](programme.md).
+[Continuer le parcours](04_preparer_donnees.md) · [Tous les chapitres](../index.html).

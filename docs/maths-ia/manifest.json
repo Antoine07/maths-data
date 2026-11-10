@@ -2,9 +2,7 @@
   {
     "id": "01_representer",
     "titre": "Représenter et calculer",
-    "semaine": 1,
-    "intervenant": "Antoine",
-    "repere": "S1 · Maths A",
+    "repere": "Algèbre et matrices",
     "objectif": "Algèbre, fonctions, vecteurs, matrices et prédiction linéaire.",
     "file": "01_representer.html",
     "slides": 26
@@ -12,9 +10,7 @@
   {
     "id": "02_decrire_deriver",
     "titre": "Décrire les données et dériver une erreur",
-    "semaine": 1,
-    "intervenant": "Antoine",
-    "repere": "S1 · Maths B",
+    "repere": "Statistiques et dérivation",
     "objectif": "Moyenne, dispersion, dérivée et première amélioration d'un paramètre.",
     "file": "02_decrire_deriver.html",
     "slides": 30
@@ -22,9 +18,7 @@
   {
     "id": "03_comprendre_reseau",
     "titre": "Du neurone au réseau : la propagation avant",
-    "semaine": 1,
-    "intervenant": "Michel",
-    "repere": "S1 · Michel 1",
+    "repere": "Neurones et activations",
     "objectif": "Poids, biais, activations et prédictions avec NumPy, après les statistiques.",
     "file": "03_comprendre_reseau.html",
     "slides": 28
@@ -32,9 +26,7 @@
   {
     "id": "04_preparer_donnees",
     "titre": "Préparer et séparer les données",
-    "semaine": 2,
-    "intervenant": "Antoine",
-    "repere": "S2 · Maths C",
+    "repere": "Préparation des données",
     "objectif": "Partitions, standardisation, cible binaire et prévention des fuites.",
     "file": "04_preparer_donnees.html",
     "slides": 27
@@ -42,9 +34,7 @@
   {
     "id": "05_gradient_chaine",
     "titre": "Gradient et règle de chaîne",
-    "semaine": 2,
-    "intervenant": "Antoine",
-    "repere": "S2 · Maths D",
+    "repere": "Gradient et chaîne",
     "objectif": "Dérivées partielles, propagation du gradient et vérification numérique.",
     "file": "05_gradient_chaine.html",
     "slides": 25
@@ -52,9 +42,7 @@
   {
     "id": "06_optimiser",
     "titre": "Optimisation et régularisation",
-    "semaine": 2,
-    "intervenant": "Antoine",
-    "repere": "S2 · Maths E",
+    "repere": "Optimisation",
     "objectif": "Descente, pas, pénalité et sélection des réglages sur validation.",
     "file": "06_optimiser.html",
     "slides": 27
@@ -62,9 +50,7 @@
   {
     "id": "07_entrainer_pytorch",
     "titre": "Entraîner le réseau avec PyTorch",
-    "semaine": 2,
-    "intervenant": "Michel",
-    "repere": "S2 · Michel 2",
+    "repere": "PyTorch",
     "objectif": "Tenseurs, logits, autograd et boucle d'entraînement reproductible.",
     "file": "07_entrainer_pytorch.html",
     "slides": 26
@@ -72,19 +58,9 @@
   {
     "id": "08_evaluer",
     "titre": "Évaluer et argumenter la généralisation",
-    "semaine": 2,
-    "intervenant": "Michel",
-    "repere": "S2 · Michel 3",
+    "repere": "Évaluation",
     "objectif": "Courbes, matrice de confusion, références simples et bilan final.",
     "file": "08_evaluer.html",
     "slides": 27
-  },
-  {
-    "id": "programme",
-    "titre": "Le programme sur deux semaines",
-    "repere": "Organisation · Antoine et Michel",
-    "objectif": "Séances, jalons, examen et livrables.",
-    "file": "programme.html",
-    "slides": 16
   }
 ]

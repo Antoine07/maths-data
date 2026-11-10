@@ -5,7 +5,7 @@ html: true
 
 # Optimisation et régularisation
 
-S2 · Maths E · Antoine
+Optimisation
 
 Descente, pas, pénalité et sélection des réglages sur validation.
 
@@ -265,7 +265,7 @@ Une équipe de gestion énergétique souhaite comprendre des profils de journée
 
 ### Problème à résoudre et fonctionnalités cibles
 
-Annoncer la grille des réglages, les graines et la règle d'arrêt que Michel réutilisera pour l'entraînement PyTorch. Comparer une descente simple à ses contrôles analytiques.
+Annoncer la grille des réglages, les graines et la règle d'arrêt à réutiliser pour l'entraînement PyTorch. Comparer une descente simple à ses contrôles analytiques.
 
 ### Modèle de données et architecture attendue
 
@@ -377,4 +377,4 @@ Le pas peut produire convergence, lenteur ou instabilité.
 La pénalité doit avoir une convention explicite.
 Les réglages et l'arrêt sont choisis sur validation, avant le test.
 
-[Continuer le parcours](07_entrainer_pytorch.md) · [Programme et livrables](programme.md).
+[Continuer le parcours](07_entrainer_pytorch.md) · [Tous les chapitres](../index.html).

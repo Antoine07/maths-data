@@ -5,7 +5,7 @@ html: true
 
 # Représenter et calculer
 
-S1 · Maths A · Antoine
+Algèbre et matrices
 
 Algèbre, fonctions, vecteurs, matrices et prédiction linéaire.
 
@@ -365,4 +365,4 @@ Le modèle combine des poids et un biais.
 Les dimensions donnent un premier contrôle de cohérence.
 Prédire avec des paramètres fournis n'est pas encore apprendre.
 
-[Continuer le parcours](02_decrire_deriver.md) · [Programme et livrables](programme.md).
+[Continuer le parcours](02_decrire_deriver.md) · [Tous les chapitres](../index.html).

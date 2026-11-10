@@ -25,10 +25,6 @@ from parcours import preparer, PARTITIONS, entrainer, probabilites, passage_nump
 config = json.loads((BASE/'parcours.json').read_text())
 modules = config['modules']
 assert len(modules) == 8
-assert sum(m['intervenant']=='Antoine' for m in modules) == 5
-assert sum(m['intervenant']=='Michel' for m in modules) == 3
-assert config['maths_minutes'] == 5*210 + 180 + 30
-assert config['michel_minutes'] == 3*210
 examen = config['examen']
 assert examen['minutes'] == examen['maths']+examen['ia']+examen['pratique'] == 180
 assert examen['maths'] == 90 and examen['ia'] == 30 and examen['points'] == 20

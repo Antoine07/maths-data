@@ -1,12 +1,12 @@
 # Le labo maths — CODA
 
-Cette branche **`maths-ia`** affiche les huit séances du [cours détaillé directement après « 02 / Représenter et ajuster »](docs/index.html#decouvrir-reseaux). Le [parcours sur deux semaines](docs/maths-ia/index.html) regroupe aussi les supports, les séances de pratique de Michel et un [examen individuel de 3 h](docs/maths-ia/examen.html). Les fichiers étudiants sont distribuables ; le corrigé d'examen reste dans le dossier local non versionné de la sandbox.
+Cette branche **`maths-ia`** affiche les huit chapitres du [cours détaillé directement après « 02 / Représenter et ajuster »](docs/index.html#decouvrir-reseaux). Le [parcours maths et IA](docs/maths-ia/index.html) regroupe aussi les supports, les travaux pratiques et un [examen individuel de 3 h](docs/maths-ia/examen.html). Les fichiers étudiants sont distribuables ; le corrigé d'examen reste dans le dossier local non versionné de la sandbox.
 
 Le cours antérieur est conservé sur `main`. Le repère local `cours-avant-maths-ia` inclut aussi les dernières corrections de révision présentes au début de cette mise à jour. Les fichiers propres au nouveau parcours sont contenus dans `docs/maths-ia/` et versionnés sur cette branche.
 
 Un parcours de mathématiques pour comprendre les données et l'IA : révisions d'algèbre, fonctions, dérivation, matrices, statistiques, probabilités, ACP, optimisation et réseaux de neurones.
 
-Le catalogue initial comprend 27 présentations, des figures, dix problèmes et un projet fil rouge avec données simulées, code Python et notebooks. Deux ateliers complètent ses six jalons : groupes et symétries, puis clustering des journées avec k-means. La branche maths-ia y ajoute les huit séances du parcours sur deux semaines.
+Le catalogue initial comprend 27 présentations, des figures, dix problèmes et un projet fil rouge avec données simulées, code Python et notebooks. Deux ateliers complètent ses six jalons : groupes et symétries, puis clustering des journées avec k-means. La branche maths-ia y ajoute huit chapitres sur les mathématiques et les réseaux de neurones.
 
 ## Consulter les cours
 

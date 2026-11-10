@@ -5,7 +5,7 @@ html: true
 
 # Préparer et séparer les données
 
-S2 · Maths C · Antoine
+Préparation des données
 
 Partitions, standardisation, cible binaire et prévention des fuites.
 
@@ -264,7 +264,7 @@ Une équipe de gestion énergétique souhaite comprendre des profils de journée
 
 ### Problème à résoudre et fonctionnalités cibles
 
-Préparer les représentations et les étiquettes qui seront réutilisées par les modèles logistique et réseau. Cette préparation précède tout entraînement de semaine 2.
+Préparer les représentations et les étiquettes qui seront réutilisées par les modèles logistique et réseau. Cette préparation précède tout entraînement.
 
 ### Modèle de données et architecture attendue
 
@@ -376,4 +376,4 @@ La validation guide les choix ; le test mesure après ces choix.
 L'échelle, les colonnes et le seuil font partie du modèle.
 La saisonnalité simulée limite l'interprétation des résultats.
 
-[Continuer le parcours](05_gradient_chaine.md) · [Programme et livrables](programme.md).
+[Continuer le parcours](05_gradient_chaine.md) · [Tous les chapitres](../index.html).

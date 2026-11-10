@@ -1,8 +1,8 @@
 # Le labo maths — CODA
 
-Sur la branche **maths-ia**, les huit séances du cours sont visibles directement dans [l'accueil, après « 02 / Représenter et ajuster »](index.html#decouvrir-reseaux), dans le bloc « 02 bis / Le cours maths et IA ». Elles suivent l'ordre des deux semaines, avec le programme Antoine/Michel, le notebook fil rouge et l'examen de première semaine. Le [parcours sur deux semaines](maths-ia/index.html) reste aussi accessible en page dédiée. Les statistiques précèdent le premier réseau ; le gradient et l'optimisation précèdent son entraînement.
+Sur la branche **maths-ia**, les huit chapitres du cours sont visibles directement dans [l'accueil, après « 02 / Représenter et ajuster »](index.html#decouvrir-reseaux), dans le bloc « 02 bis / Le cours maths et IA ». Le [parcours maths et IA](maths-ia/index.html) regroupe aussi les supports et le projet fil rouge. Les statistiques précèdent le premier réseau ; le gradient et l'optimisation précèdent son entraînement.
 
-La répartition de l'examen est 90 minutes de mathématiques, 30 minutes d'IA et 60 minutes de pratique Python, sur 20 points. L'épreuve précède les contenus avancés de semaine 2 et ne les évalue pas. Le corrigé reste local dans `sandbox_jupyter/correction/maths-ia/`, absent de cette distribution et des archives étudiants.
+L'examen porte sur les trois premiers chapitres : 90 minutes de mathématiques, 30 minutes d'IA et 60 minutes de pratique Python, sur 20 points. Le corrigé reste local dans `sandbox_jupyter/correction/maths-ia/`, absent de cette distribution et des archives étudiants.
 
 Ouvrir `index.html` dans un navigateur. Le dossier `docs/` peut aussi être publié tel quel avec GitHub Pages.
 

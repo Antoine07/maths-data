@@ -5,7 +5,7 @@ html: true
 
 # Gradient et règle de chaîne
 
-S2 · Maths D · Antoine
+Gradient et chaîne
 
 Dérivées partielles, propagation du gradient et vérification numérique.
 
@@ -372,4 +372,4 @@ La règle de chaîne suit les dépendances du calcul.
 La convention de perte détermine les facteurs du gradient.
 Un contrôle numérique valide un calcul local, pas la généralisation.
 
-[Continuer le parcours](06_optimiser.md) · [Programme et livrables](programme.md).
+[Continuer le parcours](06_optimiser.md) · [Tous les chapitres](../index.html).

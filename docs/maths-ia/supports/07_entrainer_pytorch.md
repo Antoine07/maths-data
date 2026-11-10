@@ -5,7 +5,7 @@ html: true
 
 # Entraîner le réseau avec PyTorch
 
-S2 · Michel 2 · Michel
+PyTorch
 
 Tenseurs, logits, autograd et boucle d'entraînement reproductible.
 
@@ -264,7 +264,7 @@ Une équipe de gestion énergétique souhaite comprendre des profils de journée
 
 ### Problème à résoudre et fonctionnalités cibles
 
-Reprendre les données et le réseau de la semaine 1. Entraîner une logistique et le réseau 3→4→1 ; comparer la petite grille de pas sur validation et conserver les courbes.
+Reprendre les données et le réseau des premiers chapitres. Entraîner une logistique et le réseau 3→4→1 ; comparer la petite grille de pas sur validation et conserver les courbes.
 
 ### Modèle de données et architecture attendue
 
@@ -376,4 +376,4 @@ Logits et cibles doivent avoir des formes compatibles.
 zero_grad, backward et step remplissent des rôles distincts.
 L'état retenu provient de la validation et doit être restauré.
 
-[Continuer le parcours](08_evaluer.md) · [Programme et livrables](programme.md).
+[Continuer le parcours](08_evaluer.md) · [Tous les chapitres](../index.html).

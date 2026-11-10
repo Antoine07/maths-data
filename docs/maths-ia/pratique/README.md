@@ -1,4 +1,4 @@
-# Un projet pendant deux semaines
+# Projet fil rouge — Consommation simulée
 
 Les 240 journées sont simulées et reprennent le fil rouge du cours. Les colonnes d'entrée sont température, occupation et équipements. La consommation n'est jamais une entrée du classificateur.
 

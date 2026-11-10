@@ -50,6 +50,23 @@ for ax in axes: ax.grid(color='#dce2d9',alpha=.6)
 sauver('descente',fig,'Observer une mise à jour plutôt que supposer son effet',
        'Exemple analytique ; le pas 1 oscille entre 0 et 6 et conserve une perte de 9.')
 
+fig, axes = plt.subplots(1,2,figsize=(11.6,5.4))
+w = np.linspace(-.5,4.5,300)
+for ax, coefficient, depart, arrivee in zip(axes,[1,5],[0,1],[1,2]):
+    ax.plot(w,coefficient*(w-2)**2,color='#275c47',lw=2.5)
+    ax.scatter([2],[0],color='#80659b',s=65,zorder=5,label='Minimum global : (2 ; 0)')
+    ax.scatter([depart,arrivee],[coefficient*(depart-2)**2,coefficient*(arrivee-2)**2],
+               color='#b46a43',s=45,zorder=4)
+    ax.annotate('Mise à jour',xy=(arrivee,coefficient*(arrivee-2)**2),
+                xytext=(depart,coefficient*(depart-2)**2+1.2),fontsize=10,
+                arrowprops=dict(arrowstyle='->',color='#b46a43'),color='#b46a43')
+    ax.set(xlabel='Poids w',ylabel='Perte L(w)',
+           title=('Exemple : L(w) = (w − 2)²' if coefficient==1 else 'Correction : MSE(w) = 5(w − 2)²'))
+    ax.grid(color='#dce2d9',alpha=.6)
+    ax.legend(fontsize=9)
+sauver('perte-un-poids',fig,'Même minimum, pentes différentes',
+       'À gauche : pas 0,25, w passe de 0 à 1. À droite : pas 0,1, w passe de 1 à 2. Les pertes sont positives ou nulles sur tout ℝ.')
+
 d = preparer()
 fig, axes = plt.subplots(1,2,figsize=(11.6,5.4))
 for ax, nom in zip(axes,['logistique','reseau']):
@@ -64,4 +81,4 @@ for ax, nom in zip(axes,['logistique','reseau']):
     ax.legend(fontsize=9)
 sauver('apprentissage-validation',fig,'Suivre deux partitions aux rôles différents',
        '240 journées simulées ; graine 7 ; pas 0,1. Ces courbes ne consultent pas le test et ne prouvent pas une supériorité générale.')
-print('Deux figures calculées ; aperçus :', PREVIEWS)
+print('Trois figures calculées ; aperçus :', PREVIEWS)

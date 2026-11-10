@@ -102,6 +102,16 @@ Le signe renseigne sur une variation locale. La dérivée n'est ni la valeur de 
 
 ---
 
+## Lire un graphique — Minimum local et signe de la dérivée
+
+![La fonction x cube moins 3x a un maximum local en (-1,2) et un minimum local en (1,-2), repérés par les changements de signe de sa dérivée.](../../assets/images/fonctions-extrema.svg)
+
+Pour $f(x)=x^3-3x$, $f'(x)=3x^2-3$. En $x=1$, la dérivée passe de négative à positive : $f(1)=-2$ est un **minimum local**. En $x=-1$, elle passe de positive à négative : $f(-1)=2$ est un **maximum local**.
+
+Local signifie « par rapport aux points voisins ». Ces valeurs ne sont pas des extrema globaux sur $\mathbb{R}$ : la fonction n'est bornée ni au-dessus ni au-dessous. Une dérivée nulle, seule, ne suffit pas à conclure ; par exemple $x^3$ a une tangente horizontale en 0 et reste strictement croissante.
+
+---
+
 ## Exemple concret — Réduire une perte
 
 Prenons $L(w)=(w-2)^2$. Alors $L'(w)=2(w-2)$.
@@ -111,6 +121,10 @@ En w=0, la perte vaut 4 et la dérivée vaut -4. Pour diminuer la perte, on avan
 Avec un pas de 0,25 : $w_{nouveau}=0-0{,}25\times(-4)=1$. La perte devient $(1-2)^2=1$.
 
 Le pas contrôle l'amplitude du déplacement. Un pas trop grand peut dépasser la région utile : il faut vérifier l'effet sur la perte.
+
+![La perte (w moins 2) au carré diminue entre w égal 0 et w égal 1 ; la MSE de deux observations vaut cinq fois cette perte, avec le même minimum en w égal 2.](../assets/perte-un-poids.svg)
+
+Ici, le carré reste positif ou nul et vaut zéro en 2 : le minimum est **global**. Le graphe illustre cette propriété ; la forme de la formule la justifie.
 
 ---
 
@@ -222,6 +236,10 @@ L'affichage retrouve les calculs. `var()` utilise ici le diviseur n par défaut.
 
 La perte vaut $((w-2)^2+9(w-2)^2)/2=5(w-2)^2$. Sa dérivée est $10(w-2)$. En w=1, L=5 et la dérivée vaut -10. Le nouveau poids est $1-0{,}1(-10)=2$ et la perte devient nulle sur ces deux observations. Cela ne prouve pas une généralisation parfaite.
 
+![À droite, la perte 5(w moins 2) au carré passe de 5 au point initial w égal 1 à 0 au minimum global w égal 2.](../assets/perte-un-poids.svg)
+
+Le facteur 5 rend la pente cinq fois plus grande, tout en conservant le même minimiseur. Le pas de 0,1 utilisé ici dépend de cette perte précise.
+
 </details>
 
 
@@ -265,6 +283,44 @@ La moyenne signée vaut 0, mais la MSE vaut 1. Chaque observation présente une 
 
 </details>
 
+
+---
+
+## Prolongement — Comprendre une série temporelle simulée
+
+Une température horaire permet de relier fonctions, dispersion et simulation. Ce prolongement prépare une future activité de prédiction ; il ne remplace pas le fil rouge sur la consommation.
+
+```python
+import numpy as np
+t = np.arange(0., 48., 1.)
+np.random.seed(7)
+noise = np.random.normal(loc=0.0, scale=0.5, size=t.size)
+T_raw = 10 + 5 * np.sin((2*np.pi/24)*t) + noise
+```
+
+**À expliquer avant d'ouvrir la correction :** pourquoi $2\pi/24$ ? Que change le remplacement de 24 par 12 ? Pourquoi `scale=0.5` est-il un écart-type, et quelle est la variance du bruit ? Quels rôles jouent 10 et 5 ?
+
+**Lecture et résultat attendu :** 48 instants horaires et 48 températures simulées, de forme `(48,)`. Le signal idéal et les fluctuations sont additionnés ; la graine rend les tirages reproductibles.
+
+[Exercice 5 complet et script de comparaison](../../01_derivation.html) · [TP température et API](../../pratique/Derivation/TPs/02_TP_temperature.html).
+
+---
+
+## Prolongement — Correction et limites de la simulation
+
+<details><summary>Afficher la correction</summary>
+
+Un tour du sinus correspond à $2\pi$ radians. Pour une période $P$, on écrit $\sin(2\pi t/P)$ : après $P$ heures, l'angle a augmenté de $2\pi$. La fréquence vaut $1/P$ cycle/h et la pulsation $2\pi/P$ rad/h. Avec $P=24$ h, il y a deux cycles en 48 h ; avec 12 h, quatre. La fréquence double, mais le niveau central 10 °C et l'amplitude 5 °C restent identiques. Comparer les signaux en réutilisant le même bruit.
+
+`np.random.normal` prend l'écart-type dans `scale` : $\sigma=0{,}5$ °C, donc la variance est $\sigma^2=0{,}25$ °C². `noise.std()` décrit seulement les 48 valeurs tirées et ne vaut généralement pas exactement 0,5. Le bruit n'est pas borné par $\pm0{,}5$. [Documentation NumPy](https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html).
+
+![Périodes 24 et 12 heures, signal bruité et bruit d'écart-type 0,5 degré.](../../assets/images/fonctions-temperature.svg)
+
+Le sinus est une variation quotidienne **idéale** ; le bruit gaussien est une hypothèse pour les fluctuations. Le cycle thermique réel n'est pas parfaitement sinusoïdal. Cette formule culmine à 6 h, sans prétendre reproduire une journée réelle. Un décalage de phase pourrait changer cette heure sans changer la période.
+
+La simulation fabrique des observations selon une règle. Une prédiction estime une valeur inconnue à partir d'informations disponibles. Pour évaluer une prévision future, séparer les données dans l'ordre chronologique et garder le test pour le bilan final.
+
+</details>
 
 ---
 

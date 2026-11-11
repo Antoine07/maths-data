@@ -17,6 +17,7 @@
     <span class="hljs-number">13.9</span>, <span class="hljs-number">14.0</span>, <span class="hljs-number">14.1</span>, <span class="hljs-number">14.3</span>, <span class="hljs-number">14.5</span>, <span class="hljs-number">14.6</span>
 ])
 </code></pre>
+<p>Ces valeurs illustrent un scénario fictif de consommation quotidienne ; elles ne proviennent pas d'un relevé réel.</p>
 <p>On associe à chaque valeur un jour <code>t = 1, 2, ..., 30</code>.</p>
 </div></article>
 <article class="slide-card" id="slide-3" aria-labelledby="slide-label-3" hidden><p class="question-kicker" id="slide-label-3">Application <span class="pill">03 / 8</span></p><div class="prose">
@@ -43,6 +44,7 @@
 </div></article>
 <article class="slide-card" id="slide-7" aria-labelledby="slide-label-7" hidden><p class="question-kicker" id="slide-label-7">Application <span class="pill">07 / 8</span></p><div class="prose">
 <h3 id="pr%C3%A9voir-la-consommation-au-jour-40"><strong>Prévoir la consommation au jour 40.</strong></h3>
+<figure class="math-figure lesson-illustration wide-lesson-illustration"><a href="assets/images/modelisation-consommation-lineaire.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/images/modelisation-consommation-lineaire.svg" alt="Les 30 mesures simulées, la droite ajustée et son prolongement jusqu'au jour 40. Le point orange est une prévision du modèle, pas une mesure." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
 </div></article>
 <article class="slide-card" id="slide-8" aria-labelledby="slide-label-8" hidden><p class="question-kicker" id="slide-label-8">Application <span class="pill">08 / 8</span></p><div class="prose">
 <h2 id="mod%C3%A9lisation-quadratique">Modélisation quadratique</h2>
@@ -53,6 +55,7 @@
     <span class="hljs-number">13.7</span>, <span class="hljs-number">14.8</span>, <span class="hljs-number">16.0</span>, <span class="hljs-number">17.3</span>, <span class="hljs-number">18.7</span>, <span class="hljs-number">20.2</span>, <span class="hljs-number">21.8</span>
 ])
 </code></pre>
+<figure class="math-figure lesson-illustration wide-lesson-illustration"><a href="assets/images/modelisation-quadratique.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/images/modelisation-quadratique.svg" alt="Les données incurvées sont comparées à une droite et à une parabole. À droite, les deuxièmes différences sont globalement proches d'une constante, avec des écarts dus notamment à l'arrondi." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
 <p>Utilisez la méthode <code>np.diff</code> sur ces données et concluez.</p>
 <p>Puis on vous aidant de la méthode <code>np.polyfit</code> trouvez un modèle qui décrit les données.</p>
 <p>Pour déternimer si un jeu de données suit un modèle d'ordre <code>k</code> vous pouvez utiliser le tableau suivant, <code>y</code> le jeu de données.</p>
@@ -89,13 +92,14 @@ Si vous obtenez des valeurs très petites comme 1e-14, −3e-15, etc., cela corr
 </tbody>
 </table></div>
 <h2 id="exercice-2">Exercice 2</h2>
-<p>Que dire de ces données ? Trouvez le modèle qui les décrit parfaitement.</p>
+<p>Que dire de ces données ? Étudiez leurs différences successives et trouvez un modèle polynomial qui les décrit au mieux.</p>
 <pre tabindex="0"><code class="language-python">y = np.array([
      <span class="hljs-number">5.00</span>,  <span class="hljs-number">6.32</span>,  <span class="hljs-number">9.28</span>, <span class="hljs-number">14.40</span>, <span class="hljs-number">22.30</span>,
     <span class="hljs-number">33.60</span>, <span class="hljs-number">48.92</span>, <span class="hljs-number">69.00</span>, <span class="hljs-number">94.60</span>,<span class="hljs-number">126.52</span>,
    <span class="hljs-number">165.60</span>
 ])
 </code></pre>
+<figure class="math-figure lesson-illustration wide-lesson-illustration"><a href="assets/images/modelisation-polynome.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/images/modelisation-polynome.svg" alt="Les données de l'exercice 2 sont comparées à un polynôme de degré 4. Les quatrièmes différences sont proches d'une constante, sans l'être exactement car les valeurs sont arrondies." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
 <h2 id="exercice-3">Exercice 3</h2>
 <p>Représentez ces données et trouvez un modèle qui convient pour les décrire.</p>
 <blockquote>
@@ -105,4 +109,5 @@ Si vous obtenez des valeurs très petites comme 1e-14, −3e-15, etc., cela corr
 <pre tabindex="0"><code class="language-python">t = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>])
 y = np.array([<span class="hljs-number">2.1</span>, <span class="hljs-number">2.9</span>, <span class="hljs-number">3.4</span>, <span class="hljs-number">3.8</span>, <span class="hljs-number">4.1</span>, <span class="hljs-number">4.3</span>, <span class="hljs-number">4.5</span>, <span class="hljs-number">4.6</span>, <span class="hljs-number">4.7</span>])
 </code></pre>
+<figure class="math-figure lesson-illustration wide-lesson-illustration"><a href="assets/images/modelisation-logarithmique.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure en grand"><img src="assets/images/modelisation-logarithmique.svg" alt="À gauche, le modèle logarithmique suit les données. À droite, la transformation de l'axe horizontal par ln(t) rend le même ajustement linéaire." /></a><figcaption>Cliquer sur la figure pour l’agrandir ↗</figcaption></figure>
 </div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button primary" href="matrice.html">Matrices et vecteurs propres →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 8</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="index.html">Comprendre, puis pratiquer.</a></footer><script src="assets/slides.js" defer></script></body></html>

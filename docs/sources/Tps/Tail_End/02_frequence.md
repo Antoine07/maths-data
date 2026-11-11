@@ -29,6 +29,9 @@ Un compteur suit les visiteurs pendant deux heures. On compare deux scénarios.
 2. Pour le scénario B, tracer la droite $f(t)=2t$ entre $t=0$ et $t=2$. Quelle aire se trouve sous la droite ? En déduire le cumul sur les deux heures.
 3. Les deux scénarios ont-ils le même rythme au cours du temps ? Pourquoi leurs cumuls sont-ils différents ?
 4. Si le rythme reste constant à 2 visiteurs par heure pendant 3 heures, combien de visiteurs sont comptés ?
+5. Pour chaque scénario, calculer le rythme moyen sur les deux heures. En supposant ce rythme moyen constant, écrire le cumul linéaire correspondant. Comparer cette droite au cumul réel à $t=1$ h et à $t=2$ h.
+
+![En haut, les deux rythmes et les aires sous leurs courbes. En bas, les cumuls exacts et les droites obtenues en appliquant le rythme moyen pendant deux heures. Les droites moyennes atteignent le même total final que leur scénario, mais ne décrivent pas la même répartition dans le temps.](../../Slides/figures/tail-02-cumul-intro.svg)
 
 <details><summary>Afficher la correction</summary>
 
@@ -41,6 +44,10 @@ $$
 $$
 
 Les scénarios n'ont pas le même rythme : le premier change brusquement à une heure, tandis que le second augmente continûment. Leurs aires, donc leurs cumuls, diffèrent. Un rythme constant de 2 visiteurs par heure pendant 3 heures donne $2\times3=6$ visiteurs.
+
+Dans le scénario A, le rythme moyen est $(2+4)/2=3$ visiteurs par heure. Le cumul linéaire associé est $C_{A,\mathrm{moy}}(t)=3t$. Il donne 3 visiteurs à $t=1$ h, alors que le cumul par paliers en donne 2. À $t=2$ h, les deux valent 6.
+
+Dans le scénario B, le rythme moyen est $(0+4)/2=2$ visiteurs par heure. Le cumul linéaire moyen est $C_{B,\mathrm{moy}}(t)=2t$. À $t=1$ h, il donne 2 visiteurs, alors que le cumul exact $C_B(t)=t^2$ en donne 1. À $t=2$ h, les deux valent 4. Le calcul avec le rythme moyen retrouve le total final, mais il masque le moment où les visiteurs arrivent.
 
 **À retenir :** le cumul additionne les quantités apportées au fil du temps. Sur un graphique du rythme, il correspond à l'aire sous la courbe. Pour un rythme constant par paliers, on additionne les aires des rectangles ; pour un rythme qui varie continûment, on calcule l'aire sous la courbe.
 </details>

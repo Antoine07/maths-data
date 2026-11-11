@@ -1,13 +1,5 @@
 # Problème 2 — Et si les occasions devenaient moins fréquentes ?
 
-## Le point de départ
-
-Sam retrouve actuellement son groupe d'amis environ deux fois par mois. Il projette 30 années supplémentaires et annonce : « Cela fait 720 occasions. »
-
-Mais un déménagement et des emplois du temps différents pourraient rendre les rencontres moins fréquentes. Nous comparons deux scénarios, sans prétendre prédire la vie de Sam.
-
----
-
 ## Objectif et prérequis
 
 **Objectif pédagogique :** distinguer une fréquence et un cumul, relier leurs variations et tester une extrapolation.
@@ -19,6 +11,8 @@ Les notions nécessaires sur le cumul sont introduites ci-dessous.
 ---
 
 ## Activité d'introduction — Additionner une fréquence
+
+Avant d'aborder le scénario de Sam, cette activité montre comment un rythme produit un cumul.
 
 Un compteur suit les visiteurs pendant deux heures. On compare deux scénarios.
 
@@ -51,6 +45,14 @@ Dans le scénario B, le rythme moyen est $(0+4)/2=2$ visiteurs par heure. Le cum
 
 **À retenir :** le cumul additionne les quantités apportées au fil du temps. Sur un graphique du rythme, il correspond à l'aire sous la courbe. Pour un rythme constant par paliers, on additionne les aires des rectangles ; pour un rythme qui varie continûment, on calcule l'aire sous la courbe.
 </details>
+
+---
+
+## Le point de départ
+
+Sam retrouve actuellement son groupe d'amis environ deux fois par mois. Il projette 30 années supplémentaires et annonce : « Cela fait 720 occasions. »
+
+Mais un déménagement et des emplois du temps différents pourraient rendre les rencontres moins fréquentes. Nous comparons deux scénarios, sans prétendre prédire la vie de Sam.
 
 ---
 

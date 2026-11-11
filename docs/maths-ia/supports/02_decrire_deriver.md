@@ -288,6 +288,8 @@ La moyenne signée vaut 0, mais la MSE vaut 1. Chaque observation présente une 
 
 ## Prolongement — Comprendre une série temporelle simulée
 
+Le chapitre [Fonctions périodiques](../../fonctions_periodiques.html) présente les courbes du sinus et du cosinus, leur période et le calcul de fréquence.
+
 Une température horaire permet de relier fonctions, dispersion et simulation. Ce prolongement prépare une future activité de prédiction ; il ne remplace pas le fil rouge sur la consommation.
 
 ```python

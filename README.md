@@ -6,7 +6,7 @@ Le cours antérieur est conservé sur `main`. Le repère local `cours-avant-math
 
 Un parcours de mathématiques pour comprendre les données et l'IA : révisions d'algèbre, fonctions, dérivation, matrices, statistiques, probabilités, ACP, optimisation et réseaux de neurones.
 
-Le catalogue initial comprend 27 présentations, des figures, dix problèmes et un projet fil rouge avec données simulées, code Python et notebooks. Deux ateliers complètent ses six jalons : groupes et symétries, puis clustering des journées avec k-means. La branche maths-ia y ajoute huit chapitres sur les mathématiques et les réseaux de neurones.
+Le catalogue principal comprend 28 présentations, des figures, dix problèmes et un projet fil rouge avec données simulées, code Python et notebooks. Deux ateliers complètent ses six jalons : groupes et symétries, puis clustering des journées avec k-means. La branche maths-ia y ajoute huit chapitres sur les mathématiques et les réseaux de neurones.
 
 ## Consulter les cours
 

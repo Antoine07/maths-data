@@ -65,6 +65,8 @@ $$
 
 ### Fonctions trigonométriques
 
+Le chapitre [Fonctions périodiques](fonctions_periodiques.md) présente les courbes du sinus et du cosinus ainsi que les notions de période et de fréquence.
+
 $$
 (\sin x)' = \cos x
 $$

@@ -8,7 +8,7 @@ Ouvrir `index.html` dans un navigateur. Le dossier `docs/` peut aussi être publ
 
 Ce dossier est la distribution autonome des supports. Les instructions de génération ci-dessous concernent le projet de travail complet : les scripts de construction et les originaux ne sont pas inclus dans le dépôt de publication. Les copies Markdown consultables sont livrées dans `sources/`.
 
-Les 27 présentations du catalogue initial reprennent les sources de `Slides/` et les supports HTML historiques. Huit chapitres avancés relient l'algèbre et l'analyse à l'apprentissage automatique ; un court support de probabilités prépare les nouveaux problèmes. Les TP et corrections sont accessibles depuis « Exercices & ressources ».
+Les 28 présentations du catalogue principal reprennent les sources de `Slides/` et les supports HTML historiques. Huit chapitres avancés relient l'algèbre et l'analyse à l'apprentissage automatique ; un court support de probabilités prépare les nouveaux problèmes. Les TP et corrections sont accessibles depuis « Exercices & ressources ».
 
 Les nouveaux contenus sont intercalés dans le parcours : géométrie et moindres carrés après les matrices ; SVD après les statistiques et l'ACP ; calcul différentiel, optimisation et rétropropagation après le gradient. Le projet de consommation électrique se télécharge avec son CSV, son code et ses notebooks depuis la page des ressources.
 
@@ -22,7 +22,7 @@ La partie sur les nombres premiers distingue les diviseurs premiers des diviseur
 
 Les supports incluent 28 figures SVG générées avec Matplotlib : tangentes, limites, transformations, résidus, ACP, courbure, optimisation, classification, rotations, clustering et problèmes. Cliquer sur une figure permet de l'ouvrir en grand.
 
-Cinq graphiques supplémentaires accompagnent les exemples corrigés de fonctions : extrema locaux, quotient, composition, exercices d'extremums et température simulée. L'exercice de température relie période et fréquence, distingue écart-type et variance, et explicite les limites du modèle. Les scripts reproductibles et leur vérification sont dans [exemples/fonctions](exemples/fonctions/).
+Sept graphiques supplémentaires accompagnent le chapitre de fonctions périodiques et les exemples corrigés de fonctions : extrema locaux, quotient, composition, exercices d'extremums et température simulée. L'exercice de température relie période et fréquence, distingue écart-type et variance, et explicite les limites du modèle. Les scripts reproductibles et leur vérification sont dans [exemples/fonctions](exemples/fonctions/).
 
 Huit illustrations compactes accompagnent les couvertures Matrices, Gradient, Statistiques, Corrélation, Centrage-réduction, ACP, Probabilités et Réseau. Sept dessins complètent les transformations, les limites, l'histogramme, la boîte à moustaches et les degrés de liberté. Leur hauteur est plafonnée dans la page : 220 px pour les couvertures et 250 px pour ces dessins de cours, puis 150 et 190 px sur mobile. Les SVG restent accessibles en grand au clic.
 

@@ -154,22 +154,28 @@ Interprétation : la matrice transforme le vecteur en l'étirant, le tournant ou
 
 ---
 
-## II.2 Multiplication matrice–martice
+## II.2 Multiplication matrice–matrice
 
 Voici la **règle** pour multiplier deux matrices **2×2** :
 
 $$
+A =
 \begin{pmatrix}
 a & b \\
 c&d
 \end{pmatrix}
-
+\qquad
+B =
 \begin{pmatrix}
 e & f\\
 g & h
 \end{pmatrix}
-=
+$$
 
+Le produit se calcule ligne par colonne :
+
+$$
+AB =
 \begin{pmatrix}
 ae + bg & af + bh \\
 ce + dg & cf + dh

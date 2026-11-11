@@ -81,6 +81,7 @@ body{min-width:320px}
 .prose blockquote{margin:22px 0;padding:16px 20px;border-left:4px solid #b5cf66;background:var(--soft);border-radius:0 10px 10px 0;font-size:.95em}
 .prose blockquote p:last-child{margin-bottom:0}
 .prose img{display:block;max-width:100%;height:auto;max-height:550px;object-fit:contain;margin:24px auto;border-radius:12px}
+.prose img.emoji{display:inline-block;width:1.1em;height:1.1em;max-width:none;max-height:none;object-fit:contain;margin:0 .08em;vertical-align:-.15em;border-radius:0}
 .math-figure{margin:24px 0;padding:8px;border:1px solid var(--line);border-radius:16px;background:var(--bg)}
 .math-figure>a{display:block;border-radius:10px}.prose .math-figure img{margin:0 auto;width:100%;max-height:none}
 .math-figure figcaption{font-size:.65rem;text-align:right;color:var(--muted);padding:8px 8px 2px}

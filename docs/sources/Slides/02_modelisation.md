@@ -17,6 +17,8 @@ C = np.array([
 ])
 ```
 
+Ces valeurs illustrent un scénario fictif de consommation quotidienne ; elles ne proviennent pas d'un relevé réel.
+
 On associe à chaque valeur un jour `t = 1, 2, ..., 30`.
 
 ---
@@ -56,6 +58,8 @@ a, b = np.polyfit(t, C, 1)
 
 ### **Prévoir la consommation au jour 40.**
 
+![Les 30 mesures simulées, la droite ajustée et son prolongement jusqu'au jour 40. Le point orange est une prévision du modèle, pas une mesure.](images/modelisation-consommation-lineaire.svg)
+
 ---
 
 ## Modélisation quadratique 
@@ -70,6 +74,8 @@ T = np.array([
     13.7, 14.8, 16.0, 17.3, 18.7, 20.2, 21.8
 ])
 ```
+
+![Les données incurvées sont comparées à une droite et à une parabole. À droite, les deuxièmes différences sont globalement proches d'une constante, avec des écarts dus notamment à l'arrondi.](images/modelisation-quadratique.svg)
 
 Utilisez la méthode `np.diff` sur ces données et concluez.
 
@@ -93,7 +99,7 @@ Si vous obtenez des valeurs très petites comme 1e-14, −3e-15, etc., cela corr
 
 ## Exercice 2
 
-Que dire de ces données ? Trouvez le modèle qui les décrit parfaitement.
+Que dire de ces données ? Étudiez leurs différences successives et trouvez un modèle polynomial qui les décrit au mieux.
 
 ```python
 y = np.array([
@@ -102,6 +108,8 @@ y = np.array([
    165.60
 ])
 ```
+
+![Les données de l'exercice 2 sont comparées à un polynôme de degré 4. Les quatrièmes différences sont proches d'une constante, sans l'être exactement car les valeurs sont arrondies.](images/modelisation-polynome.svg)
 
 ## Exercice 3
 
@@ -117,3 +125,5 @@ Remarque t `X = np.log(t)`
 t = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
 y = np.array([2.1, 2.9, 3.4, 3.8, 4.1, 4.3, 4.5, 4.6, 4.7])
 ```
+
+![À gauche, le modèle logarithmique suit les données. À droite, la transformation de l'axe horizontal par ln(t) rend le même ajustement linéaire.](images/modelisation-logarithmique.svg)

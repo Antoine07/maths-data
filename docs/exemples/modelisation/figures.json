@@ -1,0 +1,22 @@
+[
+  {
+    "file": "modelisation-consommation-lineaire.svg",
+    "title": "Une tendance linéaire et sa limite",
+    "description": "Exemple simulé : les jours 1 à 30 servent à ajuster le modèle. Le point au jour 40 est une extrapolation, pas une mesure."
+  },
+  {
+    "file": "modelisation-quadratique.svg",
+    "title": "Comparer une droite et une parabole",
+    "description": "Les deuxièmes différences sont globalement proches d’une constante. Les valeurs arrondies ne sont pas parfaitement régulières."
+  },
+  {
+    "file": "modelisation-polynome.svg",
+    "title": "Les différences finies aident à choisir un degré",
+    "description": "Les valeurs y sont arrondies à deux décimales ; les quatrièmes différences sont proches d’une constante, sans être identiques."
+  },
+  {
+    "file": "modelisation-logarithmique.svg",
+    "title": "Passer d’une courbe logarithmique à une droite",
+    "description": "Le modèle y = a ln(t) + b s’ajuste en traçant y en fonction de ln(t). Le logarithme impose t > 0."
+  }
+]

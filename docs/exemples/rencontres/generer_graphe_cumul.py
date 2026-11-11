@@ -181,6 +181,10 @@ fig.savefig(
         "Date": None,
     },
 )
+generated.write_text(
+    "\n".join(line.rstrip() for line in generated.read_text(encoding="utf-8").splitlines()) + "\n",
+    encoding="utf-8",
+)
 preview = os.environ.get("MATHS_CUMUL_PREVIEW")
 if preview:
     preview_path = Path(preview)

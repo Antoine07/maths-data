@@ -33,5 +33,15 @@
     "file": "fonctions-periodes.svg",
     "title": "Comparer les périodes sur une fenêtre commune",
     "description": "Chaque zone colorée couvre un cycle complet. Entre 0 et 4π, on compte respectivement 2, 4, 8 et 1 cycles."
+  },
+  {
+    "file": "fonctions-ia-cyclique.svg",
+    "title": "Du cycle observé aux variables d’un modèle",
+    "description": "Profil électrique simulé sur deux jours. Une paire sinus/cosinus code l’heure sans rupture entre 23 h et 0 h."
+  },
+  {
+    "file": "fonctions-phase-pulsation.svg",
+    "title": "Phase et pulsation : angle et vitesse de rotation",
+    "description": "La phase indique la position de l’aiguille. La pulsation ω mesure la vitesse de variation de la phase ; en Δt, Δφ=ωΔt. Le sinus est sa projection verticale."
   }
 ]

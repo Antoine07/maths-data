@@ -1,9 +1,9 @@
 # Graphiques des fonctions et température simulée
 
-Sept figures SVG accompagnent les chapitres « Fonctions périodiques » et « Comprendre la dérivée ». La variante maths-ia réutilise les figures des extrema et de la température.
+Neuf figures SVG accompagnent les chapitres « Fonctions périodiques » et « Comprendre la dérivée ». L’illustration d’ouverture relie un cycle de consommation simulé à l’encodage cyclique de l’heure utilisé par les modèles d’IA. Une autre représente la phase comme la position d’une aiguille et la pulsation comme sa vitesse de rotation. La variante maths-ia réutilise les figures des extrema et de la température.
 
 - `temperature_simulee.py` : expérience reproductible, comparaison des périodes 24 et 12 h, statistiques du bruit. Avec NumPy et Matplotlib : `python temperature_simulee.py`.
-- `generer_figures.py` : régénère les sept SVG dans `docs/assets/images/`, leurs aperçus PNG dans `/tmp/maths-fonctions/` et le manifeste `figures.json`. Si le dossier de travail `Slides/images/` existe, les SVG y sont aussi recopiés.
+- `generer_figures.py` : régénère les neuf SVG dans `docs/assets/images/`, leurs aperçus PNG dans `/tmp/maths-fonctions/` et le manifeste `figures.json`. Si le dossier de travail `Slides/images/` existe, les SVG y sont aussi recopiés.
 - `verifier.py` : contrôle avec NumPy les calculs présentés, les périodes, le paramétrage du bruit, les figures et le code de l'exercice publié. À lancer après la génération des pages : `python docs/exemples/fonctions/verifier.py` depuis la racine du dépôt.
 
 Dans la sandbox du projet :

@@ -169,5 +169,82 @@ for ax in axes[-1]:
 save('fonctions-periodes',fig,'Comparer les périodes sur une fenêtre commune',
      'Chaque zone colorée couvre un cycle complet. Entre 0 et 4π, on compte respectivement 2, 4, 8 et 1 cycles.')
 
+fig, (signal_ax, circle_ax) = plt.subplots(
+    1, 2, figsize=(11.6, 5.0), gridspec_kw={'width_ratios': [1.3, 1]}
+)
+heures = np.linspace(0, 48, 700)
+charge = 1 + .28*np.cos(2*np.pi*(heures-18)/24) + .08*np.cos(2*np.pi*(heures-7)/12)
+signal_ax.fill_between(heures, 0, charge, color=GREEN, alpha=.12)
+signal_ax.plot(heures, charge, color=GREEN, lw=2.7, label='Profil simulé')
+signal_ax.axhline(1, color=ORANGE, ls='--', lw=1.5, label='Niveau moyen')
+signal_ax.axvline(24, color='#dce2d9', ls=':', lw=1.5)
+signal_ax.set(
+    xlabel='Temps (heures)', ylabel='Consommation (unités simulées)',
+    title='Un profil quotidien se répète', xlim=(0, 48), xticks=[0, 12, 24, 36, 48]
+)
+signal_ax.legend(fontsize=9)
+
+theta = np.linspace(0, 2*np.pi, 500)
+circle_ax.plot(np.cos(theta), np.sin(theta), color=PURPLE, lw=2.2)
+circle_ax.axhline(0, color='#dce2d9', lw=.8)
+circle_ax.axvline(0, color='#dce2d9', lw=.8)
+circle_ax.plot([0, 1], [0, 0], color=ORANGE, lw=1.5, alpha=.8)
+heure_23 = 2*np.pi*23/24
+point_23 = (np.cos(heure_23), np.sin(heure_23))
+circle_ax.plot([0, point_23[0]], [0, point_23[1]], color=GREEN, lw=1.5, alpha=.8)
+circle_ax.scatter([1, point_23[0]], [0, point_23[1]], color=[ORANGE, GREEN], s=58, zorder=4)
+circle_ax.annotate('0 h', (1, 0), xytext=(12, 10), textcoords='offset points', color=ORANGE, weight='bold')
+circle_ax.annotate('23 h', point_23, xytext=(10, -20), textcoords='offset points', color=GREEN, weight='bold')
+arc = np.linspace(heure_23, 2*np.pi, 30)
+circle_ax.plot(1.12*np.cos(arc), 1.12*np.sin(arc), color=ORANGE, lw=2.5)
+circle_ax.set(
+    title='Coder l’heure sur un cercle', xlabel='cos(2πh/24)', ylabel='sin(2πh/24)',
+    xlim=(-1.4, 1.55), ylim=(-1.4, 1.4), aspect='equal'
+)
+save('fonctions-ia-cyclique',fig,'Du cycle observé aux variables d’un modèle',
+     'Profil électrique simulé sur deux jours. Une paire sinus/cosinus code l’heure sans rupture entre 23 h et 0 h.')
+
+fig, (phase_ax, sine_ax) = plt.subplots(
+    1, 2, figsize=(11.6, 4.8), gridspec_kw={'width_ratios': [1, 1.25]}
+)
+phi0 = np.pi/6
+delta_phi = np.pi/2
+phi1 = phi0 + delta_phi
+angles = np.linspace(0, 2*np.pi, 500)
+phase_ax.plot(np.cos(angles), np.sin(angles), color='#dce2d9', lw=2)
+phase_ax.axhline(0, color='#dce2d9', lw=.8)
+phase_ax.axvline(0, color='#dce2d9', lw=.8)
+phase_ax.annotate('', xy=(np.cos(phi0), np.sin(phi0)), xytext=(0, 0),
+                  arrowprops=dict(arrowstyle='->', color=ORANGE, lw=2, linestyle='--'))
+phase_ax.annotate('', xy=(np.cos(phi1), np.sin(phi1)), xytext=(0, 0),
+                  arrowprops=dict(arrowstyle='->', color=PURPLE, lw=2.8))
+arc_angles = np.linspace(phi0, phi1, 80)
+phase_ax.plot(.78*np.cos(arc_angles), .78*np.sin(arc_angles), color=GREEN, lw=2.5)
+phase_ax.annotate('', xy=(.78*np.cos(phi1), .78*np.sin(phi1)),
+                  xytext=(.78*np.cos(phi1-.08), .78*np.sin(phi1-.08)),
+                  arrowprops=dict(arrowstyle='->', color=GREEN, lw=2))
+phase_ax.text(-1.2, -.5, 'Δφ = ω Δt', color=GREEN, ha='left', weight='bold', fontsize=9)
+phase_ax.annotate('t', (np.cos(phi0), np.sin(phi0)), xytext=(9, -5), textcoords='offset points',
+                  color=ORANGE, fontsize=10, weight='bold')
+phase_ax.annotate('t + Δt', (np.cos(phi1), np.sin(phi1)), xytext=(-28, 10), textcoords='offset points',
+                  color=PURPLE, fontsize=10, weight='bold')
+phase_ax.scatter([0], [0], color=INK, s=25, zorder=4)
+phase_ax.set(title='La phase : l’angle de l’aiguille', xlabel='cos φ', ylabel='sin φ',
+             xlim=(-1.3, 1.35), ylim=(-1.25, 1.3), aspect='equal')
+
+wave_phase = np.linspace(0, 2*np.pi, 500)
+sine_ax.plot(wave_phase, np.sin(wave_phase), color=GREEN, lw=2.7)
+sine_ax.axhline(0, color='#dce2d9', lw=.8)
+sine_ax.axvline(phi1, color=PURPLE, lw=1.4, ls='--')
+sine_ax.scatter([phi1], [np.sin(phi1)], color=PURPLE, s=58, zorder=4)
+sine_ax.annotate('sin φ', (phi1, np.sin(phi1)), xytext=(10, -22), textcoords='offset points',
+                 color=PURPLE, weight='bold')
+sine_ax.set(title='Le sinus suit la position de l’aiguille', xlabel='Phase φ (radians)',
+            ylabel='sin φ', xlim=(0, 2*np.pi), ylim=(-1.25, 1.3),
+            xticks=[0, np.pi/2, np.pi, 3*np.pi/2, 2*np.pi],
+            xticklabels=['0', 'π/2', 'π', '3π/2', '2π'])
+save('fonctions-phase-pulsation',fig,'Phase et pulsation : angle et vitesse de rotation',
+     'La phase indique la position de l’aiguille. La pulsation ω mesure la vitesse de variation de la phase ; en Δt, Δφ=ωΔt. Le sinus est sa projection verticale.')
+
 (Path(__file__).parent/'figures.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
-print('Sept figures générées ; aperçus :', PREVIEWS)
+print('Neuf figures générées ; aperçus :', PREVIEWS)

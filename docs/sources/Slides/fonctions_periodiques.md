@@ -8,6 +8,10 @@ paginate: true
 
 Sinus, cosinus, période et fréquence.
 
+![À gauche, un profil de consommation électrique simulé qui se répète sur deux jours. À droite, les heures 23 h et 0 h sont voisines sur le cercle et se codent avec sinus et cosinus.](images/fonctions-ia-cyclique.svg)
+
+En IA, on peut encoder l'heure du jour par une paire sinus/cosinus pour aider un modèle à reconnaître les cycles d'une série temporelle, par exemple pour prévoir la consommation électrique. Ce codage représente la périodicité des horaires ; il ne suppose pas que la consommation réelle soit un sinus parfait.
+
 ---
 
 ## Objectif
@@ -114,10 +118,16 @@ $$
 Pour un signal temporel de la forme
 
 $$
-y(t)=\sin(\omega t)\quad\text{ou}\quad y(t)=\cos(\omega t),
+y(t)=\sin(\omega t+\phi_0),
 $$
 
-le coefficient $\omega$ est la **pulsation**, exprimée en radians par unité de temps. On suppose $\omega\ne0$.
+la **phase** à l'instant $t$ est l'angle $\phi(t)=\omega t+\phi_0$. C'est l'angle où se trouve l'aiguille sur le cercle. La **pulsation** $\omega$ indique à quelle vitesse cet angle change.
+
+![Sur le cercle, la phase est l'angle de l'aiguille. Quand le temps avance, la pulsation détermine la vitesse de rotation ; le sinus suit la projection verticale de l'aiguille.](images/fonctions-phase-pulsation.svg)
+
+Le cosinus correspond au même mouvement avec un décalage de phase de $\pi/2$, car $\cos x=\sin(x+\pi/2)$.
+
+La pulsation s'exprime en radians par unité de temps. Pour $\omega>0$, l'aiguille tourne dans le sens trigonométrique ; pour $\omega<0$, elle tourne dans l'autre sens. On suppose $\omega\ne0$.
 
 Un cycle complet correspond à une variation de $2\pi$ de l'angle. On obtient donc $|\omega|T=2\pi$, puis
 
@@ -295,18 +305,18 @@ A. $8\pi$ · B. $2\pi$ · C. $\pi$ · D. $\pi/2$.
 
 ## QCM — Questions 4 et 5
 
-**4. Pour une période de 24 h, la fréquence vaut**
+**4. Un phénomène sinusoïdal possède une période de 24 heures. Si on multiplie sa pulsation par 2, quelle sera sa nouvelle période ?**
 
-A. 24 Hz · B. $1/24$ cycle/h · C. 24 cycles/h · D. $2\pi$ Hz.
+A. 48 heures · B. 24 heures · C. 12 heures · D. 6 heures.
 
-**5. Pour $\sin(\omega t)$, avec $\omega\ne0$, doubler $|\omega|$**
+**5. De façon générale, pour $y(t)=\sin(\omega t)$, si la valeur absolue de la pulsation est multipliée par 2, la période**
 
-A. double la période · B. conserve la période · C. divise la période par deux · D. rend la période négative.
+A. double · B. reste la même · C. est divisée par deux · D. devient négative.
 
 <details><summary>Afficher la correction</summary>
 
-4. **B**. La période en heures donne une fréquence en cycles par heure.
-5. **C**. Dans $T=2\pi/|\omega|$, doubler le dénominateur divise la période par deux. La fréquence double.
+4. **C**. La période est inversement proportionnelle à la valeur absolue de la pulsation : $T=2\pi/|\omega|$. La doubler divise la période par deux : $24/2=12$ heures.
+5. **C**. Plus généralement, si $|\omega|$ devient $2|\omega|$, alors $T'=2\pi/(2|\omega|)=T/2$. La fréquence double.
 
 </details>
 

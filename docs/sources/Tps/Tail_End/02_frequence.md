@@ -18,6 +18,35 @@ Les notions nécessaires sur le cumul sont introduites ci-dessous.
 
 ---
 
+## Activité d'introduction — Additionner une fréquence
+
+Un compteur suit les visiteurs pendant deux heures. On compare deux scénarios.
+
+- **Scénario A :** le rythme est constant à 2 visiteurs par heure pendant la première heure, puis à 4 visiteurs par heure pendant la deuxième heure.
+- **Scénario B :** le rythme augmente continûment selon $f(t)=2t$ visiteurs par heure, où $t$ est le temps écoulé en heures.
+
+1. Pour le scénario A, calculer le nombre total de visiteurs sur les deux heures. Représenter le rythme sur un graphique et repérer les aires qui correspondent aux deux périodes.
+2. Pour le scénario B, tracer la droite $f(t)=2t$ entre $t=0$ et $t=2$. Quelle aire se trouve sous la droite ? En déduire le cumul sur les deux heures.
+3. Les deux scénarios ont-ils le même rythme au cours du temps ? Pourquoi leurs cumuls sont-ils différents ?
+4. Si le rythme reste constant à 2 visiteurs par heure pendant 3 heures, combien de visiteurs sont comptés ?
+
+<details><summary>Afficher la correction</summary>
+
+Dans le scénario A, chaque palier forme un rectangle : $2\times1=2$ visiteurs, puis $4\times1=4$. Le cumul est donc $2+4=6$ visiteurs.
+
+Dans le scénario B, la courbe est une droite qui part de 0 et atteint 4 visiteurs par heure à $t=2$. L'aire sous la droite est un triangle de base 2 heures et de hauteur 4 visiteurs par heure :
+
+$$
+\frac{2\times4}{2}=4\text{ visiteurs}.
+$$
+
+Les scénarios n'ont pas le même rythme : le premier change brusquement à une heure, tandis que le second augmente continûment. Leurs aires, donc leurs cumuls, diffèrent. Un rythme constant de 2 visiteurs par heure pendant 3 heures donne $2\times3=6$ visiteurs.
+
+**À retenir :** le cumul additionne les quantités apportées au fil du temps. Sur un graphique du rythme, il correspond à l'aire sous la courbe. Pour un rythme constant par paliers, on additionne les aires des rectangles ; pour un rythme qui varie continûment, on calcule l'aire sous la courbe.
+</details>
+
+---
+
 ## Du rythme au cumul
 
 Le temps $t$ est mesuré en années après aujourd'hui. Le modèle de fréquence est :

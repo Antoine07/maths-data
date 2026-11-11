@@ -88,7 +88,9 @@ body{min-width:320px}
 .prose .cover-illustration img{max-height:220px;object-fit:contain}
 .prose .lesson-illustration{max-width:760px;margin:18px auto}
 .prose .lesson-illustration img{max-height:250px;object-fit:contain}
-@media(max-width:540px){.prose .cover-illustration img{max-height:150px}.prose .lesson-illustration img{max-height:190px}.cover-illustration figcaption,.lesson-illustration figcaption{font-size:.62rem}}
+.prose .wide-lesson-illustration{max-width:920px}
+.prose .wide-lesson-illustration img{max-height:360px}
+@media(max-width:540px){.prose .cover-illustration img{max-height:150px}.prose .lesson-illustration img,.prose .wide-lesson-illustration img{max-height:190px}.cover-illustration figcaption,.lesson-illustration figcaption{font-size:.62rem}}
 .problem-banner{background:#f0eaf5;border-color:#d8cbe3}.problem-banner .eyebrow{color:#66518b}
 .prose img.image-unavailable{display:none}
 .image-fallback{display:block;border:1px dashed var(--line);padding:20px;border-radius:12px;background:var(--soft);font-size:.85rem}

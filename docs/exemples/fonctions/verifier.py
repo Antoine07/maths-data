@@ -54,7 +54,7 @@ for pulsation in [3., .25, -2*np.pi]:
     assert np.isclose(periode*frequence,1)
 assert np.isclose(1/5,.2) and np.isclose((1/24)/3600,1/86400)
 figures = json.loads((BASE/'figures.json').read_text())
-assert len(figures) == 7
+assert len(figures) == 9
 for figure in figures:
     path = DOCS/'assets/images'/figure['file']
     assert ET.parse(path).getroot().tag.endswith('svg')
@@ -67,9 +67,13 @@ for figure in figures:
 assert html.count('<details>') == html.count('</details>') == 2
 assert 'scale=0.5' in source and 'variance' in source and 'fréquence' in source
 assert 'modèle simplifié' in source and 'pas parfaitement sinusoïdal' in source
+assert 'consommation électrique' in periodiques and '23 h' in periodiques
+assert 'phase' in periodiques and 'pulsation' in periodiques
+assert 'Un phénomène sinusoïdal possède une période de 24 heures' in periodiques
+assert 'De façon générale' in periodiques and 'La fréquence double' in periodiques
 # Les sources de travail locales, quand présentes, concordent avec la publication.
 for relatif in ['Slides/01_derivation.md','Derivation/TPs/02_TP_temperature.md']:
     original = DOCS.parent/relatif
     if original.exists():
         assert original.read_bytes() == (DOCS/'sources'/relatif).read_bytes()
-print('OK : 7 figures, sinus/cosinus, périodes et fréquences, extrema, bruit et extrait étudiant exécuté.')
+print('OK : 9 figures, sinus/cosinus, période, fréquence, phase et pulsation, encodage cyclique pour l’IA, extrema, bruit et extrait étudiant exécuté.')

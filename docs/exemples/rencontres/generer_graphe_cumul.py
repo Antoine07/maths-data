@@ -48,7 +48,7 @@ plt.rcParams.update(
     }
 )
 
-fig = plt.figure(figsize=(12, 8.8), facecolor=BACKGROUND)
+fig = plt.figure(figsize=(12.2, 6.5), facecolor=BACKGROUND)
 grid = fig.add_gridspec(2, 2, height_ratios=[1, 1.15], hspace=0.45, wspace=0.22)
 step_ax = fig.add_subplot(grid[0, 0])
 linear_ax = fig.add_subplot(grid[0, 1], sharey=step_ax)
@@ -57,17 +57,17 @@ cumulative_ax = fig.add_subplot(grid[1, :])
 fig.suptitle(
     "Même durée, rythmes différents : que cumule-t-on ?",
     x=0.055,
-    y=0.985,
+    y=0.99,
     ha="left",
-    fontsize=19,
+    fontsize=17,
     fontweight="bold",
 )
 fig.text(
     0.056,
-    0.94,
+    0.92,
     "Aires sous les rythmes en haut ; cumuls exacts et estimations au rythme moyen en bas.",
     color=MUTED,
-    fontsize=10,
+    fontsize=9,
 )
 
 # Scénario A : 2 visiteurs/h pendant une heure, puis 4 visiteurs/h.
@@ -155,14 +155,7 @@ cumulative_ax.set(
 cumulative_ax.grid(True, linewidth=0.7)
 cumulative_ax.legend(loc="upper left", ncol=2, fontsize=9)
 
-fig.text(
-    0.056,
-    0.018,
-    "Les droites au rythme moyen retrouvent le total final, mais pas le cumul à chaque instant.",
-    color=MUTED,
-    fontsize=9,
-)
-fig.subplots_adjust(left=0.09, right=0.97, top=0.89, bottom=0.09)
+fig.subplots_adjust(left=0.09, right=0.97, top=0.87, bottom=0.12)
 
 SOURCE_FIGURES.mkdir(parents=True, exist_ok=True)
 PUBLIC_FIGURES.mkdir(parents=True, exist_ok=True)

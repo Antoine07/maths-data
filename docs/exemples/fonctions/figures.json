@@ -23,5 +23,15 @@
     "file": "fonctions-temperature.svg",
     "title": "Séparer le cycle idéal et les fluctuations simulées",
     "description": "Exemple reproductible, graine 7. Le cycle réel n’est pas parfaitement sinusoïdal ; le choix gaussien est une hypothèse de simulation."
+  },
+  {
+    "file": "fonctions-sinus-cosinus.svg",
+    "title": "Sinus et cosinus se répètent tous les 2π radians",
+    "description": "Les deux courbes ont la même période fondamentale. Le décalage entre sinus et cosinus vaut un quart de période."
+  },
+  {
+    "file": "fonctions-periodes.svg",
+    "title": "Comparer les périodes sur une fenêtre commune",
+    "description": "Chaque zone colorée couvre un cycle complet. Entre 0 et 4π, on compte respectivement 2, 4, 8 et 1 cycles."
   }
 ]

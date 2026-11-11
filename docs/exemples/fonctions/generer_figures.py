@@ -136,5 +136,38 @@ bruit_ax.legend(fontsize=8)
 save('fonctions-temperature',fig,'Séparer le cycle idéal et les fluctuations simulées',
      'Exemple reproductible, graine 7. Le cycle réel n’est pas parfaitement sinusoïdal ; le choix gaussien est une hypothèse de simulation.')
 
+fig, (ax,) = canvas(1)
+x = np.linspace(0,4*np.pi,1001)
+ax.plot(x,np.sin(x),color=GREEN,lw=2.5,label='sin(x)')
+ax.plot(x,np.cos(x),color=PURPLE,lw=2.5,label='cos(x)')
+ax.axhline(0,color=INK,lw=.8)
+ax.annotate('',xy=(0,1.25),xytext=(2*np.pi,1.25),
+            arrowprops=dict(arrowstyle='<->',color=ORANGE,lw=1.5))
+ax.text(np.pi,1.33,'Une période de 2π radians',ha='center',color=ORANGE,fontsize=11)
+ax.set(xlabel='Angle x (radians)',ylabel='Valeur de la fonction',xlim=(0,4*np.pi),ylim=(-1.3,1.65))
+ax.set_xticks(np.arange(9)*np.pi/2,labels=['0','π/2','π','3π/2','2π','5π/2','3π','7π/2','4π'])
+ax.legend(loc='upper right',fontsize=10)
+save('fonctions-sinus-cosinus',fig,'Sinus et cosinus se répètent tous les 2π radians',
+     'Les deux courbes ont la même période fondamentale. Le décalage entre sinus et cosinus vaut un quart de période.')
+
+fig, axes = plt.subplots(2,2,figsize=(11.6,7.1),sharex=True,sharey=True)
+for ax, fonction, coefficient, titre, couleur in zip(
+    axes.flat,[np.sin,np.sin,np.sin,np.cos],[1,2,4,.5],
+    ['sin(x) · période 2π','sin(2x) · période π','sin(4x) · période π/2','cos(x/2) · période 4π'],
+    [GREEN,PURPLE,ORANGE,GREEN]
+):
+    periode = 2*np.pi/abs(coefficient)
+    ax.axvspan(0,periode,color=couleur,alpha=.12)
+    ax.plot(x,fonction(coefficient*x),color=couleur,lw=2)
+    ax.axhline(0,color=INK,lw=.7)
+    ax.set(title=titre,xlim=(0,4*np.pi),ylim=(-1.2,1.2),ylabel='Valeur')
+    ax.set_xticks(np.arange(5)*np.pi,labels=['0','π','2π','3π','4π'])
+    ax.grid(color='#dce2d9',alpha=.65)
+    ax.set_axisbelow(True)
+for ax in axes[-1]:
+    ax.set_xlabel('Angle x (radians)')
+save('fonctions-periodes',fig,'Comparer les périodes sur une fenêtre commune',
+     'Chaque zone colorée couvre un cycle complet. Entre 0 et 4π, on compte respectivement 2, 4, 8 et 1 cycles.')
+
 (Path(__file__).parent/'figures.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
-print('Cinq figures générées ; aperçus :', PREVIEWS)
+print('Sept figures générées ; aperçus :', PREVIEWS)

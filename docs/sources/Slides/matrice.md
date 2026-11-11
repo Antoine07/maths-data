@@ -336,7 +336,13 @@ Exemple illustré : $\theta=45^\circ$ ; les deux repères ont la même échelle.
 
 ## IV. Matrices particulières : matrices symétriques
 
-Une matrice est symétrique si :
+La transposée échange les lignes et les colonnes : une matrice de 2 lignes et 3 colonnes devient une matrice de 3 lignes et 2 colonnes. Chaque coefficient placé en ligne `i`, colonne `j` passe en ligne `j`, colonne `i`.
+
+![Une matrice à deux lignes et trois colonnes est transposée en une matrice à trois lignes et deux colonnes. Les couleurs montrent que les anciennes lignes deviennent des colonnes ; chaque coefficient a indice i j passe à la position j i.](figures/transpose-matrice.svg)
+
+Cette symétrie concerne la disposition des coefficients dans le tableau ; elle ne signifie pas que les vecteurs du plan sont réfléchis.
+
+Une matrice est symétrique lorsque sa transposée est égale à elle-même :
 
 $$
 A = A^T,

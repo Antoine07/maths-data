@@ -255,9 +255,32 @@ Multiplie la coordonnée (x) par 3, laisse (y) inchangé.
 
 ## Voir une transformation matricielle
 
-![Le cercle unité devient une ellipse après multiplication par la matrice diagonale de coefficients 2 et 0,5 ; les deux directions de base sont transformées avec lui.](figures/matrice-transformation.svg)
+La transformation représentée est donnée par la matrice :
 
-La matrice s'applique à chaque vecteur du plan. Les deux axes ont la même échelle graphique.
+$$
+D=\begin{pmatrix}
+2 & 0\\
+0 & 0.5
+\end{pmatrix},
+\qquad
+D\begin{pmatrix}x\\y\end{pmatrix}
+=
+\begin{pmatrix}2x\\0.5y\end{pmatrix}.
+$$
+
+Les deux vecteurs de base sont transformés ainsi :
+
+$$
+D\begin{pmatrix}1\\0\end{pmatrix}=\begin{pmatrix}2\\0\end{pmatrix},
+\qquad
+D\begin{pmatrix}0\\1\end{pmatrix}=\begin{pmatrix}0\\0.5\end{pmatrix}.
+$$
+
+Le cercle unité est donc étiré horizontalement et comprimé verticalement.
+
+![Application de D = diag(2, 0,5) au cercle unité : les vecteurs de base deviennent (2, 0) et (0, 0,5), et le cercle devient une ellipse.](figures/matrice-transformation.svg)
+
+Les deux axes ont la même échelle graphique.
 
 ---
 

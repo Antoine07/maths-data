@@ -16,9 +16,9 @@ Les nouveaux contenus sont intercalés dans le parcours : géométrie et moindre
 
 Les révisions commencent par deux paniers : trois produits à 50 € et cinquante produits à 3 €. La comparaison introduit la commutativité et l'idée de choisir une écriture qui simplifie le calcul. L'associativité et la distributivité prolongent cette ouverture avec trois calculs à expliquer et une correction dépliable.
 
-Les révisions comprennent aussi deux démonstrations guidées : le crible d'Ératosthène après les priorités de calcul, puis la somme de deux entiers pairs après la factorisation. Chaque activité propose des indices et une correction dépliable. Le programme Python du crible et la preuve Lean 4 avec Mathlib sont disponibles dans `exemples/revision/`. La grille du crible reste compacte et peut s'ouvrir en grand.
+Les révisions ajoutent quatre exercices de calcul algébrique : réduire, développer, factoriser et simplifier une fraction. Une preuve guidée de la somme de deux entiers pairs mène à une formalisation Lean 4 avec Mathlib, disponible dans `exemples/revision/`.
 
-La partie sur les nombres premiers distingue les diviseurs premiers des diviseurs premiers stricts : pour 7, les ensembles sont respectivement `{7}` et l'ensemble vide. Une preuve par contradiction relie ce critère au contrôle jusqu'à la racine carrée. Le script `exemples/revision/primalite.py` teste un entier, compte les divisions et permet d'observer la complexité en `O(racine(N))` tests dans le pire cas. Les exemples incluent 1, 2 et les carrés 49 et 121.
+Le problème autonome de primalité est placé après le dernier cours. Il reprend le crible d'Ératosthène, la preuve de la borne par la racine carrée et le test Python des diviseurs stricts. Le script `exemples/revision/primalite.py` compte les divisions et illustre une complexité en `O(racine(N))` tests dans le pire cas, avec les cas 1, 2, 49 et 121.
 
 Les supports incluent 28 figures SVG générées avec Matplotlib : tangentes, limites, transformations, résidus, ACP, courbure, optimisation, classification, rotations, clustering et problèmes. Cliquer sur une figure permet de l'ouvrir en grand.
 
@@ -30,7 +30,7 @@ Huit illustrations compactes accompagnent les couvertures Matrices, Gradient, St
 
 Le chapitre de statistiques descriptives part du besoin d'échantillonner et distingue description, estimation, sélection et fluctuation. Il explique ensuite la contrainte de somme nulle des écarts centrés, les `n−1` degrés de liberté et la correction d'estimation de variance. Une démonstration et l'énumération de 64 échantillons indépendants avec remise justifient la correction avant l'introduction de `ddof`. Le cas d'une vraie moyenne connue est distingué du centrage sur une moyenne estimée.
 
-Les dix problèmes sont accessibles par des cartes lavande insérées après leur cours associé, avec question, notions, prérequis et bouton d'accès. `problemes.html` les regroupe ; les liens depuis les slides permettent de les retrouver au moment utile. Les quatre problèmes « Compter les occasions » sont complétés par six situations : minutes cumulées, Simpson, bus, dîner, Braess et fausses alertes. La configuration éditoriale des cartes se trouve dans `../scripts/data/problems.json`.
+Les onze problèmes sont accessibles par des cartes lavande insérées après leur cours associé, avec question, notions, prérequis et bouton d'accès. `problemes.html` les regroupe ; les liens depuis les slides permettent de les retrouver au moment utile. Les quatre problèmes « Compter les occasions » sont complétés par six situations : minutes cumulées, Simpson, bus, dîner, Braess et fausses alertes. Le problème de primalité apparaît après le dernier cours. La configuration éditoriale des cartes se trouve dans `../scripts/data/problems.json`.
 
 ## Utilisation
 

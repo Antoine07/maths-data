@@ -104,6 +104,27 @@ body{min-width:320px}
 .prose .katex-display{overflow-x:auto;overflow-y:hidden;padding:10px 2px;margin:20px 0}
 .prose .katex-display>.katex{white-space:nowrap;max-width:none}
 .prose .katex-error{background:var(--orange-bg);padding:10px;border-radius:8px;color:#945324!important;white-space:pre-wrap}
+.interactive-math-demo{margin:22px auto;padding:16px 18px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#fbfcf8,#f1f5e8);overflow-x:auto;max-width:960px}
+.interactive-demo-controls{display:grid;grid-template-columns:minmax(180px,1fr) minmax(180px,1fr) auto;gap:16px;align-items:end}
+.interactive-demo-controls label{display:grid;gap:6px;font-size:.78rem;font-weight:650;color:var(--green)}
+.interactive-demo-controls output{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:500}
+.interactive-demo-controls input[type=range]{width:100%;accent-color:var(--green)}
+.interactive-demo-buttons{display:flex;gap:8px;flex-wrap:wrap}
+.interactive-demo-buttons .button{padding:8px 12px;font-size:.75rem;white-space:nowrap}
+.interactive-demo-readout{margin:12px 0 4px!important;font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.interactive-demo-svg{display:block;width:100%;min-width:720px;height:auto;margin:8px auto 0}
+.demo-title{font:650 19px system-ui,sans-serif;fill:#203f38}
+.demo-caption{font:14px system-ui,sans-serif;fill:#65756c}
+.demo-equation{font:23px ui-monospace,monospace;fill:#203f38}
+.demo-circle{fill:#fdfefb;stroke:#cbd8c8;stroke-width:2}
+.demo-axis{stroke:#aab8ac;stroke-width:1.5}
+.demo-grid{fill:none;stroke:#dce4d9;stroke-width:1;stroke-dasharray:4 5}
+.demo-hand{stroke:#b7653d;stroke-width:4;stroke-linecap:round}
+.demo-wave{fill:none;stroke:#638b65;stroke-width:3.5;stroke-linejoin:round;stroke-linecap:round}
+.demo-cursor{stroke:#b7653d;stroke-width:1.7;stroke-dasharray:5 5}
+.demo-point{fill:#b7653d;stroke:#fff;stroke-width:3}
+@media(max-width:720px){.interactive-demo-controls{grid-template-columns:1fr 1fr}.interactive-demo-buttons{grid-column:1/-1}}
+@media(max-width:480px){.interactive-math-demo{padding:12px}.interactive-demo-controls{grid-template-columns:1fr}.interactive-demo-buttons{grid-column:auto}.interactive-demo-svg{min-width:680px}}
 mjx-container{max-width:100%;overflow-x:auto;display:block;margin:20px 0!important}
 mjx-container svg{width:auto!important;max-width:100%;height:auto;display:block;margin:auto;min-height:1em}
 .chapter-end{margin-top:35px;border-top:1px solid var(--line);padding-top:24px}

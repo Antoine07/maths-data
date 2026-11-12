@@ -40,11 +40,6 @@
     "slides": 17
   },
   {
-    "file": "avance/07_groupes_symetries.html",
-    "source": "Slides/avance/07_groupes_symetries.md",
-    "slides": 32
-  },
-  {
     "file": "avance/01_geometrie_donnees.html",
     "source": "Slides/avance/01_geometrie_donnees.md",
     "slides": 29
@@ -107,7 +102,7 @@
   {
     "file": "avance/06_retropropagation.html",
     "source": "Slides/avance/06_retropropagation.md",
-    "slides": 35
+    "slides": 34
   },
   {
     "file": "01_introduction_stat.html",

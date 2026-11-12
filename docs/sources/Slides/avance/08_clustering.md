@@ -41,8 +41,6 @@ Un **cluster** rassemble ici des journées proches selon température, occupatio
 
 Les numéros des clusters sont arbitraires : le cluster 0 n'est ni « faible » ni « meilleur ». Deux exécutions peuvent échanger les numéros tout en conservant la même partition.
 
-Ces groupes d'observations ne sont pas les groupes algébriques du chapitre sur les symétries.
-
 ---
 
 ## Concepts essentiels — Matrice et centroïdes

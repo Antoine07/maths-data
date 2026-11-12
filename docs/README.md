@@ -8,11 +8,11 @@ Ouvrir `index.html` dans un navigateur. Le dossier `docs/` peut aussi être publ
 
 Ce dossier est la distribution autonome des supports. Les instructions de génération ci-dessous concernent le projet de travail complet : les scripts de construction et les originaux ne sont pas inclus dans le dépôt de publication. Les copies Markdown consultables sont livrées dans `sources/`.
 
-Les 28 présentations du catalogue principal reprennent les sources de `Slides/` et les supports HTML historiques. Huit chapitres avancés relient l'algèbre et l'analyse à l'apprentissage automatique ; un court support de probabilités prépare les nouveaux problèmes. Les TP et corrections sont accessibles depuis « Exercices & ressources ».
+Les 27 présentations du catalogue principal reprennent les sources de `Slides/` et les supports HTML historiques. Sept chapitres avancés relient l'algèbre et l'analyse à l'apprentissage automatique ; un court support de probabilités prépare les nouveaux problèmes. Les TP et corrections sont accessibles depuis « Exercices & ressources ».
 
 Les nouveaux contenus sont intercalés dans le parcours : géométrie et moindres carrés après les matrices ; SVD après les statistiques et l'ACP ; calcul différentiel, optimisation et rétropropagation après le gradient. Le projet de consommation électrique se télécharge avec son CSV, son code et ses notebooks depuis la page des ressources.
 
-« Groupes, symétries et données » s'insère après le calcul matriciel : rotations du carré, composition, inverses, invariance et équivariance, puis contrôle du réordonnement des lignes du projet. Une ouverture reprend ces notions après la rétropropagation. « Clustering et profils de consommation » suit la SVD : k-means en NumPy, mise à l'échelle, inertie, plusieurs départs et interprétation prudente. Chaque chapitre comprend trois exercices corrigés et cinq QCM. Les scripts `projet-ia/groupes_symetries.py` et `projet-ia/clustering.py` sont inclus dans l'archive ; les six jalons du projet restent complétés par ces deux ateliers. Le fil rouge reste en fin de page d'accueil.
+« Clustering et profils de consommation » suit la SVD : k-means en NumPy, mise à l'échelle, inertie, plusieurs départs et interprétation prudente. Chaque chapitre avancé comprend trois exercices corrigés et cinq QCM. Le script `projet-ia/clustering.py` prolonge les six jalons du projet. Le fil rouge reste en fin de page d'accueil.
 
 Les révisions commencent par deux paniers : trois produits à 50 € et cinquante produits à 3 €. La comparaison introduit la commutativité et l'idée de choisir une écriture qui simplifie le calcul. L'associativité et la distributivité prolongent cette ouverture avec trois calculs à expliquer et une correction dépliable.
 

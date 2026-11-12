@@ -441,18 +441,6 @@ Revenir aux effectifs de confusion, distinguer les dénominateurs et introduire 
 
 ---
 
-## Ouverture IA — Retrouver les symétries
-
-Dans [Groupes, symétries et données](07_groupes_symetries.md), nous avons distingué une réponse qui reste identique et une sortie qui suit la transformation de l'entrée.
-
-Un réseau appliqué indépendamment à chaque ligne avec les mêmes poids suit une permutation des lignes : ses prédictions sont équivariantes. Leur moyenne est invariante à ce réordonnement.
-
-Pour une image, reconnaître la même catégorie après déplacement est une invariance souhaitée ; déplacer un masque de segmentation avec l'objet est une équivariance souhaitée. Un réseau dense quelconque ne garantit pas ces propriétés géométriques.
-
-**Question de transfert :** quelles transformations préserveraient la tâche pour des chiffres manuscrits ? Une rotation de 180° est-elle toujours admissible ? Justifier sur le cas du 6 et du 9.
-
----
-
 ## Résumé final
 
 Le parcours relie désormais données, projections, gradients et apprentissage.

@@ -16,7 +16,7 @@ Le scénario est fictif ; l'horizon de 60 ans est fixé pour l'exercice et n'est
 
 **Prérequis :** [révisions d'algèbre](../../Slides/revision.md), multiplication et pourcentages. Aucune probabilité n'est nécessaire.
 
-**Travail attendu :** calcul manuel, puis script Python utilisant NumPy pour les tableaux et les calculs, et Matplotlib pour les graphiques. Les opérations nécessaires sont rappelées dans l’activité ci-dessous.
+**Travail attendu :** calcul manuel avec des sommes finies, puis script Python utilisant NumPy et un seul graphique Matplotlib à deux panneaux.
 
 ---
 
@@ -36,15 +36,15 @@ Les fréquences sont supposées constantes à l'intérieur de chaque période. L
 
 ## Énoncé
 
-1. Calculer le nombre de journées de rencontre de chaque période, puis les totaux passé et futur.
-2. Calculer la fraction d'années restantes dans l'horizon, puis la fraction de journées de rencontre restantes. Comparer les deux résultats.
+1. En notant $a$ l'âge au début de l'année, écrire avec le symbole somme $\sum$ le total des journées de rencontre passées et celui des journées futures. Utiliser les bornes du tableau et le fait que la fréquence est constante sur chaque période pour calculer ces sommes.
+2. Calculer deux pourcentages : **la part des années restantes** parmi les 60 années de l'horizon, puis **la part des journées de rencontre futures** parmi toutes les journées de rencontre prévues entre 0 et 60 ans (journées passées + journées futures). Comparer ces deux pourcentages.
 3. Dessiner une grille où chaque point représente **12 journées de rencontre**, en distinguant passé et futur. Combien de points faut-il ?
 4. Léa passe désormais à 24 journées de rencontre par an. Recalculer le futur, le total et la fraction future. Le passé change-t-il ? La fraction future est-elle exactement doublée ?
 5. Formuler une conclusion conditionnelle : qu'affirme le calcul et qu'ignore-t-il ?
 
 ---
 
-## À réaliser — Un script avec NumPy et Matplotlib
+## À réaliser — Un script NumPy et un graphique
 
 Écrire un script autonome à partir des paramètres suivants, **après les calculs manuels** :
 
@@ -64,7 +64,7 @@ rencontres_futures = 12
 3. Retrouver le nombre de points de la grille pour une unité de 12 journées. Vérifier que les totaux sont divisibles par 12 avant d’utiliser `//` : une division entière peut sinon masquer un reste.
 4. Créer une **copie** du tableau, doubler uniquement les valeurs futures, puis recalculer le total et la part future. Vérifier que le tableau initial et le passé restent inchangés.
 5. Comparer les fréquences `np.array([6, 12, 24, 36, 52, 100])`. Calculer les journées futures, les totaux et les proportions par **opérations vectorisées**, sans boucle de calcul. Une boucle est autorisée pour afficher le tableau des résultats.
-6. Tracer trois graphiques : journées de rencontre par année, comparaison des totaux passé/futur et part future en fonction de la fréquence. Sur le premier, séparer passé et futur par une ligne à `age_actuel - 0.5`. Sur le dernier, ajouter un repère horizontal à 50 %.
+6. Créer une seule figure Matplotlib avec deux panneaux : à gauche, les journées de rencontre par année et une ligne à `age_actuel - 0.5` pour séparer passé et futur ; à droite, la part future en fonction des fréquences testées, avec un repère horizontal à 50 %.
 7. Afficher une conclusion qui distingue les années et les journées de rencontre, puis rappelle les hypothèses du modèle.
 
 **Repères NumPy :** `np.full(n, valeur)` répète une valeur ; `np.concatenate` assemble les blocs. `tableau[:indice]` sélectionne ce qui précède l’indice, et `tableau[indice:]` ce qui le suit, indice compris. `np.sum` additionne un tableau ; `copy()` permet de modifier un scénario sans écraser l’original. Une opération entre un tableau et un scalaire s’applique à chaque élément.
@@ -77,7 +77,7 @@ rencontres_futures = 12
 
 **Contraintes :** annoncer toutes les unités ; conserver les jours passés lorsque le futur change ; ne pas transformer un horizon fixé en certitude.
 
-**Livrables :** tableau de calcul manuel, grille de points, script `.py` exécutable, tableau des six scénarios, trois graphiques légendés et conclusion de cinq lignes.
+**Livrables :** calculs manuels avec sommes, grille de points, script `.py` exécutable, tableau des six scénarios, figure à deux panneaux et conclusion de cinq lignes.
 
 **Critères de réussite :** nombres cohérents avec les trois périodes, dénominateur recalculé dans chaque scénario, tableau initial conservé, calcul vectorisé des six fréquences et axes avec unités. La légende de la grille indique l’unité de chaque point.
 
@@ -94,9 +94,9 @@ rencontres_futures = 12
 
 <details><summary>Afficher la correction</summary>
 
-Enfance : $18\times300=5\,400$ journées. Vie adulte passée : $12\times12=144$ journées. Le passé total vaut donc $5\,544$ journées.
+Enfance : $\sum_{a=0}^{17}300=18\times300=5\,400$ journées. Vie adulte passée : $\sum_{a=18}^{29}12=12\times12=144$ journées. Le passé total vaut donc $5\,544$ journées.
 
-Le futur du scénario de base vaut $30\times12=360$ journées. Le total de l'horizon vaut $5\,904$ journées.
+Le futur du scénario de base vaut $\sum_{a=30}^{59}12=30\times12=360$ journées. Le total de l'horizon vaut $5\,904$ journées.
 
 La moitié des années de l'horizon restent, mais la part des journées futures vaut :
 
@@ -238,49 +238,27 @@ for frequence, jours, proportion in zip(
         f"{proportion:6.2f} %"
     )
 
-# 7. GRAPHIQUE 1 — RENCONTRES PAR ANNÉE
+# 7. GRAPHIQUE — DEUX LECTURES DU MODÈLE
 
-plt.figure(figsize=(11, 5))
-plt.bar(ages, rencontres, color="steelblue", label="Journées de rencontre")
-plt.axvline(
-    age_actuel - 0.5, color="red", linestyle="--",
-    label=f"Âge actuel : {age_actuel} ans"
-)
-plt.xlabel("Âge au début de l'année (ans)")
-plt.ylabel("Journées de rencontre par an")
-plt.title("Évolution des rencontres — scénario simulé")
-plt.legend()
-plt.grid(axis="y", alpha=0.3)
-plt.tight_layout()
+fig, axes = plt.subplots(1, 2, figsize=(12, 4.5))
+
+axes[0].bar(ages, rencontres, color="steelblue")
+axes[0].axvline(age_actuel - 0.5, color="red", linestyle="--")
+axes[0].set(xlabel="Âge au début de l'année", ylabel="Journées par an",
+            title="Fréquence annuelle")
+axes[0].grid(axis="y", alpha=0.3)
+
+axes[1].plot(frequences, proportions, marker="o", color="darkgreen")
+axes[1].axhline(50, color="red", linestyle="--", label="50 %")
+axes[1].set(xlabel="Journées futures par an", ylabel="Part future (%)",
+            title="Scénarios de fréquence")
+axes[1].grid(alpha=0.3)
+axes[1].legend()
+
+fig.tight_layout()
 plt.show()
 
-# 8. GRAPHIQUE 2 — PASSÉ VS FUTUR
-
-plt.figure(figsize=(7, 5))
-plt.bar(
-    ["Passé", "Futur"], [jours_passes, jours_futurs],
-    color=["steelblue", "orange"]
-)
-plt.ylabel("Nombre de journées de rencontre")
-plt.title("Répartition des journées de rencontre — scénario simulé")
-plt.grid(axis="y", alpha=0.3)
-plt.tight_layout()
-plt.show()
-
-# 9. GRAPHIQUE 3 — COMPARER LES FRÉQUENCES
-
-plt.figure(figsize=(9, 5))
-plt.plot(frequences, proportions, marker="o", linewidth=2, color="darkgreen")
-plt.axhline(50, color="red", linestyle="--", label="50 %")
-plt.xlabel("Journées de rencontre futures par an")
-plt.ylabel("Part des journées de rencontre futures (%)")
-plt.title("Influence de la fréquence — scénarios simulés")
-plt.grid(alpha=0.3)
-plt.legend()
-plt.tight_layout()
-plt.show()
-
-# 10. CONCLUSION
+# 8. CONCLUSION
 
 print("\n===== CONCLUSION =====")
 print(
@@ -298,13 +276,9 @@ print(
 )
 ```
 
-**Lire les graphiques.** Le premier montre une fréquence annuelle, le deuxième des totaux en journées : les hauteurs ne représentent pas la même unité. La troisième courbe compare des hypothèses de fréquence future avec le même passé ; ses segments relient les scénarios calculés, sans représenter des observations réelles.
+**Lire la figure.** Le panneau gauche montre les journées de rencontre par année et sépare le passé du futur. Le panneau droit compare les scénarios de fréquence future avec le même passé ; les segments relient les scénarios calculés et ne représentent pas des observations réelles.
 
-![Journées de rencontre par année : 300 pour les années d’enfance, puis 12 par an ; séparation du passé et du futur à 30 ans.](../../Slides/images/rencontres-annuelles.svg)
-
-![Totaux du scénario de base : 5 544 journées passées et 360 journées futures.](../../Slides/images/rencontres-passe-futur.svg)
-
-![Part future des journées pour six fréquences annuelles de 6 à 100, avec un repère à 50 %.](../../Slides/images/rencontres-frequences.svg)
+![Une figure en deux panneaux : fréquence annuelle des rencontres et part future selon six scénarios.](../../Slides/images/rencontres-analyse.svg)
 
 À 100 journées par an pendant les 30 années futures, le modèle compte 3 000 journées futures sur 8 544, soit environ 35,11 %. Le repère à 50 % n’est donc atteint par aucun des six scénarios proposés.
 

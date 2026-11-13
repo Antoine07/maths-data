@@ -109,91 +109,55 @@ Modifiez la période ou la phase initiale, puis lancez l'animation. L'aiguille t
 
 ---
 
-## Pourquoi ces fonctions en IA ?
+## Application · Coder l'heure dans une série de données
 
-L'heure est cyclique : 23 h est proche de 0 h, même si les nombres 23 et 0 semblent éloignés. On peut encoder une heure $h$ par deux coordonnées sur le cercle :
+Une heure se répète toutes les 24 heures. Les valeurs brutes créent pourtant une fausse distance : $|23-0|=23$, alors que 23 h et minuit sont séparés d'une heure.
+
+On place l'heure $h$ sur un cercle. Un tour complet vaut $2\pi$ radians, donc l'angle associé est :
 
 $$
-\left(\cos\left(\frac{2\pi h}{24}\right),\;\sin\left(\frac{2\pi h}{24}\right)\right).
+\theta=\frac{2\pi h}{24}.
 $$
 
-Un modèle peut ainsi apprendre les régularités liées à l'heure pour prévoir une série temporelle, comme la consommation électrique. Le codage représente le cycle des heures ; il ne suppose pas que la consommation soit elle-même sinusoïdale.
+Le cosinus et le sinus donnent les deux coordonnées du point :
 
-![Les heures 23 h et 0 h sont voisines sur un cercle ; leur encodage sinus-cosinus rend visible cette proximité.](images/fonctions-ia-cyclique.svg)
+$$
+\left(\cos\theta,\;\sin\theta\right).
+$$
 
-### Animation — passer minuit
+| Heure | Encodage $(\cos\theta,\sin\theta)$ |
+|---:|---:|
+| 0 h | $(1,0)$ |
+| 6 h | $(0,1)$ |
+| 12 h | $(-1,0)$ |
+| 18 h | $(0,-1)$ |
+| 23 h | $(0{,}966,-0{,}259)$ |
 
-Déplacez le curseur ou lancez le parcours : l'heure avance sur le cercle, et ses deux coordonnées sinus-cosinus s'actualisent. Le passage de 23 h à 0 h est continu.
+![Sur le cercle, les encodages de 23 h et de 0 h sont voisins.](images/fonctions-ia-cyclique.svg)
 
-<div class="interactive-math-demo" data-clock-demo>
-  <div class="interactive-demo-controls clock-controls">
-    <label>Heure <output data-clock-hour-label>23 h</output>
-      <input data-clock-hour type="range" min="0" max="24" step="0.25" value="23" aria-label="Heure de la journée">
-    </label>
-    <div class="interactive-demo-buttons">
-      <button class="button primary" type="button" data-clock-toggle aria-pressed="false">▶ Faire avancer l'heure</button>
-      <button class="button" type="button" data-clock-reset>Replacer à 23 h</button>
-    </div>
-  </div>
-  <p class="interactive-demo-readout" data-clock-readout aria-live="polite">Encodage : (0,966 ; −0,259) · distance à minuit : 0,261</p>
-  <svg class="interactive-demo-svg clock-demo-svg" viewBox="0 0 1000 330" role="img" aria-label="Une horloge circulaire avec un point mobile, et les coordonnées cosinus et sinus de l'heure.">
-    <text x="230" y="34" text-anchor="middle" class="demo-title">Heure sur un cercle de 24 h</text>
-    <circle cx="230" cy="170" r="112" class="demo-circle"/>
-    <line x1="106" y1="170" x2="354" y2="170" class="demo-axis"/>
-    <line x1="230" y1="46" x2="230" y2="294" class="demo-axis"/>
-    <text x="350" y="176" text-anchor="middle" class="demo-caption">0 h</text>
-    <text x="230" y="52" text-anchor="middle" class="demo-caption">6 h</text>
-    <text x="110" y="176" text-anchor="middle" class="demo-caption">12 h</text>
-    <text x="230" y="310" text-anchor="middle" class="demo-caption">18 h</text>
-    <line x1="230" y1="170" x2="340" y2="140" class="demo-hand" data-clock-hand/>
-    <circle cx="340" cy="140" r="9" class="demo-point" data-clock-point/>
-    <text x="610" y="115" class="demo-title">Coordonnées données au modèle</text>
-    <text x="610" y="170" class="demo-equation">cos(2πh / 24) = <tspan data-clock-cos>0,966</tspan></text>
-    <text x="610" y="220" class="demo-equation">sin(2πh / 24) = <tspan data-clock-sin>−0,259</tspan></text>
-    <text x="610" y="274" class="demo-caption">À minuit, l'encodage revient près de celui de 23 h.</text>
-  </svg>
-</div>
+Cette représentation, appelée **encodage cyclique**, aide un modèle à exploiter l'heure pour prévoir une série temporelle, par exemple la consommation électrique. Elle ne suppose pas que la consommation suive elle-même un sinus. On utilise les deux coordonnées, car le cosinus seul ne distingue pas 6 h et 18 h.
 
 ---
 
-## TP — Comparer deux rythmes quotidiens
+## Petit exercice · Comparer deux heures
 
-Exécutez le code, puis répondez aux questions.
+On donne :
 
 ```python
 import numpy as np
-import matplotlib.pyplot as plt
 
-t = np.linspace(0, 48, 481)  # temps en heures
-
-signal_24h = 10 + 5 * np.sin((2 * np.pi / 24) * t)
-signal_12h = 10 + 5 * np.sin((2 * np.pi / 12) * t)
-
-plt.plot(t, signal_24h, label="Période : 24 h")
-plt.plot(t, signal_12h, label="Période : 12 h")
-plt.xlabel("Temps (heures)")
-plt.ylabel("Valeur du signal")
-plt.title("Deux rythmes sinusoïdaux")
-plt.grid(alpha=0.3)
-plt.legend()
-plt.show()
-
-heures = np.array([23, 0])
+heures = np.array([0, 6, 18, 23])
 angle = 2 * np.pi * heures / 24
 encodage = np.column_stack((np.cos(angle), np.sin(angle)))
-print("Encodage de 23 h et 0 h :", encodage)
-print("Distance entre les deux encodages :",
-      np.linalg.norm(encodage[0] - encodage[1]))
 ```
 
-1. Quelle est la période de chaque signal ? Combien de cycles chacun réalise-t-il en 48 h ?
-2. Pourquoi le coefficient $2\pi/24$ donne-t-il un cycle en 24 h ? Que se passe-t-il quand on remplace 24 par 12 ?
-3. Les heures 23 et 0 sont-elles proches dans l'encodage ? Expliquez pourquoi cette représentation convient à une heure de la journée.
+1. Donner l'encodage de 6 h et de 18 h. Pourquoi le cosinus seul ne suffit-il pas ?
+2. Les encodages de 23 h et de 0 h sont-ils proches ? Justifier à l'aide du tableau.
 
 <details><summary>Afficher une correction possible</summary>
 
-Le premier signal a pour période 24 h et réalise deux cycles en 48 h. Le second a pour période 12 h et réalise quatre cycles. Dans $\sin((2\pi/P)t)$, le coefficient $2\pi/P$ fait avancer l'angle de $2\pi$ lorsque $t$ augmente de $P$ heures : remplacer 24 par 12 divise la période par deux.
+À 6 h, $\theta=\pi/2$ et l'encodage vaut $(0,1)$. À 18 h, $\theta=3\pi/2$ et il vaut $(0,-1)$. Le cosinus vaut 0 dans les deux cas ; le sinus permet de distinguer ces heures.
 
-Les angles associés à 23 h et 0 h ne diffèrent que d'un douzième de tour, donc leurs encodages sont voisins. Leur distance vaut environ $0{,}26$, alors que les valeurs brutes 23 et 0 paraissent éloignées.
+À 23 h, l'encodage est environ $(0{,}966,-0{,}259)$, proche de $(1,0)$ à 0 h. Le changement de 23 h à minuit est donc continu sur le cercle.
 
 </details>

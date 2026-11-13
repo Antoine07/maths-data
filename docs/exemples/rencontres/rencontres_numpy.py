@@ -95,49 +95,27 @@ for frequence, jours, proportion in zip(
         f"{proportion:6.2f} %"
     )
 
-# 7. GRAPHIQUE 1 — RENCONTRES PAR ANNÉE
+# 7. GRAPHIQUE — DEUX LECTURES DU MODÈLE
 
-plt.figure(figsize=(11, 5))
-plt.bar(ages, rencontres, color="steelblue", label="Journées de rencontre")
-plt.axvline(
-    age_actuel - 0.5, color="red", linestyle="--",
-    label=f"Âge actuel : {age_actuel} ans"
-)
-plt.xlabel("Âge au début de l'année (ans)")
-plt.ylabel("Journées de rencontre par an")
-plt.title("Évolution des rencontres — scénario simulé")
-plt.legend()
-plt.grid(axis="y", alpha=0.3)
-plt.tight_layout()
+fig, axes = plt.subplots(1, 2, figsize=(12, 4.5))
+
+axes[0].bar(ages, rencontres, color="steelblue")
+axes[0].axvline(age_actuel - 0.5, color="red", linestyle="--")
+axes[0].set(xlabel="Âge au début de l'année", ylabel="Journées par an",
+            title="Fréquence annuelle")
+axes[0].grid(axis="y", alpha=0.3)
+
+axes[1].plot(frequences, proportions, marker="o", color="darkgreen")
+axes[1].axhline(50, color="red", linestyle="--", label="50 %")
+axes[1].set(xlabel="Journées futures par an", ylabel="Part future (%)",
+            title="Scénarios de fréquence")
+axes[1].grid(alpha=0.3)
+axes[1].legend()
+
+fig.tight_layout()
 plt.show()
 
-# 8. GRAPHIQUE 2 — PASSÉ VS FUTUR
-
-plt.figure(figsize=(7, 5))
-plt.bar(
-    ["Passé", "Futur"], [jours_passes, jours_futurs],
-    color=["steelblue", "orange"]
-)
-plt.ylabel("Nombre de journées de rencontre")
-plt.title("Répartition des journées de rencontre — scénario simulé")
-plt.grid(axis="y", alpha=0.3)
-plt.tight_layout()
-plt.show()
-
-# 9. GRAPHIQUE 3 — COMPARER LES FRÉQUENCES
-
-plt.figure(figsize=(9, 5))
-plt.plot(frequences, proportions, marker="o", linewidth=2, color="darkgreen")
-plt.axhline(50, color="red", linestyle="--", label="50 %")
-plt.xlabel("Journées de rencontre futures par an")
-plt.ylabel("Part des journées de rencontre futures (%)")
-plt.title("Influence de la fréquence — scénarios simulés")
-plt.grid(alpha=0.3)
-plt.legend()
-plt.tight_layout()
-plt.show()
-
-# 10. CONCLUSION
+# 8. CONCLUSION
 
 print("\n===== CONCLUSION =====")
 print(

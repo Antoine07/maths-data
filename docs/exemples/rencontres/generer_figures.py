@@ -1,4 +1,4 @@
-"""Régénérer les trois graphiques en exécutant le corrigé, sans fenêtre graphique.
+"""Régénérer la figure à deux panneaux en exécutant le corrigé, sans fenêtre.
 
 python docs/exemples/rencontres/generer_figures.py
 Les SVG vont dans docs/assets/images et, si présent, Slides/images.
@@ -20,7 +20,7 @@ SORTIE = ROOT/'docs/assets/images'
 APERCUS = Path(os.environ.get('MATHS_RENCONTRES_PREVIEWS', '/tmp/rencontres-numpy'))
 SORTIE.mkdir(parents=True, exist_ok=True)
 APERCUS.mkdir(parents=True, exist_ok=True)
-noms = iter(['rencontres-annuelles', 'rencontres-passe-futur', 'rencontres-frequences'])
+noms = iter(['rencontres-analyse'])
 plt.rcParams['svg.hashsalt'] = 'coda-rencontres-numpy'
 
 
@@ -39,4 +39,4 @@ def enregistrer():
 plt.show = enregistrer
 with contextlib.redirect_stdout(io.StringIO()):
     resultats = runpy.run_path(str(BASE/'rencontres_numpy.py'))
-print('Trois graphiques générés dans', SORTIE)
+print('Figure générée dans', SORTIE)

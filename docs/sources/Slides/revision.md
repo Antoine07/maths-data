@@ -770,6 +770,75 @@ $$
 
 ---
 
+# Rappel · Écrire une somme finie
+
+Le symbole sigma abrège l'addition de plusieurs termes :
+
+$$
+\sum_{k=1}^{n} u_k = u_1+u_2+\cdots+u_n.
+$$
+
+L'indice $k$ prend ici toutes les valeurs entières de 1 à $n$. Il sert à parcourir les termes.
+
+Exemple :
+
+$$
+\sum_{k=1}^{4}(2k+1)=3+5+7+9=24.
+$$
+
+Quand le même nombre $c$ est répété $n$ fois, on obtient $\sum_{k=1}^{n}c=nc$.
+
+---
+
+# Rappel · Repérer une somme télescopique
+
+Une somme est dite **télescopique** lorsque des termes se compensent entre eux.
+
+On commence par transformer chaque terme :
+
+$$
+\frac{1}{k(k+1)}=\frac1k-\frac1{k+1}.
+$$
+
+Alors les termes intermédiaires s'annulent :
+
+$$
+\sum_{k=1}^{n}\frac{1}{k(k+1)}
+=\left(1-\frac12\right)+\left(\frac12-\frac13\right)+\cdots+
+\left(\frac1n-\frac1{n+1}\right)
+=1-\frac1{n+1}=\frac{n}{n+1}.
+$$
+
+---
+
+# À vous · Trois sommes à simplifier
+
+Pour un entier naturel $n\geq1$, calculer les trois sommes. Chercher d'abord à réécrire chaque terme.
+
+1. $\displaystyle S_n=\sum_{k=1}^{n}\frac{1}{k(k+1)}$
+2. $\displaystyle U_n=\sum_{k=1}^{n}k\,k!$
+3. $\displaystyle T_n=\sum_{k=1}^{n}\frac{1}{k(k+2)}$
+
+<details><summary>Indices</summary>
+
+1. Décomposer en $\frac1k-\frac1{k+1}$.
+2. Comparer $k\,k!$ à $(k+1)!-k!$.
+3. Décomposer en $\frac12\left(\frac1k-\frac1{k+2}\right)$.
+
+</details>
+
+<details><summary>Correction · Faire apparaître les compensations</summary>
+
+1. $\displaystyle S_n=\sum_{k=1}^{n}\left(\frac1k-\frac1{k+1}\right)=1-\frac1{n+1}=\frac{n}{n+1}$.
+2. Comme $k\,k!=(k+1)!-k!$, on obtient $\displaystyle U_n=(n+1)!-1! = (n+1)!-1$.
+3. $\displaystyle T_n=\frac12\sum_{k=1}^{n}\left(\frac1k-\frac1{k+2}\right)=\frac12\left(1+\frac12-\frac1{n+1}-\frac1{n+2}\right)$.
+
+Dans les trois cas, la somme finie se réduit à quelques termes qui ne sont pas compensés.
+
+</details>
+
+---
+
 ## Problème — Compter les occasions
 
 La moitié des années d'un horizon reste-t-elle la moitié des rencontres ?
@@ -778,7 +847,7 @@ Appliquer les produits et pourcentages à une situation fictive, puis construire
 
 [Problème 1 : la moitié des années, combien de rencontres ?](../Tps/Tail_End/01_rencontres.md)
 
-En complément court : [où sont passées mes dix minutes ?](../Tps/Paradoxes/01_dix_minutes.md), pour travailler les conversions et distinguer temps cumulé et temps disponible d'un seul bloc.
+Dans le problème, on pourra écrire les journées de rencontre passées et futures comme des sommes finies, puis utiliser les fréquences constantes pour les calculer rapidement.
 
 ---
 

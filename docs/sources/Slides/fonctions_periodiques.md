@@ -148,8 +148,13 @@ import numpy as np
 
 heures = np.array([0, 6, 18, 23])
 angle = 2 * np.pi * heures / 24
-encodage = np.column_stack((np.cos(angle), np.sin(angle)))
+cos_heures = np.cos(angle)
+sin_heures = np.sin(angle)
+encodage = np.column_stack((cos_heures, sin_heures))
+print(encodage)
 ```
+
+`np.column_stack` prend les deux tableaux de même longueur et les place côte à côte comme colonnes. La première colonne contient les cosinus, la seconde les sinus : chaque ligne correspond à une heure. Ici, `encodage.shape` vaut `(4, 2)`.
 
 1. Donner l'encodage de 6 h et de 18 h. Pourquoi le cosinus seul ne suffit-il pas ?
 2. Les encodages de 23 h et de 0 h sont-ils proches ? Justifier à l'aide du tableau.
@@ -159,5 +164,7 @@ encodage = np.column_stack((np.cos(angle), np.sin(angle)))
 À 6 h, $\theta=\pi/2$ et l'encodage vaut $(0,1)$. À 18 h, $\theta=3\pi/2$ et il vaut $(0,-1)$. Le cosinus vaut 0 dans les deux cas ; le sinus permet de distinguer ces heures.
 
 À 23 h, l'encodage est environ $(0{,}966,-0{,}259)$, proche de $(1,0)$ à 0 h. Le changement de 23 h à minuit est donc continu sur le cercle.
+
+À l'arrondi, `encodage` contient les lignes $(1,0)$, $(0,1)$, $(0,-1)$ et $(0{,}966,-0{,}259)$.
 
 </details>

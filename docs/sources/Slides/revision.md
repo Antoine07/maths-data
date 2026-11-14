@@ -867,6 +867,40 @@ $$
 
 ---
 
+# Rappel · Écrire un produit fini
+
+Comme $\sum$ abrège une addition, $\prod$ abrège une multiplication :
+
+$$
+\prod_{k=1}^{n}u_k=u_1\times u_2\times\cdots\times u_n.
+$$
+
+Par exemple :
+
+$$
+\prod_{k=1}^{4}k=1\times2\times3\times4=4!=24.
+$$
+
+En data, on multiplie aussi des probabilités indépendantes. Si trois mesures ont des probabilités de fiabilité $0{,}9$, $0{,}8$ et $0{,}95$, la probabilité qu'elles soient toutes fiables est leur produit : $0{,}9\times0{,}8\times0{,}95=0{,}684$.
+
+En NumPy, `np.prod([0.9, 0.8, 0.95])` calcule ce produit.
+
+---
+
+# À vous · Deux calculs de produits
+
+1. Développer puis calculer $\displaystyle P=\prod_{k=1}^{4}(k+1)$. Écrire le résultat avec une factorielle.
+2. Trois mesures indépendantes ont les probabilités de fiabilité $0{,}9$, $0{,}8$ et $0{,}95$. Calculer la probabilité qu'elles soient toutes fiables, puis vérifier le calcul avec `np.prod`.
+
+<details><summary>Afficher une correction possible</summary>
+
+1. $\displaystyle P=2\times3\times4\times5=5!=120$.
+2. $\displaystyle 0{,}9\times0{,}8\times0{,}95=0{,}684$. En NumPy, `np.prod([0.9, 0.8, 0.95])` renvoie `0.684`.
+
+</details>
+
+---
+
 ## Problème — Compter les occasions
 
 La moitié des années d'un horizon reste-t-elle la moitié des rencontres ?

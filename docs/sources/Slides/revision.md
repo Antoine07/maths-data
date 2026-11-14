@@ -811,29 +811,57 @@ $$
 
 ---
 
-# À vous · Trois sommes à simplifier
+# À vous · Quatre calculs de sommes finies
 
-Pour un entier naturel $n\geq1$, calculer les trois sommes. Chercher d'abord à réécrire chaque terme.
+Pour $n\geq1$, simplifier les sommes 1 et 2. Calculer les sommes 3 et 4.
 
 1. $\displaystyle S_n=\sum_{k=1}^{n}\frac{1}{k(k+1)}$
 2. $\displaystyle U_n=\sum_{k=1}^{n}k\,k!$
-3. $\displaystyle T_n=\sum_{k=1}^{n}\frac{1}{k(k+2)}$
+3. $\displaystyle V_n=\sum_{k=1}^{n}\big((k+1)-k\big)$
+4. $\displaystyle W=\sum_{k=1}^{4}\big((k+1)^2-k^2\big)$
 
-<details><summary>Indices</summary>
+Chercher dans chaque terme ce qui s'annule entre deux lignes successives.
 
-1. Décomposer en $\frac1k-\frac1{k+1}$.
-2. Comparer $k\,k!$ à $(k+1)!-k!$.
-3. Décomposer en $\frac12\left(\frac1k-\frac1{k+2}\right)$.
+---
+
+# Correction · Les quatre sommes
+
+<details><summary>Afficher une correction possible</summary>
+
+1. $\displaystyle \frac1{k(k+1)}=\frac1k-\frac1{k+1}$, donc $\displaystyle S_n=1-\frac1{n+1}=\frac{n}{n+1}$.
+2. $k\,k!=(k+1)!-k!$, donc $\displaystyle U_n=(n+1)!-1$.
+3. Les termes se réduisent à $1$ : $\displaystyle V_n=\sum_{k=1}^{n}1=n$.
+4. $\displaystyle W=(2^2-1^2)+(3^2-2^2)+(4^2-3^2)+(5^2-4^2)=5^2-1^2=24$.
 
 </details>
 
-<details><summary>Correction · Faire apparaître les compensations</summary>
+---
 
-1. $\displaystyle S_n=\sum_{k=1}^{n}\left(\frac1k-\frac1{k+1}\right)=1-\frac1{n+1}=\frac{n}{n+1}$.
-2. Comme $k\,k!=(k+1)!-k!$, on obtient $\displaystyle U_n=(n+1)!-1! = (n+1)!-1$.
-3. $\displaystyle T_n=\frac12\sum_{k=1}^{n}\left(\frac1k-\frac1{k+2}\right)=\frac12\left(1+\frac12-\frac1{n+1}-\frac1{n+2}\right)$.
+# Facultatif guidé · Une somme avec deux décalages
 
-Dans les trois cas, la somme finie se réduit à quelques termes qui ne sont pas compensés.
+On reprend la somme plus technique :
+
+$$
+T_n=\sum_{k=1}^{n}\frac{1}{k(k+2)}.
+$$
+
+1. Vérifier que $\displaystyle \frac{1}{k(k+2)}=\frac12\left(\frac1k-\frac1{k+2}\right)$.
+2. Écrire les premiers termes et repérer ceux qui se compensent.
+3. Donner les quelques termes qui restent, puis simplifier.
+
+<details><summary>Correction guidée</summary>
+
+La décomposition donne :
+
+$$
+T_n=\frac12\sum_{k=1}^{n}\left(\frac1k-\frac1{k+2}\right).
+$$
+
+Les termes intermédiaires s'annulent deux à deux. Il reste les deux premiers et les deux derniers :
+
+$$
+T_n=\frac12\left(1+\frac12-\frac1{n+1}-\frac1{n+2}\right).
+$$
 
 </details>
 

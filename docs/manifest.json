@@ -27,7 +27,12 @@
   {
     "file": "02_modelisation.html",
     "source": "Slides/02_modelisation.md",
-    "slides": 12
+    "slides": 8
+  },
+  {
+    "file": "qcm/fondamentaux.html",
+    "source": "Slides/qcm/fondamentaux.md",
+    "slides": 5
   },
   {
     "file": "matrice.html",
@@ -42,7 +47,12 @@
   {
     "file": "avance/01_geometrie_donnees.html",
     "source": "Slides/avance/01_geometrie_donnees.md",
-    "slides": 31
+    "slides": 27
+  },
+  {
+    "file": "qcm/algebre.html",
+    "source": "Slides/qcm/algebre.md",
+    "slides": 5
   },
   {
     "file": "stat/01_stat_descriptive.html",
@@ -92,7 +102,12 @@
   {
     "file": "avance/08_clustering.html",
     "source": "Slides/avance/08_clustering.md",
-    "slides": 35
+    "slides": 31
+  },
+  {
+    "file": "qcm/statistiques.html",
+    "source": "Slides/qcm/statistiques.md",
+    "slides": 5
   },
   {
     "file": "gradient.html",
@@ -112,7 +127,12 @@
   {
     "file": "avance/06_retropropagation.html",
     "source": "Slides/avance/06_retropropagation.md",
-    "slides": 36
+    "slides": 32
+  },
+  {
+    "file": "qcm/apprentissage.html",
+    "source": "Slides/qcm/apprentissage.md",
+    "slides": 5
   },
   {
     "file": "01_introduction_stat.html",

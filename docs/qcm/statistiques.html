@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Réactivation · Statistiques avec NumPy · Le labo maths</title><link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="../assets/katex/katex.min.css"><link rel="stylesheet" href="../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page" data-deck="qcm/statistiques"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Statistiques avec NumPy</p><h1>Réactivation · Statistiques avec NumPy</h1><p>8 questions interactives sur les scores z, les tests et les distributions.</p></div><span class="chapter-count">5 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="true">Slides</button><button id="mode-reading" aria-pressed="false">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 5</span><span id="progress-label">20 %</span></div><progress id="progress" max="5" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>QCM de réactivation</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>QCM de réactivation · Statistiques avec NumPy (1/4)</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>QCM de réactivation · Statistiques avec NumPy (2/4)</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>QCM de réactivation · Statistiques avec NumPy (3/4)</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>QCM de réactivation · Statistiques avec NumPy (4/4)</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../sources/Slides/qcm/statistiques.md" download>Source Markdown ↓</a><a class="source-link" href="../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">QCM en classe <span class="pill">01 / 5</span></p><div class="prose">
+<h1 id="qcm-de-r%C3%A9activation">QCM de réactivation</h1>
+<h2 id="statistiques-avec-numpy">Statistiques avec NumPy</h2>
+<p><strong>8 questions pour réactiver les notions du bloc.</strong> Répondez ensemble, puis cliquez sur une proposition pour afficher le feedback. En cas d’erreur, vous pouvez réessayer.</p>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2" hidden><p class="question-kicker" id="slide-label-2">QCM en classe <span class="pill">02 / 5</span></p><div class="prose">
+<h2 id="qcm-de-r%C3%A9activation--statistiques-avec-numpy-14">QCM de réactivation · Statistiques avec NumPy (1/4)</h2>
+<div class="qcm-review">
+<p class="qcm-intro">Répondez à deux questions, puis choisissez une proposition pour afficher le feedback. En cas d’erreur, vous pouvez réessayer.</p>
+<div class="qcm-question" data-qcm-question>
+<h3>1. Une valeur centrée-réduite se calcule comment ?</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 1">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="On retire la moyenne puis on divise par l’écart-type ; la valeur indique un écart en unités d’écart-type.">A. (x−moyenne)/écart-type.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le score z compare d’abord l’écart à la moyenne à la dispersion de la série.">B. x−écart-type.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le score z compare d’abord l’écart à la moyenne à la dispersion de la série.">C. moyenne/x.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+<div class="qcm-question" data-qcm-question>
+<h3>2. Un score z vaut 2. Comment l’interpréter ?</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 2">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le score z est une distance standardisée, pas une probabilité.">A. La valeur est deux unités au-dessus de zéro.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Le score z compte les écarts-types signés depuis la moyenne.">B. La valeur est deux écarts-types au-dessus de la moyenne.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le score z est une distance standardisée, pas une probabilité.">C. La probabilité de l’observation vaut 2.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+</div>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3" hidden><p class="question-kicker" id="slide-label-3">QCM en classe <span class="pill">03 / 5</span></p><div class="prose">
+<h2 id="qcm-de-r%C3%A9activation--statistiques-avec-numpy-24">QCM de réactivation · Statistiques avec NumPy (2/4)</h2>
+<div class="qcm-review">
+<p class="qcm-intro">Répondez à deux questions, puis choisissez une proposition pour afficher le feedback. En cas d’erreur, vous pouvez réessayer.</p>
+<div class="qcm-question" data-qcm-question>
+<h3>3. Que signifie fixer le seuil d’un test à 5 % ?</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 3">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Le seuil contrôle le risque de première espèce de la procédure, sous H0.">A. Sous H0, le test vise au plus 5 % de rejets à tort à long terme.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le 5 % porte sur la fréquence de fausses alertes de la procédure, pas sur la probabilité de H0.">B. H0 a 5 % de chances d’être vraie.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le 5 % porte sur la fréquence de fausses alertes de la procédure, pas sur la probabilité de H0.">C. La conclusion a exactement 5 % de chances d’être fausse.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+<div class="qcm-question" data-qcm-question>
+<h3>4. On observe 25 six sur 100 lancers et on teste un excès. Quelle probabilité correspond à la p-value simulée ?</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 4">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="La p-value additionne les résultats au moins aussi extrêmes selon la direction choisie.">A. P(X=25).</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Le test unilatéral compte 25 six ou plus, dans les simulations où H0 est vraie.">B. P(X≥25) sous H0.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="La p-value additionne les résultats au moins aussi extrêmes selon la direction choisie.">C. La probabilité que le dé soit équilibré.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+</div>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4" hidden><p class="question-kicker" id="slide-label-4">QCM en classe <span class="pill">04 / 5</span></p><div class="prose">
+<h2 id="qcm-de-r%C3%A9activation--statistiques-avec-numpy-34">QCM de réactivation · Statistiques avec NumPy (3/4)</h2>
+<div class="qcm-review">
+<p class="qcm-intro">Répondez à deux questions, puis choisissez une proposition pour afficher le feedback. En cas d’erreur, vous pouvez réessayer.</p>
+<div class="qcm-question" data-qcm-question>
+<h3>5. Pour le test bilatéral de 25 six, quelles zones sont aussi éloignées de la moyenne 100/6 ?</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 5">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="25 est à environ 8,33 au-dessus de 16,67 ; le miroir est 8,33 ou moins, donc X≤8.">A. X≤8 ou X≥25.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Reporte l’écart observé de l’autre côté de la moyenne, puis tiens compte du fait que X est entier.">B. X≤16 ou X≥25.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Reporte l’écart observé de l’autre côté de la moyenne, puis tiens compte du fait que X est entier.">C. Uniquement X≥25.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+<div class="qcm-question" data-qcm-question>
+<h3>6. Dans l’exemple des dés, qu’approche la courbe de Gauss quand le nombre de dés augmente ?</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 6">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Le théorème central limite concerne ici les moyennes répétées ; un dé reste uniforme.">A. La distribution des moyennes de plusieurs dés.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Distingue un lancer individuel de la moyenne de plusieurs lancers.">B. La distribution des faces d’un seul dé.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Distingue un lancer individuel de la moyenne de plusieurs lancers.">C. La probabilité de chaque face, qui devient inégale.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+</div>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5" hidden><p class="question-kicker" id="slide-label-5">QCM en classe <span class="pill">05 / 5</span></p><div class="prose">
+<h2 id="qcm-de-r%C3%A9activation--statistiques-avec-numpy-44">QCM de réactivation · Statistiques avec NumPy (4/4)</h2>
+<div class="qcm-review">
+<p class="qcm-intro">Répondez à deux questions, puis choisissez une proposition pour afficher le feedback. En cas d’erreur, vous pouvez réessayer.</p>
+<div class="qcm-question" data-qcm-question>
+<h3>7. Une covariance positive indique surtout que, dans les données, les deux variables…</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 7">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="La covariance décrit une variation conjointe, sans établir une causalité.">A. ont tendance à varier dans le même sens.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Une association statistique ne prouve pas à elle seule une cause.">B. ont une relation causale certaine.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Une association statistique ne prouve pas à elle seule une cause.">C. ont toujours la même moyenne.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+<div class="qcm-question" data-qcm-question>
+<h3>8. Dans k-means, comment met-on à jour le centre d’un groupe non vide ?</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 8">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Le centroïde est la moyenne colonne par colonne des observations du groupe.">A. En prenant la moyenne des observations affectées.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le centre de k-means est un point moyen, qui n’est pas forcément une observation.">B. En choisissant l’observation la plus éloignée.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le centre de k-means est un point moyen, qui n’est pas forcément une observation.">C. En prenant la classe la plus fréquente.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+</div>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button primary" href="../gradient.html">Gradient et Hessienne →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 5</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../index.html">Comprendre, puis pratiquer.</a></footer><script src="../assets/slides.js" defer></script></body></html>

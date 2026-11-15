@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Réactivation · Analyse et apprentissage · Le labo maths</title><link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="../assets/katex/katex.min.css"><link rel="stylesheet" href="../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page" data-deck="qcm/apprentissage"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Analyse pour l’apprentissage</p><h1>Réactivation · Analyse et apprentissage</h1><p>8 questions interactives sur les gradients, l’optimisation et les réseaux.</p></div><span class="chapter-count">5 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="true">Slides</button><button id="mode-reading" aria-pressed="false">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 5</span><span id="progress-label">20 %</span></div><progress id="progress" max="5" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>QCM de réactivation</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>QCM de réactivation · Analyse et apprentissage (1/4)</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>QCM de réactivation · Analyse et apprentissage (2/4)</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>QCM de réactivation · Analyse et apprentissage (3/4)</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>QCM de réactivation · Analyse et apprentissage (4/4)</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../sources/Slides/qcm/apprentissage.md" download>Source Markdown ↓</a><a class="source-link" href="../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">QCM en classe <span class="pill">01 / 5</span></p><div class="prose">
+<h1 id="qcm-de-r%C3%A9activation">QCM de réactivation</h1>
+<h2 id="analyse-et-apprentissage">Analyse et apprentissage</h2>
+<p><strong>8 questions pour réactiver les notions du bloc.</strong> Répondez ensemble, puis cliquez sur une proposition pour afficher le feedback. En cas d’erreur, vous pouvez réessayer.</p>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2" hidden><p class="question-kicker" id="slide-label-2">QCM en classe <span class="pill">02 / 5</span></p><div class="prose">
+<h2 id="qcm-de-r%C3%A9activation--analyse-et-apprentissage-14">QCM de réactivation · Analyse et apprentissage (1/4)</h2>
+<div class="qcm-review">
+<p class="qcm-intro">Répondez à deux questions, puis choisissez une proposition pour afficher le feedback. En cas d’erreur, vous pouvez réessayer.</p>
+<div class="qcm-question" data-qcm-question>
+<h3>1. Pour une fonction de plusieurs paramètres, que contient le gradient ?</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 1">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Le gradient rassemble les sensibilités de la fonction à chacun de ses paramètres.">A. Les dérivées partielles par rapport à chaque paramètre.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Chaque composante décrit la variation selon un paramètre.">B. Les prédictions du modèle seulement.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Chaque composante décrit la variation selon un paramètre.">C. Les étiquettes de classe.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+<div class="qcm-question" data-qcm-question>
+<h3>2. Dans une étape de descente de gradient, dans quelle direction déplace-t-on les paramètres ?</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 2">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Le gradient indique la montée locale ; son opposé vise une baisse de l’objectif.">A. Dans la direction opposée au gradient.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le gradient pointe vers l’augmentation locale de la fonction.">B. Toujours vers des paramètres plus grands.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le gradient pointe vers l’augmentation locale de la fonction.">C. Dans une direction tirée au hasard.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+</div>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3" hidden><p class="question-kicker" id="slide-label-3">QCM en classe <span class="pill">03 / 5</span></p><div class="prose">
+<h2 id="qcm-de-r%C3%A9activation--analyse-et-apprentissage-24">QCM de réactivation · Analyse et apprentissage (2/4)</h2>
+<div class="qcm-review">
+<p class="qcm-intro">Répondez à deux questions, puis choisissez une proposition pour afficher le feedback. En cas d’erreur, vous pouvez réessayer.</p>
+<div class="qcm-question" data-qcm-question>
+<h3>3. Un gradient nul prouve-t-il que l’on a trouvé un minimum ?</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 3">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Une pente nulle seule ne précise pas la forme autour du point.">A. Oui, toujours.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Un point stationnaire peut avoir plusieurs natures ; il faut étudier la courbure ou le voisinage.">B. Non ; cela peut aussi être un maximum ou un point selle.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Une pente nulle seule ne précise pas la forme autour du point.">C. Non ; un gradient ne peut jamais être nul.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+<div class="qcm-question" data-qcm-question>
+<h3>4. Que fait la rétropropagation dans un réseau ?</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 4">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Elle propage les dérivées de la sortie vers les paramètres des couches.">A. Elle calcule les gradients en appliquant la règle de chaîne.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="La rétropropagation calcule les gradients ; l’optimiseur met ensuite les paramètres à jour.">B. Elle choisit les données de test.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="La rétropropagation calcule les gradients ; l’optimiseur met ensuite les paramètres à jour.">C. Elle remplace la fonction de perte.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+</div>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4" hidden><p class="question-kicker" id="slide-label-4">QCM en classe <span class="pill">04 / 5</span></p><div class="prose">
+<h2 id="qcm-de-r%C3%A9activation--analyse-et-apprentissage-34">QCM de réactivation · Analyse et apprentissage (3/4)</h2>
+<div class="qcm-review">
+<p class="qcm-intro">Répondez à deux questions, puis choisissez une proposition pour afficher le feedback. En cas d’erreur, vous pouvez réessayer.</p>
+<div class="qcm-question" data-qcm-question>
+<h3>5. Quelle est la valeur de la sigmoïde pour un logit nul ?</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 5">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Remplace z par zéro dans 1/(1+e^(−z)).">A. 0.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="σ(0)=1/(1+e⁰)=1/2.">B. 0,5.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Remplace z par zéro dans 1/(1+e^(−z)).">C. 1.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+<div class="qcm-question" data-qcm-question>
+<h3>6. Pourquoi ajouter une activation non linéaire entre deux couches affines ?</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 6">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Sans activation, plusieurs transformations affines se composent encore en une transformation affine.">A. Pour permettre au réseau de représenter des relations non linéaires.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Deux couches linéaires sans activation restent équivalentes à une seule couche linéaire.">B. Pour garantir une exactitude de 100 %.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Deux couches linéaires sans activation restent équivalentes à une seule couche linéaire.">C. Pour supprimer le besoin de données.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+</div>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5" hidden><p class="question-kicker" id="slide-label-5">QCM en classe <span class="pill">05 / 5</span></p><div class="prose">
+<h2 id="qcm-de-r%C3%A9activation--analyse-et-apprentissage-44">QCM de réactivation · Analyse et apprentissage (4/4)</h2>
+<div class="qcm-review">
+<p class="qcm-intro">Répondez à deux questions, puis choisissez une proposition pour afficher le feedback. En cas d’erreur, vous pouvez réessayer.</p>
+<div class="qcm-question" data-qcm-question>
+<h3>7. Un réseau réussit très bien sur l’entraînement mais mal sur des données nouvelles. Quel problème observe-t-on ?</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 7">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Le modèle a appris trop précisément les exemples d’entraînement et se généralise mal.">A. Le surapprentissage.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Compare les performances sur apprentissage et sur données tenues à l’écart.">B. Une meilleure généralisation.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Compare les performances sur apprentissage et sur données tenues à l’écart.">C. Une covariance nulle.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+<div class="qcm-question" data-qcm-question>
+<h3>8. Pourquoi garder un jeu de test à l’écart pendant le choix du modèle ?</h3>
+<div class="qcm-options" role="group" aria-label="Réponses à la question 8">
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Le test final donne une évaluation moins biaisée par les décisions de réglage.">A. Pour estimer la performance sur des données qui n’ont pas servi aux choix.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Si le test guide les choix, il n’est plus indépendant de l’apprentissage du modèle.">B. Pour augmenter artificiellement la taille de l’entraînement.</button>
+<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Si le test guide les choix, il n’est plus indépendant de l’apprentissage du modèle.">C. Pour calculer les gradients plus vite.</button>
+</div>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+</div>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button primary" href="../01_introduction_stat.html">Centrer, réduire, explorer →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 5</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../index.html">Comprendre, puis pratiquer.</a></footer><script src="../assets/slides.js" defer></script></body></html>

@@ -22,7 +22,7 @@
   {
     "file": "01_modelisation.html",
     "source": "Slides/01_modelisation.md",
-    "slides": 7
+    "slides": 11
   },
   {
     "file": "02_modelisation.html",
@@ -43,11 +43,6 @@
     "file": "avance/01_geometrie_donnees.html",
     "source": "Slides/avance/01_geometrie_donnees.md",
     "slides": 29
-  },
-  {
-    "file": "avance/02_moindres_carres.html",
-    "source": "Slides/avance/02_moindres_carres.md",
-    "slides": 30
   },
   {
     "file": "stat/01_stat_descriptive.html",

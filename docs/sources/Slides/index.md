@@ -25,9 +25,8 @@ Objectif : comprendre une variation et ajuster une première relation entre une 
 
 4. [Matrices, transformations et valeurs propres](matrice.md).
 5. **Nouveau :** [géométrie des données](avance/01_geometrie_donnees.md) — normes, distances et projections ; jalon 1.
-6. **Nouveau :** [moindres carrés et stabilité](avance/02_moindres_carres.md) — régression multivariée, rang et conditionnement ; jalon 2.
 
-Objectif : passer des vecteurs à un modèle multivarié dont on peut contrôler les calculs.
+Objectif : passer des vecteurs à la géométrie des données, puis préparer l'étude statistique des observations.
 
 ---
 

@@ -397,8 +397,8 @@ Le [projet consommation](../../Projet_IA/README.md) prolonge le TP de modélisat
 
 Nous pouvons représenter, comparer et projeter les journées.
 Une géométrie doit correspondre à la question métier.
-La prochaine étape consiste à projeter une cible sur les colonnes d'une matrice : c'est l'idée des moindres carrés.
+La prochaine étape consiste à décrire et résumer les observations avant de modéliser leurs relations.
 
-[Continuer : régression multivariée](02_moindres_carres.md).
+[Continuer : statistiques descriptives](../stat/01_stat_descriptive.md).
 
 Référence : [NumPy — normes](https://numpy.org/doc/stable/reference/generated/numpy.linalg.norm.html).

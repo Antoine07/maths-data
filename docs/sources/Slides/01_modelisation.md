@@ -2,6 +2,8 @@
 
 On s'intéresse à l'évolution de la **température moyenne quotidienne** dans une ville pendant un mois (par exemple en avril).
 
+On étudie ici la tendance d'un mois à l'autre des jours, pas les oscillations de température au cours d'une journée. Une droite peut servir de premier modèle pour cette évolution.
+
 Voici des valeurs observées (en °C) :
 
 ```python
@@ -60,4 +62,106 @@ Les écarts ne se résument pas à leur moyenne : chercher aussi une structure d
 ---
 
 ### **Prédire la température au jour 35.** page 6/6
+
+---
+
+## **Exercice 2 — Une boisson qui refroidit**
+
+Le modèle affine précédent décrit une tendance sur un mois. Une tasse de café qui refroidit suit une évolution différente : la température baisse rapidement au début, puis ralentit en se rapprochant de celle de la pièce.
+
+On mesure la température d'une boisson dans une pièce à **20 °C** :
+
+| Temps $t$ (min) | 0 | 2 | 4 | 6 | 8 | 10 | 15 | 20 | 30 | 40 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Température $T$ (°C) | 80,0 | 71,1 | 63,6 | 57,1 | 51,6 | 46,9 | 38,1 | 32,1 | 25,4 | 22,4 |
+
+**Question :** une droite peut-elle bien représenter cette baisse jusqu'à ce que la boisson atteigne la température de la pièce ?
+
+---
+
+## **Un modèle exponentiel**
+
+La température ne descend pas indéfiniment : elle se rapproche de la température ambiante $T_{\mathrm{amb}}$.
+
+On propose le modèle, où $T_{\mathrm{amb}}$ désigne la température ambiante de la pièce :
+
+$$
+T(t)=T_{\mathrm{amb}}+(T_0-T_{\mathrm{amb}})e^{-kt}.
+$$
+
+- $T_0$ est la température initiale ;
+- $T_{\mathrm{amb}}=20$ °C est la température ambiante ;
+- $k>0$ règle la vitesse de refroidissement.
+
+À $t=0$, le modèle donne $T(0)=T_0$. Quand le temps augmente, le terme exponentiel diminue et $T(t)$ se rapproche de 20 °C.
+
+---
+
+## **À vous — Transformer le modèle pour l'ajuster**
+
+On soustrait la température de la pièce :
+
+$$
+T(t)-20=(T_0-20)e^{-kt}.
+$$
+
+Puis on prend le logarithme :
+
+$$
+\ln(T(t)-20)=\ln(T_0-20)-kt.
+$$
+
+On retrouve une droite $y=at+b$, avec $y=\ln(T-20)$, $a=-k$ et $b=\ln(T_0-20)$.
+
+1. Tracez les mesures avec `plt.scatter`.
+2. Calculez $y=\ln(T-20)$ avec `np.log`, puis tracez $y$ en fonction du temps.
+3. Ajustez la droite transformée avec `np.polyfit(t, y, 1)`.
+4. Retrouvez $k$ et $T_0$ à partir de la pente et de l'ordonnée à l'origine.
+5. Représentez les mesures et le modèle exponentiel sur le même graphique avec `plt.plot`.
+
+**Repère de calcul :** pour $t=0$, $T-20=60$ et $\ln(60)\approx4{,}094$. Vérifiez que toutes les températures mesurées sont supérieures à 20 °C avant d'utiliser le logarithme.
+
+---
+
+## **Correction — Afficher la solution**
+
+<details>
+<summary>Afficher une correction possible</summary>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+t = np.array([0, 2, 4, 6, 8, 10, 15, 20, 30, 40], dtype=float)
+T = np.array([80.0, 71.1, 63.6, 57.1, 51.6, 46.9, 38.1, 32.1, 25.4, 22.4])
+T_piece = 20.0
+
+# Après soustraction de la température ambiante, le modèle devient exponentiel.
+y = np.log(T - T_piece)
+pente, intercept = np.polyfit(t, y, 1)
+
+k = -pente
+T0 = T_piece + np.exp(intercept)
+print(f"Pente transformée : {pente:.4f} par minute")
+print(f"k : {k:.4f} par minute")
+print(f"Température initiale estimée : {T0:.1f} °C")
+
+t_modele = np.linspace(0, 45, 200)
+T_modele = T_piece + (T0 - T_piece) * np.exp(-k * t_modele)
+
+plt.scatter(t, T, color="steelblue", label="Mesures")
+plt.plot(t_modele, T_modele, color="tomato", label="Modèle exponentiel")
+plt.axhline(T_piece, color="gray", linestyle="--", label="Température de la pièce")
+plt.xlabel("Temps (min)")
+plt.ylabel("Température (°C)")
+plt.title("Refroidissement d'une boisson")
+plt.legend()
+plt.show()
+```
+
+On obtient environ $k=0{,}080$ par minute et $T_0\approx80$ °C. La pente négative de la droite transformée donne $-k$ ; l'exponentielle de son ordonnée à l'origine donne $T_0-20$.
+
+Ce modèle simplifie la réalité : il suppose une température ambiante stable et un refroidissement de même nature pendant toute l'expérience. L'ajustement logarithmique sert ici à apprendre la méthode ; avec des mesures très bruitées, il faudra discuter la méthode d'ajustement.
+
+</details>
 

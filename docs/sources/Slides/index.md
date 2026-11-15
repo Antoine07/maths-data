@@ -15,7 +15,7 @@ Les nouveaux chapitres prolongent les supports existants. Le même [projet de co
 
 1. [Révisions d’algèbre](revision.md).
 2. [Dérivation](01_derivation.md), puis [étude des fonctions](02_derivation.md).
-3. [Modéliser la température](01_modelisation.md), puis [la consommation](02_modelisation.md).
+3. [Modéliser la température](01_modelisation.md).
 
 Objectif : comprendre une variation et ajuster une première relation entre une variable et une cible.
 

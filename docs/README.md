@@ -8,7 +8,7 @@ Ouvrir `index.html` dans un navigateur. Le dossier `docs/` peut aussi être publ
 
 Ce dossier est la distribution autonome des supports. Les instructions de génération ci-dessous concernent le projet de travail complet : les scripts de construction et les originaux ne sont pas inclus dans le dépôt de publication. Les copies Markdown consultables sont livrées dans `sources/`.
 
-Les 29 présentations du catalogue principal reprennent les sources de `Slides/` et les supports HTML historiques. Sept chapitres avancés relient l'algèbre et l'analyse à l'apprentissage automatique ; les probabilités et la simulation introduisent les tests, les p-values et la loi normale. Les TP et corrections sont accessibles depuis « Exercices & ressources ».
+Les 30 présentations du catalogue principal reprennent les sources de `Slides/` et les supports HTML historiques. Sept chapitres avancés relient l'algèbre et l'analyse à l'apprentissage automatique ; les probabilités et la simulation introduisent les tests, les p-values et la loi normale. Un calcul guidé des valeurs centrées-réduites prépare l'introduction à l'ACP. Les TP et corrections sont accessibles depuis « Exercices & ressources ».
 
 Les nouveaux contenus sont intercalés dans le parcours : géométrie et moindres carrés après les matrices ; SVD après les statistiques et l'ACP ; calcul différentiel, optimisation et rétropropagation après le gradient. Le projet de consommation électrique se télécharge avec son CSV, son code et ses notebooks depuis la page des ressources.
 

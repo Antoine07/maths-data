@@ -50,6 +50,16 @@
     "slides": 27
   },
   {
+    "file": "stat/03_centrage_reduction.html",
+    "source": "Slides/stat/03_centrage_reduction.md",
+    "slides": 9
+  },
+  {
+    "file": "stat/valeurs_centrees_reduites.html",
+    "source": "Slides/stat/valeurs_centrees_reduites.md",
+    "slides": 9
+  },
+  {
     "file": "stat/probabilites.html",
     "source": "Slides/stat/probabilites.md",
     "slides": 22
@@ -68,16 +78,6 @@
     "file": "stat/02_covariance_correlation.html",
     "source": "Slides/stat/02_covariance_correlation.md",
     "slides": 11
-  },
-  {
-    "file": "stat/03_centrage_reduction.html",
-    "source": "Slides/stat/03_centrage_reduction.md",
-    "slides": 9
-  },
-  {
-    "file": "stat/valeurs_centrees_reduites.html",
-    "source": "Slides/stat/valeurs_centrees_reduites.md",
-    "slides": 9
   },
   {
     "file": "stat/04_acp_intro.html",

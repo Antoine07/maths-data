@@ -128,30 +128,92 @@ pente, intercept = np.polyfit(t, y, <span class="hljs-number">1</span>)
 <pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 <span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
 
+<span class="hljs-comment"># ============================================================</span>
+<span class="hljs-comment"># 1. LES DONNÉES DE L&#x27;EXPÉRIENCE</span>
+<span class="hljs-comment"># ============================================================</span>
+
+<span class="hljs-comment"># Temps des mesures, en minutes</span>
 t = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">8</span>, <span class="hljs-number">10</span>, <span class="hljs-number">15</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>], dtype=<span class="hljs-built_in">float</span>)
+
+<span class="hljs-comment"># Température de la boisson à chaque instant</span>
 T = np.array([<span class="hljs-number">80.0</span>, <span class="hljs-number">71.1</span>, <span class="hljs-number">63.6</span>, <span class="hljs-number">57.1</span>, <span class="hljs-number">51.6</span>, <span class="hljs-number">46.9</span>, <span class="hljs-number">38.1</span>, <span class="hljs-number">32.1</span>, <span class="hljs-number">25.4</span>, <span class="hljs-number">22.4</span>])
+
+<span class="hljs-comment"># Température ambiante de la pièce</span>
 T_piece = <span class="hljs-number">20.0</span>
 
-<span class="hljs-comment"># Après soustraction de la température ambiante, le modèle devient exponentiel.</span>
-y = np.log(T - T_piece)
+
+<span class="hljs-comment"># ============================================================</span>
+<span class="hljs-comment"># 2. TRANSFORMER L&#x27;EXPONENTIELLE EN DROITE</span>
+<span class="hljs-comment"># ============================================================</span>
+
+<span class="hljs-comment"># Modèle de refroidissement :</span>
+<span class="hljs-comment"># T(t) = T_piece + (T0 - T_piece) * exp(-k*t)</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># On commence par étudier l&#x27;écart avec la température ambiante.</span>
+ecart = T - T_piece
+
+<span class="hljs-comment"># Le logarithme transforme le modèle exponentiel en relation affine :</span>
+<span class="hljs-comment"># ln(T(t) - T_piece) = ln(T0 - T_piece) - k*t</span>
+<span class="hljs-comment"># L&#x27;écart doit être strictement positif pour calculer son logarithme.</span>
+y = np.log(ecart)
+
+
+<span class="hljs-comment"># ============================================================</span>
+<span class="hljs-comment"># 3. AJUSTER LA DROITE AVEC np.polyfit</span>
+<span class="hljs-comment"># ============================================================</span>
+
+<span class="hljs-comment"># On compare la relation transformée à y = a*t + b :</span>
+<span class="hljs-comment"># a = -k et b = ln(T0 - T_piece)</span>
+<span class="hljs-comment"># Le dernier argument 1 demande un polynôme de degré 1, donc une droite.</span>
+<span class="hljs-comment"># np.polyfit renvoie les coefficients dans l&#x27;ordre : pente, intercept.</span>
 pente, intercept = np.polyfit(t, y, <span class="hljs-number">1</span>)
 
+
+<span class="hljs-comment"># ============================================================</span>
+<span class="hljs-comment"># 4. RETROUVER LES PARAMÈTRES DU MODÈLE</span>
+<span class="hljs-comment"># ============================================================</span>
+
+<span class="hljs-comment"># Comme pente = -k, on change son signe pour obtenir k.</span>
 k = -pente
+
+<span class="hljs-comment"># Comme intercept = ln(T0 - T_piece), on applique l&#x27;exponentielle,</span>
+<span class="hljs-comment"># puis on ajoute la température ambiante.</span>
 T0 = T_piece + np.exp(intercept)
+
 <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Pente transformée : <span class="hljs-subst">{pente:<span class="hljs-number">.4</span>f}</span> par minute&quot;</span>)
 <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;k : <span class="hljs-subst">{k:<span class="hljs-number">.4</span>f}</span> par minute&quot;</span>)
 <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Température initiale estimée : <span class="hljs-subst">{T0:<span class="hljs-number">.1</span>f}</span> °C&quot;</span>)
 
+
+<span class="hljs-comment"># ============================================================</span>
+<span class="hljs-comment"># 5. RECONSTRUIRE LA COURBE EXPONENTIELLE</span>
+<span class="hljs-comment"># ============================================================</span>
+
+<span class="hljs-comment"># On crée des instants rapprochés pour tracer une courbe lisse.</span>
 t_modele = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">45</span>, <span class="hljs-number">200</span>)
+
+<span class="hljs-comment"># Températures prédites par le modèle de refroidissement.</span>
 T_modele = T_piece + (T0 - T_piece) * np.exp(-k * t_modele)
 
+
+<span class="hljs-comment"># ============================================================</span>
+<span class="hljs-comment"># 6. VISUALISER LES MESURES ET LE MODÈLE</span>
+<span class="hljs-comment"># ============================================================</span>
+
+<span class="hljs-comment"># Points bleus : températures mesurées.</span>
 plt.scatter(t, T, color=<span class="hljs-string">&quot;steelblue&quot;</span>, label=<span class="hljs-string">&quot;Mesures&quot;</span>)
+
+<span class="hljs-comment"># Courbe rouge : températures prédites par le modèle.</span>
 plt.plot(t_modele, T_modele, color=<span class="hljs-string">&quot;tomato&quot;</span>, label=<span class="hljs-string">&quot;Modèle exponentiel&quot;</span>)
+
+<span class="hljs-comment"># La température ambiante est l&#x27;asymptote du modèle.</span>
 plt.axhline(T_piece, color=<span class="hljs-string">&quot;gray&quot;</span>, linestyle=<span class="hljs-string">&quot;--&quot;</span>, label=<span class="hljs-string">&quot;Température de la pièce&quot;</span>)
+
 plt.xlabel(<span class="hljs-string">&quot;Temps (min)&quot;</span>)
 plt.ylabel(<span class="hljs-string">&quot;Température (°C)&quot;</span>)
 plt.title(<span class="hljs-string">&quot;Refroidissement d&#x27;une boisson&quot;</span>)
 plt.legend()
+plt.grid()
 plt.show()
 </code></pre>
 <p>On obtient environ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>0,080</mn></mrow><annotation encoding="application/x-tex">k=0{,}080</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">080</span></span></span></span> par minute et <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mn>0</mn></msub><mo>≈</mo><mn>80</mn></mrow><annotation encoding="application/x-tex">T_0\approx80</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">80</span></span></span></span> °C. La pente négative de la droite transformée donne <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">-k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> ; l'exponentielle de son ordonnée à l'origine donne <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mn>0</mn></msub><mo>−</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">T_0-20</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">20</span></span></span></span>.</p>

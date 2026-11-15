@@ -142,30 +142,92 @@ Vérifiez que la transformation est définie pour toutes les mesures. La correct
 import numpy as np
 import matplotlib.pyplot as plt
 
+# ============================================================
+# 1. LES DONNÉES DE L'EXPÉRIENCE
+# ============================================================
+
+# Temps des mesures, en minutes
 t = np.array([0, 2, 4, 6, 8, 10, 15, 20, 30, 40], dtype=float)
+
+# Température de la boisson à chaque instant
 T = np.array([80.0, 71.1, 63.6, 57.1, 51.6, 46.9, 38.1, 32.1, 25.4, 22.4])
+
+# Température ambiante de la pièce
 T_piece = 20.0
 
-# Après soustraction de la température ambiante, le modèle devient exponentiel.
-y = np.log(T - T_piece)
+
+# ============================================================
+# 2. TRANSFORMER L'EXPONENTIELLE EN DROITE
+# ============================================================
+
+# Modèle de refroidissement :
+# T(t) = T_piece + (T0 - T_piece) * exp(-k*t)
+#
+# On commence par étudier l'écart avec la température ambiante.
+ecart = T - T_piece
+
+# Le logarithme transforme le modèle exponentiel en relation affine :
+# ln(T(t) - T_piece) = ln(T0 - T_piece) - k*t
+# L'écart doit être strictement positif pour calculer son logarithme.
+y = np.log(ecart)
+
+
+# ============================================================
+# 3. AJUSTER LA DROITE AVEC np.polyfit
+# ============================================================
+
+# On compare la relation transformée à y = a*t + b :
+# a = -k et b = ln(T0 - T_piece)
+# Le dernier argument 1 demande un polynôme de degré 1, donc une droite.
+# np.polyfit renvoie les coefficients dans l'ordre : pente, intercept.
 pente, intercept = np.polyfit(t, y, 1)
 
+
+# ============================================================
+# 4. RETROUVER LES PARAMÈTRES DU MODÈLE
+# ============================================================
+
+# Comme pente = -k, on change son signe pour obtenir k.
 k = -pente
+
+# Comme intercept = ln(T0 - T_piece), on applique l'exponentielle,
+# puis on ajoute la température ambiante.
 T0 = T_piece + np.exp(intercept)
+
 print(f"Pente transformée : {pente:.4f} par minute")
 print(f"k : {k:.4f} par minute")
 print(f"Température initiale estimée : {T0:.1f} °C")
 
+
+# ============================================================
+# 5. RECONSTRUIRE LA COURBE EXPONENTIELLE
+# ============================================================
+
+# On crée des instants rapprochés pour tracer une courbe lisse.
 t_modele = np.linspace(0, 45, 200)
+
+# Températures prédites par le modèle de refroidissement.
 T_modele = T_piece + (T0 - T_piece) * np.exp(-k * t_modele)
 
+
+# ============================================================
+# 6. VISUALISER LES MESURES ET LE MODÈLE
+# ============================================================
+
+# Points bleus : températures mesurées.
 plt.scatter(t, T, color="steelblue", label="Mesures")
+
+# Courbe rouge : températures prédites par le modèle.
 plt.plot(t_modele, T_modele, color="tomato", label="Modèle exponentiel")
+
+# La température ambiante est l'asymptote du modèle.
 plt.axhline(T_piece, color="gray", linestyle="--", label="Température de la pièce")
+
 plt.xlabel("Temps (min)")
 plt.ylabel("Température (°C)")
 plt.title("Refroidissement d'une boisson")
 plt.legend()
+plt.grid()
 plt.show()
 ```
 

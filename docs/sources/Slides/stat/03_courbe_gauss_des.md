@@ -11,6 +11,22 @@ class: lead
 
 ---
 
+## TP guidé · Construire les graphiques dans un notebook
+
+Ouvrez le [notebook à compléter](https://antoine07.github.io/maths-data/stat/notebooks/gauss_des_depart.ipynb). Il vous guide du lancer simple à la courbe normale.
+
+Les cellules de code sont à compléter. Des indications donnent les fonctions Matplotlib utiles ; la correction complète se trouve dans un volet replié à la fin du notebook.
+
+| Pour représenter… | Fonctions à chercher dans le notebook |
+|---|---|
+| les probabilités des faces | `plt.bar`, `plt.xticks` |
+| la distribution des moyennes | `plt.hist` |
+| la moyenne théorique | `plt.axvline` |
+| une courbe normale | `plt.plot`, `np.exp`, `np.linspace` |
+| titres et axes | `plt.title`, `plt.xlabel`, `plt.ylabel`, `plt.legend`, `plt.show` |
+
+---
+
 ## Un dé : six résultats équiprobables
 
 Un dé équilibré donne les résultats $1,2,3,4,5,6$, chacun avec une probabilité de $1/6$.

@@ -36,7 +36,7 @@
 X_centered = X - mean
 </code></pre>
 <p>Pourquoi : supprimer l'effet du niveau moyen avant l'analyse.</p>
-<details class="public-correction">
+<details hidden class="public-correction">
 <summary>Afficher la correction</summary>
 <p>Moyennes :</p>
 <p><code>mean = [169.167, 65.500]</code></p>
@@ -59,7 +59,7 @@ X_centered = X - mean
 <li>diagonale : variances de chaque variable</li>
 <li>hors diagonale : covariance entre variables</li>
 </ol>
-<details class="public-correction">
+<details hidden class="public-correction">
 <summary>Afficher la correction</summary>
 <pre tabindex="0"><code class="language-text">C = [[ 73.767,  97.700],
      [ 97.700, 131.500]]
@@ -83,7 +83,7 @@ eigenvectors = eigenvectors[:, order]
 <li>valeur propre = variance expliquee par l'axe</li>
 <li>vecteur propre = direction de l'axe principal</li>
 </ol>
-<details class="public-correction">
+<details hidden class="public-correction">
 <summary>Afficher la correction</summary>
 <p>Valeurs propres (ordre decroissant) :</p>
 <p><code>[204.509, 0.758]</code></p>
@@ -100,7 +100,7 @@ PC2 ~ [0.801, -0.599]
 <pre tabindex="0"><code class="language-python">X_projected = X_centered @ eigenvectors
 </code></pre>
 <p>Les individus sont exprimes dans la nouvelle base (PC1, PC2).</p>
-<details class="public-correction">
+<details hidden class="public-correction">
 <summary>Afficher la correction</summary>
 <p>Projection <code>X_projected</code> (arrondie) :</p>
 <pre tabindex="0"><code class="language-text">[-13.898, -1.058]
@@ -121,7 +121,7 @@ PC2 ~ [0.801, -0.599]
 <li>Proposez une interpretation de PC1</li>
 <li>Proposez une interpretation de PC2</li>
 </ol>
-<details class="public-correction">
+<details hidden class="public-correction">
 <summary>Afficher la correction</summary>
 <ol>
 <li>Covariance positive.</li>

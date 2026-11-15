@@ -56,7 +56,7 @@ c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z"/></svg><
 <li>Quelle itération conserver selon le critère de meilleure validation ? Est-ce la dernière ?</li>
 <li>Une remontée de validation suffit-elle, sur des données réelles, à prouver que le réseau est trop complexe ?</li>
 </ol>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <p>La prédiction vaut <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span> pour toutes les entrées. Les pertes se calculent exactement :</p>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>L</mi><mrow><mi>a</mi><mi>p</mi><mi>p</mi></mrow></msub><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mi>w</mi><mo>−</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo separator="true">,</mo><mspace width="2em"/><msub><mi>L</mi><mrow><mi>v</mi><mi>a</mi><mi>l</mi></mrow></msub><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>w</mi><mo>−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><mi>w</mi><mo>−</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>2</mn></mfrac><mo>=</mo><mo stretchy="false">(</mo><mi>w</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mn>1.</mn></mrow><annotation encoding="application/x-tex">L_{app}(w)=(w-3)^2,\qquad
 L_{val}(w)=\frac{(w-1)^2+(w-3)^2}{2}=(w-2)^2+1.
@@ -131,7 +131,7 @@ rapport = metriques(classes, p &gt;= <span class="hljs-number">.5</span>)
 </div></article>
 <article class="slide-card" id="slide-15" aria-labelledby="slide-label-15" hidden><p class="question-kicker" id="slide-label-15">Évaluation <span class="pill">15 / 27</span></p><div class="prose">
 <h2 id="correction--lire-une-matrice-de-confusion">Correction — Lire une matrice de confusion</h2>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <p>La première observation est TN, la deuxième FP, la troisième TP et la quatrième FN. Avec les classes réelles en lignes, la matrice vaut [[1,1],[1,1]]. Exactitude=2/4, précision=1/2 et rappel=1/2.</p>
 </details>
 </div></article>
@@ -151,7 +151,7 @@ rapport = metriques(classes, p &gt;= <span class="hljs-number">.5</span>)
 </div></article>
 <article class="slide-card" id="slide-17" aria-labelledby="slide-label-17" hidden><p class="question-kicker" id="slide-label-17">Évaluation <span class="pill">17 / 27</span></p><div class="prose">
 <h2 id="correction--changer-le-seuil-sur-validation">Correction — Changer le seuil sur validation</h2>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <p>Le seuil 0,3 retrouve les deux positifs et conserve une fausse alerte.</p>
 <pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 <span class="hljs-keyword">from</span> parcours <span class="hljs-keyword">import</span> metriques
@@ -178,7 +178,7 @@ y, p = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">0
 </div></article>
 <article class="slide-card" id="slide-19" aria-labelledby="slide-label-19" hidden><p class="question-kicker" id="slide-label-19">Évaluation <span class="pill">19 / 27</span></p><div class="prose">
 <h2 id="correction--r%C3%A9parer-une-s%C3%A9lection-sur-test">Correction — Réparer une sélection sur test</h2>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <p>Avant les expériences, fixer train/validation/test. Comparer les dix taux sur validation, restaurer les meilleurs poids, puis consulter le test. Si le test a déjà servi à choisir, le résultat doit être présenté comme exploratoire ; une mesure indépendante nécessite des données réservées ou un nouveau protocole adapté.</p>
 </details>
 </div></article>
@@ -234,7 +234,7 @@ y, p = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">0
 <p>A. un négatif prédit positif ; B. un positif prédit négatif ; C. un positif correctement prédit ; D. une probabilité nulle.</p>
 <p><strong>2. La référence majoritaire utilise la majorité de</strong></p>
 <p>A. l'apprentissage ; B. chaque requête ; C. tous les tests futurs ; D. la dernière ligne.</p>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <ol>
 <li>
 <p><strong>B</strong> : le positif réel est manqué</p>
@@ -253,7 +253,7 @@ y, p = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">0
 <p>A. devient plus fiable ; B. est toujours indépendant ; C. prouve la causalité ; D. a participé à la sélection.</p>
 <p><strong>5. Le réseau doit-il nécessairement battre la logistique ?</strong></p>
 <p>A. oui ; B. non ; C. si le notebook est long ; D. si ses poids sont nombreux.</p>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <ol start="3">
 <li>
 <p><strong>C</strong> : le grand groupe peut dominer cet indicateur</p>

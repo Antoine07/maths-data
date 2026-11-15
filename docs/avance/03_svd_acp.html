@@ -139,7 +139,7 @@ reconstruction = Z @ Vt[:k] + mu
 </div></article>
 <article class="slide-card" id="slide-18" aria-labelledby="slide-label-18" hidden><p class="question-kicker" id="slide-label-18">Nouveau · Data / IA <span class="pill">18 / 31</span></p><div class="prose">
 <h2 id="correction--calculer-linformation-conserv%C3%A9e">Correction — Calculer l'information conservée</h2>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <p>Les parts valent 80 %, 20 % et 0 %. Le rang de la matrice est 2 ; il faut retenir <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> pour atteindre 90 %.</p>
 <p>La direction de valeur singulière nulle n'apporte rien à la reconstruction. En calcul flottant, le rang numérique dépend d'une tolérance, pas d'une égalité exacte à zéro.</p>
 </details>
@@ -159,7 +159,7 @@ reconstruction = Z @ Vt[:k] + mu
 </div></article>
 <article class="slide-card" id="slide-20" aria-labelledby="slide-label-20" hidden><p class="question-kicker" id="slide-label-20">Nouveau · Data / IA <span class="pill">20 / 31</span></p><div class="prose">
 <h2 id="correction--compresser-une-petite-image">Correction — Compresser une petite image</h2>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 image = np.diag([<span class="hljs-number">3.</span>, <span class="hljs-number">1.</span>])
 U, s, Vt = np.linalg.svd(image, full_matrices=<span class="hljs-literal">False</span>)
@@ -185,7 +185,7 @@ U, s, Vt = np.linalg.svd(image, full_matrices=<span class="hljs-literal">False</
 </div></article>
 <article class="slide-card" id="slide-22" aria-labelledby="slide-label-22" hidden><p class="question-kicker" id="slide-label-22">Nouveau · Data / IA <span class="pill">22 / 31</span></p><div class="prose">
 <h2 id="correction--d%C3%A9boguer-une-acp">Correction — Déboguer une ACP</h2>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <p>Calculer <code>mu = X_train.mean(axis=0)</code>, puis la SVD de <code>X_train - mu</code>.</p>
 <p>Transformer la validation par <code>(X_validation - mu) @ Vt[:k].T</code>. La moyenne vient de l'apprentissage ; le centrage est appliqué avant la projection ; la transposée donne les bonnes dimensions.</p>
 <p>Si une standardisation est utilisée, son écart-type vient aussi de l'apprentissage. Ne pas réajuster les axes sur les nouvelles observations.</p>
@@ -241,7 +241,7 @@ U, s, Vt = np.linalg.svd(image, full_matrices=<span class="hljs-literal">False</
 <h2 id="qcm--questions-1-et-2">QCM — Questions 1 et 2</h2>
 <p><strong>1. NumPy renvoie dans <code>s</code> :</strong> A. une covariance ; B. un vecteur de valeurs singulières ; C. les moyennes ; D. une inverse.</p>
 <p><strong>2. Sur des données centrées, les parts de variance utilisent :</strong> A. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\sigma_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> ; B. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><msub><mi>σ</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">1/\sigma_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord">1/</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> ; C. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>σ</mi><mi>j</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\sigma_j^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2089em;vertical-align:-0.3948em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.4413em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3948em;"><span></span></span></span></span></span></span></span></span></span> ; D. les signes des axes.</p>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <ol>
 <li><strong>B</strong> : <code>s</code> est un vecteur de longueur <code>min(n, p)</code> en SVD réduite.</li>
 <li><strong>C</strong> : la variance est proportionnelle au carré de l'amplitude.</li>
@@ -253,7 +253,7 @@ U, s, Vt = np.linalg.svd(image, full_matrices=<span class="hljs-literal">False</
 <p><strong>3. Pour projeter une matrice de taille <code>(n, p)</code> sur k axes :</strong> A. <code>Xc @ Vt[:k].T</code> ; B. <code>Xc @ Vt[:k]</code> ; C. <code>Xc + U</code> ; D. <code>Xc * s</code>.</p>
 <p><strong>4. Retenir 95 % de variance garantit :</strong> A. 95 % d'exactitude ; B. aucune erreur ; C. un modèle causal ; D. ce seuil de variance sur l'apprentissage.</p>
 <p><strong>5. Où ajuste-t-on les axes avant une évaluation ?</strong> A. sur le test ; B. sur l'apprentissage ; C. sur toutes les données ; D. uniquement sur les cibles.</p>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <ol start="3">
 <li><strong>A</strong> : les dimensions donnent <code>(n, k)</code>.</li>
 <li><strong>D</strong> : ce seuil ne porte pas sur la performance prédictive.</li>

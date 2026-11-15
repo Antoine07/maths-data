@@ -103,7 +103,7 @@ historique = [w]
 </div></article>
 <article class="slide-card" id="slide-15" aria-labelledby="slide-label-15" hidden><p class="question-kicker" id="slide-label-15">Optimisation <span class="pill">15 / 27</span></p><div class="prose">
 <h2 id="correction--comparer-deux-pas">Correction — Comparer deux pas</h2>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <p>Pas 0,25 : poids 0→1,5→2,25→2,625 ; pertes 9→2,25→0,5625→0,140625. Pas 1 : 0→6→0→6 ; la perte reste 9. Sur cette fonction, le second pas ne produit aucune convergence.</p>
 </details>
 </div></article>
@@ -123,7 +123,7 @@ historique = [w]
 </div></article>
 <article class="slide-card" id="slide-17" aria-labelledby="slide-label-17" hidden><p class="question-kicker" id="slide-label-17">Optimisation <span class="pill">17 / 27</span></p><div class="prose">
 <h2 id="correction--ajouter-la-contribution-l2">Correction — Ajouter la contribution L2</h2>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <p>Le gradient total est (3,4)+0,2(1,2)=(3,2 ; 4,4). La pénalité vaut 0,2/2×(1+4)=0,5.</p>
 <pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 w, gradient_donnees, penalite = np.array([<span class="hljs-number">1.</span>, <span class="hljs-number">2.</span>]), np.array([<span class="hljs-number">3.</span>, <span class="hljs-number">4.</span>]), <span class="hljs-number">.2</span>
@@ -148,7 +148,7 @@ w, gradient_donnees, penalite = np.array([<span class="hljs-number">1.</span>, <
 </div></article>
 <article class="slide-card" id="slide-19" aria-labelledby="slide-label-19" hidden><p class="question-kicker" id="slide-label-19">Optimisation <span class="pill">19 / 27</span></p><div class="prose">
 <h2 id="correction--r%C3%A9parer-une-descente-qui-monte">Correction — Réparer une descente qui monte</h2>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <p>Le signe doit être négatif.</p>
 <pre tabindex="0"><code class="language-python">w, pas = <span class="hljs-number">0.</span>, <span class="hljs-number">.25</span>
 avant = (w-<span class="hljs-number">3</span>)**<span class="hljs-number">2</span>
@@ -210,7 +210,7 @@ w -= pas * (<span class="hljs-number">2</span>*(w-<span class="hljs-number">3</s
 <p>A. l'amplitude du déplacement ; B. le nombre de classes ; C. l'unité de la cible ; D. la partition test.</p>
 <p><strong>2. Une perte de validation qui remonte peut signaler</strong></p>
 <p>A. une garantie de convergence ; B. un surapprentissage ; C. une preuve de causalité ; D. une absence de biais.</p>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <ol>
 <li>
 <p><strong>A</strong> : il multiplie le gradient dans la mise à jour</p>
@@ -229,7 +229,7 @@ w -= pas * (<span class="hljs-number">2</span>*(w-<span class="hljs-number">3</s
 <p>A. le test ; B. la taille du fichier ; C. la dernière itération systématiquement ; D. la validation.</p>
 <p><strong>5. Une pénalité plus forte</strong></p>
 <p>A. améliore toujours le test ; B. peut aussi trop contraindre le modèle ; C. supprime les données ; D. ne change jamais les poids.</p>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <ol start="3">
 <li>
 <p><strong>C</strong> : la dérivée du carré annule le facteur 1/2</p>

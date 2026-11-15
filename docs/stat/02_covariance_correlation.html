@@ -44,7 +44,7 @@ y = np.array([<span class="hljs-number">2</span>, <span class="hljs-number">4</s
 <li>Calculez <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover></mrow><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5678em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span></span> et <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>y</mi><mo>ˉ</mo></mover></mrow><annotation encoding="application/x-tex">\bar{y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7622em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">ˉ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span></li>
 <li>Ecrivez les vecteurs centres</li>
 </ol>
-<details class="public-correction">
+<details hidden class="public-correction">
 <summary>Afficher la correction</summary>
 <pre tabindex="0"><code class="language-python">mx = np.mean(x)
 my = np.mean(y)
@@ -66,7 +66,7 @@ yc = y - my
 <li>Verifiez avec NumPy (<code>ddof=0</code>)</li>
 <li>Comparez avec la version echantillon (<code>ddof=1</code>)</li>
 </ol>
-<details class="public-correction">
+<details hidden class="public-correction">
 <summary>Afficher la correction</summary>
 <pre tabindex="0"><code class="language-python">cov_pop_manual = np.mean((x - mx) * (y - my))
 cov_pop_numpy  = np.cov(x, y, bias=<span class="hljs-literal">True</span>)[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]
@@ -89,7 +89,7 @@ cov_sample     = np.cov(x, y, bias=<span class="hljs-literal">False</span>)[<spa
 <li>Calculez <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\rho</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ρ</span></span></span></span></li>
 <li>Interpretez</li>
 </ol>
-<details class="public-correction">
+<details hidden class="public-correction">
 <summary>Afficher la correction</summary>
 <pre tabindex="0"><code class="language-python">sx = np.std(x, ddof=<span class="hljs-number">0</span>)
 sy = np.std(y, ddof=<span class="hljs-number">0</span>)
@@ -113,7 +113,7 @@ rho_numpy   = np.corrcoef(x, y)[<span class="hljs-number">0</span>, <span class=
 <li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mo>−</mo><mn>0.45</mn></mrow><annotation encoding="application/x-tex">\rho = -0.45</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ρ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">0.45</span></span></span></span></li>
 <li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\rho = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ρ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></li>
 </ol>
-<details class="public-correction">
+<details hidden class="public-correction">
 <summary>Afficher la correction</summary>
 <ol>
 <li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mn>0.92</mn></mrow><annotation encoding="application/x-tex">\rho = 0.92</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ρ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.92</span></span></span></span> : lien lineaire tres fort positif</li>

@@ -102,7 +102,7 @@ numerique = []
 </div></article>
 <article class="slide-card" id="slide-13" aria-labelledby="slide-label-13" hidden><p class="question-kicker" id="slide-label-13">Gradient et chaîne <span class="pill">13 / 25</span></p><div class="prose">
 <h2 id="correction--calculer-deux-d%C3%A9riv%C3%A9es-partielles">Correction — Calculer deux dérivées partielles</h2>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <p>La prédiction vaut 3, le résidu -1 et la perte 0,5. La dérivée selon w est r×x=-3 ; celle selon b est r=-1. Le gradient dans l'ordre (w,b) est donc (-3,-1).</p>
 </details>
 </div></article>
@@ -122,7 +122,7 @@ numerique = []
 </div></article>
 <article class="slide-card" id="slide-15" aria-labelledby="slide-label-15" hidden><p class="question-kicker" id="slide-label-15">Gradient et chaîne <span class="pill">15 / 25</span></p><div class="prose">
 <h2 id="correction--v%C3%A9rifier-le-gradient-num%C3%A9rique">Correction — Vérifier le gradient numérique</h2>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <p>On contrôle la cohérence locale, pas la qualité du modèle.</p>
 <pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 t, eps = np.array([<span class="hljs-number">1.</span>, <span class="hljs-number">0.</span>]), <span class="hljs-number">1e-6</span>
@@ -151,7 +151,7 @@ g = np.array([(L(t+eps*np.eye(<span class="hljs-number">2</span>)[j])-L(t-eps*np
 </div></article>
 <article class="slide-card" id="slide-17" aria-labelledby="slide-label-17" hidden><p class="question-kicker" id="slide-label-17">Gradient et chaîne <span class="pill">17 / 25</span></p><div class="prose">
 <h2 id="correction--r%C3%A9parer-le-passage-dans-relu">Correction — Réparer le passage dans ReLU</h2>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <p>La dérivée locale vaut 0 en -2 et 1 en 3.</p>
 <pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 z, gradient_recu = np.array([-<span class="hljs-number">2.</span>, <span class="hljs-number">3.</span>]), np.array([<span class="hljs-number">5.</span>, <span class="hljs-number">5.</span>])
@@ -213,7 +213,7 @@ gradient_transmis = gradient_recu * (z &gt; <span class="hljs-number">0</span>)
 <p>A. une dérivée par paramètre ; B. uniquement la perte ; C. les partitions ; D. les étiquettes.</p>
 <p><strong>2. Pour L=r²/2, la dérivée selon r est</strong></p>
 <p>A. r² ; B. r ; C. 2 ; D. 0.</p>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <ol>
 <li>
 <p><strong>A</strong> : chaque composante correspond à une variation partielle</p>
@@ -232,7 +232,7 @@ gradient_transmis = gradient_recu * (z &gt; <span class="hljs-number">0</span>)
 <p>A. utiliser le test ; B. changer tous les paramètres ensemble ; C. chercher une précision infinie ; D. comparer au même point.</p>
 <p><strong>5. La rétropropagation</strong></p>
 <p>A. choisit le meilleur seuil ; B. calcule les gradients ; C. sépare les données ; D. garantit un minimum global.</p>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <ol start="3">
 <li>
 <p><strong>C</strong> : ReLU est localement constante dans cette région</p>

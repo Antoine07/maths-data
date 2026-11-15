@@ -155,7 +155,7 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
 </div></article>
 <article class="slide-card" id="slide-19" aria-labelledby="slide-label-19" hidden><p class="question-kicker" id="slide-label-19">Nouveau · Data / IA <span class="pill">19 / 30</span></p><div class="prose">
 <h2 id="correction--pr%C3%A9dire-la-sortie-du-code">Correction — Prédire la sortie du code</h2>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <p><code>A.shape == (8, 4)</code>, <code>theta.shape == (4,)</code>, <code>prediction.shape == (8,)</code> et <code>residu.shape == (8,)</code>.</p>
 <p>Avec un <code>y</code> de taille <code>(8, 1)</code> et une prédiction de taille <code>(8,)</code>, la soustraction peut créer un tableau <code>(8, 8)</code> par diffusion automatique. Adopter une convention explicite : ici, la cible et la prédiction sont des vecteurs à une dimension.</p>
 </details>
@@ -175,7 +175,7 @@ s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,1
 </div></article>
 <article class="slide-card" id="slide-21" aria-labelledby="slide-label-21" hidden><p class="question-kicker" id="slide-label-21">Nouveau · Data / IA <span class="pill">21 / 30</span></p><div class="prose">
 <h2 id="correction--ajuster-et-contr%C3%B4ler">Correction — Ajuster et contrôler</h2>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 A = np.array([[<span class="hljs-number">1.</span>, <span class="hljs-number">0.</span>], [<span class="hljs-number">1.</span>, <span class="hljs-number">1.</span>], [<span class="hljs-number">1.</span>, <span class="hljs-number">2.</span>]])
 y = np.array([<span class="hljs-number">1.</span>, <span class="hljs-number">2.</span>, <span class="hljs-number">2.</span>])
@@ -201,7 +201,7 @@ r = y - A @ theta
 </div></article>
 <article class="slide-card" id="slide-23" aria-labelledby="slide-label-23" hidden><p class="question-kicker" id="slide-label-23">Nouveau · Data / IA <span class="pill">23 / 30</span></p><div class="prose">
 <h2 id="correction--une-colonne-en-double">Correction — Une colonne en double</h2>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 x = np.array([<span class="hljs-number">0.</span>, <span class="hljs-number">1.</span>, <span class="hljs-number">2.</span>])
 A = np.column_stack([np.ones(<span class="hljs-number">3</span>), x, <span class="hljs-number">2</span>*x])
@@ -252,7 +252,7 @@ c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z"/></svg><
 <h2 id="qcm--questions-1-et-2">QCM — Questions 1 et 2</h2>
 <p><strong>1. Avec 3 variables et une constante, le nombre de paramètres vaut :</strong> A. 3 ; B. 4 ; C. le nombre de lignes ; D. 1.</p>
 <p><strong>2. Deux colonnes exactement proportionnelles indiquent :</strong> A. un gain de rang ; B. une dépendance ; C. un meilleur test ; D. une causalité.</p>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <ol>
 <li><strong>B</strong> : trois poids et une constante.</li>
 <li><strong>B</strong> : une colonne est une combinaison de l'autre.</li>
@@ -264,7 +264,7 @@ c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z"/></svg><
 <p><strong>3. Pour résoudre un système rectangulaire de moindres carrés :</strong> A. <code>inv(A)</code> ; B. <code>A * y</code> ; C. <code>lstsq(A, y)</code> ; D. <code>det(A)</code>.</p>
 <p><strong>4. Une RMSE de 2 sur une cible en kWh s'exprime en :</strong> A. kWh ; B. kWh² ; C. pourcentage ; D. aucune unité.</p>
 <p><strong>5. Si les paramètres sont non uniques, <code>lstsq</code> choisit :</strong> A. le vecteur nul ; B. le plus grand vecteur ; C. une solution au hasard ; D. une solution de norme L2 minimale parmi les solutions de moindres carrés.</p>
-<details class="public-correction"><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 <ol start="3">
 <li><strong>C</strong> : le solveur traite le problème directement.</li>
 <li><strong>A</strong> : la racine rétablit l'unité de la cible.</li>

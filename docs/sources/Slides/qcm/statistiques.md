@@ -8,30 +8,34 @@ class: lead
 # QCM de réactivation
 ## Statistiques avec NumPy
 
-**8 questions pour réactiver les notions du bloc.** Répondez ensemble, puis cliquez sur une proposition pour afficher le feedback. En cas d’erreur, vous pouvez réessayer.
+**8 questions pour réactiver les notions du bloc.** Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ». Le feedback explique la réponse ; après une erreur, vous pouvez modifier votre choix et réessayer.
 
 ---
 
 ## QCM de réactivation · Statistiques avec NumPy (1/4)
 
 <div class="qcm-review">
-<p class="qcm-intro">Répondez à deux questions, puis choisissez une proposition pour afficher le feedback. En cas d’erreur, vous pouvez réessayer.</p>
+<p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
 <div class="qcm-question" data-qcm-question>
-<h3>1. Une valeur centrée-réduite se calcule comment ?</h3>
-<div class="qcm-options" role="group" aria-label="Réponses à la question 1">
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="On retire la moyenne puis on divise par l’écart-type ; la valeur indique un écart en unités d’écart-type.">A. (x−moyenne)/écart-type.</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le score z compare d’abord l’écart à la moyenne à la dispersion de la série.">B. x−écart-type.</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le score z compare d’abord l’écart à la moyenne à la dispersion de la série.">C. moyenne/x.</button>
+<h3 id="qcm-statistiques-1-label">1. Une valeur centrée-réduite se calcule comment ?</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-statistiques-1-label">
+<label class="qcm-choice" for="qcm-statistiques-1-a"><input id="qcm-statistiques-1-a" type="radio" name="qcm-statistiques-1" value="A" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="On retire la moyenne puis on divise par l’écart-type ; la valeur indique un écart en unités d’écart-type."><span>A. (x−moyenne)/écart-type.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-1-b"><input id="qcm-statistiques-1-b" type="radio" name="qcm-statistiques-1" value="B" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Le score z compare d’abord l’écart à la moyenne à la dispersion de la série."><span>B. x−écart-type.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-1-c"><input id="qcm-statistiques-1-c" type="radio" name="qcm-statistiques-1" value="C" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Le score z compare d’abord l’écart à la moyenne à la dispersion de la série."><span>C. moyenne/x.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-1-d"><input id="qcm-statistiques-1-d" type="radio" name="qcm-statistiques-1" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Cette expression centre la valeur mais ne la réduit pas par l’écart-type."><span>D. x − moyenne.</span></label>
 </div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
 <p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
 </div>
 <div class="qcm-question" data-qcm-question>
-<h3>2. Un score z vaut 2. Comment l’interpréter ?</h3>
-<div class="qcm-options" role="group" aria-label="Réponses à la question 2">
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le score z est une distance standardisée, pas une probabilité.">A. La valeur est deux unités au-dessus de zéro.</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Le score z compte les écarts-types signés depuis la moyenne.">B. La valeur est deux écarts-types au-dessus de la moyenne.</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le score z est une distance standardisée, pas une probabilité.">C. La probabilité de l’observation vaut 2.</button>
+<h3 id="qcm-statistiques-2-label">2. Un score z vaut 2. Comment l’interpréter ?</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-statistiques-2-label">
+<label class="qcm-choice" for="qcm-statistiques-2-a"><input id="qcm-statistiques-2-a" type="radio" name="qcm-statistiques-2" value="A" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Le score z est une distance standardisée, pas une probabilité."><span>A. La valeur est deux unités au-dessus de zéro.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-2-b"><input id="qcm-statistiques-2-b" type="radio" name="qcm-statistiques-2" value="B" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="Le score z compte les écarts-types signés depuis la moyenne."><span>B. La valeur est deux écarts-types au-dessus de la moyenne.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-2-c"><input id="qcm-statistiques-2-c" type="radio" name="qcm-statistiques-2" value="C" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Le score z est une distance standardisée, pas une probabilité."><span>C. La probabilité de l’observation vaut 2.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-2-d"><input id="qcm-statistiques-2-d" type="radio" name="qcm-statistiques-2" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Un score z mesure un nombre d’écarts-types, pas une probabilité."><span>D. La valeur est deux fois plus probable que la moyenne.</span></label>
 </div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
 <p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
 </div>
 </div>
@@ -41,23 +45,27 @@ class: lead
 ## QCM de réactivation · Statistiques avec NumPy (2/4)
 
 <div class="qcm-review">
-<p class="qcm-intro">Répondez à deux questions, puis choisissez une proposition pour afficher le feedback. En cas d’erreur, vous pouvez réessayer.</p>
+<p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
 <div class="qcm-question" data-qcm-question>
-<h3>3. Que signifie fixer le seuil d’un test à 5 % ?</h3>
-<div class="qcm-options" role="group" aria-label="Réponses à la question 3">
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Le seuil contrôle le risque de première espèce de la procédure, sous H0.">A. Sous H0, le test vise au plus 5 % de rejets à tort à long terme.</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le 5 % porte sur la fréquence de fausses alertes de la procédure, pas sur la probabilité de H0.">B. H0 a 5 % de chances d’être vraie.</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le 5 % porte sur la fréquence de fausses alertes de la procédure, pas sur la probabilité de H0.">C. La conclusion a exactement 5 % de chances d’être fausse.</button>
+<h3 id="qcm-statistiques-3-label">3. Que signifie fixer le seuil d’un test à 5 % ?</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-statistiques-3-label">
+<label class="qcm-choice" for="qcm-statistiques-3-a"><input id="qcm-statistiques-3-a" type="radio" name="qcm-statistiques-3" value="A" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="Le seuil contrôle le risque de première espèce de la procédure, sous H0."><span>A. Sous H0, le test vise au plus 5 % de rejets à tort à long terme.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-3-b"><input id="qcm-statistiques-3-b" type="radio" name="qcm-statistiques-3" value="B" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Le 5 % porte sur la fréquence de fausses alertes de la procédure, pas sur la probabilité de H0."><span>B. H0 a 5 % de chances d’être vraie.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-3-c"><input id="qcm-statistiques-3-c" type="radio" name="qcm-statistiques-3" value="C" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Le 5 % porte sur la fréquence de fausses alertes de la procédure, pas sur la probabilité de H0."><span>C. La conclusion a exactement 5 % de chances d’être fausse.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-3-d"><input id="qcm-statistiques-3-d" type="radio" name="qcm-statistiques-3" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Le seuil α décrit le taux de rejets à tort à long terme quand H0 est vraie."><span>D. Le résultat observé a exactement 5 % de chances d’être dû au hasard.</span></label>
 </div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
 <p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
 </div>
 <div class="qcm-question" data-qcm-question>
-<h3>4. On observe 25 six sur 100 lancers et on teste un excès. Quelle probabilité correspond à la p-value simulée ?</h3>
-<div class="qcm-options" role="group" aria-label="Réponses à la question 4">
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="La p-value additionne les résultats au moins aussi extrêmes selon la direction choisie.">A. P(X=25).</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Le test unilatéral compte 25 six ou plus, dans les simulations où H0 est vraie.">B. P(X≥25) sous H0.</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="La p-value additionne les résultats au moins aussi extrêmes selon la direction choisie.">C. La probabilité que le dé soit équilibré.</button>
+<h3 id="qcm-statistiques-4-label">4. On observe 25 six sur 100 lancers et on teste un excès. Quelle probabilité correspond à la p-value simulée ?</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-statistiques-4-label">
+<label class="qcm-choice" for="qcm-statistiques-4-a"><input id="qcm-statistiques-4-a" type="radio" name="qcm-statistiques-4" value="A" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="La p-value additionne les résultats au moins aussi extrêmes selon la direction choisie."><span>A. P(X=25).</span></label>
+<label class="qcm-choice" for="qcm-statistiques-4-b"><input id="qcm-statistiques-4-b" type="radio" name="qcm-statistiques-4" value="B" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="Le test unilatéral compte 25 six ou plus, dans les simulations où H0 est vraie."><span>B. P(X≥25) sous H0.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-4-c"><input id="qcm-statistiques-4-c" type="radio" name="qcm-statistiques-4" value="C" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="La p-value additionne les résultats au moins aussi extrêmes selon la direction choisie."><span>C. La probabilité que le dé soit équilibré.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-4-d"><input id="qcm-statistiques-4-d" type="radio" name="qcm-statistiques-4" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Le test unilatéral inclut 25 six et tous les résultats supérieurs."><span>D. P(X=25) sous H0.</span></label>
 </div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
 <p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
 </div>
 </div>
@@ -67,23 +75,27 @@ class: lead
 ## QCM de réactivation · Statistiques avec NumPy (3/4)
 
 <div class="qcm-review">
-<p class="qcm-intro">Répondez à deux questions, puis choisissez une proposition pour afficher le feedback. En cas d’erreur, vous pouvez réessayer.</p>
+<p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
 <div class="qcm-question" data-qcm-question>
-<h3>5. Pour le test bilatéral de 25 six, quelles zones sont aussi éloignées de la moyenne 100/6 ?</h3>
-<div class="qcm-options" role="group" aria-label="Réponses à la question 5">
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="25 est à environ 8,33 au-dessus de 16,67 ; le miroir est 8,33 ou moins, donc X≤8.">A. X≤8 ou X≥25.</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Reporte l’écart observé de l’autre côté de la moyenne, puis tiens compte du fait que X est entier.">B. X≤16 ou X≥25.</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Reporte l’écart observé de l’autre côté de la moyenne, puis tiens compte du fait que X est entier.">C. Uniquement X≥25.</button>
+<h3 id="qcm-statistiques-5-label">5. Pour le test bilatéral de 25 six, quelles zones sont aussi éloignées de la moyenne 100/6 ?</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-statistiques-5-label">
+<label class="qcm-choice" for="qcm-statistiques-5-a"><input id="qcm-statistiques-5-a" type="radio" name="qcm-statistiques-5" value="A" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="25 est à environ 8,33 au-dessus de 16,67 ; le miroir est 8,33 ou moins, donc X≤8."><span>A. X≤8 ou X≥25.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-5-b"><input id="qcm-statistiques-5-b" type="radio" name="qcm-statistiques-5" value="B" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reporte l’écart observé de l’autre côté de la moyenne, puis tiens compte du fait que X est entier."><span>B. X≤16 ou X≥25.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-5-c"><input id="qcm-statistiques-5-c" type="radio" name="qcm-statistiques-5" value="C" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reporte l’écart observé de l’autre côté de la moyenne, puis tiens compte du fait que X est entier."><span>C. Uniquement X≥25.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-5-d"><input id="qcm-statistiques-5-d" type="radio" name="qcm-statistiques-5" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="L’écart miroir de 25 autour de 16,67 donne le seuil entier 8 ; le côté haut commence à 25."><span>D. X≤8 ou X≥24.</span></label>
 </div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
 <p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
 </div>
 <div class="qcm-question" data-qcm-question>
-<h3>6. Dans l’exemple des dés, qu’approche la courbe de Gauss quand le nombre de dés augmente ?</h3>
-<div class="qcm-options" role="group" aria-label="Réponses à la question 6">
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Le théorème central limite concerne ici les moyennes répétées ; un dé reste uniforme.">A. La distribution des moyennes de plusieurs dés.</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Distingue un lancer individuel de la moyenne de plusieurs lancers.">B. La distribution des faces d’un seul dé.</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Distingue un lancer individuel de la moyenne de plusieurs lancers.">C. La probabilité de chaque face, qui devient inégale.</button>
+<h3 id="qcm-statistiques-6-label">6. Dans l’exemple des dés, qu’approche la courbe de Gauss quand le nombre de dés augmente ?</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-statistiques-6-label">
+<label class="qcm-choice" for="qcm-statistiques-6-a"><input id="qcm-statistiques-6-a" type="radio" name="qcm-statistiques-6" value="A" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="Le théorème central limite concerne ici les moyennes répétées ; un dé reste uniforme."><span>A. La distribution des moyennes de plusieurs dés.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-6-b"><input id="qcm-statistiques-6-b" type="radio" name="qcm-statistiques-6" value="B" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Distingue un lancer individuel de la moyenne de plusieurs lancers."><span>B. La distribution des faces d’un seul dé.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-6-c"><input id="qcm-statistiques-6-c" type="radio" name="qcm-statistiques-6" value="C" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Distingue un lancer individuel de la moyenne de plusieurs lancers."><span>C. La probabilité de chaque face, qui devient inégale.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-6-d"><input id="qcm-statistiques-6-d" type="radio" name="qcm-statistiques-6" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Un lancer reste uniforme ; c’est la distribution des moyennes qui s’approche d’une loi normale."><span>D. La distribution des faces d’un seul dé.</span></label>
 </div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
 <p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
 </div>
 </div>
@@ -93,23 +105,27 @@ class: lead
 ## QCM de réactivation · Statistiques avec NumPy (4/4)
 
 <div class="qcm-review">
-<p class="qcm-intro">Répondez à deux questions, puis choisissez une proposition pour afficher le feedback. En cas d’erreur, vous pouvez réessayer.</p>
+<p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
 <div class="qcm-question" data-qcm-question>
-<h3>7. Une covariance positive indique surtout que, dans les données, les deux variables…</h3>
-<div class="qcm-options" role="group" aria-label="Réponses à la question 7">
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="La covariance décrit une variation conjointe, sans établir une causalité.">A. ont tendance à varier dans le même sens.</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Une association statistique ne prouve pas à elle seule une cause.">B. ont une relation causale certaine.</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Une association statistique ne prouve pas à elle seule une cause.">C. ont toujours la même moyenne.</button>
+<h3 id="qcm-statistiques-7-label">7. Une covariance positive indique surtout que, dans les données, les deux variables…</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-statistiques-7-label">
+<label class="qcm-choice" for="qcm-statistiques-7-a"><input id="qcm-statistiques-7-a" type="radio" name="qcm-statistiques-7" value="A" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="La covariance décrit une variation conjointe, sans établir une causalité."><span>A. ont tendance à varier dans le même sens.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-7-b"><input id="qcm-statistiques-7-b" type="radio" name="qcm-statistiques-7" value="B" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Une association statistique ne prouve pas à elle seule une cause."><span>B. ont une relation causale certaine.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-7-c"><input id="qcm-statistiques-7-c" type="radio" name="qcm-statistiques-7" value="C" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Une association statistique ne prouve pas à elle seule une cause."><span>C. ont toujours la même moyenne.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-7-d"><input id="qcm-statistiques-7-d" type="radio" name="qcm-statistiques-7" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="La covariance indique une variation conjointe, sans démontrer de causalité."><span>D. La covariance prouve qu’une variable cause l’autre.</span></label>
 </div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
 <p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
 </div>
 <div class="qcm-question" data-qcm-question>
-<h3>8. Dans k-means, comment met-on à jour le centre d’un groupe non vide ?</h3>
-<div class="qcm-options" role="group" aria-label="Réponses à la question 8">
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="true" data-qcm-feedback="Le centroïde est la moyenne colonne par colonne des observations du groupe.">A. En prenant la moyenne des observations affectées.</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le centre de k-means est un point moyen, qui n’est pas forcément une observation.">B. En choisissant l’observation la plus éloignée.</button>
-<button type="button" class="qcm-option" data-qcm-option data-qcm-correct="false" data-qcm-feedback="Le centre de k-means est un point moyen, qui n’est pas forcément une observation.">C. En prenant la classe la plus fréquente.</button>
+<h3 id="qcm-statistiques-8-label">8. Dans k-means, comment met-on à jour le centre d’un groupe non vide ?</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-statistiques-8-label">
+<label class="qcm-choice" for="qcm-statistiques-8-a"><input id="qcm-statistiques-8-a" type="radio" name="qcm-statistiques-8" value="A" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="Le centroïde est la moyenne colonne par colonne des observations du groupe."><span>A. En prenant la moyenne des observations affectées.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-8-b"><input id="qcm-statistiques-8-b" type="radio" name="qcm-statistiques-8" value="B" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Le centre de k-means est un point moyen, qui n’est pas forcément une observation."><span>B. En choisissant l’observation la plus éloignée.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-8-c"><input id="qcm-statistiques-8-c" type="radio" name="qcm-statistiques-8" value="C" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Le centre de k-means est un point moyen, qui n’est pas forcément une observation."><span>C. En prenant la classe la plus fréquente.</span></label>
+<label class="qcm-choice" for="qcm-statistiques-8-d"><input id="qcm-statistiques-8-d" type="radio" name="qcm-statistiques-8" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="K-means met à jour chaque centre avec la moyenne colonne par colonne."><span>D. La médiane des observations affectées.</span></label>
 </div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
 <p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
 </div>
 </div>

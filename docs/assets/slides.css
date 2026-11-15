@@ -104,15 +104,20 @@ body{min-width:320px}
 .qcm-intro{margin:0 0 12px!important;color:#4f5d81;font-size:.78rem}
 .qcm-question{margin:12px 0;padding:12px 14px;border:1px solid #d9e0f1;border-radius:12px;background:#fff}
 .qcm-question h3{margin:0 0 10px;font-size:.9rem;color:#303c61}
-.qcm-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.qcm-option{min-height:42px;padding:8px 10px;border:1px solid #d4dbea;border-radius:9px;background:#f9faff;color:#27314c;font:inherit;font-size:.76rem;text-align:left;cursor:pointer}
-.qcm-option:hover:not(:disabled),.qcm-option:focus-visible{border-color:#6478b5;background:#f0f3ff;outline:2px solid #8798cd;outline-offset:1px}
-.qcm-option.is-incorrect{border-color:#d38b82;background:#fff2ef}
-.qcm-option.is-correct{border-color:#6a9b7e;background:#edf8ef}
-.qcm-option:disabled{cursor:default}
+.qcm-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.qcm-choice{display:flex;min-height:42px;align-items:flex-start;gap:9px;padding:9px 10px;border:1px solid #d4dbea;border-radius:9px;background:#f9faff;color:#27314c;font-size:.76rem;cursor:pointer}
+.qcm-choice input{flex:none;margin:2px 0 0;accent-color:#6478b5}
+.qcm-choice:hover,.qcm-choice:focus-within{border-color:#6478b5;background:#f0f3ff;outline:2px solid #8798cd;outline-offset:1px}
+.qcm-choice.is-incorrect{border-color:#d38b82;background:#fff2ef}
+.qcm-choice.is-correct{border-color:#6a9b7e;background:#edf8ef}
+.qcm-choice input:disabled{cursor:default}
+.qcm-submit{margin-top:9px;padding:7px 12px;border:1px solid #6478b5;border-radius:8px;background:#6478b5;color:white;font:inherit;font-size:.75rem;font-weight:650;cursor:pointer}
+.qcm-submit:hover:not(:disabled),.qcm-submit:focus-visible{background:#4f629b;outline:2px solid #8798cd;outline-offset:2px}
+.qcm-submit:disabled{opacity:.7;cursor:default}
 .qcm-feedback{margin:10px 0 0!important;padding:9px 11px;border-radius:8px;font-size:.78rem}
 .qcm-feedback[data-state="correct"]{background:#edf8ef;color:#28583b}
 .qcm-feedback[data-state="incorrect"]{background:#fff2ef;color:#7c342a}
+.qcm-feedback[data-state="neutral"]{background:#f6f2e8;color:#6c5934}
 .qcm-feedback[hidden]{display:none}
 @media(max-width:700px){.qcm-options{grid-template-columns:1fr}.qcm-review{padding:12px}.qcm-question{padding:10px}}
 .prose .katex{font-size:1.15em}

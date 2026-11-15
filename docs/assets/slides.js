@@ -4,6 +4,23 @@
   const links = [...document.querySelectorAll('[data-slide-link]')];
   if (!articles.length) return;
   const byId = id => document.getElementById(id);
+  document.addEventListener('click', event => {
+    const option = event.target.closest('[data-qcm-option]');
+    if (!option) return;
+    const question = option.closest('[data-qcm-question]');
+    const feedback = question?.querySelector('.qcm-feedback');
+    if (!feedback) return;
+    const correct = option.dataset.qcmCorrect === 'true';
+    feedback.textContent = `${correct ? 'Bonne réponse.' : 'Pas encore.'} ${option.dataset.qcmFeedback || ''}`;
+    feedback.dataset.state = correct ? 'correct' : 'incorrect';
+    feedback.hidden = false;
+    question.querySelectorAll('[data-qcm-option]').forEach(answer => {
+      answer.classList.remove('is-selected');
+      answer.classList.toggle('is-correct', correct && answer === option);
+      answer.classList.toggle('is-incorrect', !correct && answer === option);
+      if (correct) answer.disabled = true;
+    });
+  });
   const previous = byId('previous');
   const next = byId('next');
   const progress = byId('progress');
@@ -89,7 +106,7 @@
   if (!document.fullscreenEnabled) byId('fullscreen').hidden = true;
   byId('fullscreen').addEventListener('click', toggleFullscreen);
   document.addEventListener('keydown', event => {
-    if (event.altKey || event.ctrlKey || event.metaKey || event.target.closest('input, textarea, select, summary, details, pre, [contenteditable="true"]')) return;
+    if (event.altKey || event.ctrlKey || event.metaKey || event.target.closest('input, textarea, select, summary, details, pre, [contenteditable="true"], [data-qcm-option]')) return;
     if (!reading && ['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) {
       event.preventDefault();
       select(event.key === 'Home' ? 0 : event.key === 'End' ? articles.length - 1 : current + (event.key === 'ArrowRight' ? 1 : -1), { focus: true });

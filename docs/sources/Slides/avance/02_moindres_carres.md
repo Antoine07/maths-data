@@ -7,7 +7,7 @@ html: true
 
 ## Des projections à un modèle de consommation
 
-Prérequis : [modélisation de la consommation](../02_modelisation.md), [matrices](../matrice.md) et [géométrie des données](01_geometrie_donnees.md).
+Prérequis : [modélisation affine de la température](../01_modelisation.md), [matrices](../matrice.md) et [géométrie des données](01_geometrie_donnees.md).
 
 ---
 

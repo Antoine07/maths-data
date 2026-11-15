@@ -1,32 +1,34 @@
 # Le labo maths — CODA
 
+Sur la branche **maths-ia**, les huit chapitres du cours sont visibles directement dans [l'accueil, après « 02 / Représenter et ajuster »](index.html#decouvrir-reseaux), dans le bloc « 02 bis / Le cours maths et IA ». Le [parcours maths et IA](maths-ia/index.html) regroupe aussi les supports et le projet fil rouge. Les statistiques précèdent le premier réseau ; le gradient et l'optimisation précèdent son entraînement.
+
+L'examen porte sur les trois premiers chapitres : 90 minutes de mathématiques, 30 minutes d'IA et 60 minutes de pratique Python, sur 20 points. Le corrigé reste local dans `sandbox_jupyter/correction/maths-ia/`, absent de cette distribution et des archives étudiants.
+
 Ouvrir `index.html` dans un navigateur. Le dossier `docs/` peut aussi être publié tel quel avec GitHub Pages.
 
 Ce dossier est la distribution autonome des supports. Les instructions de génération ci-dessous concernent le projet de travail complet : les scripts de construction et les originaux ne sont pas inclus dans le dépôt de publication. Les copies Markdown consultables sont livrées dans `sources/`.
 
-Les 27 présentations reprennent les sources de `Slides/` et les supports HTML historiques. Huit chapitres avancés relient l'algèbre et l'analyse à l'apprentissage automatique ; un court support de probabilités prépare les nouveaux problèmes. Les TP et corrections sont accessibles depuis « Exercices & ressources ».
+Les 32 présentations du catalogue principal reprennent les sources de `Slides/` et les supports HTML historiques. Six chapitres avancés relient l'algèbre et l'analyse à l'apprentissage automatique ; dès le début des statistiques, le centrage-réduction et le calcul guidé des scores z préparent l'analyse des variables. Quatre cartes de QCM interactifs proposent chacune huit questions avec feedback, à faire en classe à la fin des grands blocs. Les probabilités et la simulation introduisent ensuite les tests et la loi normale, avant la covariance et l'ACP. Les TP et corrections sont accessibles depuis « Exercices & ressources ».
 
-Les nouveaux contenus sont intercalés dans le parcours : géométrie et moindres carrés après les matrices ; SVD après les statistiques et l'ACP ; calcul différentiel, optimisation et rétropropagation après le gradient. Le projet de consommation électrique se télécharge avec son CSV, son code et ses notebooks depuis la page des ressources.
+Les nouveaux contenus sont intercalés dans le parcours : géométrie des données après les matrices ; SVD après les statistiques et l'ACP ; calcul différentiel, optimisation et rétropropagation après le gradient. Le support long sur les moindres carrés reste accessible comme référence depuis les ressources avancées et le projet fil rouge. Le projet de consommation électrique se télécharge avec son CSV, son code et ses notebooks depuis la page des ressources.
 
-« Groupes, symétries et données » s'insère après le calcul matriciel : rotations du carré, composition, inverses, invariance et équivariance, puis contrôle du réordonnement des lignes du projet. Une ouverture reprend ces notions après la rétropropagation. « Clustering et profils de consommation » suit la SVD : k-means en NumPy, mise à l'échelle, inertie, plusieurs départs et interprétation prudente. Chaque chapitre comprend trois exercices corrigés et cinq QCM. Les scripts `projet-ia/groupes_symetries.py` et `projet-ia/clustering.py` sont inclus dans l'archive ; les six jalons du projet restent complétés par ces deux ateliers. Le fil rouge reste en fin de page d'accueil.
+« Clustering et profils de consommation » suit la SVD : k-means en NumPy, mise à l'échelle, inertie, plusieurs départs et interprétation prudente. Chaque chapitre avancé comprend trois exercices corrigés et cinq QCM. Le script `projet-ia/clustering.py` prolonge les six jalons du projet. Le fil rouge reste en fin de page d'accueil.
 
 Les révisions commencent par deux paniers : trois produits à 50 € et cinquante produits à 3 €. La comparaison introduit la commutativité et l'idée de choisir une écriture qui simplifie le calcul. L'associativité et la distributivité prolongent cette ouverture avec trois calculs à expliquer et une correction dépliable.
 
-Les révisions comprennent aussi deux démonstrations guidées : le crible d'Ératosthène après les priorités de calcul, puis la somme de deux entiers pairs après la factorisation. Chaque activité propose des indices et une correction dépliable. Le programme Python du crible et la preuve Lean 4 avec Mathlib sont disponibles dans `exemples/revision/`. La grille du crible reste compacte et peut s'ouvrir en grand.
+Les révisions ajoutent quatre exercices de calcul algébrique : réduire, développer, factoriser et simplifier une fraction. Une preuve guidée de la somme de deux entiers pairs mène à une formalisation Lean 4 avec Mathlib, disponible dans `exemples/revision/`.
 
-La partie sur les nombres premiers distingue les diviseurs premiers des diviseurs premiers stricts : pour 7, les ensembles sont respectivement `{7}` et l'ensemble vide. Une preuve par contradiction relie ce critère au contrôle jusqu'à la racine carrée. Le script `exemples/revision/primalite.py` teste un entier, compte les divisions et permet d'observer la complexité en `O(racine(N))` tests dans le pire cas. Les exemples incluent 1, 2 et les carrés 49 et 121.
+Le problème autonome de primalité est placé après le dernier cours. Il reprend le crible d'Ératosthène, la preuve de la borne par la racine carrée et le test Python des diviseurs stricts. Le script `exemples/revision/primalite.py` compte les divisions et illustre une complexité en `O(racine(N))` tests dans le pire cas, avec les cas 1, 2, 49 et 121.
 
 Les supports incluent 28 figures SVG générées avec Matplotlib : tangentes, limites, transformations, résidus, ACP, courbure, optimisation, classification, rotations, clustering et problèmes. Cliquer sur une figure permet de l'ouvrir en grand.
 
 Neuf graphiques supplémentaires accompagnent le chapitre de fonctions périodiques et les exemples corrigés de fonctions : sinus et cosinus, encodage cyclique de l'heure pour l'IA, phase et pulsation, périodes, extrema locaux, quotient, composition, exercices d'extremums et température simulée. L'exercice de température relie période et fréquence, distingue écart-type et variance, et explicite les limites du modèle. Les scripts reproductibles et leur vérification sont dans [exemples/fonctions](exemples/fonctions/).
 
-Le chapitre « Modéliser la consommation » s'appuie sur quatre graphiques : ajustement linéaire et extrapolation, comparaison d'un ajustement linéaire et quadratique, différences finies pour les modèles polynomiaux, et transformation logarithmique. Les données de consommation sont signalées comme un scénario fictif, et les écarts dus à l'arrondi sont explicités. Les figures peuvent être régénérées avec le script dans [exemples/modelisation](exemples/modelisation/).
-
 Huit illustrations compactes accompagnent les couvertures Matrices, Gradient, Statistiques, Corrélation, Centrage-réduction, ACP, Probabilités et Réseau. Les dessins restent dans la zone de lecture : les graphiques des fonctions périodiques et du cumul peuvent atteindre 360 px de haut, les autres illustrations de cours 250 px, puis 190 px sur mobile. Les SVG restent accessibles en grand au clic.
 
 Le chapitre de statistiques descriptives part du besoin d'échantillonner et distingue description, estimation, sélection et fluctuation. Il explique ensuite la contrainte de somme nulle des écarts centrés, les `n−1` degrés de liberté et la correction d'estimation de variance. Une démonstration et l'énumération de 64 échantillons indépendants avec remise justifient la correction avant l'introduction de `ddof`. Le cas d'une vraie moyenne connue est distingué du centrage sur une moyenne estimée.
 
-Les dix problèmes sont accessibles par des cartes lavande insérées après leur cours associé, avec question, notions, prérequis et bouton d'accès. `problemes.html` les regroupe ; les liens depuis les slides permettent de les retrouver au moment utile. Les quatre problèmes « Compter les occasions » sont complétés par six situations : minutes cumulées, Simpson, bus, dîner, Braess et fausses alertes. La configuration éditoriale des cartes se trouve dans `../scripts/data/problems.json`.
+Les onze problèmes sont accessibles par des cartes lavande insérées après leur cours associé, avec question, notions, prérequis et bouton d'accès. `problemes.html` les regroupe ; les liens depuis les slides permettent de les retrouver au moment utile. Les quatre problèmes « Compter les occasions » sont complétés par six situations : minutes cumulées, Simpson, bus, dîner, Braess et fausses alertes. Le problème de primalité apparaît après le dernier cours. La configuration éditoriale des cartes se trouve dans `../scripts/data/problems.json`.
 
 ## Utilisation
 
@@ -46,6 +48,7 @@ Depuis la racine du projet :
 ```sh
 npm install
 npm run build
+node docs/maths-ia/build.cjs
 npm run check
 npm run check:ia
 npm run check:figures
@@ -54,6 +57,8 @@ npm run check:statistiques
 ```
 
 La génération fonctionne aussi avec une installation globale de Marp CLI fournissant `@marp-team/marp-core`. Les fichiers générés s’ouvrent directement, sans installation.
+
+La commande `node docs/maths-ia/build.cjs` concerne cette branche uniquement. Elle s'exécute après le générateur historique. Les supports Markdown modifiables de cette extension sont dans `maths-ia/supports/` ; son manifeste et son générateur sont versionnés avec elle. Un retour à l'ancienne branche restaure les anciennes pages, sans dépendre d'une modification des scripts de travail locaux.
 
 Pour régénérer les courbes et illustrations, installer `../scripts/requirements-figures.txt` avec pip puis lancer `npm run figures` et `npm run illustrations` depuis la racine, avant `npm run build`. Matplotlib n'est pas nécessaire pour consulter les figures livrées ni pour reconstruire le HTML à partir des SVG existants.
 

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="270" viewBox="0 0 820 270" role="img" aria-labelledby="titre description">
+<title id="titre">Apprentissage, validation et test : trois rôles</title>
+<desc id="description">Les jours 1 à 144 servent à apprendre les échelles, le seuil de consommation et les poids. Les jours 145 à 192 permettent de choisir les réglages. Les jours 193 à 240 servent au bilan final. Les mêmes transformations sont appliquées aux trois groupes.</desc>
+<rect x="1" y="1" width="818" height="268" rx="20" fill="#f7f8f2" stroke="#dce2d9"/>
+<g font-family="Arial, sans-serif" text-anchor="middle" fill="#203b36">
+<text x="410" y="37" font-size="23" font-weight="700">Fixer les partitions avant d'apprendre</text>
+<rect x="20" y="65" width="450" height="118" rx="14" fill="#ddf18a" stroke="#275c47"/>
+<rect x="482" y="65" width="153" height="118" rx="14" fill="#edf1e3" stroke="#dce2d9"/>
+<rect x="647" y="65" width="153" height="118" rx="14" fill="#f0eaf5" stroke="#d8cbe3"/>
+<text x="245" y="96" font-size="22" font-weight="700">Apprentissage</text><text x="245" y="124" font-size="18">Jours 1–144</text><text x="245" y="155" font-size="17">Échelles, seuil de consommation et poids</text>
+<text x="558" y="96" font-size="20" font-weight="700">Validation</text><text x="558" y="124" font-size="17">Jours 145–192</text><text x="558" y="155" font-size="16">Choisir les réglages</text>
+<text x="723" y="96" font-size="20" font-weight="700">Test</text><text x="723" y="124" font-size="17">Jours 193–240</text><text x="723" y="155" font-size="16">Bilan après les choix</text>
+<text x="410" y="219" font-size="18">Appliquer partout les transformations apprises sur l'apprentissage.</text>
+<text x="410" y="246" font-size="16" fill="#63716a">Données simulées : conserver et commenter la chronologie et la saisonnalité.</text>
+</g></svg>

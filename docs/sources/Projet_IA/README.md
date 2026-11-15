@@ -25,7 +25,7 @@ Les données sont pédagogiques : aucune conclusion opérationnelle sur un bâti
 5. Comparer résolution directe, descente et pénalité L2.
 6. Comparer une classification logistique et un petit réseau.
 
-Deux ateliers transversaux complètent les six jalons : vérifier la cohérence d'un réordonnement des journées et regrouper des profils sans utiliser leur consommation.
+Un atelier transversal complète les six jalons : regrouper des profils sans utiliser leur consommation.
 
 ## Modèle de données ou objets principaux
 
@@ -145,19 +145,7 @@ Après [Classification et rétropropagation](../Slides/avance/06_retropropagatio
 
 ## Ateliers transversaux
 
-### Atelier A — Groupes, symétries et cohérence des lignes
-
-Après [Groupes, symétries et données](../Slides/avance/07_groupes_symetries.md), puis en reprise après le réseau du jalon 6.
-
-**Notions mobilisées :** composition, identité, inverse, invariance et équivariance. **Fonctionnalité à produire :** contrôler qu'une prédiction indépendante par ligne suit la permutation de cette ligne et que l'erreur moyenne ne change pas si les cibles suivent aussi.
-
-**Consigne :** vérifier les quatre rotations de $C_4$ sur des coordonnées du plan, puis revenir à la table énergétique. Fixer les partitions chronologiques avant de permuter les seules lignes d'apprentissage. Réutiliser les mêmes colonnes dans le même ordre. Ne pas appliquer une rotation arbitraire aux colonnes température, occupation et équipements : elle ne conserve pas leur sens métier.
-
-**Résultat vérifiable :** identité après quatre quarts de tour ; compositions et inverses corrects ; prédictions initiales retrouvées par la permutation inverse ; erreur identique avec les cibles alignées. **Erreurs à observer :** puissance coefficient par coefficient, cibles désalignées, confusion entre changement de représentation et changement de tâche.
-
-**Livrable :** contrôles NumPy et deux exemples de transformations admissibles ou interdites. La [correction exécutable](groupes_symetries.py) utilise des poids fixés pour isoler le contrôle de cohérence : elle ne prétend pas ajuster un modèle prédictif.
-
-### Atelier B — Clustering des journées après le jalon 3
+### Atelier — Clustering des journées après le jalon 3
 
 Après [Clustering et profils de consommation](../Slides/avance/08_clustering.md).
 
@@ -174,11 +162,10 @@ La [correction exécutable](clustering.py) fournit `affecter`, `lloyd`, `kmeans`
 Depuis le dossier décompressé `Projet_IA` :
 
 ```sh
-python3 groupes_symetries.py
 python3 clustering.py
 ```
 
-**Extensions facultatives :** projeter les clusters avec l'ACP apprise au jalon 3 ; comparer les partitions à permutation de numéros près ; discuter les symétries du réseau après le jalon 6. L'ajout de ces ateliers conserve les six étapes du projet initial.
+**Extension facultative :** projeter les clusters avec l'ACP apprise au jalon 3 et comparer les partitions à permutation de numéros près. Cet atelier prolonge le jalon 3 sans modifier les six étapes du projet initial.
 
 ## Livrables
 

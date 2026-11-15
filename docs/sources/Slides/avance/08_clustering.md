@@ -41,8 +41,6 @@ Un **cluster** rassemble ici des journées proches selon température, occupatio
 
 Les numéros des clusters sont arbitraires : le cluster 0 n'est ni « faible » ni « meilleur ». Deux exécutions peuvent échanger les numéros tout en conservant la même partition.
 
-Ces groupes d'observations ne sont pas les groupes algébriques du chapitre sur les symétries.
-
 ---
 
 ## Concepts essentiels — Matrice et centroïdes
@@ -425,37 +423,6 @@ Visualiser avec l'ACP apprise sur l'apprentissage ; étudier des valeurs extrêm
 4. Que devient la mise à jour lorsqu'un cluster est vide ?
 5. Pourquoi faut-il garder les échelles d'apprentissage sur validation ?
 6. Que peut masquer une projection sur deux axes d'une partition calculée en trois dimensions ?
-
----
-
-## QCM — Questions 1 et 2
-
-**1. K-means apprend ses groupes à partir :** A. d'étiquettes obligatoires ; B. des caractéristiques et d'une distance ; C. de la seule consommation cible ; D. d'une preuve de causalité.
-
-**2. Le centre d'un groupe non vide est mis à jour avec :** A. le maximum par colonne ; B. une ligne toujours réelle ; C. la moyenne par colonne ; D. la somme des numéros de lignes.
-
-<details><summary>Afficher la correction</summary>
-
-1. **B** : le regroupement enseigné est non supervisé.
-2. **C** : le centroïde minimise la somme des distances au carré pour les membres fixés.
-</details>
-
----
-
-## QCM — Questions 3 à 5
-
-**3. Pour affecter la validation, il faut :** A. recalculer les centres ; B. recalculer son écart-type ; C. ajouter la cible ; D. appliquer les échelles et centres appris.
-
-**4. Deux exécutions échangent les numéros 0 et 1 sans changer les membres. Les partitions sont :** A. équivalentes ; B. nécessairement opposées ; C. inexploitables ; D. supervisées.
-
-**5. Une faible inertie prouve :** A. une causalité ; B. une faible somme de distances au carré pour le modèle retenu ; C. l'existence de classes naturelles ; D. une bonne prévision en kWh.
-
-<details><summary>Afficher la correction</summary>
-
-3. **D** : le protocole affecte de nouvelles journées à des profils déjà appris.
-4. **A** : les numéros sont des noms arbitraires.
-5. **B** : l'inertie mesure cet objectif géométrique, pas les autres affirmations.
-</details>
 
 ---
 

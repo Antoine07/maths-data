@@ -127,3 +127,5 @@ y = np.array([2.1, 2.9, 3.4, 3.8, 4.1, 4.3, 4.5, 4.6, 4.7])
 ```
 
 ![À gauche, le modèle logarithmique suit les données. À droite, la transformation de l'axe horizontal par ln(t) rend le même ajustement linéaire.](images/modelisation-logarithmique.svg)
+
+---

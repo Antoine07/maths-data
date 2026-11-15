@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8f2"><title>Comment la courbe de Gauss apparaît à partir des dés · Le labo maths</title><link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="../assets/katex/katex.min.css"><link rel="stylesheet" href="../assets/slides.css"><noscript><style>.slide-card[hidden]{display:block!important}.slide-card{margin-bottom:24px}.card-controls,.deck-toolbar{display:none!important}</style></noscript></head><body class="deck-page" data-deck="stat/03_courbe_gauss_des"><a class="skip-link" href="#contenu">Aller au contenu</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-icon" aria-hidden="true">m.</span> Le labo maths <span class="brand-course">/ CODA</span></a><div class="header-actions"><a class="back-link" href="../index.html">← Le parcours</a><button class="icon-button" id="fullscreen" title="Plein écran (F)" aria-label="Passer en plein écran">⤢</button></div></header>
+<main class="learning-main" id="contenu"><div class="page-heading"><div><p class="eyebrow">Statistiques avec NumPy</p><h1>Comment la courbe de Gauss apparaît à partir des dés</h1><p>Simuler les moyennes, observer la forme en cloche et comprendre leur dispersion.</p></div><span class="chapter-count">13 slides</span></div>
+<div class="deck-toolbar"><div class="mode-switch" role="group" aria-label="Mode d’affichage"><button id="mode-slides" aria-pressed="true">Slides</button><button id="mode-reading" aria-pressed="false">Lecture continue</button></div><div class="toolbar-actions"><button class="text-button" id="print">Imprimer / PDF ↗</button><button class="text-button mobile-only" id="toggle-outline" aria-expanded="false" aria-controls="outline">Sommaire ☰</button></div></div>
+<div class="progress-line"><span id="position" role="status" aria-live="polite">Slide 1 sur 13</span><span id="progress-label">8 %</span></div><progress id="progress" max="13" value="1" aria-label="Progression du chapitre"></progress>
+<div class="learning-layout"><aside class="sidebar" id="outline"><p class="sidebar-title">DANS CE CHAPITRE</p><nav class="slide-list" aria-label="Sommaire des slides"><a class="slide-link" href="#1" data-slide-link="1" aria-current="step"><small>01</small><span>Comment la courbe de Gauss apparaît à partir des dés</span></a><a class="slide-link" href="#2" data-slide-link="2"><small>02</small><span>TP guidé · Construire les graphiques dans un notebook</span></a><a class="slide-link" href="#3" data-slide-link="3"><small>03</small><span>Un dé : six résultats équiprobables</span></a><a class="slide-link" href="#4" data-slide-link="4"><small>04</small><span>Deux dés : les résultats du milieu ont plus de façons d&#39;arriver</span></a><a class="slide-link" href="#5" data-slide-link="5"><small>05</small><span>Pratique · Répéter l&#39;expérience</span></a><a class="slide-link" href="#6" data-slide-link="6"><small>06</small><span>Observer la transformation</span></a><a class="slide-link" href="#7" data-slide-link="7"><small>07</small><span>Superposer une courbe de Gauss</span></a><a class="slide-link" href="#8" data-slide-link="8"><small>08</small><span>Pourquoi les moyennes se resserrent-elles ?</span></a><a class="slide-link" href="#9" data-slide-link="9"><small>09</small><span>Calculer la dispersion sans fonction statistique</span></a><a class="slide-link" href="#10" data-slide-link="10"><small>10</small><span>Le théorème central limite, en mots</span></a><a class="slide-link" href="#11" data-slide-link="11"><small>11</small><span>À vous · Lire les simulations</span></a><a class="slide-link" href="#12" data-slide-link="12"><small>12</small><span>De la moyenne connue à une moyenne inconnue</span></a><a class="slide-link" href="#13" data-slide-link="13"><small>13</small><span>Cas d&#39;usage · Mesurer pour décider</span></a></nav><p class="keyboard-note"><kbd>←</kbd> <kbd>→</kbd> pour naviguer<br><kbd>F</kbd> pour le plein écran</p><a class="source-link" href="../sources/Slides/stat/03_courbe_gauss_des.md" download>Source Markdown ↓</a><a class="source-link" href="../problemes.html">Tous les problèmes ↗</a><a class="source-link" href="../ressources.html">Exercices & ressources ↗</a></aside><div class="content-column"><div id="slides"><article class="slide-card" id="slide-1" aria-labelledby="slide-label-1"><p class="question-kicker" id="slide-label-1">Simulation · Théorème central limite <span class="pill">01 / 13</span></p><div class="prose">
+<h1 id="comment-la-courbe-de-gauss-appara%C3%AEt-%C3%A0-partir-des-d%C3%A9s">Comment la courbe de Gauss apparaît à partir des dés</h1>
+<p><strong>Une expérience à construire :</strong> un dé n'a pas une forme en cloche. Pourtant, les moyennes de plusieurs dés s'en rapprochent.</p>
+</div></article>
+<article class="slide-card" id="slide-2" aria-labelledby="slide-label-2" hidden><p class="question-kicker" id="slide-label-2">Simulation · Théorème central limite <span class="pill">02 / 13</span></p><div class="prose">
+<h2 id="tp-guid%C3%A9--construire-les-graphiques-dans-un-notebook">TP guidé · Construire les graphiques dans un notebook</h2>
+<p>Ouvrez le <a href="https://antoine07.github.io/maths-data/stat/notebooks/gauss_des_depart.ipynb">notebook à compléter</a>. Il vous guide du lancer simple à la courbe normale.</p>
+<p>Les cellules de code sont à compléter. Des indications donnent les fonctions Matplotlib utiles ; la correction complète se trouve dans un volet replié à la fin du notebook.</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>Pour représenter…</th>
+<th>Fonctions à chercher dans le notebook</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>les probabilités des faces</td>
+<td><code>plt.bar</code>, <code>plt.xticks</code></td>
+</tr>
+<tr>
+<td>la distribution des moyennes</td>
+<td><code>plt.hist</code></td>
+</tr>
+<tr>
+<td>la moyenne théorique</td>
+<td><code>plt.axvline</code></td>
+</tr>
+<tr>
+<td>une courbe normale</td>
+<td><code>plt.plot</code>, <code>np.exp</code>, <code>np.linspace</code></td>
+</tr>
+<tr>
+<td>titres et axes</td>
+<td><code>plt.title</code>, <code>plt.xlabel</code>, <code>plt.ylabel</code>, <code>plt.legend</code>, <code>plt.show</code></td>
+</tr>
+</tbody>
+</table></div>
+</div></article>
+<article class="slide-card" id="slide-3" aria-labelledby="slide-label-3" hidden><p class="question-kicker" id="slide-label-3">Simulation · Théorème central limite <span class="pill">03 / 13</span></p><div class="prose">
+<h2 id="un-d%C3%A9--six-r%C3%A9sultats-%C3%A9quiprobables">Un dé : six résultats équiprobables</h2>
+<p>Un dé équilibré donne les résultats <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mn>3</mn><mo separator="true">,</mo><mn>4</mn><mo separator="true">,</mo><mn>5</mn><mo separator="true">,</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">1,2,3,4,5,6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">4</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">6</span></span></span></span>, chacun avec une probabilité de <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>6</mn></mrow><annotation encoding="application/x-tex">1/6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/6</span></span></span></span>.</p>
+<p>La moyenne théorique vaut</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>μ</mi><mo>=</mo><mfrac><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>3</mn><mo>+</mo><mn>4</mn><mo>+</mo><mn>5</mn><mo>+</mo><mn>6</mn></mrow><mn>6</mn></mfrac><mo>=</mo><mn>3,5.</mn></mrow><annotation encoding="application/x-tex">\mu=\frac{1+2+3+4+5+6}{6}=3{,}5.
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">μ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">6</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">6</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">3</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">5.</span></span></span></span></span></p><p>La moyenne est au milieu des faces, même si aucun lancer ne donne 3,5. La distribution d'un lancer est <strong>uniforme</strong>, pas en forme de cloche.</p>
+<pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+de = np.arange(<span class="hljs-number">1</span>, <span class="hljs-number">7</span>)
+proba = np.full(<span class="hljs-number">6</span>, <span class="hljs-number">1</span> / <span class="hljs-number">6</span>)
+moyenne_theorique = de.mean()
+
+plt.bar(de, proba, color=<span class="hljs-string">&quot;steelblue&quot;</span>)
+plt.axvline(moyenne_theorique, color=<span class="hljs-string">&quot;tomato&quot;</span>, linestyle=<span class="hljs-string">&quot;--&quot;</span>, label=<span class="hljs-string">&quot;Moyenne : 3,5&quot;</span>)
+plt.xticks(de)
+plt.xlabel(<span class="hljs-string">&quot;Résultat du lancer&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Probabilité&quot;</span>)
+plt.title(<span class="hljs-string">&quot;Un lancer : six issues équiprobables&quot;</span>)
+plt.legend()
+plt.show()
+</code></pre>
+</div></article>
+<article class="slide-card" id="slide-4" aria-labelledby="slide-label-4" hidden><p class="question-kicker" id="slide-label-4">Simulation · Théorème central limite <span class="pill">04 / 13</span></p><div class="prose">
+<h2 id="deux-d%C3%A9s--les-r%C3%A9sultats-du-milieu-ont-plus-de-fa%C3%A7ons-darriver">Deux dés : les résultats du milieu ont plus de façons d'arriver</h2>
+<p>On lance deux dés et on calcule leur moyenne. Il y a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mo>×</mo><mn>6</mn><mo>=</mo><mn>36</mn></mrow><annotation encoding="application/x-tex">6\times6=36</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">36</span></span></span></span> couples possibles.</p>
+<p>La moyenne 3,5 correspond à une somme de 7. Six couples la produisent : <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mn>6</mn><mo stretchy="false">)</mo><mo separator="true">,</mo><mo stretchy="false">(</mo><mn>2</mn><mo separator="true">,</mo><mn>5</mn><mo stretchy="false">)</mo><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mo stretchy="false">(</mo><mn>6</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1,6),(2,5),\ldots,(6,1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">6</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">5</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord">6</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>. La moyenne 6 ne vient que du couple <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>6</mn><mo separator="true">,</mo><mn>6</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(6,6)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">6</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">6</span><span class="mclose">)</span></span></span></span>.</p>
+<pre tabindex="0"><code class="language-python">moyennes_2 = []
+<span class="hljs-keyword">for</span> de1 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">7</span>):
+    <span class="hljs-keyword">for</span> de2 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">7</span>):
+        moyennes_2.append((de1 + de2) / <span class="hljs-number">2</span>)
+
+bornes = np.arange(<span class="hljs-number">0.75</span>, <span class="hljs-number">6.76</span>, <span class="hljs-number">0.5</span>)
+plt.hist(moyennes_2, bins=bornes, color=<span class="hljs-string">&quot;steelblue&quot;</span>, edgecolor=<span class="hljs-string">&quot;white&quot;</span>)
+plt.axvline(<span class="hljs-number">3.5</span>, color=<span class="hljs-string">&quot;tomato&quot;</span>, linestyle=<span class="hljs-string">&quot;--&quot;</span>, label=<span class="hljs-string">&quot;Moyenne théorique : 3,5&quot;</span>)
+plt.xlabel(<span class="hljs-string">&quot;Moyenne des deux dés&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Nombre de couples sur 36&quot;</span>)
+plt.title(<span class="hljs-string">&quot;Deux dés : les moyennes centrales sont plus fréquentes&quot;</span>)
+plt.legend()
+plt.show()
+</code></pre>
+<p>La distribution devient triangulaire : les résultats proches du centre ont davantage de combinaisons.</p>
+</div></article>
+<article class="slide-card" id="slide-5" aria-labelledby="slide-label-5" hidden><p class="question-kicker" id="slide-label-5">Simulation · Théorème central limite <span class="pill">05 / 13</span></p><div class="prose">
+<h2 id="pratique--r%C3%A9p%C3%A9ter-lexp%C3%A9rience">Pratique · Répéter l'expérience</h2>
+<p>Une expérience consiste à lancer <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> dés et à calculer leur moyenne. On la répète 10 000 fois.</p>
+<pre tabindex="0"><code class="language-python">rng = np.random.default_rng(<span class="hljs-number">2026</span>)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">simuler_moyennes</span>(<span class="hljs-params">n, repetitions=<span class="hljs-number">10_000</span></span>):
+    moyennes = []
+    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(repetitions):
+        des = rng.integers(<span class="hljs-number">1</span>, <span class="hljs-number">7</span>, size=n)
+        moyennes.append(<span class="hljs-built_in">sum</span>(des) / n)
+    <span class="hljs-keyword">return</span> moyennes
+
+<span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">30</span>]:
+    moyennes = simuler_moyennes(n)
+    plt.figure(figsize=(<span class="hljs-number">7</span>, <span class="hljs-number">3</span>))
+    plt.hist(moyennes, bins=<span class="hljs-number">35</span>, <span class="hljs-built_in">range</span>=(<span class="hljs-number">1</span>, <span class="hljs-number">6</span>), color=<span class="hljs-string">&quot;steelblue&quot;</span>, edgecolor=<span class="hljs-string">&quot;white&quot;</span>)
+    plt.axvline(<span class="hljs-number">3.5</span>, color=<span class="hljs-string">&quot;tomato&quot;</span>, linestyle=<span class="hljs-string">&quot;--&quot;</span>, label=<span class="hljs-string">&quot;Moyenne théorique : 3,5&quot;</span>)
+    plt.title(<span class="hljs-string">f&quot;Moyennes de <span class="hljs-subst">{n}</span> dé(s), sur 10 000 expériences&quot;</span>)
+    plt.xlabel(<span class="hljs-string">&quot;Moyenne obtenue&quot;</span>)
+    plt.ylabel(<span class="hljs-string">&quot;Nombre d&#x27;expériences&quot;</span>)
+    plt.legend()
+    plt.show()
+</code></pre>
+<p><code>rng.integers(1, 7, size=n)</code> simule les dés d'une expérience. La boucle extérieure recommence cette expérience ; <code>sum(des) / n</code> calcule la moyenne observée.</p>
+</div></article>
+<article class="slide-card" id="slide-6" aria-labelledby="slide-label-6" hidden><p class="question-kicker" id="slide-label-6">Simulation · Théorème central limite <span class="pill">06 / 13</span></p><div class="prose">
+<h2 id="observer-la-transformation">Observer la transformation</h2>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align:right">Dés par expérience</th>
+<th>Forme observée pour les moyennes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td>uniforme, comme les faces du dé</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td>triangulaire, avec un centre fréquent</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>une forme en cloche commence à apparaître</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td>une cloche plus régulière</td>
+</tr>
+<tr>
+<td style="text-align:right">30</td>
+<td>une cloche resserrée autour de 3,5</td>
+</tr>
+</tbody>
+</table></div>
+<p>Les simulations varient légèrement. La tendance est le point important : <strong>les moyennes se rapprochent d'une distribution normale</strong>, même si les dés individuels ne suivent pas une loi normale.</p>
+<p>La courbe de Gauss est la représentation graphique de la densité d'une loi normale.</p>
+</div></article>
+<article class="slide-card" id="slide-7" aria-labelledby="slide-label-7" hidden><p class="question-kicker" id="slide-label-7">Simulation · Théorème central limite <span class="pill">07 / 13</span></p><div class="prose">
+<h2 id="superposer-une-courbe-de-gauss">Superposer une courbe de Gauss</h2>
+<p>Pour 30 dés, on peut comparer l'histogramme des moyennes à une courbe normale ayant la même moyenne théorique et le même écart-type théorique.</p>
+<pre tabindex="0"><code class="language-python">n = <span class="hljs-number">30</span>
+sigma_de = (<span class="hljs-number">35</span> / <span class="hljs-number">12</span>) ** <span class="hljs-number">0.5</span>
+sigma_moyennes = sigma_de / (n ** <span class="hljs-number">0.5</span>)
+x = np.linspace(<span class="hljs-number">2.5</span>, <span class="hljs-number">4.5</span>, <span class="hljs-number">300</span>)
+
+densite = (<span class="hljs-number">1</span> / (sigma_moyennes * (<span class="hljs-number">2</span> * np.pi) ** <span class="hljs-number">0.5</span>)) * np.exp(
+    -<span class="hljs-number">0.5</span> * ((x - <span class="hljs-number">3.5</span>) / sigma_moyennes) ** <span class="hljs-number">2</span>
+)
+
+moyennes_30 = simuler_moyennes(n)
+plt.hist(moyennes_30, bins=<span class="hljs-number">30</span>, density=<span class="hljs-literal">True</span>, alpha=<span class="hljs-number">0.65</span>, label=<span class="hljs-string">&quot;Moyennes simulées&quot;</span>)
+plt.plot(x, densite, color=<span class="hljs-string">&quot;tomato&quot;</span>, linewidth=<span class="hljs-number">2</span>, label=<span class="hljs-string">&quot;Courbe normale théorique&quot;</span>)
+plt.xlabel(<span class="hljs-string">&quot;Moyenne des 30 dés&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Densité (aire totale = 1)&quot;</span>)
+plt.title(<span class="hljs-string">&quot;La loi normale approche la distribution des moyennes&quot;</span>)
+plt.legend()
+plt.show()
+</code></pre>
+<p>La courbe rouge est une approximation normale. L'histogramme dépend du hasard ; les moyennes possibles restent discrètes, même si elles sont nombreuses.</p>
+</div></article>
+<article class="slide-card" id="slide-8" aria-labelledby="slide-label-8" hidden><p class="question-kicker" id="slide-label-8">Simulation · Théorème central limite <span class="pill">08 / 13</span></p><div class="prose">
+<h2 id="pourquoi-les-moyennes-se-resserrent-elles">Pourquoi les moyennes se resserrent-elles ?</h2>
+<p>Les moyennes restent proches de 3,5, mais leur dispersion diminue quand on augmente le nombre de dés.</p>
+<p>Pour un dé équilibré, l'écart-type théorique d'un lancer vaut</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>σ</mi><mo>=</mo><msqrt><mfrac><mn>35</mn><mn>12</mn></mfrac></msqrt><mo>≈</mo><mn>1,708.</mn></mrow><annotation encoding="application/x-tex">\sigma=\sqrt{\frac{35}{12}}\approx1{,}708.
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.44em;vertical-align:-0.7884em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6516em;"><span class="svg-align" style="top:-4.4em;"><span class="pstrut" style="height:4.4em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">12</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">35</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.6116em;"><span class="pstrut" style="height:4.4em;"></span><span class="hide-tail" style="min-width:1.02em;height:2.48em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="2.48em" viewBox="0 0 400000 2592" preserveAspectRatio="xMinYMin slice"><path d="M424,2478
+c-1.3,-0.7,-38.5,-172,-111.5,-514c-73,-342,-109.8,-513.3,-110.5,-514
+c0,-2,-10.7,14.3,-32,49c-4.7,7.3,-9.8,15.7,-15.5,25c-5.7,9.3,-9.8,16,-12.5,20
+s-5,7,-5,7c-4,-3.3,-8.3,-7.7,-13,-13s-13,-13,-13,-13s76,-122,76,-122s77,-121,77,-121
+s209,968,209,968c0,-2,84.7,-361.7,254,-1079c169.3,-717.3,254.7,-1077.7,256,-1081
+l0 -0c4,-6.7,10,-10,18,-10 H400000
+v40H1014.6
+s-87.3,378.7,-272.6,1166c-185.3,787.3,-279.3,1182.3,-282,1185
+c-2,6,-10,9,-24,9
+c-8,0,-12,-0.7,-12,-2z M1001 80
+h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7884em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">708.</span></span></span></span></span></p><p>Pour la moyenne de <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> lancers indépendants :</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>σ</mi><mover accent="true"><mi>X</mi><mo stretchy="true">‾</mo></mover></msub><mo>=</mo><mfrac><mi>σ</mi><msqrt><mi>n</mi></msqrt></mfrac><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\sigma_{\overline X}=\frac{\sigma}{\sqrt n}.
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7356em;vertical-align:-0.305em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.695em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord overline mtight"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9283em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">X</span></span></span><span style="top:-3.8303em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line mtight" style="border-bottom-width:0.049em;"></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.305em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0376em;vertical-align:-0.93em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.3097em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8003em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="padding-left:0.833em;">n</span></span><span style="top:-2.7603em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2397em;"><span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.93em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord">.</span></span></span></span></span></p><div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align:right">Nombre de dés <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></th>
+<th style="text-align:right">Écart-type des moyennes, environ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1,708</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1,208</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0,764</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right">0,540</td>
+</tr>
+<tr>
+<td style="text-align:right">30</td>
+<td style="text-align:right">0,312</td>
+</tr>
+</tbody>
+</table></div>
+<p>Plus <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> grandit, plus les moyennes sont concentrées autour de 3,5. Le nombre 30 n'est pas une frontière magique.</p>
+</div></article>
+<article class="slide-card" id="slide-9" aria-labelledby="slide-label-9" hidden><p class="question-kicker" id="slide-label-9">Simulation · Théorème central limite <span class="pill">09 / 13</span></p><div class="prose">
+<h2 id="calculer-la-dispersion-sans-fonction-statistique">Calculer la dispersion sans fonction statistique</h2>
+<p>Pour une liste de moyennes <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>x</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">x_1,\ldots,x_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, on calcule d'abord leur moyenne, puis la moyenne des carrés des écarts à cette moyenne.</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>variance</mtext><mo>=</mo><mfrac><mn>1</mn><mi>m</mi></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mover accent="true"><mi>x</mi><mo stretchy="true">‾</mo></mover><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mspace width="2em"/><mtext>et</mtext><mspace width="2em"/><mrow><mover accent="true"><mtext>e</mtext><mo>ˊ</mo></mover><mtext>cart-type</mtext></mrow><mo>=</mo><msqrt><mtext>variance</mtext></msqrt><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\text{variance}=\frac{1}{m}\sum_{i=1}^{m}(x_i-\overline{x})^2
+\qquad\text{et}\qquad
+\text{écart-type}=\sqrt{\text{variance}}.
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6679em;"></span><span class="mord text"><span class="mord">variance</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.9291em;vertical-align:-1.2777em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">m</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6306em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">x</span></span></span><span style="top:-3.5506em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:2em;"></span><span class="mord text"><span class="mord">et</span></span><span class="mspace" style="margin-right:2em;"></span><span class="mord text"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˊ</span></span></span></span></span></span></span><span class="mord">cart-type</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.0722em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9678em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord text"><span class="mord">variance</span></span></span></span><span style="top:-2.9278em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.0722em;"><span></span></span></span></span></span><span class="mord">.</span></span></span></span></span></p><pre tabindex="0"><code class="language-python"><span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">30</span>]:
+    moyennes = simuler_moyennes(n)
+    moyenne = <span class="hljs-built_in">sum</span>(moyennes) / <span class="hljs-built_in">len</span>(moyennes)
+    variance = <span class="hljs-built_in">sum</span>((x - moyenne) ** <span class="hljs-number">2</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> moyennes) / <span class="hljs-built_in">len</span>(moyennes)
+    ecart_type = variance ** <span class="hljs-number">0.5</span>
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">{n:2d}</span> dés : moyenne=<span class="hljs-subst">{moyenne:<span class="hljs-number">.3</span>f}</span>, écart-type=<span class="hljs-subst">{ecart_type:<span class="hljs-number">.3</span>f}</span>&quot;</span>)
+</code></pre>
+<p>Les valeurs simulées sont proches des valeurs théoriques, sans être identiques. Elles dépendent du hasard et du nombre d'expériences simulées.</p>
+</div></article>
+<article class="slide-card" id="slide-10" aria-labelledby="slide-label-10" hidden><p class="question-kicker" id="slide-label-10">Simulation · Théorème central limite <span class="pill">10 / 13</span></p><div class="prose">
+<h2 id="le-th%C3%A9or%C3%A8me-central-limite-en-mots">Le théorème central limite, en mots</h2>
+<p>Quand on calcule la moyenne d'un grand nombre de variables indépendantes, de même loi et de variance finie, la distribution de ces moyennes, une fois centrées et réduites, se rapproche d'une loi normale.</p>
+<p>Dans notre expérience :</p>
+<ul>
+<li>la loi d'un dé est uniforme ;</li>
+<li>chaque expérience produit une moyenne de plusieurs dés ;</li>
+<li>les moyennes simulées prennent progressivement une forme en cloche.</li>
+</ul>
+<p>Cette observation illustre le <strong>théorème central limite</strong>. La loi normale n'est pas la loi des faces : elle décrit ici la distribution des moyennes répétées.</p>
+</div></article>
+<article class="slide-card exercise" id="slide-11" aria-labelledby="slide-label-11" hidden><p class="question-kicker" id="slide-label-11">Simulation · Théorème central limite <span class="pill">11 / 13</span></p><div class="prose">
+<h2 id="%C3%A0-vous--lire-les-simulations">À vous · Lire les simulations</h2>
+<ol>
+<li>Pourquoi la moyenne théorique de deux dés vaut-elle 3,5 sans que chaque lancer de dé puisse donner 3,5 ?</li>
+<li>Combien de couples donnent une moyenne de 3,5 ? Et une moyenne de 6 ?</li>
+<li>Comparez les graphiques pour 5, 10 et 30 dés. Qu'est-ce qui change dans la forme ? Dans la dispersion ?</li>
+<li>Avant d'exécuter le calcul, estimez l'écart-type des moyennes pour 10 dés à l'aide de <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1,708</mn><mi mathvariant="normal">/</mi><msqrt><mn>10</mn></msqrt></mrow><annotation encoding="application/x-tex">1{,}708/\sqrt{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1572em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">708/</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9072em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord">10</span></span></span><span style="top:-2.8672em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1328em;"><span></span></span></span></span></span></span></span></span>.</li>
+<li>Pourquoi ne peut-on pas dire que les résultats d'un lancer suivent une loi normale ?</li>
+</ol>
+<details><summary>Afficher une correction possible</summary>
+<ol>
+<li>3,5 est la moyenne des six faces, pas un résultat possible d'un lancer.</li>
+<li>Six couples donnent 3,5, contre un seul pour 6 : <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>6</mn><mo separator="true">,</mo><mn>6</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(6,6)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">6</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">6</span><span class="mclose">)</span></span></span></span>.</li>
+<li>La forme devient plus proche d'une cloche et se resserre autour de 3,5.</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1,708</mn><mi mathvariant="normal">/</mi><msqrt><mn>10</mn></msqrt><mo>≈</mo><mn>0,540</mn></mrow><annotation encoding="application/x-tex">1{,}708/\sqrt{10}\approx0{,}540</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1572em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">708/</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9072em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord">10</span></span></span><span style="top:-2.8672em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1328em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">540</span></span></span></span>.</li>
+<li>Un lancer ne prend que six valeurs équiprobables ; sa distribution est uniforme et discrète.</li>
+</ol>
+</details>
+</div></article>
+<article class="slide-card" id="slide-12" aria-labelledby="slide-label-12" hidden><p class="question-kicker" id="slide-label-12">Simulation · Théorème central limite <span class="pill">12 / 13</span></p><div class="prose">
+<h2 id="de-la-moyenne-connue-%C3%A0-une-moyenne-inconnue">De la moyenne connue à une moyenne inconnue</h2>
+<p>Jusqu'ici, nous connaissions la moyenne théorique du dé : 3,5. Imaginons maintenant que cette moyenne soit inconnue.</p>
+<p>On lance le dé 30 fois et on observe une moyenne de 3,8. On voudrait estimer un intervalle de valeurs plausibles pour la moyenne réelle.</p>
+<p>Cette nouvelle question mène aux <strong>intervalles de confiance</strong>. Elle demande d'étudier la variabilité des moyennes d'échantillons et les conditions du calcul ; elle ne consiste pas à affirmer que la moyenne inconnue a 95 % de chances de se trouver dans un intervalle déjà calculé.</p>
+</div></article>
+<article class="slide-card" id="slide-13" aria-labelledby="slide-label-13" hidden><p class="question-kicker" id="slide-label-13">Simulation · Théorème central limite <span class="pill">13 / 13</span></p><div class="prose">
+<h2 id="cas-dusage--mesurer-pour-d%C3%A9cider">Cas d'usage · Mesurer pour décider</h2>
+<p>En contrôle qualité, on peut prélever plusieurs pièces dans une production et calculer la moyenne d'une mesure : diamètre, durée de vie ou consommation.</p>
+<p>La distribution des moyennes aide à distinguer une variation due à l'échantillonnage d'un écart qui mérite une investigation. En data science, ce raisonnement sert aussi à comprendre l'incertitude d'une moyenne calculée sur un échantillon.</p>
+<p><strong>À retenir :</strong> des données individuelles quelconques peuvent produire des moyennes dont la distribution ressemble à une loi normale, sous certaines conditions.</p>
+</div><div class="chapter-end"><p>Vous avez parcouru ce chapitre.</p><a class="button primary" href="02_covariance_correlation.html">Covariance et corrélation →</a></div></article></div><nav class="card-controls" aria-label="Navigation des slides"><button class="button" id="previous" disabled>← Précédente</button><span class="page-number" id="page-number" aria-hidden="true">01 / 13</span><button class="button primary" id="next">Suivante →</button></nav><p class="neutral-note">Les corrections s’ouvrent en cliquant sur « Afficher la correction ».</p></div></div></main><footer class="site-footer"><span>Le labo maths / CODA</span><a href="../index.html">Comprendre, puis pratiquer.</a></footer><script src="../assets/slides.js" defer></script></body></html>

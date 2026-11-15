@@ -362,43 +362,12 @@ Le [projet consommation](../../Projet_IA/README.md) prolonge le TP de modélisat
 
 ---
 
-## QCM — Questions 1 et 2
-
-**1. La norme L2 de $(3,4)^T$ vaut :** A. 7 ; B. 25 ; C. 5 ; D. 12.
-
-**2. Pour deux vecteurs non nuls, un cosinus de 1 indique :** A. des coordonnées égales ; B. la même direction et le même sens ; C. l'orthogonalité ; D. une distance nulle.
-
-<details><summary>Afficher la correction</summary>
-
-1. **C** : $\sqrt{9+16}=5$.
-2. **B** : les longueurs peuvent être différentes.
-</details>
-
----
-
-## QCM — Questions 3 à 5
-
-**3. Quelle opération donne un produit scalaire par ligne ?** A. `X * q` ; B. `X + q` ; C. `X @ q` ; D. `X.T + q`.
-
-**4. Avant de projeter par $(u^Tx)u$, il faut vérifier :** A. $\|u\|=1$ ; B. $\|x\|=1$ ; C. $x=u$ ; D. $u=0$.
-
-**5. Quel choix influence les voisins trouvés ?** A. uniquement le nombre de lignes ; B. uniquement leur ordre ; C. le nom du fichier ; D. l'échelle des variables.
-
-<details><summary>Afficher la correction</summary>
-
-3. **C** : le produit matrice-vecteur combine chaque ligne.
-4. **A** : la formule donnée suppose un axe unitaire.
-5. **D** : la distance dépend de l'unité et de la pondération des coordonnées.
-</details>
-
----
-
 ## Résumé final
 
 Nous pouvons représenter, comparer et projeter les journées.
 Une géométrie doit correspondre à la question métier.
-La prochaine étape consiste à projeter une cible sur les colonnes d'une matrice : c'est l'idée des moindres carrés.
+La prochaine étape consiste à décrire et résumer les observations avant de modéliser leurs relations.
 
-[Continuer : régression multivariée](02_moindres_carres.md).
+[Continuer : statistiques descriptives](../stat/01_stat_descriptive.md).
 
 Référence : [NumPy — normes](https://numpy.org/doc/stable/reference/generated/numpy.linalg.norm.html).

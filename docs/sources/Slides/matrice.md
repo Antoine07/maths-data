@@ -154,22 +154,28 @@ Interprétation : la matrice transforme le vecteur en l'étirant, le tournant ou
 
 ---
 
-## II.2 Multiplication matrice–martice
+## II.2 Multiplication matrice–matrice
 
 Voici la **règle** pour multiplier deux matrices **2×2** :
 
 $$
+A =
 \begin{pmatrix}
 a & b \\
 c&d
 \end{pmatrix}
-
+\qquad
+B =
 \begin{pmatrix}
 e & f\\
 g & h
 \end{pmatrix}
-=
+$$
 
+Le produit se calcule ligne par colonne :
+
+$$
+AB =
 \begin{pmatrix}
 ae + bg & af + bh \\
 ce + dg & cf + dh
@@ -249,9 +255,32 @@ Multiplie la coordonnée (x) par 3, laisse (y) inchangé.
 
 ## Voir une transformation matricielle
 
-![Le cercle unité devient une ellipse après multiplication par la matrice diagonale de coefficients 2 et 0,5 ; les deux directions de base sont transformées avec lui.](figures/matrice-transformation.svg)
+La transformation représentée est donnée par la matrice :
 
-La matrice s'applique à chaque vecteur du plan. Les deux axes ont la même échelle graphique.
+$$
+D=\begin{pmatrix}
+2 & 0\\
+0 & 0.5
+\end{pmatrix},
+\qquad
+D\begin{pmatrix}x\\y\end{pmatrix}
+=
+\begin{pmatrix}2x\\0.5y\end{pmatrix}.
+$$
+
+Les deux vecteurs de base sont transformés ainsi :
+
+$$
+D\begin{pmatrix}1\\0\end{pmatrix}=\begin{pmatrix}2\\0\end{pmatrix},
+\qquad
+D\begin{pmatrix}0\\1\end{pmatrix}=\begin{pmatrix}0\\0.5\end{pmatrix}.
+$$
+
+Le cercle unité est donc étiré horizontalement et comprimé verticalement.
+
+![Application de D = diag(2, 0,5) au cercle unité : les vecteurs de base deviennent (2, 0) et (0, 0,5), et le cercle devient une ellipse.](figures/matrice-transformation.svg)
+
+Les deux axes ont la même échelle graphique.
 
 ---
 
@@ -307,7 +336,13 @@ Exemple illustré : $\theta=45^\circ$ ; les deux repères ont la même échelle.
 
 ## IV. Matrices particulières : matrices symétriques
 
-Une matrice est symétrique si :
+La transposée échange les lignes et les colonnes : une matrice de 2 lignes et 3 colonnes devient une matrice de 3 lignes et 2 colonnes. Chaque coefficient placé en ligne `i`, colonne `j` passe en ligne `j`, colonne `i`.
+
+![Une matrice à deux lignes et trois colonnes est transposée en une matrice à trois lignes et deux colonnes. Les couleurs montrent que les anciennes lignes deviennent des colonnes ; chaque coefficient a indice i j passe à la position j i.](figures/transpose-matrice.svg)
+
+Cette symétrie concerne la disposition des coefficients dans le tableau ; elle ne signifie pas que les vecteurs du plan sont réfléchis.
+
+Une matrice est symétrique lorsque sa transposée est égale à elle-même :
 
 $$
 A = A^T,

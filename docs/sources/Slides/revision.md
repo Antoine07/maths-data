@@ -50,64 +50,6 @@ Si l'on procède par additions successives, la première écriture demande 2 add
 
 ---
 
-# Changer l'écriture pour alléger le calcul
-
-Trois propriétés permettent de remplacer un calcul par un calcul égal, plus commode.
-
-**Échanger les facteurs — commutativité :**
-
-$$
-50\times3=3\times50=150.
-$$
-
-**Regrouper les facteurs — associativité :**
-
-$$
-25\times12=25\times(4\times3)=(25\times4)\times3=100\times3=300.
-$$
-
-**Décomposer un facteur — distributivité :**
-
-$$
-7\times99=7\times(100-1)=700-7=693.
-$$
-
-Chaque transformation repose sur une propriété. Nous retrouverons la distributivité pour développer et factoriser des expressions.
-
----
-
-# À vous · Trouver un chemin plus court
-
-**Objectif :** choisir et expliquer une simplification. **Prérequis :** les trois propriétés précédentes.
-
-Sans calculatrice :
-
-1. **Échanger :** calculer $50\times6$ en choisissant une addition courte.
-2. **Regrouper :** calculer $4\times17\times25$ en faisant apparaître 100.
-3. **Décomposer :** calculer $3\times49$ en utilisant 50.
-
-**Livrable :** une chaîne d'égalités par calcul et le nom de la propriété utilisée. **Réussite :** résultat exact et réécriture justifiée.
-
-<details><summary>Indices gradués</summary>
-
-1. Cinquante fois 6 et six fois 50 donnent le même total.
-2. Échanger les facteurs pour rapprocher 4 et 25, puis les regrouper.
-3. Écrire $49=50-1$, puis distribuer la multiplication.
-
-</details>
-
-<details><summary>Correction · Calculer moins, expliquer le choix</summary>
-
-1. $50\times6=6\times50=300$ : **commutativité**. Six termes de 50 sont plus commodes à additionner que cinquante termes de 6.
-2. $4\times17\times25=(4\times25)\times17=100\times17=1700$ : **commutativité et associativité**.
-3. $3\times49=3\times(50-1)=3\times50-3\times1=150-3=147$ : **distributivité**.
-
-Un même résultat peut être obtenu par plusieurs chemins corrects. Chercher une écriture adaptée fait partie du raisonnement mathématique.
-
-</details>
-
----
-
 # 1. Priorités de calcul
 
 Ordre des opérations (toujours dans cet ordre) :
@@ -125,244 +67,21 @@ $$
 
 ---
 
-# Démo 1 · Le crible d’Ératosthène
+# À vous · Quatre calculs algébriques
 
-**Objectif :** trouver tous les nombres premiers jusqu'à une borne, puis justifier la méthode.
+Sans calculatrice, simplifiez chaque expression et justifiez les transformations.
 
-Un entier naturel est **premier** s'il est supérieur ou égal à 2 et possède exactement deux diviseurs positifs : 1 et lui-même.
+1. **Réduire :** $5x-3+2x+8$.
+2. **Développer et réduire :** $3(2x-5)-2(x+1)$.
+3. **Factoriser :** $6x^2+9x$.
+4. **Simplifier :** $\dfrac{x^2-9}{x-3}$, en précisant la valeur interdite.
 
-- 7 est premier ; 12 ne l'est pas, car $12 = 3 \times 4$.
-- **1 n'est pas premier** : il n'a qu'un seul diviseur positif.
-- Un **multiple** de $p$ s'écrit $kp$, où $k$ est un entier.
+<details><summary>Afficher la correction</summary>
 
-Le crible garde un nombre premier et élimine ses multiples plus grands que lui. On recommence avec le prochain nombre non éliminé.
-
----
-
-# Diviseurs premiers et diviseurs premiers stricts
-
-Un **diviseur premier** de $N$ est un nombre premier qui divise $N$. Il est **strict** s'il est strictement inférieur à $N$.
-
-Pour **7** :
-
-- Les diviseurs positifs sont $\{1,7\}$.
-- Les diviseurs premiers sont $\{7\}$.
-- Les diviseurs premiers stricts forment l'ensemble vide : $\varnothing$.
-
-Le mot **premiers** est essentiel : 1 est un diviseur strict de 7, mais il n'est pas premier.
-
-**Notation :** $\varnothing$ et $\{\}$ désignent l'ensemble vide. L'ensemble $\{\varnothing\}$ contient un élément, qui est lui-même l'ensemble vide.
-
----
-
-# À faire · Passer les entiers de 1 à 30 au crible
-
-**Prérequis :** multiplication et divisibilité.
-
-Écrire les nombres de 1 à 30, puis barrer 1.
-
-1. Entourer 2 et barrer ses multiples à partir de $2^2 = 4$.
-2. Entourer le prochain nombre non barré : 3. Barrer ses multiples à partir de $3^2 = 9$.
-3. Recommencer avec 5, à partir de $5^2 = 25$.
-4. Lister les nombres restants. Pourquoi peut-on arrêter avant de traiter 7 ?
-
-**Livrable :** une grille annotée, la liste obtenue et une phrase justifiant l'arrêt. Ne pas barrer le nombre premier lui-même.
-
-<details><summary>Indice · Chercher un petit facteur</summary>
-
-Si un nombre s'écrit $ab$ et que ses deux facteurs sont strictement supérieurs à $\sqrt{30}$, leur produit dépasse 30. Un nombre non premier entre 2 et 30 possède donc un facteur premier parmi 2, 3 et 5.
-
-</details>
-
-<details><summary>Correction · Les nombres conservés et la preuve de l'arrêt</summary>
-
-On obtient **2, 3, 5, 7, 11, 13, 17, 19, 23 et 29**.
-
-![Grille du crible jusqu'à 30 : 1 est exclu ; les dix nombres premiers sont entourés en vert ; les autres nombres sont barrés.](images/crible-eratosthene.svg)
-
-**Démonstration par contradiction.** Supposons qu'un nombre composé $n \leq 30$ soit encore non barré après le passage de 2, 3 et 5.
-
-Il possède un facteur premier $p$ inférieur ou égal à $\sqrt{n}$. On a donc :
-
-$$
-p \leq \sqrt{n} \leq \sqrt{30} \approx 5{,}477 < 6.
-$$
-
-Comme $p$ est un entier premier, il vaut nécessairement **2, 3 ou 5**.
-
-Mais $n$ est alors un multiple de l'un de ces trois nombres. Puisque $n$ est composé, il est strictement supérieur à ce facteur premier : **il aurait donc déjà été barré**.
-
-C'est une contradiction avec notre supposition. **Aucun nombre composé ne peut rester : tous les nombres conservés sont premiers.**
-
-Le prochain nombre non barré est 7 et $7^2 = 49 > 30$ : on peut donc arrêter le crible après le passage de 5.
-
-</details>
-
----
-
-# Pourquoi le crible fonctionne-t-il ?
-
-Un entier **composé** est un entier supérieur ou égal à 2 qui n'est pas premier. Il s'écrit $n = ab$ avec $a,b \geq 2$.
-
-**Un petit facteur suffit.** On appelle $a$ le plus petit des deux facteurs, donc $2 \leq a \leq b$. Alors $a^2 \leq ab = n$, d'où $a \leq \sqrt{n}$. Ce facteur $a$ possède lui-même un diviseur premier $p \leq a \leq \sqrt{n}$.
-
-**Aucun premier n'est barré.** Les nombres éliminés sont des multiples $kp$ avec $k \geq 2$ : ils sont composés.
-
-**Aucun composé ne reste.** Tout composé $n \leq N$ possède un facteur premier inférieur ou égal à $\sqrt{N}$. Traiter ces facteurs suffit à l'éliminer.
-
-**Pourquoi commencer à $p^2$ ?** Les multiples $2p, 3p, \ldots, (p-1)p$ ont déjà été barrés par un facteur premier plus petit que $p$.
-
-![Au passage de 7, les multiples 14, 21, 28, 35 et 42 sont déjà barrés par 2, 3 ou 5. Le premier nouveau multiple à barrer est 49, égal à 7 au carré.](images/crible-depart-carre.svg)
-
-**À lire sur le dessin :** $28=4\times7=2\times14$ et $42=6\times7=2\times21$ ont déjà été barrés au passage de 2. Le multiplicateur n'a pas besoin d'être premier.
-
-Ici, on imagine un crible allant au moins jusqu'à 49. **Pour la grille limitée à 30, on s'arrête après 5**, puisque $7^2>30$.
-
----
-
-# Le crible · Du raisonnement au code
-
-**Entrée :** un entier naturel `n`. **Sortie :** la liste des nombres premiers inférieurs ou égaux à `n`.
-
-```python
-def crible(n):
-    if n < 2:
-        return []
-    premier = [True] * (n + 1)
-    premier[0] = premier[1] = False
-    p = 2
-    while p * p <= n:
-        if premier[p]:
-            for multiple in range(p * p, n + 1, p):
-                premier[multiple] = False
-        p += 1
-    return [i for i in range(2, n + 1) if premier[i]]
-
-print(crible(30))
-```
-
-`premier[i]` indique si `i` est encore candidat ; `p` parcourt les facteurs possibles. Le pas `p` du `range` parcourt les multiples ; `n + 1` permet d'inclure la borne `n`.
-
-**Avant d'exécuter :** prédire les résultats pour 1, 2 et 30. Quel nombre serait oublié avec `range(..., n, p)` lorsque `n` est un carré de premier ?
-
-<details><summary>Correction · Résultats et piège de la borne</summary>
-
-`crible(1)` donne `[]`, `crible(2)` donne `[2]` et `crible(30)` donne `[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]`.
-
-Avec une borne de fin `n` au lieu de `n + 1`, le multiple `n` n'est pas traité. Par exemple, 25 resterait candidat au passage de 5 : le programme le déclarerait premier à tort.
-
-</details>
-
-[Télécharger le programme Python](exemples/revision/crible.py).
-
----
-
-# Reconnaître un nombre premier
-
-Pour un entier $N \geq 2$, notons :
-
-$$
-P_N=\{p\mid p\text{ est premier},\ p\mid N,\ p<N\}.
-$$
-
-$p\mid N$ signifie que $p$ divise $N$, sans reste. $P_N$ est donc l'ensemble des **diviseurs premiers stricts** de $N$.
-
-$$
-N\text{ est premier}\quad\Longleftrightarrow\quad P_N=\varnothing.
-$$
-
-**Exemples :** $P_7=\varnothing$, tandis que $P_{12}=\{2,3\}$. La condition $N\geq2$ exclut 1, qui n'est pas premier malgré l'absence de diviseur premier strict.
-
-<details><summary>Correction · Pourquoi ce critère fonctionne-t-il ?</summary>
-
-Si $N$ est premier, ses seuls diviseurs positifs sont 1 et $N$. Aucun n'est un diviseur premier strict : $P_N=\varnothing$.
-
-Réciproquement, supposons $P_N=\varnothing$. Si $N$ était composé, il s'écrirait $N=ab$ avec $2\leq a\leq b<N$. L'entier $a$ posséderait un facteur premier $p\leq a<N$. Ce nombre $p$ diviserait aussi $N$, donc appartiendrait à $P_N$ : contradiction. Ainsi, $N$ est premier.
-
-</details>
-
----
-
-# Réduire la recherche à la racine carrée
-
-Tout nombre composé $N$ possède un diviseur premier $p\leq\sqrt N$, comme nous l'avons démontré pour justifier le crible.
-
-**Il suffit donc de vérifier qu'aucun diviseur premier inférieur ou égal à $\sqrt N$ ne divise $N$.**
-
-<details><summary>Correction · La contradiction sous la borne</summary>
-
-Supposons qu'aucun tel diviseur n'existe, mais que $N$ soit composé. Écrivons $N=ab$ avec $2\leq a\leq b$.
-
-Alors $a^2\leq ab=N$, donc $a\leq\sqrt N$. Comme $a\geq2$, il possède un facteur premier $p\leq a$. Ce facteur divise aussi $N$, avec $p\leq\sqrt N$ : contradiction.
-
-</details>
-
-Pour programmer ce contrôle simplement, nous testerons **tous les entiers de 2 à $\lfloor\sqrt N\rfloor$**, sans construire une liste préalable de nombres premiers. Le symbole $\lfloor\sqrt N\rfloor$ désigne la partie entière de la racine.
-
-La borne est **incluse** : pour 49, il faut tester 7.
-
----
-
-# Tester la primalité en Python
-
-```python
-def est_premier(n):
-    if n < 2:
-        return False
-    d = 2
-    while d * d <= n:
-        if n % d == 0:
-            return False
-        d += 1
-    return True
-
-print(est_premier(7), est_premier(49), est_premier(101))
-```
-
-**Lecture et exécution :** pour un entier `n`, `d` parcourt les diviseurs candidats ; `%` calcule le reste. Un reste nul suffit à conclure que `n` est composé. Sans diviseur sous la borne, la fonction renvoie `True`. Résultat : `True False True`.
-
-**Erreur fréquente :** écrire `d * d < n` au lieu de `<=` ferait manquer le facteur 7 de 49. La comparaison de carrés utilise uniquement des entiers.
-
----
-
-# Mesurer le travail : combien de tests ?
-
-Nous comptons les opérations `n % d`, c'est-à-dire les **tests de divisibilité**.
-
-| Entier $N$ | Résultat | Nombre de tests |
-|---|---|---|
-| 7 | Premier | 1 : tester 2 |
-| 49 | Composé | 6 : tester 2 à 7 |
-| 101 | Premier | 9 : tester 2 à 10 |
-| 1009 | Premier | 30 : tester 2 à 31 |
-
-Pour $N\geq2$, on effectue au plus $\lfloor\sqrt N\rfloor-1$ tests. Cette borne est atteinte lorsque $N$ est premier ; un diviseur peut permettre de s'arrêter plus tôt.
-
-**Complexité : $O(\sqrt N)$ tests dans le pire cas.** La mémoire auxiliaire utilise un nombre constant de variables, soit $O(1)$ dans ce modèle.
-
-Pour des nombres premiers de taille comparable, multiplier $N$ par environ 100 multiplie le nombre de tests par environ 10. Cette estimation compte les tests ; elle ne donne pas une durée d'exécution garantie.
-
----
-
-# À faire · Vérifier l'algorithme et sa complexité
-
-**Objectif :** relier la preuve, les cas limites et le nombre d'opérations.
-
-1. Prédire les réponses pour 1, 2, 7, 49 et 121.
-2. Ajouter un compteur incrémenté juste avant chaque calcul de `n % d`.
-3. Vérifier les nombres de tests du tableau et expliquer pourquoi tester tous les entiers n'impose pas de chercher d'abord les nombres premiers.
-
-**Livrable :** réponses, compteur et justification de la borne. **Réussite :** 1 est refusé, 2 est accepté sans test, et les carrés 49 et 121 sont refusés.
-
-<details><summary>Correction · Résultats et compteur</summary>
-
-Les réponses sont `False`, `True`, `True`, `False`, `False`. Les nombres de tests sont respectivement **0, 0, 1, 6 et 10**.
-
-Le compteur doit augmenter à chaque test, y compris celui qui trouve un diviseur. Pour 121, le dernier candidat est 11 : le test de la racine est indispensable.
-
-Tester tous les entiers jusqu'à la racine inclut tous les nombres premiers de cet intervalle. Si aucun de ces entiers ne divise $N$, aucun nombre premier de cet intervalle ne le divise non plus : le critère démontré s'applique.
-
-Le [programme téléchargeable](exemples/revision/primalite.py) fournit `est_premier` et `analyser_primalite`, qui renvoie la réponse et le compteur. Il affiche aussi une mesure de temps indicative pour comparer les exécutions ; le nombre de tests justifie la complexité, les chronométrages dépendent de la machine.
+1. $5x-3+2x+8=7x+5$.
+2. $3(2x-5)-2(x+1)=6x-15-2x-2=4x-17$.
+3. $6x^2+9x=3x(2x+3)$.
+4. $\dfrac{x^2-9}{x-3}=\dfrac{(x-3)(x+3)}{x-3}=x+3$, pour $x\ne3$. La simplification ne rend pas l'expression initiale définie en $x=3$.
 
 </details>
 
@@ -651,6 +370,199 @@ $$
 
 ---
 
+# Fractions et racines · Choisir une méthode
+
+**Objectif :** simplifier des expressions exactes en utilisant les carrés, les racines et les identités remarquables.
+
+Pour un dénominateur non nul :
+
+$$
+\left(\frac{u}{v}\right)^2=\frac{u^2}{v^2}.
+$$
+
+Pour $a,b\geq0$, les expressions $\sqrt a+\sqrt b$ et $\sqrt a-\sqrt b$ sont **conjuguées** :
+
+$$
+(\sqrt a+\sqrt b)(\sqrt a-\sqrt b)=a-b.
+$$
+
+Si $a\ne b$, multiplier le numérateur et le dénominateur par l'expression conjuguée permet de supprimer les racines du dénominateur. Cette transformation s'appelle **rationaliser le dénominateur**.
+
+**Avant de développer :** chercher si les racines se simplifient déjà. Attention : $(u+v)^2\ne u^2+v^2$ en général ; le terme $2uv$ ne doit pas disparaître.
+
+---
+
+# Racines · Exercice A — Le carré d'un quotient
+
+Sans calculatrice, simplifier :
+
+$$
+A=\left(\frac{\sqrt6}{\sqrt3+\sqrt2}\right)^2.
+$$
+
+1. Vérifier que le dénominateur est non nul.
+2. Élever le numérateur et le dénominateur au carré, puis supprimer les racines du dénominateur.
+3. Donner une valeur exacte et justifier chaque égalité.
+
+**Livrable :** une chaîne de calcul sans racine au dénominateur. Une approximation décimale pourra servir de contrôle après le calcul exact.
+
+<details><summary>Indice</summary>
+
+Le carré du dénominateur vaut $5+2\sqrt6$. Quelle expression lui est conjuguée ?
+
+</details>
+
+<details><summary>Afficher la correction</summary>
+
+Le dénominateur est strictement positif. En développant son carré :
+
+$$
+(\sqrt3+\sqrt2)^2=3+2\sqrt6+2=5+2\sqrt6.
+$$
+
+Ainsi :
+
+$$
+A=\frac6{5+2\sqrt6}
+=\frac{6(5-2\sqrt6)}{(5+2\sqrt6)(5-2\sqrt6)}
+=\frac{6(5-2\sqrt6)}{25-24}.
+$$
+
+Le produit des conjugués vaut 1, donc le facteur utilisé n'est pas nul. On obtient :
+
+$$
+\boxed{A=30-12\sqrt6}.
+$$
+
+Pour contrôler : $A\approx0{,}6061$. Le résultat est positif, comme le carré de départ.
+
+</details>
+
+---
+
+# Racines · Exercice B — Simplifier avant de rationaliser
+
+Sans calculatrice, simplifier :
+
+$$
+B=\left(\frac{\sqrt2}{\sqrt3+1}\right)^2.
+$$
+
+Vérifier que l'expression est définie, développer le carré du dénominateur, puis donner une valeur exacte sans racine au dénominateur.
+
+<details><summary>Indice</summary>
+
+Après avoir élevé au carré, simplifier la fraction par 2. Utiliser ensuite le conjugué de $2+\sqrt3$.
+
+</details>
+
+<details><summary>Afficher la correction</summary>
+
+Comme $\sqrt3+1>0$, le quotient est défini. On calcule :
+
+$$
+B=\frac2{(\sqrt3+1)^2}
+=\frac2{4+2\sqrt3}
+=\frac1{2+\sqrt3}.
+$$
+
+Puis :
+
+$$
+B=\frac{2-\sqrt3}{(2+\sqrt3)(2-\sqrt3)}
+=\frac{2-\sqrt3}{4-3}
+=\boxed{2-\sqrt3}.
+$$
+
+Le produit au dénominateur vaut 1. Pour contrôler : $B\approx0{,}2679$.
+
+</details>
+
+---
+
+# Racines · Exercice C — Réduire les racines d'abord
+
+Sans calculatrice, simplifier :
+
+$$
+C=\left(\frac{\sqrt{12}}{\sqrt8-\sqrt2}\right)^2.
+$$
+
+Commencer par simplifier chaque racine. Vérifier que le dénominateur ne s'annule pas, puis chercher le chemin de calcul le plus court.
+
+<details><summary>Indice</summary>
+
+Écrire $12=4\times3$ et $8=4\times2$. Les deux termes du dénominateur deviennent des multiples de $\sqrt2$.
+
+</details>
+
+<details><summary>Afficher la correction</summary>
+
+On a $\sqrt{12}=2\sqrt3$ et $\sqrt8=2\sqrt2$. Le dénominateur vaut donc :
+
+$$
+\sqrt8-\sqrt2=2\sqrt2-\sqrt2=\sqrt2>0.
+$$
+
+Il suffit alors d'élever le quotient au carré :
+
+$$
+C=\left(\frac{2\sqrt3}{\sqrt2}\right)^2
+=\frac{(2\sqrt3)^2}{(\sqrt2)^2}
+=\frac{12}{2}
+=\boxed6.
+$$
+
+Ici, réduire les racines avant de calculer évite une rationalisation inutile. On n'a pas utilisé la fausse règle $\sqrt8-\sqrt2=\sqrt{8-2}$.
+
+</details>
+
+---
+
+# Racines · Exercice D — Un dénominateur avec une différence
+
+Sans calculatrice, simplifier :
+
+$$
+D=\left(\frac{\sqrt3}{\sqrt5-\sqrt2}\right)^2.
+$$
+
+Justifier que le quotient est défini. Développer le carré d'une différence, puis utiliser l'expression conjuguée pour donner une valeur exacte sans racine au dénominateur.
+
+<details><summary>Indice</summary>
+
+Le carré du dénominateur vaut $7-2\sqrt{10}$. Le produit avec son conjugué fait apparaître $49-40$.
+
+</details>
+
+<details><summary>Afficher la correction</summary>
+
+Comme $\sqrt5>\sqrt2$, le dénominateur est strictement positif. Le carré d'une différence donne :
+
+$$
+(\sqrt5-\sqrt2)^2=5-2\sqrt{10}+2=7-2\sqrt{10}.
+$$
+
+Ainsi :
+
+$$
+D=\frac3{7-2\sqrt{10}}
+=\frac{3(7+2\sqrt{10})}{(7-2\sqrt{10})(7+2\sqrt{10})}
+=\frac{3(7+2\sqrt{10})}{49-40}.
+$$
+
+Le produit des conjugués vaut 9. Il reste à simplifier le facteur 3 :
+
+$$
+\boxed{D=\frac{7+2\sqrt{10}}3}.
+$$
+
+Pour contrôler : $D\approx4{,}4415$. Attention au signe du terme croisé : dans $(u-v)^2$, il vaut $-2uv$.
+
+</details>
+
+---
+
 # 7. Logarithmes (règles essentielles)
 
 $$
@@ -800,6 +712,137 @@ $$
 
 ---
 
+# Rappel · Écrire une somme finie
+
+Le symbole sigma abrège l'addition de plusieurs termes :
+
+$$
+\sum_{k=1}^{n} u_k = u_1+u_2+\cdots+u_n.
+$$
+
+L'indice $k$ prend ici toutes les valeurs entières de 1 à $n$. Il sert à parcourir les termes.
+
+Exemple :
+
+$$
+\sum_{k=1}^{4}(2k+1)=3+5+7+9=24.
+$$
+
+Quand le même nombre $c$ est répété $n$ fois, on obtient $\sum_{k=1}^{n}c=nc$.
+
+---
+
+# Rappel · Repérer une somme télescopique
+
+Une somme est dite **télescopique** lorsque des termes se compensent entre eux.
+
+On commence par transformer chaque terme :
+
+$$
+\frac{1}{k(k+1)}=\frac1k-\frac1{k+1}.
+$$
+
+Alors les termes intermédiaires s'annulent :
+
+$$
+\sum_{k=1}^{n}\frac{1}{k(k+1)}
+=\left(1-\frac12\right)+\left(\frac12-\frac13\right)+\cdots+
+\left(\frac1n-\frac1{n+1}\right)
+=1-\frac1{n+1}=\frac{n}{n+1}.
+$$
+
+---
+
+# À vous · Quatre calculs de sommes finies
+
+Pour $n\geq1$, simplifier les sommes 1 et 2. Calculer les sommes 3 et 4.
+
+1. $\displaystyle S_n=\sum_{k=1}^{n}\frac{1}{k(k+1)}$
+2. $\displaystyle U_n=\sum_{k=1}^{n}k\,k!$
+3. $\displaystyle V_n=\sum_{k=1}^{n}\big((k+1)-k\big)$
+4. $\displaystyle W=\sum_{k=1}^{4}\big((k+1)^2-k^2\big)$
+
+Chercher dans chaque terme ce qui s'annule entre deux lignes successives.
+
+---
+
+# Correction · Les quatre sommes
+
+<details><summary>Afficher une correction possible</summary>
+
+1. $\displaystyle \frac1{k(k+1)}=\frac1k-\frac1{k+1}$, donc $\displaystyle S_n=1-\frac1{n+1}=\frac{n}{n+1}$.
+2. $k\,k!=(k+1)!-k!$, donc $\displaystyle U_n=(n+1)!-1$.
+3. Les termes se réduisent à $1$ : $\displaystyle V_n=\sum_{k=1}^{n}1=n$.
+4. $\displaystyle W=(2^2-1^2)+(3^2-2^2)+(4^2-3^2)+(5^2-4^2)=5^2-1^2=24$.
+
+</details>
+
+---
+
+# Facultatif guidé · Une somme avec deux décalages
+
+On reprend la somme plus technique :
+
+$$
+T_n=\sum_{k=1}^{n}\frac{1}{k(k+2)}.
+$$
+
+1. Vérifier que $\displaystyle \frac{1}{k(k+2)}=\frac12\left(\frac1k-\frac1{k+2}\right)$.
+2. Écrire les premiers termes et repérer ceux qui se compensent.
+3. Donner les quelques termes qui restent, puis simplifier.
+
+<details><summary>Correction guidée</summary>
+
+La décomposition donne :
+
+$$
+T_n=\frac12\sum_{k=1}^{n}\left(\frac1k-\frac1{k+2}\right).
+$$
+
+Les termes intermédiaires s'annulent deux à deux. Il reste les deux premiers et les deux derniers :
+
+$$
+T_n=\frac12\left(1+\frac12-\frac1{n+1}-\frac1{n+2}\right).
+$$
+
+</details>
+
+---
+
+# Rappel · Écrire un produit fini
+
+Comme $\sum$ abrège une addition, $\prod$ abrège une multiplication :
+
+$$
+\prod_{k=1}^{n}u_k=u_1\times u_2\times\cdots\times u_n.
+$$
+
+Par exemple :
+
+$$
+\prod_{k=1}^{4}k=1\times2\times3\times4=4!=24.
+$$
+
+En data, on multiplie aussi des probabilités indépendantes. Si trois mesures ont des probabilités de fiabilité $0{,}9$, $0{,}8$ et $0{,}95$, la probabilité qu'elles soient toutes fiables est leur produit : $0{,}9\times0{,}8\times0{,}95=0{,}684$.
+
+En NumPy, `np.prod([0.9, 0.8, 0.95])` calcule ce produit.
+
+---
+
+# À vous · Deux calculs de produits
+
+1. Développer puis calculer $\displaystyle P=\prod_{k=1}^{4}(k+1)$. Écrire le résultat avec une factorielle.
+2. Trois mesures indépendantes ont les probabilités de fiabilité $0{,}9$, $0{,}8$ et $0{,}95$. Calculer la probabilité qu'elles soient toutes fiables, puis vérifier le calcul avec `np.prod`.
+
+<details><summary>Afficher une correction possible</summary>
+
+1. $\displaystyle P=2\times3\times4\times5=5!=120$.
+2. $\displaystyle 0{,}9\times0{,}8\times0{,}95=0{,}684$. En NumPy, `np.prod([0.9, 0.8, 0.95])` renvoie `0.684`.
+
+</details>
+
+---
+
 ## Problème — Compter les occasions
 
 La moitié des années d'un horizon reste-t-elle la moitié des rencontres ?
@@ -808,7 +851,7 @@ Appliquer les produits et pourcentages à une situation fictive, puis construire
 
 [Problème 1 : la moitié des années, combien de rencontres ?](../Tps/Tail_End/01_rencontres.md)
 
-En complément court : [où sont passées mes dix minutes ?](../Tps/Paradoxes/01_dix_minutes.md), pour travailler les conversions et distinguer temps cumulé et temps disponible d'un seul bloc.
+Dans le problème, on pourra écrire les journées de rencontre passées et futures comme des sommes finies, puis utiliser les fréquences constantes pour les calculer rapidement.
 
 ---
 

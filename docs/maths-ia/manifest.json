@@ -1,0 +1,66 @@
+[
+  {
+    "id": "01_representer",
+    "titre": "Représenter et calculer",
+    "repere": "Algèbre et matrices",
+    "objectif": "Algèbre, fonctions, vecteurs, matrices et prédiction linéaire.",
+    "file": "01_representer.html",
+    "slides": 26
+  },
+  {
+    "id": "02_decrire_deriver",
+    "titre": "Décrire les données et dériver une erreur",
+    "repere": "Statistiques et dérivation",
+    "objectif": "Moyenne, dispersion, dérivée et première amélioration d'un paramètre.",
+    "file": "02_decrire_deriver.html",
+    "slides": 30
+  },
+  {
+    "id": "03_comprendre_reseau",
+    "titre": "Du neurone au réseau : la propagation avant",
+    "repere": "Neurones et activations",
+    "objectif": "Poids, biais, activations et prédictions avec NumPy, après les statistiques.",
+    "file": "03_comprendre_reseau.html",
+    "slides": 31
+  },
+  {
+    "id": "04_preparer_donnees",
+    "titre": "Préparer et séparer les données",
+    "repere": "Préparation des données",
+    "objectif": "Partitions, standardisation, cible binaire et prévention des fuites.",
+    "file": "04_preparer_donnees.html",
+    "slides": 27
+  },
+  {
+    "id": "05_gradient_chaine",
+    "titre": "Gradient et règle de chaîne",
+    "repere": "Gradient et chaîne",
+    "objectif": "Dérivées partielles, propagation du gradient et vérification numérique.",
+    "file": "05_gradient_chaine.html",
+    "slides": 25
+  },
+  {
+    "id": "06_optimiser",
+    "titre": "Optimisation et régularisation",
+    "repere": "Optimisation",
+    "objectif": "Descente, pas, pénalité et sélection des réglages sur validation.",
+    "file": "06_optimiser.html",
+    "slides": 27
+  },
+  {
+    "id": "07_entrainer_pytorch",
+    "titre": "Entraîner le réseau avec PyTorch",
+    "repere": "PyTorch",
+    "objectif": "Tenseurs, logits, autograd et boucle d'entraînement reproductible.",
+    "file": "07_entrainer_pytorch.html",
+    "slides": 27
+  },
+  {
+    "id": "08_evaluer",
+    "titre": "Évaluer et argumenter la généralisation",
+    "repere": "Évaluation",
+    "objectif": "Courbes, matrice de confusion, références simples et bilan final.",
+    "file": "08_evaluer.html",
+    "slides": 27
+  }
+]

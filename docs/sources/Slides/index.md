@@ -15,7 +15,7 @@ Les nouveaux chapitres prolongent les supports existants. Le même [projet de co
 
 1. [Révisions d’algèbre](revision.md).
 2. [Dérivation](01_derivation.md), puis [étude des fonctions](02_derivation.md).
-3. [Modéliser la température](01_modelisation.md), puis [la consommation](02_modelisation.md).
+3. [Modéliser la température](01_modelisation.md).
 
 Objectif : comprendre une variation et ajuster une première relation entre une variable et une cible.
 
@@ -25,9 +25,8 @@ Objectif : comprendre une variation et ajuster une première relation entre une 
 
 4. [Matrices, transformations et valeurs propres](matrice.md).
 5. **Nouveau :** [géométrie des données](avance/01_geometrie_donnees.md) — normes, distances et projections ; jalon 1.
-6. **Nouveau :** [moindres carrés et stabilité](avance/02_moindres_carres.md) — régression multivariée, rang et conditionnement ; jalon 2.
 
-Objectif : passer des vecteurs à un modèle multivarié dont on peut contrôler les calculs.
+Objectif : passer des vecteurs à la géométrie des données, puis préparer l'étude statistique des observations.
 
 ---
 

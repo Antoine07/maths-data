@@ -410,49 +410,6 @@ Revenir aux effectifs de confusion, distinguer les dénominateurs et introduire 
 
 ---
 
-## QCM — Questions 1 et 2
-
-**1. Un logit nul donne une probabilité :** A. 0 ; B. 1 ; C. 0,5 ; D. indéfinie.
-
-**2. La rétropropagation calcule principalement :** A. les gradients ; B. les partitions ; C. le seuil métier ; D. la variance expliquée.
-
-<details><summary>Afficher la correction</summary>
-
-1. **C** : $1/(1+e^0)=1/2$.
-2. **A** : l'optimiseur utilise ensuite ces gradients pour les mises à jour.
-</details>
-
----
-
-## QCM — Questions 3 à 5
-
-**3. La dérivée de `tanh(z)` vaut :** A. `tanh(z)` ; B. `1 - tanh(z)**2` ; C. `z**2` ; D. toujours 0.
-
-**4. Un réseau plus complexe est-il nécessairement meilleur sur le test ?** A. toujours ; B. si sa perte d'apprentissage est faible ; C. si ses poids sont nombreux ; D. non.
-
-**5. Pour une perte binaire stable, on préfère :** A. arrondir d'abord les probabilités ; B. calculer naïvement `exp(1000)` ; C. travailler à partir des logits avec une fonction adaptée ; D. supprimer les logarithmes.
-
-<details><summary>Afficher la correction</summary>
-
-3. **B** : la dérivée dépend de la sortie de l'activation.
-4. **D** : la généralisation doit être mesurée.
-5. **C** : `logaddexp` ou `binary_cross_entropy_with_logits` évitent les calculs naïfs fragiles.
-</details>
-
----
-
-## Ouverture IA — Retrouver les symétries
-
-Dans [Groupes, symétries et données](07_groupes_symetries.md), nous avons distingué une réponse qui reste identique et une sortie qui suit la transformation de l'entrée.
-
-Un réseau appliqué indépendamment à chaque ligne avec les mêmes poids suit une permutation des lignes : ses prédictions sont équivariantes. Leur moyenne est invariante à ce réordonnement.
-
-Pour une image, reconnaître la même catégorie après déplacement est une invariance souhaitée ; déplacer un masque de segmentation avec l'objet est une équivariance souhaitée. Un réseau dense quelconque ne garantit pas ces propriétés géométriques.
-
-**Question de transfert :** quelles transformations préserveraient la tâche pour des chiffres manuscrits ? Une rotation de 180° est-elle toujours admissible ? Justifier sur le cas du 6 et du 9.
-
----
-
 ## Résumé final
 
 Le parcours relie désormais données, projections, gradients et apprentissage.

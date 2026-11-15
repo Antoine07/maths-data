@@ -2,12 +2,12 @@
   {
     "file": "revision.html",
     "source": "Slides/revision.md",
-    "slides": 42
+    "slides": 43
   },
   {
     "file": "fonctions_periodiques.html",
     "source": "Slides/fonctions_periodiques.md",
-    "slides": 18
+    "slides": 6
   },
   {
     "file": "01_derivation.html",
@@ -22,12 +22,12 @@
   {
     "file": "01_modelisation.html",
     "source": "Slides/01_modelisation.md",
-    "slides": 7
+    "slides": 11
   },
   {
-    "file": "02_modelisation.html",
-    "source": "Slides/02_modelisation.md",
-    "slides": 8
+    "file": "qcm/fondamentaux.html",
+    "source": "Slides/qcm/fondamentaux.md",
+    "slides": 5
   },
   {
     "file": "matrice.html",
@@ -40,19 +40,14 @@
     "slides": 17
   },
   {
-    "file": "avance/07_groupes_symetries.html",
-    "source": "Slides/avance/07_groupes_symetries.md",
-    "slides": 32
-  },
-  {
     "file": "avance/01_geometrie_donnees.html",
     "source": "Slides/avance/01_geometrie_donnees.md",
-    "slides": 29
+    "slides": 27
   },
   {
-    "file": "avance/02_moindres_carres.html",
-    "source": "Slides/avance/02_moindres_carres.md",
-    "slides": 30
+    "file": "qcm/algebre.html",
+    "source": "Slides/qcm/algebre.md",
+    "slides": 5
   },
   {
     "file": "stat/01_stat_descriptive.html",
@@ -60,19 +55,34 @@
     "slides": 27
   },
   {
+    "file": "stat/03_centrage_reduction.html",
+    "source": "Slides/stat/03_centrage_reduction.md",
+    "slides": 9
+  },
+  {
+    "file": "stat/valeurs_centrees_reduites.html",
+    "source": "Slides/stat/valeurs_centrees_reduites.md",
+    "slides": 9
+  },
+  {
     "file": "stat/probabilites.html",
     "source": "Slides/stat/probabilites.md",
     "slides": 22
   },
   {
+    "file": "stat/02_pvalue_simulation.html",
+    "source": "Slides/stat/02_pvalue_simulation.md",
+    "slides": 10
+  },
+  {
+    "file": "stat/03_courbe_gauss_des.html",
+    "source": "Slides/stat/03_courbe_gauss_des.md",
+    "slides": 13
+  },
+  {
     "file": "stat/02_covariance_correlation.html",
     "source": "Slides/stat/02_covariance_correlation.md",
     "slides": 11
-  },
-  {
-    "file": "stat/03_centrage_reduction.html",
-    "source": "Slides/stat/03_centrage_reduction.md",
-    "slides": 9
   },
   {
     "file": "stat/04_acp_intro.html",
@@ -87,7 +97,12 @@
   {
     "file": "avance/08_clustering.html",
     "source": "Slides/avance/08_clustering.md",
-    "slides": 33
+    "slides": 31
+  },
+  {
+    "file": "qcm/statistiques.html",
+    "source": "Slides/qcm/statistiques.md",
+    "slides": 5
   },
   {
     "file": "gradient.html",
@@ -107,7 +122,12 @@
   {
     "file": "avance/06_retropropagation.html",
     "source": "Slides/avance/06_retropropagation.md",
-    "slides": 35
+    "slides": 32
+  },
+  {
+    "file": "qcm/apprentissage.html",
+    "source": "Slides/qcm/apprentissage.md",
+    "slides": 5
   },
   {
     "file": "01_introduction_stat.html",

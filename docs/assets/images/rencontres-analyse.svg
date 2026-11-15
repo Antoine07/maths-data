@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1584 410" role="img" aria-labelledby="title desc">
+  <title id="title">Analyse du scénario de rencontres</title>
+  <desc id="desc">À gauche, les journées de rencontre par an selon l'âge, avec une séparation à 30 ans. À droite, la part future pour six fréquences annuelles.</desc>
+  <style>
+    text{font-family:Arial,sans-serif;fill:#243047} .title{font-size:21px;font-weight:700}.label{font-size:14px}.small{font-size:12px;fill:#58657a}.grid{stroke:#dce2eb;stroke-width:1}.axis{stroke:#778399;stroke-width:1.4}
+  </style>
+  <rect width="1584" height="410" rx="18" fill="#fff"/>
+  <line x1="792" y1="24" x2="792" y2="386" stroke="#e2e7ef"/>
+
+  <text class="title" x="396" y="32" text-anchor="middle">Fréquence annuelle selon l’âge</text>
+  <text class="small" x="48" y="66" text-anchor="end">Jours/an</text>
+  <line class="grid" x1="64" y1="305" x2="744" y2="305"/><line class="grid" x1="64" y1="236" x2="744" y2="236"/><line class="grid" x1="64" y1="166" x2="744" y2="166"/><line class="grid" x1="64" y1="97" x2="744" y2="97"/><line class="grid" x1="64" y1="62" x2="744" y2="62"/>
+  <text class="small" x="54" y="309" text-anchor="end">0</text><text class="small" x="54" y="240" text-anchor="end">100</text><text class="small" x="54" y="170" text-anchor="end">200</text><text class="small" x="54" y="101" text-anchor="end">300</text><text class="small" x="54" y="66" text-anchor="end">350</text>
+  <line class="axis" x1="64" y1="62" x2="64" y2="305"/><line class="axis" x1="64" y1="305" x2="744" y2="305"/>
+  <rect x="64" y="97" width="204" height="208" fill="#4f78aa"/><rect x="268" y="297" width="136" height="8" fill="#4f78aa"/><rect x="404" y="297" width="340" height="8" fill="#e99a47"/>
+  <line x1="404" y1="58" x2="404" y2="305" stroke="#c64d4d" stroke-width="2" stroke-dasharray="7 6"/>
+  <text class="small" x="64" y="326" text-anchor="middle">0</text><text class="small" x="268" y="326" text-anchor="middle">18</text><text class="small" x="404" y="326" text-anchor="middle">30</text><text class="small" x="744" y="326" text-anchor="middle">60 ans</text>
+  <rect x="255" y="350" width="12" height="12" fill="#4f78aa"/><text class="small" x="274" y="361">Passé</text><rect x="370" y="350" width="12" height="12" fill="#e99a47"/><text class="small" x="389" y="361">Futur</text><line x1="460" y1="356" x2="483" y2="356" stroke="#c64d4d" stroke-width="2" stroke-dasharray="6 4"/><text class="small" x="490" y="361">Âge actuel</text>
+
+  <text class="title" x="1188" y="32" text-anchor="middle">Part future selon la fréquence choisie</text>
+  <text class="small" x="846" y="66" text-anchor="end">Part (%)</text>
+  <line class="grid" x1="864" y1="305" x2="1536" y2="305"/><line class="grid" x1="864" y1="256" x2="1536" y2="256"/><line class="grid" x1="864" y1="208" x2="1536" y2="208"/><line class="grid" x1="864" y1="159" x2="1536" y2="159"/><line class="grid" x1="864" y1="111" x2="1536" y2="111"/><line class="grid" x1="864" y1="62" x2="1536" y2="62"/>
+  <text class="small" x="854" y="309" text-anchor="end">0</text><text class="small" x="854" y="260" text-anchor="end">10</text><text class="small" x="854" y="212" text-anchor="end">20</text><text class="small" x="854" y="163" text-anchor="end">30</text><text class="small" x="854" y="115" text-anchor="end">40</text><text class="small" x="854" y="66" text-anchor="end">50</text>
+  <line class="axis" x1="864" y1="62" x2="864" y2="305"/><line class="axis" x1="864" y1="305" x2="1536" y2="305"/>
+  <line x1="864" y1="62" x2="1536" y2="62" stroke="#c64d4d" stroke-width="2" stroke-dasharray="7 6"/>
+  <path d="M904 290 L944 275 L1025 249 L1106 226 L1213 198 L1536 135" fill="none" stroke="#3c8064" stroke-width="3"/>
+  <circle cx="904" cy="290" r="5" fill="#3c8064"/><circle cx="944" cy="275" r="5" fill="#3c8064"/><circle cx="1025" cy="249" r="5" fill="#3c8064"/><circle cx="1106" cy="226" r="5" fill="#3c8064"/><circle cx="1213" cy="198" r="5" fill="#3c8064"/><circle cx="1536" cy="135" r="5" fill="#3c8064"/>
+  <text class="small" x="864" y="326" text-anchor="middle">0</text><text class="small" x="998" y="326" text-anchor="middle">20</text><text class="small" x="1133" y="326" text-anchor="middle">40</text><text class="small" x="1267" y="326" text-anchor="middle">60</text><text class="small" x="1402" y="326" text-anchor="middle">80</text><text class="small" x="1536" y="326" text-anchor="middle">100</text>
+  <text class="label" x="1200" y="384" text-anchor="middle">Journées de rencontre par an dans le futur</text>
+  <line x1="1382" y1="350" x2="1405" y2="350" stroke="#c64d4d" stroke-width="2" stroke-dasharray="6 4"/><text class="small" x="1412" y="355">50 %</text>
+</svg>

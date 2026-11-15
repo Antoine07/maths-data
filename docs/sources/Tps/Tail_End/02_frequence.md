@@ -19,8 +19,56 @@ Un compteur suit les visiteurs pendant deux heures. On compare deux scénarios.
 - **Scénario A :** le rythme est constant à 2 visiteurs par heure pendant la première heure, puis à 4 visiteurs par heure pendant la deuxième heure.
 - **Scénario B :** le rythme augmente continûment selon $f(t)=2t$ visiteurs par heure, où $t$ est le temps écoulé en heures.
 
+Pour le scénario B, on garde la même idée : **la hauteur de la courbe indique le rythme à cet instant ; l'aire sous la courbe indique le cumul depuis le départ.**
+
+<div class="interactive-math-demo" data-cumulative-demo>
+  <div class="interactive-demo-controls cumul-controls">
+    <label>Temps écoulé <output data-cumul-time-label>0,00 h</output>
+      <input data-cumul-time type="range" min="0" max="2" step="0.01" value="0" aria-label="Temps écoulé, de zéro à deux heures">
+    </label>
+    <div class="interactive-demo-buttons">
+      <button class="button primary" type="button" data-cumul-toggle aria-pressed="false">▶ Animer</button>
+      <button class="button" type="button" data-cumul-reset>Repartir de 0 h</button>
+    </div>
+  </div>
+  <p class="interactive-demo-readout" data-cumul-readout aria-live="polite">À 0 h : rythme de 0 visiteurs/h ; cumul de 0 visiteurs.</p>
+  <svg class="interactive-demo-svg cumul-demo-svg" viewBox="0 0 1000 380" role="img" aria-label="La droite du rythme f(t)=2t et le triangle coloré représentant le cumul jusqu'au temps choisi.">
+    <text x="500" y="28" text-anchor="middle" class="demo-title">Rythme instantané et cumul par l'aire</text>
+    <line x1="120" y1="300" x2="900" y2="300" class="demo-axis"/>
+    <line x1="120" y1="300" x2="120" y2="60" class="demo-axis"/>
+    <path d="M120 240H900M120 180H900M120 120H900M120 60H900M315 60V300M510 60V300M705 60V300M900 60V300" class="demo-grid"/>
+    <text x="105" y="304" text-anchor="end" class="demo-caption">0</text>
+    <text x="105" y="244" text-anchor="end" class="demo-caption">1</text>
+    <text x="105" y="184" text-anchor="end" class="demo-caption">2</text>
+    <text x="105" y="124" text-anchor="end" class="demo-caption">3</text>
+    <text x="105" y="64" text-anchor="end" class="demo-caption">4</text>
+    <text x="120" y="324" text-anchor="middle" class="demo-caption">0</text>
+    <text x="315" y="324" text-anchor="middle" class="demo-caption">0,5</text>
+    <text x="510" y="324" text-anchor="middle" class="demo-caption">1</text>
+    <text x="705" y="324" text-anchor="middle" class="demo-caption">1,5</text>
+    <text x="900" y="324" text-anchor="middle" class="demo-caption">2 h</text>
+    <text x="30" y="75" class="demo-caption">Visiteurs/h</text>
+    <text x="510" y="354" text-anchor="middle" class="demo-caption">Temps écoulé</text>
+    <path d="M120 300L900 60" class="demo-wave"/>
+    <path d="M120 300L510 300L510 180Z" class="cumul-area" data-cumul-area/>
+    <line x1="510" y1="300" x2="510" y2="180" class="demo-cursor" data-cumul-cursor/>
+    <circle cx="510" cy="180" r="8" class="demo-point" data-cumul-point/>
+    <text x="680" y="92" class="demo-caption">Hauteur = rythme f(t)=2t</text>
+    <text x="675" y="274" class="demo-caption">Aire colorée = cumul C(t)=t²</text>
+  </svg>
+</div>
+
+Quelques valeurs permettent de vérifier la lecture de l'animation :
+
+| Temps écoulé | Rythme à cet instant | Cumul depuis le départ |
+|---|---:|---:|
+| 0 h 30 | 1 visiteur/h | 0,25 visiteur |
+| 1 h | 2 visiteurs/h | **1 visiteur** |
+| 1 h 30 | 3 visiteurs/h | 2,25 visiteurs |
+| 2 h | 4 visiteurs/h | **4 visiteurs** |
+
 1. Pour le scénario A, calculer le nombre total de visiteurs sur les deux heures. Représenter le rythme sur un graphique et repérer les aires qui correspondent aux deux périodes.
-2. Pour le scénario B, tracer la droite $f(t)=2t$ entre $t=0$ et $t=2$. Quelle aire se trouve sous la droite ? En déduire le cumul sur les deux heures.
+2. Pour le scénario B, arrêtez l'animation à 1 h puis à 2 h. À chaque fois, distinguez la hauteur (le rythme) de l'aire colorée (le cumul). Vérifiez les valeurs avec le tableau.
 3. Les deux scénarios ont-ils le même rythme au cours du temps ? Pourquoi leurs cumuls sont-ils différents ?
 4. Si le rythme reste constant à 2 visiteurs par heure pendant 3 heures, combien de visiteurs sont comptés ?
 5. Pour chaque scénario, calculer le rythme moyen sur les deux heures. En supposant ce rythme moyen constant, écrire le cumul linéaire correspondant. Comparer cette droite au cumul réel à $t=1$ h et à $t=2$ h.
@@ -36,6 +84,10 @@ Dans le scénario B, la courbe est une droite qui part de 0 et atteint 4 visiteu
 $$
 \frac{2\times4}{2}=4\text{ visiteurs}.
 $$
+
+À 1 h, le triangle a une largeur de 1 h et une hauteur de 2 visiteurs/h : son aire vaut $1\times2\div2=1$ visiteur. À 2 h, sa largeur vaut 2 h et sa hauteur 4 visiteurs/h : son aire vaut $2\times4\div2=4$ visiteurs. Le 4 visiteurs/h se lit au sommet ; les 4 visiteurs cumulés correspondent à toute l'aire du triangle.
+
+Cela explique le carré : quand le temps double, la largeur et la hauteur doublent toutes les deux, donc l'aire est multipliée par quatre. En général, jusqu'au temps $t$, $C(t)=\frac{t\times2t}{2}=t^2$ visiteurs.
 
 Les scénarios n'ont pas le même rythme : le premier change brusquement à une heure, tandis que le second augmente continûment. Leurs aires, donc leurs cumuls, diffèrent. Un rythme constant de 2 visiteurs par heure pendant 3 heures donne $2\times3=6$ visiteurs.
 

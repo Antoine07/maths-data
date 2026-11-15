@@ -60,6 +60,11 @@
     "slides": 22
   },
   {
+    "file": "stat/02_pvalue_simulation.html",
+    "source": "Slides/stat/02_pvalue_simulation.md",
+    "slides": 10
+  },
+  {
     "file": "stat/02_covariance_correlation.html",
     "source": "Slides/stat/02_covariance_correlation.md",
     "slides": 11

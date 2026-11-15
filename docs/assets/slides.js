@@ -121,6 +121,69 @@
   });
   const svgNS = 'http://www.w3.org/2000/svg';
   const formatFr = (value, digits = 2) => value.toFixed(digits).replace('.', ',').replace('-', '−');
+  document.querySelectorAll('[data-cumulative-demo]').forEach(root => {
+    const slider = root.querySelector('[data-cumul-time]');
+    const toggle = root.querySelector('[data-cumul-toggle]');
+    const reset = root.querySelector('[data-cumul-reset]');
+    const area = root.querySelector('[data-cumul-area]');
+    const cursor = root.querySelector('[data-cumul-cursor]');
+    const point = root.querySelector('[data-cumul-point]');
+    const timeLabel = root.querySelector('[data-cumul-time-label]');
+    const readout = root.querySelector('[data-cumul-readout]');
+    let time = Number(slider.value);
+    let running = false;
+    let frame = 0;
+    let lastFrame = 0;
+    function render() {
+      const rate = 2 * time;
+      const cumulative = time * time;
+      const x = 120 + 390 * time;
+      const y = 300 - 60 * rate;
+      area.setAttribute('d', `M120 300L${x.toFixed(2)} 300L${x.toFixed(2)} ${y.toFixed(2)}Z`);
+      cursor.setAttribute('x1', x.toFixed(2));
+      cursor.setAttribute('x2', x.toFixed(2));
+      cursor.setAttribute('y1', '300');
+      cursor.setAttribute('y2', y.toFixed(2));
+      point.setAttribute('cx', x.toFixed(2));
+      point.setAttribute('cy', y.toFixed(2));
+      timeLabel.textContent = `${formatFr(time)} h`;
+      const rateUnit = Math.abs(rate - 1) < 1e-9 ? 'visiteur/h' : 'visiteurs/h';
+      const visitorUnit = Math.abs(cumulative - 1) < 1e-9 ? 'visiteur' : 'visiteurs';
+      readout.textContent = `À ${formatFr(time)} h : rythme de ${formatFr(rate)} ${rateUnit} ; cumul de ${formatFr(cumulative)} ${visitorUnit}.`;
+    }
+    function stop() {
+      running = false;
+      lastFrame = 0;
+      cancelAnimationFrame(frame);
+      toggle.textContent = '▶ Animer';
+      toggle.setAttribute('aria-pressed', 'false');
+    }
+    function tick(now) {
+      if (!running) return;
+      if (lastFrame) {
+        time = Math.min(2, time + (now - lastFrame) * 0.00025);
+        slider.value = String(time);
+      }
+      lastFrame = now;
+      render();
+      if (time >= 2) return stop();
+      frame = requestAnimationFrame(tick);
+    }
+    slider.addEventListener('input', () => { stop(); time = Number(slider.value); render(); });
+    toggle.addEventListener('click', () => {
+      if (running) return stop();
+      if (time >= 2) { time = 0; slider.value = '0'; render(); }
+      running = true;
+      toggle.textContent = 'Ⅱ Pause';
+      toggle.setAttribute('aria-pressed', 'true');
+      frame = requestAnimationFrame(tick);
+    });
+    reset.addEventListener('click', () => { stop(); time = 0; slider.value = '0'; render(); });
+    if ('IntersectionObserver' in window) new IntersectionObserver(entries => {
+      if (!entries[0].isIntersecting) stop();
+    }).observe(root);
+    render();
+  });
   document.querySelectorAll('[data-wave-demo]').forEach(root => {
     const period = root.querySelector('[data-wave-period]');
     const phase = root.querySelector('[data-wave-phase]');

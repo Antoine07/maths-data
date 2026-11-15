@@ -106,6 +106,7 @@ body{min-width:320px}
 .prose .katex-error{background:var(--orange-bg);padding:10px;border-radius:8px;color:#945324!important;white-space:pre-wrap}
 .interactive-math-demo{margin:22px auto;padding:16px 18px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#fbfcf8,#f1f5e8);overflow-x:auto;max-width:960px}
 .interactive-demo-controls{display:grid;grid-template-columns:minmax(180px,1fr) minmax(180px,1fr) auto;gap:16px;align-items:end}
+.cumul-controls{grid-template-columns:minmax(220px,1fr) auto}
 .interactive-demo-controls label{display:grid;gap:6px;font-size:.78rem;font-weight:650;color:var(--green)}
 .interactive-demo-controls output{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:500}
 .interactive-demo-controls input[type=range]{width:100%;accent-color:var(--green)}
@@ -123,6 +124,8 @@ body{min-width:320px}
 .demo-wave{fill:none;stroke:#638b65;stroke-width:3.5;stroke-linejoin:round;stroke-linecap:round}
 .demo-cursor{stroke:#b7653d;stroke-width:1.7;stroke-dasharray:5 5}
 .demo-point{fill:#b7653d;stroke:#fff;stroke-width:3}
+.cumul-area{fill:#a9cf9e;fill-opacity:.58;stroke:#588758;stroke-width:2}
+.cumul-demo-svg{max-width:900px}
 @media(max-width:720px){.interactive-demo-controls{grid-template-columns:1fr 1fr}.interactive-demo-buttons{grid-column:1/-1}}
 @media(max-width:480px){.interactive-math-demo{padding:12px}.interactive-demo-controls{grid-template-columns:1fr}.interactive-demo-buttons{grid-column:auto}.interactive-demo-svg{min-width:680px}}
 mjx-container{max-width:100%;overflow-x:auto;display:block;margin:20px 0!important}

@@ -114,27 +114,13 @@ $$
 
 ## **À vous — Transformer le modèle pour l'ajuster**
 
-On soustrait la température de la pièce :
-
-$$
-T(t)-20=(T_0-20)e^{-kt}.
-$$
-
-Puis on prend le logarithme :
-
-$$
-\ln(T(t)-20)=\ln(T_0-20)-kt.
-$$
-
-On retrouve une droite $y=at+b$, avec $y=\ln(T-20)$, $a=-k$ et $b=\ln(T_0-20)$.
+À partir du modèle exponentiel proposé juste avant, trouvez une transformation qui permet d'utiliser `np.polyfit(t, y, 1)`.
 
 1. Tracez les mesures avec `plt.scatter`.
-2. Calculez $y=\ln(T-20)$ avec `np.log`, puis tracez $y$ en fonction du temps.
-3. Ajustez la droite transformée avec `np.polyfit(t, y, 1)`.
-4. Retrouvez $k$ et $T_0$ à partir de la pente et de l'ordonnée à l'origine.
+2. Déterminez quelle transformation appliquer aux températures pour obtenir une relation affine en fonction du temps. Vérifiez que les opérations choisies sont possibles pour toutes les mesures.
+3. Ajustez la relation obtenue avec `np.polyfit(t, y, 1)`.
+4. À partir de la pente et de l'ordonnée à l'origine, retrouvez les paramètres du modèle exponentiel.
 5. Représentez les mesures et le modèle exponentiel sur le même graphique avec `plt.plot`.
-
-**Repère de calcul :** pour $t=0$, $T-20=60$ et $\ln(60)\approx4{,}094$. Vérifiez que toutes les températures mesurées sont supérieures à 20 °C avant d'utiliser le logarithme.
 
 ---
 

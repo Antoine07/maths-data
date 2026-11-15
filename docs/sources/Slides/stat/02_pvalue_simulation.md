@@ -94,10 +94,26 @@ On rejette donc $H_0$ au seuil de 5 %, en faveur d'un excès de six. Avec cette 
 Le choix dépend de la question posée **avant de regarder le résultat** :
 
 - **Unilatéral :** $H_1:p_6>1/6$. Seuls les excès de six comptent ; pour 25 six, la p-value vaut environ **2,17 %**.
-- **Bilatéral :** $H_1:p_6\ne1/6$. Un déficit ou un excès important compte. Ici, on compare la distance au nombre moyen $100/6$ :
+- **Bilatéral :** $H_1:p_6\ne1/6$. Un déficit ou un excès important compte. On part du résultat observé :
 
 $$
-p_{\mathrm{bilat}}=P\!\left(\left|X-\frac{100}{6}\right|\geq\left|25-\frac{100}{6}\right|\right)\approx3{,}12\%.
+25-\frac{100}{6}\approx8{,}33.
+$$
+
+Le signe positif indique que 25 est **8,33 au-dessus** de la moyenne attendue. Pour chercher un résultat aussi éloigné dans l'autre sens, on reporte la même distance sous la moyenne :
+
+$$
+\frac{100}{6}-8{,}33\approx8{,}33.
+$$
+
+Le nombre de six est entier : cela donne **8 six ou moins**. Du côté supérieur, on garde **25 six ou plus**. On additionne donc les probabilités des deux zones :
+
+![Sur une droite graduée, la moyenne attendue 16,67 est au centre ; 25 est à 8,33 au-dessus et la limite miroir 8,33 est à 8,33 en dessous. Les zones X inférieur ou égal à 8 et X supérieur ou égal à 25 sont coloriées.](../images/pvalue-distance-miroir.svg)
+
+Soustraire la moyenne, $X-100/6$, exprime l'écart autour de zéro. La valeur absolue, $|X-100/6|$, mesure cet écart sans distinguer excès et déficit :
+
+$$
+p_{\mathrm{bilat}}=P\!\left(\left|X-\frac{100}{6}\right|\geq\left|25-\frac{100}{6}\right|\right)=P(X\leq8)+P(X\geq25)\approx3{,}12\%.
 $$
 
 Les deux p-values sont sous 5 % pour 25 six. Mais avec **24 six**, elles sont environ **3,79 %** en unilatéral et **5,92 %** en bilatéral : la conclusion au seuil de 5 % change. Il faut donc choisir la direction avant l'expérience.

@@ -114,6 +114,8 @@ $$
 
 ## **À vous — Transformer le modèle pour l'ajuster**
 
+> **En binôme :** réalisez cet exercice à deux. Un bonus sera offert à l'équipe qui réussira.
+
 À partir du modèle $T(t)=20+60e^{-kt}$, trouvez une transformation qui permet d'ajuster une droite avec `np.polyfit(t, y, 1)`.
 
 **Indice :** commencez par isoler l'écart à la température ambiante, puis examinez l'exponentielle.

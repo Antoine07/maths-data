@@ -27,7 +27,7 @@
 <li>Construisez <code>temps_centered = temps - np.mean(temps)</code></li>
 <li>Interpretez les signes (positif/negatif)</li>
 </ol>
-<details>
+<details class="public-correction">
 <summary>Afficher la correction</summary>
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mover accent="true"><mi>x</mi><mo>ˉ</mo></mover><mo>≈</mo><mn>18.173</mn></mrow><annotation encoding="application/x-tex">\bar{x}\approx 18.173
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5678em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">18.173</span></span></span></span></span></p><p><code>temps_centered</code> (arrondi) :<br />
@@ -48,7 +48,7 @@ hot_idx  = np.where(temps_centered &gt;  <span class="hljs-number">2</span>)[<sp
 <li>Trouvez <code>hot_idx</code></li>
 <li>Comparez avec les temperatures d'origine</li>
 </ol>
-<details>
+<details class="public-correction">
 <summary>Afficher la correction</summary>
 <p><code>cold_idx = [0, 1, 2, 3, 4, 8, 9, 10]</code></p>
 <p><code>hot_idx = [5, 6, 7]</code></p>
@@ -71,7 +71,7 @@ heart_centered = heart_rate  - np.mean(heart_rate)
 <li>Calculez <code>heart_centered</code></li>
 <li>Comparez les amplitudes des deux variables</li>
 </ol>
-<details>
+<details class="public-correction">
 <summary>Afficher la correction</summary>
 <p><code>temp_centered = [-0.371, -0.071, -0.271, 0.329, 1.029, -0.471, -0.171]</code></p>
 <p><code>heart_centered = [-7.857, 0.143, -4.857, 4.143, 20.143, -9.857, -1.857]</code></p>
@@ -89,7 +89,7 @@ heart_scaled = heart_centered / np.std(heart_centered)
 <li>Calculez <code>heart_scaled</code></li>
 <li>Relevez les valeurs proches de 0, &gt; +1 et &lt; -1</li>
 </ol>
-<details>
+<details class="public-correction">
 <summary>Afficher la correction</summary>
 <p><code>temp_scaled = [-0.769, -0.148, -0.562, 0.680, 2.129, -0.976, -0.355]</code></p>
 <p><code>heart_scaled = [-0.842, 0.015, -0.521, 0.444, 2.160, -1.057, -0.199]</code></p>

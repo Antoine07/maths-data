@@ -96,7 +96,7 @@ predictions = X @ w + b
 </div></article>
 <article class="slide-card" id="slide-14" aria-labelledby="slide-label-14" hidden><p class="question-kicker" id="slide-label-14">Algèbre et matrices <span class="pill">14 / 26</span></p><div class="prose">
 <h2 id="correction--pr%C3%A9dire-les-dimensions-et-les-valeurs">Correction — Prédire les dimensions et les valeurs</h2>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <p>Les formes sont <code>(3, 2)</code>, <code>(2,)</code> et <code>(3,)</code>. Les valeurs sont 5, 5 et 4.</p>
 <pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 X, w = np.array([[<span class="hljs-number">1.</span>, <span class="hljs-number">2.</span>], [<span class="hljs-number">2.</span>, <span class="hljs-number">0.</span>], [<span class="hljs-number">0.</span>, <span class="hljs-number">3.</span>]]), np.array([<span class="hljs-number">2.</span>, <span class="hljs-number">1.</span>])
@@ -121,7 +121,7 @@ X, w = np.array([[<span class="hljs-number">1.</span>, <span class="hljs-number"
 </div></article>
 <article class="slide-card" id="slide-16" aria-labelledby="slide-label-16" hidden><p class="question-kicker" id="slide-label-16">Algèbre et matrices <span class="pill">16 / 26</span></p><div class="prose">
 <h2 id="correction--lire-le-r%C3%B4le-des-param%C3%A8tres">Correction — Lire le rôle des paramètres</h2>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <p>On obtient <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">f(3)=7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">3</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">g(3)=10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord">3</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span> et <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">h(3)=10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord">3</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span>. Dans g, le poids a changé ; dans h, c'est le biais. Une seule entrée peut donner la même sortie avec deux règles différentes : elle ne suffit pas à identifier les paramètres.</p>
 </details>
 </div></article>
@@ -141,7 +141,7 @@ X, w = np.array([[<span class="hljs-number">1.</span>, <span class="hljs-number"
 </div></article>
 <article class="slide-card" id="slide-18" aria-labelledby="slide-label-18" hidden><p class="question-kicker" id="slide-label-18">Algèbre et matrices <span class="pill">18 / 26</span></p><div class="prose">
 <h2 id="correction--corriger-un-produit-numpy">Correction — Corriger un produit NumPy</h2>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <p>Il faut utiliser <code>@</code>, puis vérifier le contrat de sortie.</p>
 <pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 X, w, b = np.array([[<span class="hljs-number">1.</span>, <span class="hljs-number">2.</span>], [<span class="hljs-number">3.</span>, <span class="hljs-number">4.</span>]]), np.array([<span class="hljs-number">2.</span>, <span class="hljs-number">1.</span>]), <span class="hljs-number">1.</span>
@@ -204,7 +204,7 @@ predictions = X @ w + b
 <p>A. une observation ; B. un poids ; C. un biais ; D. une époque.</p>
 <p><strong>2. Avec X de forme (5, 3), w doit contenir</strong></p>
 <p>A. 5 valeurs ; B. 15 valeurs ; C. 3 valeurs ; D. aucune valeur.</p>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <ol>
 <li>
 <p><strong>A</strong> : chaque ligne décrit une journée</p>
@@ -223,7 +223,7 @@ predictions = X @ w + b
 <p>A. le nombre de colonnes ; B. la partition ; C. la température ; D. le décalage des prédictions.</p>
 <p><strong>5. Un calcul de prédiction apprend-il les poids ?</strong></p>
 <p>A. toujours ; B. si X est grand ; C. non, les poids sont ici fournis ; D. si le biais vaut 0.</p>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <ol start="3">
 <li>
 <p><strong>B</strong> : @ combine les lignes par produit matriciel</p>

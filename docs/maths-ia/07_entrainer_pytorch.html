@@ -86,7 +86,7 @@ apres = <span class="hljs-built_in">float</span>(perte(modele(X), y).detach())
 <li>Que représente la verticale pointillée ? Pourquoi sauvegarder cet état plutôt que conserver automatiquement le dernier ?</li>
 <li>Une baisse des deux pertes prouve-t-elle que le réseau sera meilleur sur des journées inconnues ?</li>
 </ol>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <p>La perte d’apprentissage fournit les gradients. La validation est calculée sans rétropropagation : elle sert à choisir l’état et les réglages, pas à effectuer directement les mises à jour.</p>
 <p>La verticale indique l’itération retenue pour sa perte de validation. Si la meilleure validation est atteinte avant l’arrêt, on restaure les paramètres de cet état. Si elle est atteinte à la dernière itération affichée, cela ne prouve pas que l’entraînement a atteint un optimum global.</p>
 <p>Les courbes montrent la perte binaire moyenne <strong>sans ajouter le terme de pénalité</strong> ; la pénalité agit néanmoins sur les mises à jour des poids du réseau. Les effectifs et distributions des deux partitions diffèrent : leur ordre relatif ne doit pas être supposé à l’avance.</p>
@@ -119,7 +119,7 @@ apres = <span class="hljs-built_in">float</span>(perte(modele(X), y).detach())
 </div></article>
 <article class="slide-card" id="slide-15" aria-labelledby="slide-label-15" hidden><p class="question-kicker" id="slide-label-15">PyTorch <span class="pill">15 / 27</span></p><div class="prose">
 <h2 id="correction--lire-les-formes-dun-r%C3%A9seau">Correction — Lire les formes d'un réseau</h2>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <p>Première couche : poids (4,3), biais (4,), sortie (5,4). Seconde : poids (1,4), biais (1,), sortie (5,1). Total 12+4+4+1=21. Les cinq observations ne multiplient pas le nombre de paramètres.</p>
 </details>
 </div></article>
@@ -139,7 +139,7 @@ apres = <span class="hljs-built_in">float</span>(perte(modele(X), y).detach())
 </div></article>
 <article class="slide-card" id="slide-17" aria-labelledby="slide-label-17" hidden><p class="question-kicker" id="slide-label-17">PyTorch <span class="pill">17 / 27</span></p><div class="prose">
 <h2 id="correction--observer-laccumulation-des-gradients">Correction — Observer l'accumulation des gradients</h2>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <p>La variable reste à 2 ; seuls ses gradients s'accumulent.</p>
 <pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> torch
 w = torch.tensor(<span class="hljs-number">2.</span>, requires_grad=<span class="hljs-literal">True</span>)
@@ -170,7 +170,7 @@ w.grad = <span class="hljs-literal">None</span>
 </div></article>
 <article class="slide-card" id="slide-19" aria-labelledby="slide-label-19" hidden><p class="question-kicker" id="slide-label-19">PyTorch <span class="pill">19 / 27</span></p><div class="prose">
 <h2 id="correction--corriger-et-contr%C3%B4ler-un-entra%C3%AEnement">Correction — Corriger et contrôler un entraînement</h2>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <p>La fonction fournie applique la séquence et garde le meilleur état.</p>
 <pre tabindex="0"><code class="language-python"><span class="hljs-keyword">from</span> parcours <span class="hljs-keyword">import</span> preparer, entrainer
 d = preparer()
@@ -234,7 +234,7 @@ r = entrainer(d[<span class="hljs-string">&#x27;Z&#x27;</span>], d[<span class="
 <p>A. (3,4) ; B. (4,3) ; C. (3,3) ; D. (4,4).</p>
 <p><strong>2. BCEWithLogitsLoss reçoit</strong></p>
 <p>A. les logits ; B. les décisions arrondies ; C. la matrice de confusion ; D. une sigmoïde déjà appliquée.</p>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <ol>
 <li>
 <p><strong>B</strong> : les sorties sont la première dimension des poids PyTorch</p>
@@ -253,7 +253,7 @@ r = entrainer(d[<span class="hljs-string">&#x27;Z&#x27;</span>], d[<span class="
 <p>A. la création des étiquettes ; B. une nouvelle standardisation ; C. la sélection du test ; D. la mise à jour des paramètres.</p>
 <p><strong>5. Le meilleur état du projet est choisi sur</strong></p>
 <p>A. la dernière ligne du CSV ; B. la perte de validation ; C. l'exactitude test ; D. le nombre de paramètres seul.</p>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <ol start="3">
 <li>
 <p><strong>C</strong> : il remonte les dépendances du calcul</p>

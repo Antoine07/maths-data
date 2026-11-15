@@ -101,7 +101,7 @@ moyenne, echelle = ajuster_echelle(train)
 </div></article>
 <article class="slide-card" id="slide-15" aria-labelledby="slide-label-15" hidden><p class="question-kicker" id="slide-label-15">Préparation des données <span class="pill">15 / 27</span></p><div class="prose">
 <h2 id="correction--rep%C3%A9rer-une-fuite-de-cible">Correction — Repérer une fuite de cible</h2>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <p>Les entrées sont température, occupation et équipements. La consommation détermine directement la classe : l'inclure donnerait la réponse au modèle. Le jour identifie les lignes et fixe les partitions chronologiques ; il n'entre pas dans les caractéristiques retenues pour cette expérience.</p>
 </details>
 </div></article>
@@ -121,7 +121,7 @@ moyenne, echelle = ajuster_echelle(train)
 </div></article>
 <article class="slide-card" id="slide-17" aria-labelledby="slide-label-17" hidden><p class="question-kicker" id="slide-label-17">Préparation des données <span class="pill">17 / 27</span></p><div class="prose">
 <h2 id="correction--transformer-une-journ%C3%A9e-inconnue">Correction — Transformer une journée inconnue</h2>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <p>La moyenne est (12,2,2), les écarts-types sont (2,1,0), donc les échelles retenues sont (2,1,1). La nouvelle journée devient (4,0,0).</p>
 <pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 <span class="hljs-keyword">from</span> parcours <span class="hljs-keyword">import</span> ajuster_echelle
@@ -148,7 +148,7 @@ mu, s = ajuster_echelle(X)
 </div></article>
 <article class="slide-card" id="slide-19" aria-labelledby="slide-label-19" hidden><p class="question-kicker" id="slide-label-19">Préparation des données <span class="pill">19 / 27</span></p><div class="prose">
 <h2 id="correction--r%C3%A9parer-une-pr%C3%A9paration-globale">Correction — Réparer une préparation globale</h2>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <p>La préparation du projet expose les paramètres appris et permet de les contrôler.</p>
 <pre tabindex="0"><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 <span class="hljs-keyword">from</span> parcours <span class="hljs-keyword">import</span> preparer, PARTITIONS
@@ -212,7 +212,7 @@ data = preparer()
 <p>A. le test ; B. la validation seule ; C. l'apprentissage ; D. chaque requête.</p>
 <p><strong>2. Une colonne constante exige</strong></p>
 <p>A. une division par zéro ; B. une convention explicite ou un retrait cohérent ; C. une nouvelle cible ; D. un mélange des partitions.</p>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <ol>
 <li>
 <p><strong>C</strong> : les transformations sont ajustées sur l'apprentissage</p>
@@ -231,7 +231,7 @@ data = preparer()
 <p>A. toujours un bug ; B. une probabilité ; C. nécessairement interdite ; D. possible.</p>
 <p><strong>5. Le test sert à</strong></p>
 <p>A. choisir le meilleur pas ; B. réajuster les centres ; C. établir le bilan après les choix ; D. définir les classes.</p>
-<details><summary>Afficher la correction</summary>
+<details class="public-correction"><summary>Afficher la correction</summary>
 <ol start="3">
 <li>
 <p><strong>A</strong> : il est défini avant le bilan de test</p>

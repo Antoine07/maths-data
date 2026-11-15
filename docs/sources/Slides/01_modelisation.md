@@ -29,15 +29,30 @@ Utilisez la fonction `plot.scatter`
 
 ### **Trouver un modèle linéaire** page 3/6
 
-On cherche une fonction :
+On cherche une fonction affine qui approche au mieux les mesures :
 
 $$
 T(t) = a t + b
 $$
 
-Utiliser **NumPy `np.polyfit`** pour estimer (a) et (b), droite de régression linéaire.
+La fonction **`np.polyfit(x, y, degré)`** calcule les coefficients du polynôme qui ajuste au mieux les points $(x_i,y_i)$, au sens des moindres carrés : elle minimise la somme des carrés des écarts verticaux entre les mesures et le modèle.
 
-`np.polyfit(x, y, 1)` où 1 est le degré du pôlynome.
+Dans cet exemple :
+
+```python
+t = np.arange(1, 31)       # les jours : variable x
+a, b = np.polyfit(t, T, 1) # les températures : variable y
+```
+
+Le dernier argument, **`1`**, est le degré du polynôme demandé. Un polynôme de degré 1 s'écrit $a t+b$ : c'est une droite. `np.polyfit` renvoie ses coefficients dans l'ordre des puissances décroissantes, donc ici `[a, b]` : d'abord la pente, puis l'ordonnée à l'origine.
+
+On peut ensuite calculer les températures prédites par cette droite :
+
+```python
+T_modele = a * t + b
+```
+
+Ainsi, `1` ne désigne ni le nombre de données ni le nombre de variables : il demande simplement un modèle de degré 1. Avec `2`, NumPy ajusterait une parabole de la forme $c t^2+a t+b$.
 
 ---
 

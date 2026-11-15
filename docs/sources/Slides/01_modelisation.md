@@ -114,23 +114,22 @@ $$
 
 ## **À vous — Transformer le modèle pour l'ajuster**
 
-On cherche à transformer le modèle $T(t)=20+60e^{-kt}$ pour pouvoir ajuster une droite avec `np.polyfit(t, y, 1)`. Complétez les étapes sans ouvrir la correction.
+À partir du modèle $T(t)=20+60e^{-kt}$, trouvez une transformation qui permet d'ajuster une droite avec `np.polyfit(t, y, 1)`.
 
-### Guide de calcul
+**Indice :** commencez par isoler l'écart à la température ambiante, puis examinez l'exponentielle.
 
-1. **Isoler l'écart à la température ambiante.** Le modèle contient un terme constant de 20 °C. Quelle opération permet de faire apparaître seul le terme exponentiel ? Écrivez l'égalité obtenue.
-2. **Faire descendre $t$ de l'exposant.** Quelle fonction permet d'annuler l'exponentielle ? Appliquez-la aux deux membres, puis utilisez $\ln(ab)=\ln(a)+\ln(b)$ et $\ln(e^u)=u$.
-3. **Reconnaître une droite.** Comparez votre expression à $y=ax+b$. Quelle expression devez-vous appeler `y` ? Que représentent la pente et l'ordonnée à l'origine ?
-4. **Préparer l'ajustement.** Complétez le code avec votre expression de `y`, puis estimez la pente et l'ordonnée à l'origine :
+1. Déterminez la variable transformée `y` et justifiez votre choix.
+2. Ajustez la droite, puis reliez sa pente et son ordonnée à l'origine aux paramètres du modèle.
+3. Tracez les mesures et le modèle exponentiel obtenu.
+
+Pour démarrer, complétez le code :
 
 ```python
 y = ...
 pente, intercept = np.polyfit(t, y, 1)
 ```
 
-5. **Revenir au modèle de température.** À partir de `pente` et `intercept`, retrouvez $k$ et $T_0$. Tracez les mesures avec `plt.scatter`, puis le modèle obtenu avec `plt.plot`.
-
-Vérifiez que les températures transformées permettent bien de calculer un logarithme. La correction détaillée se trouve sur la diapositive suivante.
+Vérifiez que la transformation est définie pour toutes les mesures. La correction détaillée se trouve sur la diapositive suivante.
 
 ---
 

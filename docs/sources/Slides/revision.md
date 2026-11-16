@@ -76,7 +76,7 @@ Sans calculatrice, simplifiez chaque expression et justifiez les transformations
 3. **Factoriser :** $6x^2+9x$.
 4. **Simplifier :** $\dfrac{x^2-9}{x-3}$, en précisant la valeur interdite.
 
-<details><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 
 1. $5x-3+2x+8=7x+5$.
 2. $3(2x-5)-2(x+1)=6x-15-2x-2=4x-17$.
@@ -192,7 +192,7 @@ Un **témoin** est ici l'entier qui rend vraie l'écriture « $a+b = 2 \times$ u
 
 </details>
 
-<details><summary>Correction · Une preuve pour tous les entiers</summary>
+<details hidden class="public-correction"><summary>Correction · Une preuve pour tous les entiers</summary>
 
 Comme $a$ et $b$ sont pairs, il existe $k,\ell \in \mathbb{Z}$ tels que $a=2k$ et $b=2\ell$. Alors :
 
@@ -233,7 +233,7 @@ Dans un environnement **Lean 4 avec Mathlib**, retrouver les deux témoins, choi
 
 **Livrable :** une preuve acceptée par Lean, sans `sorry` ni ajout d'axiome. `sorry` est un trou de preuve : un fichier accepté avec cet avertissement ne suffit pas à terminer la démonstration.
 
-<details><summary>Correction · Le fichier Lean complet</summary>
+<details hidden class="public-correction"><summary>Correction · Le fichier Lean complet</summary>
 
 ```lean
 import Mathlib
@@ -412,7 +412,7 @@ Le carré du dénominateur vaut $5+2\sqrt6$. Quelle expression lui est conjugué
 
 </details>
 
-<details><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 
 Le dénominateur est strictement positif. En développant son carré :
 
@@ -456,7 +456,7 @@ Après avoir élevé au carré, simplifier la fraction par 2. Utiliser ensuite l
 
 </details>
 
-<details><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 
 Comme $\sqrt3+1>0$, le quotient est défini. On calcule :
 
@@ -496,7 +496,7 @@ Commencer par simplifier chaque racine. Vérifier que le dénominateur ne s'annu
 
 </details>
 
-<details><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 
 On a $\sqrt{12}=2\sqrt3$ et $\sqrt8=2\sqrt2$. Le dénominateur vaut donc :
 
@@ -535,7 +535,7 @@ Le carré du dénominateur vaut $7-2\sqrt{10}$. Le produit avec son conjugué fa
 
 </details>
 
-<details><summary>Afficher la correction</summary>
+<details hidden class="public-correction"><summary>Afficher la correction</summary>
 
 Comme $\sqrt5>\sqrt2$, le dénominateur est strictement positif. Le carré d'une différence donne :
 
@@ -768,7 +768,7 @@ Chercher dans chaque terme ce qui s'annule entre deux lignes successives.
 
 # Correction · Les quatre sommes
 
-<details><summary>Afficher une correction possible</summary>
+<details hidden class="public-correction"><summary>Afficher une correction possible</summary>
 
 1. $\displaystyle \frac1{k(k+1)}=\frac1k-\frac1{k+1}$, donc $\displaystyle S_n=1-\frac1{n+1}=\frac{n}{n+1}$.
 2. $k\,k!=(k+1)!-k!$, donc $\displaystyle U_n=(n+1)!-1$.
@@ -791,7 +791,7 @@ $$
 2. Écrire les premiers termes et repérer ceux qui se compensent.
 3. Donner les quelques termes qui restent, puis simplifier.
 
-<details><summary>Correction guidée</summary>
+<details hidden class="public-correction"><summary>Correction guidée</summary>
 
 La décomposition donne :
 
@@ -834,12 +834,22 @@ En NumPy, `np.prod([0.9, 0.8, 0.95])` calcule ce produit.
 1. Développer puis calculer $\displaystyle P=\prod_{k=1}^{4}(k+1)$. Écrire le résultat avec une factorielle.
 2. Trois mesures indépendantes ont les probabilités de fiabilité $0{,}9$, $0{,}8$ et $0{,}95$. Calculer la probabilité qu'elles soient toutes fiables, puis vérifier le calcul avec `np.prod`.
 
-<details><summary>Afficher une correction possible</summary>
+<details hidden class="public-correction"><summary>Afficher une correction possible</summary>
 
 1. $\displaystyle P=2\times3\times4\times5=5!=120$.
 2. $\displaystyle 0{,}9\times0{,}8\times0{,}95=0{,}684$. En NumPy, `np.prod([0.9, 0.8, 0.95])` renvoie `0.684`.
 
 </details>
+
+### À vous · Équations et intervalles
+
+Résolvez les deux équations. Pour l’inéquation, décrivez aussi l’ensemble des solutions avec une notation d’intervalle et représentez-le sur une droite graduée.
+
+1. Résoudre : $3x+5=20$.
+2. Résoudre : $2x-3<5$. Écrire les solutions sous la forme d’un intervalle.
+3. Résoudre : $3(x-2)+4=2x+7$.
+
+Pour la question 2, commencez par isoler $x$. Une inégalité comme $x<a$ décrit une infinité de nombres. En notation française, l’intervalle $]-\infty;a[$ rassemble tous les nombres strictement inférieurs à $a$ ; $a$ n’est pas inclus.
 
 ---
 

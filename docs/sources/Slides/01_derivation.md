@@ -269,6 +269,122 @@ On note $x$ la largeur du bloc imprimé, en centimètres, et $A(x)$ l’aire de 
 
 ---
 
+## TP — Combien de plats un restaurant doit-il proposer ?
+
+Un restaurateur envisage d'élargir sa carte. Chaque paire de plats peut demander du matériel, des ingrédients ou du temps de préparation en commun. Nous modélisons ce travail de coordination par une relation entre chaque paire.
+
+<svg class="interactive-demo-svg restaurant-pairs-svg" viewBox="0 0 400 250" role="img" aria-label="Quatre plats reliés deux à deux ; chaque trait représente une paire à coordonner.">
+  <text x="200" y="26" text-anchor="middle" class="demo-title">Les paires de plats à coordonner</text>
+  <g class="restaurant-pair-lines" stroke="#7b9a83" stroke-width="3">
+    <line x1="125" y1="85" x2="275" y2="85"/><line x1="125" y1="85" x2="125" y2="185"/><line x1="125" y1="85" x2="275" y2="185"/>
+    <line x1="275" y1="85" x2="125" y2="185"/><line x1="275" y1="85" x2="275" y2="185"/><line x1="125" y1="185" x2="275" y2="185"/>
+  </g>
+  <g fill="#fff" stroke="#245c46" stroke-width="3"><circle cx="125" cy="85" r="24"/><circle cx="275" cy="85" r="24"/><circle cx="125" cy="185" r="24"/><circle cx="275" cy="185" r="24"/></g>
+  <g text-anchor="middle" dominant-baseline="central" class="demo-caption" fill="#183d2e"><text x="125" y="85">A</text><text x="275" y="85">B</text><text x="125" y="185">C</text><text x="275" y="185">D</text></g>
+</svg>
+
+### Partie 1 — Compter les relations
+
+1. Combien de paires de plats apparaissent sur le dessin ?
+2. Si l'on ajoute un cinquième plat, combien de nouvelles relations apparaît-il ?
+3. Avec $x$ plats, combien chaque plat possède-t-il de relations potentielles ?
+4. En déduire le nombre total de paires $R(x)$. Justifier pourquoi une division par 2 est nécessaire.
+
+### Partie 2 — Traduire les relations en coût
+
+On suppose que chaque paire entraîne un coût moyen de 6 unités.
+
+5. Écrire le coût total $C(x)$ en fonction du nombre de paires.
+6. Développer et réduire l'expression obtenue.
+7. Calculer le coût associé à 5, 10 et 15 plats.
+
+---
+
+## TP — Mesurer le coût d'un plat supplémentaire
+
+Le restaurateur demande : *« Si j'ajoute un plat, de combien augmente le coût de coordination ? »* On commence par un changement fini, avec un nombre entier de plats.
+
+### Partie 3 — De la différence à la dérivée
+
+8. Calculer $C(6)-C(5)$ puis $C(11)-C(10)$.
+9. Le coût supplémentaire est-il identique dans les deux cas ? Que suggèrent ces calculs sur l'évolution du coût ?
+10. Développer et réduire $C(x+1)-C(x)$. Calculer aussi $C'(x)$, puis comparer ces deux mesures de variation.
+
+<div class="interactive-math-demo restaurant-cost-demo" data-restaurant-cost>
+  <div class="interactive-demo-controls">
+    <label>Nombre de plats au départ <output data-restaurant-cost-x-label>8</output>
+      <input type="range" min="1" max="20" step="1" value="8" data-restaurant-cost-x aria-label="Nombre de plats au départ, de 1 à 20">
+    </label>
+  </div>
+  <div class="restaurant-readouts" aria-live="polite">
+    <div><span>Coût actuel</span><strong data-restaurant-cost-now>168</strong></div>
+    <div><span>Coût avec un plat de plus</span><strong data-restaurant-cost-next>216</strong></div>
+    <div><span>Coût supplémentaire</span><strong data-restaurant-cost-delta>48</strong></div>
+  </div>
+  <p class="demo-caption">Déplace le curseur et compare les deux coûts. Vérifie tes calculs avant de poursuivre.</p>
+</div>
+
+Pour étudier une variation très petite, on regarde le taux :
+
+$$
+\frac{C(x+h)-C(x)}{h}.
+$$
+
+Quand $h$ tend vers zéro, ce taux devient la dérivée $C'(x)$. Elle décrit la pente du modèle continu à cet endroit. Pour l'ajout exact d'un plat, qui est entier, on utilise la différence $C(x+1)-C(x)$.
+
+---
+
+## TP — Rechercher un nombre de plats avantageux
+
+Proposer davantage de plats peut aussi attirer des clients. On suppose que chaque plat apporte un bénéfice de diversité de 60 unités.
+
+### Parties 4 et 5 — Construire le bénéfice net
+
+11. Écrire la fonction $B(x)$ qui modélise ce bénéfice de diversité.
+12. Calculer $B'(x)$. Que représente cette dérivée ?
+13. Le bénéfice net $A(x)$ est le bénéfice de diversité moins le coût de coordination. Écrire $A(x)$ en fonction de $B(x)$ et $C(x)$.
+14. Développer et réduire pour obtenir une expression polynomiale de $A(x)$.
+15. Calculer $A'(x)$.
+16. Résoudre $A'(x)=0$. Que peut indiquer cette valeur sur le bénéfice net ?
+
+<div class="interactive-math-demo restaurant-opt-demo" data-restaurant-opt>
+  <div class="interactive-demo-controls">
+    <label>Nombre de plats dans le modèle continu <output data-restaurant-opt-x-label>8</output>
+      <input type="range" min="0" max="21" step="0.1" value="8" data-restaurant-opt-x aria-label="Nombre continu de plats, de zéro à vingt et un">
+    </label>
+  </div>
+  <svg class="interactive-demo-svg restaurant-opt-svg" viewBox="0 0 800 370" role="img" aria-label="Courbe du bénéfice net selon le nombre de plats ; le point suit le curseur.">
+    <text x="400" y="25" text-anchor="middle" class="demo-title">Bénéfice net du modèle continu</text>
+    <path d="M100 300H700M100 60V300" class="demo-axis"/>
+    <path d="M100 300H700M100 240H700M100 180H700M100 120H700M100 60H700M200 60V300M300 60V300M400 60V300M500 60V300M600 60V300M700 60V300" class="demo-grid"/>
+    <path d="" fill="none" stroke="#245c46" stroke-width="4" data-restaurant-opt-curve/>
+    <line x1="328.6" y1="60" x2="328.6" y2="300" stroke="#d8894a" stroke-dasharray="6 6" data-restaurant-opt-guide/>
+    <circle cx="328.6" cy="80" r="8" fill="#e66f51" data-restaurant-opt-point/>
+    <text x="100" y="325" text-anchor="middle" class="demo-caption">0</text><text x="300" y="325" text-anchor="middle" class="demo-caption">7</text><text x="500" y="325" text-anchor="middle" class="demo-caption">14</text><text x="700" y="325" text-anchor="middle" class="demo-caption">21 plats</text>
+    <text x="90" y="304" text-anchor="end" class="demo-caption">0</text><text x="90" y="64" text-anchor="end" class="demo-caption">330</text>
+    <text x="400" y="355" text-anchor="middle" class="demo-caption">Bénéfice net (unités)</text>
+  </svg>
+  <p class="interactive-demo-readout" data-restaurant-opt-readout aria-live="polite">À 8 plats : bénéfice net 312 unités ; dérivée +15. Le bénéfice net augmente localement.</p>
+</div>
+
+---
+
+## TP — Interpréter et discuter le modèle
+
+Le modèle continu donne une valeur de $x$ qui peut ne pas être entière. Dans la réalité, le restaurant doit proposer un nombre entier de plats.
+
+### Partie 6 — Revenir à la situation réelle
+
+17. Calculer $A(10)$ et $A(11)$.
+18. Quel(s) nombre(s) entier(s) de plats donne(nt) le bénéfice net le plus élevé ? Comparer ce résultat à l’optimum du modèle continu.
+19. Citer au moins deux hypothèses simplificatrices du modèle. Quelles données réelles faudrait-il recueillir pour aider le restaurateur à décider ?
+
+**Conclusion attendue :** distinguer le résultat du modèle continu, la contrainte de nombre entier et la décision réelle. La dérivée aide à repérer une zone favorable ; elle ne remplace pas la vérification des valeurs entières ni les données du restaurant.
+
+**Lien avec la data science :** on construit une fonction de coût et un bénéfice, puis on étudie la dérivée pour rechercher un choix favorable. La même démarche prépare à l'optimisation d'une fonction de perte et à la lecture d'un gradient.
+
+---
+
 ## Exemple 3 : Composition
 
 $$f(x) = e^{3x}$$

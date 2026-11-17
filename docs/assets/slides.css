@@ -204,3 +204,5 @@ mjx-container svg{width:auto!important;max-width:100%;height:auto;display:block;
   details{break-inside:avoid}.table-wrap{overflow:visible}article{print-color-adjust:exact;-webkit-print-color-adjust:exact}
   @page{size:A4;margin:16mm}
 }
+
+.restaurant-pairs-svg{max-width:440px}.restaurant-readouts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}.restaurant-readouts div{display:grid;gap:6px;padding:16px;border:1px solid var(--line);border-radius:12px;background:#fff}.restaurant-readouts span{font-size:.78rem;color:var(--muted)}.restaurant-readouts strong{font-size:1.5rem;color:var(--green,#245c46);font-variant-numeric:tabular-nums}.restaurant-opt-svg{max-width:860px}.restaurant-cost-demo input,.restaurant-opt-demo input{width:100%}@media(max-width:640px){.restaurant-readouts{grid-template-columns:1fr}.restaurant-opt-svg{min-width:680px}}

@@ -409,6 +409,57 @@
     }).observe(root);
     render();
   });
+  document.querySelectorAll('[data-restaurant-cost]').forEach(root => {
+    const slider = root.querySelector('[data-restaurant-cost-x]');
+    const label = root.querySelector('[data-restaurant-cost-x-label]');
+    const current = root.querySelector('[data-restaurant-cost-now]');
+    const next = root.querySelector('[data-restaurant-cost-next]');
+    const delta = root.querySelector('[data-restaurant-cost-delta]');
+    const cost = x => 3 * x * x - 3 * x;
+    function render() {
+      const x = Number(slider.value);
+      label.textContent = formatFr(x, 0);
+      current.textContent = formatFr(cost(x), 0);
+      next.textContent = formatFr(cost(x + 1), 0);
+      delta.textContent = formatFr(cost(x + 1) - cost(x), 0);
+    }
+    slider.addEventListener('input', render);
+    render();
+  });
+  document.querySelectorAll('[data-restaurant-opt]').forEach(root => {
+    const slider = root.querySelector('[data-restaurant-opt-x]');
+    const label = root.querySelector('[data-restaurant-opt-x-label]');
+    const readout = root.querySelector('[data-restaurant-opt-readout]');
+    const curve = root.querySelector('[data-restaurant-opt-curve]');
+    const marker = root.querySelector('[data-restaurant-opt-point]');
+    const guide = root.querySelector('[data-restaurant-opt-guide]');
+    const benefit = x => -3 * x * x + 63 * x;
+    function render() {
+      const x = Number(slider.value);
+      const slope = 63 - 6 * x;
+      const px = 100 + 600 * x / 21;
+      const py = 300 - 240 * benefit(x) / 360;
+      const points = Array.from({ length: 211 }, (_, i) => {
+        const value = 21 * i / 210;
+        const xSvg = 100 + 600 * value / 21;
+        const ySvg = 300 - 240 * benefit(value) / 360;
+        return `${i ? 'L' : 'M'}${xSvg.toFixed(2)},${ySvg.toFixed(2)}`;
+      }).join(' ');
+      curve.setAttribute('d', points);
+      marker.setAttribute('cx', px.toFixed(2));
+      marker.setAttribute('cy', py.toFixed(2));
+      guide.setAttribute('x1', px.toFixed(2));
+      guide.setAttribute('x2', px.toFixed(2));
+      label.textContent = formatFr(x, 1).replace(/,0$/, '');
+      const trend = Math.abs(slope) < 0.05
+        ? 'Le bénéfice net est stationnaire à cet endroit.'
+        : slope > 0 ? 'Le bénéfice net augmente localement.' : 'Le bénéfice net diminue localement.';
+      const sign = slope > 0 ? '+' : slope < 0 ? '−' : '';
+      readout.textContent = `À ${label.textContent} plats : bénéfice net ${formatFr(benefit(x))} unités ; dérivée ${sign}${formatFr(Math.abs(slope))}. ${trend}`;
+    }
+    slider.addEventListener('input', render);
+    render();
+  });
   document.querySelectorAll('[data-clock-demo]').forEach(root => {
     const slider = root.querySelector('[data-clock-hour]');
     const toggle = root.querySelector('[data-clock-toggle]');

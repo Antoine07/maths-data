@@ -288,6 +288,73 @@
     }).observe(root);
     render();
   });
+  document.querySelectorAll('[data-derivative-demo]').forEach(root => {
+    const slider = root.querySelector('[data-derivative-position]');
+    const toggle = root.querySelector('[data-derivative-toggle]');
+    const reset = root.querySelector('[data-derivative-reset]');
+    const curve = root.querySelector('[data-derivative-curve]');
+    const tangent = root.querySelector('[data-derivative-tangent]');
+    const point = root.querySelector('[data-derivative-point]');
+    const positionLabel = root.querySelector('[data-derivative-position-label]');
+    const readout = root.querySelector('[data-derivative-readout]');
+    let a = Number(slider.value);
+    let direction = 1;
+    let running = false;
+    let frame = 0;
+    let lastFrame = 0;
+    const toX = x => 450 + 160 * x;
+    const toY = y => 290 - 95 * y;
+    function render() {
+      const points = Array.from({ length: 161 }, (_, i) => {
+        const x = -2 + 4 * i / 160;
+        return `${i ? 'L' : 'M'}${toX(x).toFixed(2)},${toY(x * x / 2).toFixed(2)}`;
+      }).join(' ');
+      curve.setAttribute('d', points);
+      const x1 = Math.max(-2, a - 0.8);
+      const x2 = Math.min(2, a + 0.8);
+      const tangentY = x => a * x - a * a / 2;
+      tangent.setAttribute('x1', toX(x1).toFixed(2));
+      tangent.setAttribute('y1', toY(tangentY(x1)).toFixed(2));
+      tangent.setAttribute('x2', toX(x2).toFixed(2));
+      tangent.setAttribute('y2', toY(tangentY(x2)).toFixed(2));
+      point.setAttribute('cx', toX(a).toFixed(2));
+      point.setAttribute('cy', toY(a * a / 2).toFixed(2));
+      positionLabel.textContent = `a = ${formatFr(a)}`;
+      readout.textContent = `Au point a = ${formatFr(a)} : f(a) = ${formatFr(a * a / 2)} et la pente de la tangente f′(a) = ${formatFr(a)}.`;
+    }
+    function stop() {
+      running = false;
+      lastFrame = 0;
+      cancelAnimationFrame(frame);
+      toggle.textContent = '▶ Animer';
+      toggle.setAttribute('aria-pressed', 'false');
+    }
+    function tick(now) {
+      if (!running) return;
+      if (lastFrame) {
+        a += direction * (now - lastFrame) * 0.0005;
+        if (a > 2) { a = 4 - a; direction = -1; }
+        if (a < -2) { a = -4 - a; direction = 1; }
+        slider.value = String(a);
+      }
+      lastFrame = now;
+      render();
+      frame = requestAnimationFrame(tick);
+    }
+    slider.addEventListener('input', () => { a = Number(slider.value); render(); });
+    toggle.addEventListener('click', () => {
+      if (running) return stop();
+      running = true;
+      toggle.textContent = 'Ⅱ Pause';
+      toggle.setAttribute('aria-pressed', 'true');
+      frame = requestAnimationFrame(tick);
+    });
+    reset.addEventListener('click', () => { stop(); a = -1.5; direction = 1; slider.value = String(a); render(); });
+    if ('IntersectionObserver' in window) new IntersectionObserver(entries => {
+      if (!entries[0].isIntersecting) stop();
+    }).observe(root);
+    render();
+  });
   document.querySelectorAll('[data-clock-demo]').forEach(root => {
     const slider = root.querySelector('[data-clock-hour]');
     const toggle = root.querySelector('[data-clock-toggle]');

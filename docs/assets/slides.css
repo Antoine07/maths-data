@@ -151,6 +151,10 @@ a[href*="Corrections/"]{display:none!important}
 .demo-point{fill:#b7653d;stroke:#fff;stroke-width:3}
 .cumul-area{fill:#a9cf9e;fill-opacity:.58;stroke:#588758;stroke-width:2}
 .cumul-demo-svg{max-width:900px}
+.derivative-demo-controls{grid-template-columns:minmax(220px,1fr) auto;max-width:760px;margin:0 auto}
+.derivative-demo-svg{max-width:900px}
+.demo-derivative-curve{fill:none;stroke:#638b65;stroke-width:4;stroke-linecap:round}
+.demo-tangent-line{stroke:#b7653d;stroke-width:3;stroke-linecap:round}
 @media(max-width:720px){.interactive-demo-controls{grid-template-columns:1fr 1fr}.interactive-demo-buttons{grid-column:1/-1}}
 @media(max-width:480px){.interactive-math-demo{padding:12px}.interactive-demo-controls{grid-template-columns:1fr}.interactive-demo-buttons{grid-column:auto}.interactive-demo-svg{min-width:680px}}
 mjx-container{max-width:100%;overflow-x:auto;display:block;margin:20px 0!important}

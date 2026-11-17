@@ -26,9 +26,39 @@ Si :
 
 ## Lire une tangente et sa pente
 
-![À gauche, f(x)=x carré et sa tangente en x=1 ; à droite, la dérivée 2x. La valeur en 1 vaut 1 et la pente vaut 2.](figures/derivee-tangente.svg)
+Le point $A$ glisse sur la courbe $f(x)=\frac{x^2}{2}$. La tangente le suit : son inclinaison change et sa pente vaut $f'(a)=a$.
 
-La valeur de la fonction et la valeur de sa dérivée ne désignent pas la même quantité.
+<div class="interactive-math-demo" data-derivative-demo>
+  <div class="interactive-demo-controls derivative-demo-controls">
+    <label>Position du point <output data-derivative-position-label>a = −1,50</output>
+      <input data-derivative-position type="range" min="-2" max="2" step="0.01" value="-1.5" aria-label="Position du point sur la courbe">
+    </label>
+    <div class="interactive-demo-buttons">
+      <button class="button primary" type="button" data-derivative-toggle aria-pressed="false">▶ Animer</button>
+      <button class="button" type="button" data-derivative-reset>Repartir du début</button>
+    </div>
+  </div>
+  <p class="interactive-demo-readout" data-derivative-readout aria-live="polite">Au point a = −1,50 : f(a) = 1,13 et la pente de la tangente f′(a) = −1,50.</p>
+  <svg class="interactive-demo-svg derivative-demo-svg" viewBox="0 0 900 370" role="img" aria-label="Une parabole f de x égale x carré sur deux. Un point se déplace sur la courbe et un segment tangent pivote avec lui.">
+    <text x="450" y="28" text-anchor="middle" class="demo-title">Le point avance, la tangente pivote</text>
+    <line x1="130" y1="290" x2="770" y2="290" class="demo-axis"/>
+    <line x1="450" y1="75" x2="450" y2="300" class="demo-axis"/>
+    <path d="M130 242.5H770M130 195H770M130 147.5H770M130 100H770" class="demo-grid"/>
+    <path d="" class="demo-derivative-curve" data-derivative-curve/>
+    <line x1="0" y1="0" x2="0" y2="0" class="demo-tangent-line" data-derivative-tangent/>
+    <circle cx="0" cy="0" r="9" class="demo-point" data-derivative-point/>
+    <text x="785" y="296" class="demo-caption">x</text>
+    <text x="458" y="82" class="demo-caption">f(x)</text>
+    <text x="130" y="318" text-anchor="middle" class="demo-caption">−2</text>
+    <text x="290" y="318" text-anchor="middle" class="demo-caption">−1</text>
+    <text x="610" y="318" text-anchor="middle" class="demo-caption">1</text>
+    <text x="770" y="318" text-anchor="middle" class="demo-caption">2</text>
+    <text x="145" y="58" class="demo-equation">f(x) = x² / 2</text>
+    <text x="755" y="58" text-anchor="end" class="demo-equation">f′(a) = a</text>
+  </svg>
+</div>
+
+La valeur $f(a)$ donne la hauteur du point. La dérivée $f'(a)$ donne la pente de la tangente au même point : ces deux nombres ont des rôles différents.
 
 ---
 

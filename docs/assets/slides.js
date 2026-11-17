@@ -295,32 +295,42 @@
     const curve = root.querySelector('[data-derivative-curve]');
     const tangent = root.querySelector('[data-derivative-tangent]');
     const point = root.querySelector('[data-derivative-point]');
+    const slopeLine = root.querySelector('[data-derivative-slope]');
+    const slopePoint = root.querySelector('[data-derivative-slope-point]');
     const positionLabel = root.querySelector('[data-derivative-position-label]');
     const readout = root.querySelector('[data-derivative-readout]');
-    let a = Number(slider.value);
+    let x0 = Number(slider.value);
     let direction = 1;
     let running = false;
     let frame = 0;
     let lastFrame = 0;
-    const toX = x => 450 + 160 * x;
-    const toY = y => 290 - 95 * y;
+    const toX = x => 270 + 90 * x;
+    const toY = y => 280 - 65 * y;
+    const toSlopeX = x => 780 + 90 * x;
+    const toSlopeY = y => 280 - 50 * y;
     function render() {
       const points = Array.from({ length: 161 }, (_, i) => {
         const x = -2 + 4 * i / 160;
         return `${i ? 'L' : 'M'}${toX(x).toFixed(2)},${toY(x * x / 2).toFixed(2)}`;
       }).join(' ');
       curve.setAttribute('d', points);
-      const x1 = Math.max(-2, a - 0.8);
-      const x2 = Math.min(2, a + 0.8);
-      const tangentY = x => a * x - a * a / 2;
+      const slope = x0;
+      const intercept = -x0 * x0 / 2;
+      const x1 = Math.max(-2, x0 - 0.8);
+      const x2 = Math.min(2, x0 + 0.8);
+      const tangentY = x => slope * x + intercept;
       tangent.setAttribute('x1', toX(x1).toFixed(2));
       tangent.setAttribute('y1', toY(tangentY(x1)).toFixed(2));
       tangent.setAttribute('x2', toX(x2).toFixed(2));
       tangent.setAttribute('y2', toY(tangentY(x2)).toFixed(2));
-      point.setAttribute('cx', toX(a).toFixed(2));
-      point.setAttribute('cy', toY(a * a / 2).toFixed(2));
-      positionLabel.textContent = `a = ${formatFr(a)}`;
-      readout.textContent = `Au point a = ${formatFr(a)} : f(a) = ${formatFr(a * a / 2)} et la pente de la tangente f′(a) = ${formatFr(a)}.`;
+      point.setAttribute('cx', toX(x0).toFixed(2));
+      point.setAttribute('cy', toY(x0 * x0 / 2).toFixed(2));
+      slopeLine.setAttribute('d', `M${toSlopeX(-2)} ${toSlopeY(-2)}L${toSlopeX(2)} ${toSlopeY(2)}`);
+      slopePoint.setAttribute('cx', toSlopeX(x0).toFixed(2));
+      slopePoint.setAttribute('cy', toSlopeY(slope).toFixed(2));
+      positionLabel.textContent = `x₀ = ${formatFr(x0)}`;
+      const interceptSign = intercept < 0 ? '−' : '+';
+      readout.textContent = `Au point x₀ = ${formatFr(x0)} : a = f′(x₀) = ${formatFr(slope)} ; b = ${formatFr(intercept)}. Tangente : y = ${formatFr(slope)}x ${interceptSign} ${formatFr(Math.abs(intercept))}.`;
     }
     function stop() {
       running = false;
@@ -332,16 +342,16 @@
     function tick(now) {
       if (!running) return;
       if (lastFrame) {
-        a += direction * (now - lastFrame) * 0.0005;
-        if (a > 2) { a = 4 - a; direction = -1; }
-        if (a < -2) { a = -4 - a; direction = 1; }
-        slider.value = String(a);
+        x0 += direction * (now - lastFrame) * 0.0005;
+        if (x0 > 2) { x0 = 4 - x0; direction = -1; }
+        if (x0 < -2) { x0 = -4 - x0; direction = 1; }
+        slider.value = String(x0);
       }
       lastFrame = now;
       render();
       frame = requestAnimationFrame(tick);
     }
-    slider.addEventListener('input', () => { a = Number(slider.value); render(); });
+    slider.addEventListener('input', () => { x0 = Number(slider.value); render(); });
     toggle.addEventListener('click', () => {
       if (running) return stop();
       running = true;
@@ -349,7 +359,7 @@
       toggle.setAttribute('aria-pressed', 'true');
       frame = requestAnimationFrame(tick);
     });
-    reset.addEventListener('click', () => { stop(); a = -1.5; direction = 1; slider.value = String(a); render(); });
+    reset.addEventListener('click', () => { stop(); x0 = -1.5; direction = 1; slider.value = String(x0); render(); });
     if ('IntersectionObserver' in window) new IntersectionObserver(entries => {
       if (!entries[0].isIntersecting) stop();
     }).observe(root);

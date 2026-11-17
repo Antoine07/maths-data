@@ -154,7 +154,6 @@ a[href*="Corrections/"]{display:none!important}
 .derivative-demo-controls{grid-template-columns:minmax(220px,1fr) auto;max-width:760px;margin:0 auto}
 .derivative-demo-svg{max-width:900px}
 .demo-derivative-curve{fill:none;stroke:#638b65;stroke-width:4;stroke-linecap:round}
-.demo-derivative-line{fill:none;stroke:#638b65;stroke-width:3.5;stroke-linecap:round}
 .demo-tangent-line{stroke:#b7653d;stroke-width:3;stroke-linecap:round}
 @media(max-width:720px){.interactive-demo-controls{grid-template-columns:1fr 1fr}.interactive-demo-buttons{grid-column:1/-1}}
 @media(max-width:480px){.interactive-math-demo{padding:12px}.interactive-demo-controls{grid-template-columns:1fr}.interactive-demo-buttons{grid-column:auto}.interactive-demo-svg{min-width:680px}}

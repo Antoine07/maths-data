@@ -295,8 +295,9 @@
     const curve = root.querySelector('[data-derivative-curve]');
     const tangent = root.querySelector('[data-derivative-tangent]');
     const point = root.querySelector('[data-derivative-point]');
-    const slopeLine = root.querySelector('[data-derivative-slope]');
-    const slopePoint = root.querySelector('[data-derivative-slope-point]');
+    const isolatedTangent = root.querySelector('[data-derivative-isolated-line]');
+    const isolatedPoint = root.querySelector('[data-derivative-isolated-point]');
+    const tangentEquation = root.querySelector('[data-tangent-equation]');
     const positionLabel = root.querySelector('[data-derivative-position-label]');
     const readout = root.querySelector('[data-derivative-readout]');
     let x0 = Number(slider.value);
@@ -306,8 +307,8 @@
     let lastFrame = 0;
     const toX = x => 270 + 90 * x;
     const toY = y => 280 - 65 * y;
-    const toSlopeX = x => 780 + 90 * x;
-    const toSlopeY = y => 280 - 50 * y;
+    const toRightX = x => 780 + 90 * x;
+    const toRightY = y => 280 - 50 * y;
     function render() {
       const points = Array.from({ length: 161 }, (_, i) => {
         const x = -2 + 4 * i / 160;
@@ -325,12 +326,17 @@
       tangent.setAttribute('y2', toY(tangentY(x2)).toFixed(2));
       point.setAttribute('cx', toX(x0).toFixed(2));
       point.setAttribute('cy', toY(x0 * x0 / 2).toFixed(2));
-      slopeLine.setAttribute('d', `M${toSlopeX(-2)} ${toSlopeY(-2)}L${toSlopeX(2)} ${toSlopeY(2)}`);
-      slopePoint.setAttribute('cx', toSlopeX(x0).toFixed(2));
-      slopePoint.setAttribute('cy', toSlopeY(slope).toFixed(2));
+      isolatedTangent.setAttribute('x1', toRightX(-2).toFixed(2));
+      isolatedTangent.setAttribute('y1', toRightY(tangentY(-2)).toFixed(2));
+      isolatedTangent.setAttribute('x2', toRightX(2).toFixed(2));
+      isolatedTangent.setAttribute('y2', toRightY(tangentY(2)).toFixed(2));
+      isolatedPoint.setAttribute('cx', toRightX(x0).toFixed(2));
+      isolatedPoint.setAttribute('cy', toRightY(x0 * x0 / 2).toFixed(2));
       positionLabel.textContent = `x₀ = ${formatFr(x0)}`;
       const interceptSign = intercept < 0 ? '−' : '+';
-      readout.textContent = `Au point x₀ = ${formatFr(x0)} : a = f′(x₀) = ${formatFr(slope)} ; b = ${formatFr(intercept)}. Tangente : y = ${formatFr(slope)}x ${interceptSign} ${formatFr(Math.abs(intercept))}.`;
+      const equation = `y = ${formatFr(slope)}x ${interceptSign} ${formatFr(Math.abs(intercept))}`;
+      tangentEquation.textContent = equation;
+      readout.textContent = `Au point x₀ = ${formatFr(x0)} : a = f′(x₀) = ${formatFr(slope)} ; b = ${formatFr(intercept)}. La tangente est ${equation}.`;
     }
     function stop() {
       running = false;

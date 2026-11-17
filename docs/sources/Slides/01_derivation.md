@@ -26,7 +26,7 @@ Si :
 
 ## Lire une tangente et sa pente
 
-Le point $A$ glisse sur la courbe $f(x)=\frac{x^2}{2}$. À gauche, la tangente le suit. À droite, le point correspondant se déplace sur la courbe dérivée $f'(x)=x$ : sa hauteur donne la pente $a$ de la tangente. Le terme $b$ se lit dans son équation $y=ax+b$.
+Le point $A$ glisse sur la courbe $f(x)=\frac{x^2}{2}$. À gauche, on voit le point et sa tangente sur la courbe. À droite, la même tangente est isolée : on voit sa direction changer et son équation $y=ax+b$ se met à jour.
 
 <div class="interactive-math-demo" data-derivative-demo>
   <div class="interactive-demo-controls derivative-demo-controls">
@@ -39,7 +39,7 @@ Le point $A$ glisse sur la courbe $f(x)=\frac{x^2}{2}$. À gauche, la tangente l
     </div>
   </div>
   <p class="interactive-demo-readout" data-derivative-readout aria-live="polite">Au point x₀ = −1,50 : a = f′(x₀) = −1,50 et b = −1,13. Tangente : y = −1,50x − 1,13.</p>
-  <svg class="interactive-demo-svg derivative-demo-svg" viewBox="0 0 1000 390" role="img" aria-label="À gauche, une parabole et sa tangente mobile. À droite, la dérivée de la parabole avec le point qui indique la pente a de la tangente.">
+  <svg class="interactive-demo-svg derivative-demo-svg" viewBox="0 0 1000 390" role="img" aria-label="À gauche, une parabole et sa tangente mobile. À droite, la même droite tangente isolée, qui pivote et change d'ordonnée à l'origine.">
     <text x="270" y="30" text-anchor="middle" class="demo-title">Courbe et tangente</text>
     <line x1="90" y1="280" x2="450" y2="280" class="demo-axis"/>
     <line x1="270" y1="145" x2="270" y2="290" class="demo-axis"/>
@@ -54,19 +54,20 @@ Le point $A$ glisse sur la courbe $f(x)=\frac{x^2}{2}$. À gauche, la tangente l
     <text x="360" y="307" text-anchor="middle" class="demo-caption">1</text>
     <text x="450" y="307" text-anchor="middle" class="demo-caption">2</text>
     <text x="90" y="65" class="demo-equation">f(x) = x² / 2</text>
-    <text x="780" y="30" text-anchor="middle" class="demo-title">La dérivée donne la pente</text>
+    <text x="780" y="30" text-anchor="middle" class="demo-title">La droite tangente pivote</text>
     <line x1="600" y1="280" x2="960" y2="280" class="demo-axis"/>
     <line x1="780" y1="175" x2="780" y2="375" class="demo-axis"/>
-    <path d="" class="demo-derivative-line" data-derivative-slope/>
     <path d="M600 230H960M600 330H960" class="demo-grid"/>
-    <circle cx="0" cy="0" r="8" class="demo-point" data-derivative-slope-point/>
+    <defs><clipPath id="tangent-right-clip"><rect x="600" y="180" width="360" height="200"/></clipPath></defs>
+    <line x1="600" y1="0" x2="960" y2="0" class="demo-tangent-line" data-derivative-isolated-line clip-path="url(#tangent-right-clip)"/>
+    <circle cx="0" cy="0" r="8" class="demo-point" data-derivative-isolated-point/>
     <text x="965" y="286" class="demo-caption">x</text>
-    <text x="790" y="180" class="demo-caption">f′(x)</text>
+    <text x="790" y="180" class="demo-caption">y</text>
     <text x="600" y="307" text-anchor="middle" class="demo-caption">−2</text>
     <text x="690" y="307" text-anchor="middle" class="demo-caption">−1</text>
     <text x="870" y="307" text-anchor="middle" class="demo-caption">1</text>
     <text x="960" y="307" text-anchor="middle" class="demo-caption">2</text>
-    <text x="600" y="65" class="demo-equation">f′(x) = x</text>
+    <text x="600" y="65" class="demo-equation" data-tangent-equation>y = −1,50x − 1,13</text>
   </svg>
 </div>
 

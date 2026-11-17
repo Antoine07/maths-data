@@ -31,30 +31,48 @@ Pour le scénario B, on garde la même idée : **la hauteur de la courbe indique
       <button class="button" type="button" data-cumul-reset>Repartir de 0 h</button>
     </div>
   </div>
-  <p class="interactive-demo-readout" data-cumul-readout aria-live="polite">À 0 h : rythme de 0 visiteurs/h ; cumul de 0 visiteurs.</p>
-  <svg class="interactive-demo-svg cumul-demo-svg" viewBox="0 0 1000 380" role="img" aria-label="La droite du rythme f(t)=2t et le triangle coloré représentant le cumul jusqu'au temps choisi.">
-    <text x="500" y="28" text-anchor="middle" class="demo-title">Rythme instantané et cumul par l'aire</text>
-    <line x1="120" y1="300" x2="900" y2="300" class="demo-axis"/>
-    <line x1="120" y1="300" x2="120" y2="60" class="demo-axis"/>
-    <path d="M120 240H900M120 180H900M120 120H900M120 60H900M315 60V300M510 60V300M705 60V300M900 60V300" class="demo-grid"/>
-    <text x="105" y="304" text-anchor="end" class="demo-caption">0</text>
-    <text x="105" y="244" text-anchor="end" class="demo-caption">1</text>
-    <text x="105" y="184" text-anchor="end" class="demo-caption">2</text>
-    <text x="105" y="124" text-anchor="end" class="demo-caption">3</text>
-    <text x="105" y="64" text-anchor="end" class="demo-caption">4</text>
-    <text x="120" y="324" text-anchor="middle" class="demo-caption">0</text>
-    <text x="315" y="324" text-anchor="middle" class="demo-caption">0,5</text>
-    <text x="510" y="324" text-anchor="middle" class="demo-caption">1</text>
-    <text x="705" y="324" text-anchor="middle" class="demo-caption">1,5</text>
-    <text x="900" y="324" text-anchor="middle" class="demo-caption">2 h</text>
-    <text x="30" y="75" class="demo-caption">Visiteurs/h</text>
-    <text x="510" y="354" text-anchor="middle" class="demo-caption">Temps écoulé</text>
-    <path d="M120 300L900 60" class="demo-wave"/>
-    <path d="M120 300L510 300L510 180Z" class="cumul-area" data-cumul-area/>
-    <line x1="510" y1="300" x2="510" y2="180" class="demo-cursor" data-cumul-cursor/>
-    <circle cx="510" cy="180" r="8" class="demo-point" data-cumul-point/>
-    <text x="680" y="92" class="demo-caption">Hauteur = rythme f(t)=2t</text>
-    <text x="675" y="274" class="demo-caption">Aire colorée = cumul C(t)=t²</text>
+  <p class="interactive-demo-readout" data-cumul-readout aria-live="polite">À 0 h : rythme de 0 visiteurs/h ; cumul exact de 0 visiteur ; cumul au rythme moyen de 0 visiteur.</p>
+  <svg class="interactive-demo-svg cumul-demo-svg" viewBox="0 0 1200 390" role="img" aria-label="Deux graphiques synchronisés : à gauche le rythme f(t)=2t et son aire cumulée ; à droite le cumul exact C(t)=t² comparé au cumul linéaire du rythme moyen 2t.">
+    <text x="600" y="28" text-anchor="middle" class="demo-title">Du rythme au cumul : deux lectures du même temps</text>
+    <text x="315" y="58" text-anchor="middle" class="demo-title">1. Le rythme et son aire</text>
+    <line x1="90" y1="310" x2="540" y2="310" class="demo-axis"/>
+    <line x1="90" y1="310" x2="90" y2="90" class="demo-axis"/>
+    <path d="M90 255H540M90 200H540M90 145H540M90 90H540M202.5 90V310M315 90V310M427.5 90V310M540 90V310" class="demo-grid"/>
+    <path d="M90 310L540 90" class="demo-wave"/>
+    <path d="M90 310L90 310L90 310Z" class="cumul-area" data-cumul-area/>
+    <line x1="90" y1="310" x2="90" y2="310" class="demo-cursor" data-cumul-cursor/>
+    <circle cx="90" cy="310" r="7" class="demo-point" data-cumul-point/>
+    <text x="90" y="334" text-anchor="middle" class="demo-caption">0</text>
+    <text x="202.5" y="334" text-anchor="middle" class="demo-caption">0,5</text>
+    <text x="315" y="334" text-anchor="middle" class="demo-caption">1</text>
+    <text x="427.5" y="334" text-anchor="middle" class="demo-caption">1,5</text>
+    <text x="540" y="334" text-anchor="middle" class="demo-caption">2 h</text>
+    <text x="80" y="94" text-anchor="end" class="demo-caption">4</text>
+    <text x="80" y="204" text-anchor="end" class="demo-caption">2</text>
+    <text x="80" y="314" text-anchor="end" class="demo-caption">0</text>
+    <text x="90" y="80" class="demo-caption">Visiteurs/h</text>
+    <text x="315" y="365" text-anchor="middle" class="demo-caption">Aire colorée = cumul exact</text>
+    <text x="885" y="58" text-anchor="middle" class="demo-title">2. Le cumul et son approximation moyenne</text>
+    <line x1="660" y1="310" x2="1110" y2="310" class="demo-axis"/>
+    <line x1="660" y1="310" x2="660" y2="90" class="demo-axis"/>
+    <path d="M660 255H1110M660 200H1110M660 145H1110M660 90H1110M772.5 90V310M885 90V310M997.5 90V310M1110 90V310" class="demo-grid"/>
+    <path d="M660 310C810 310 960 236.67 1110 90" class="demo-wave"/>
+    <path d="M660 310L1110 90" class="cumul-average-line"/>
+    <line x1="660" y1="310" x2="660" y2="310" class="demo-cursor" data-cumul-right-cursor/>
+    <circle cx="660" cy="310" r="7" class="demo-point" data-cumul-exact-point/>
+    <circle cx="660" cy="310" r="6" class="cumul-average-point" data-cumul-average-point/>
+    <text x="660" y="334" text-anchor="middle" class="demo-caption">0</text>
+    <text x="772.5" y="334" text-anchor="middle" class="demo-caption">0,5</text>
+    <text x="885" y="334" text-anchor="middle" class="demo-caption">1</text>
+    <text x="997.5" y="334" text-anchor="middle" class="demo-caption">1,5</text>
+    <text x="1110" y="334" text-anchor="middle" class="demo-caption">2 h</text>
+    <text x="650" y="94" text-anchor="end" class="demo-caption">4</text>
+    <text x="650" y="204" text-anchor="end" class="demo-caption">2</text>
+    <text x="650" y="314" text-anchor="end" class="demo-caption">0</text>
+    <text x="660" y="80" class="demo-caption">Visiteurs cumulés</text>
+    <text x="755" y="120" class="demo-caption">C(t)=t²</text>
+    <text x="955" y="245" class="demo-caption">C_moy(t) = 2t</text>
+    <text x="885" y="365" text-anchor="middle" class="demo-caption">Vert : cumul exact · pointillé : cumul au rythme moyen</text>
   </svg>
 </div>
 

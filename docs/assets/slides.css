@@ -150,7 +150,9 @@ a[href*="Corrections/"]{display:none!important}
 .demo-cursor{stroke:#b7653d;stroke-width:1.7;stroke-dasharray:5 5}
 .demo-point{fill:#b7653d;stroke:#fff;stroke-width:3}
 .cumul-area{fill:#a9cf9e;fill-opacity:.58;stroke:#588758;stroke-width:2}
-.cumul-demo-svg{max-width:900px}
+.cumul-demo-svg{max-width:1100px}
+.cumul-average-line{fill:none;stroke:#d28a3b;stroke-width:3;stroke-dasharray:9 7}
+.cumul-average-point{fill:#d28a3b;stroke:#fff;stroke-width:3}
 .derivative-demo-controls{grid-template-columns:minmax(220px,1fr) auto;max-width:760px;margin:0 auto}
 .derivative-demo-svg{max-width:900px}
 .demo-derivative-curve{fill:none;stroke:#638b65;stroke-width:4;stroke-linecap:round}

@@ -156,6 +156,9 @@
     const area = root.querySelector('[data-cumul-area]');
     const cursor = root.querySelector('[data-cumul-cursor]');
     const point = root.querySelector('[data-cumul-point]');
+    const rightCursor = root.querySelector('[data-cumul-right-cursor]');
+    const exactPoint = root.querySelector('[data-cumul-exact-point]');
+    const averagePoint = root.querySelector('[data-cumul-average-point]');
     const timeLabel = root.querySelector('[data-cumul-time-label]');
     const readout = root.querySelector('[data-cumul-readout]');
     let time = Number(slider.value);
@@ -165,19 +168,32 @@
     function render() {
       const rate = 2 * time;
       const cumulative = time * time;
-      const x = 120 + 390 * time;
-      const y = 300 - 60 * rate;
-      area.setAttribute('d', `M120 300L${x.toFixed(2)} 300L${x.toFixed(2)} ${y.toFixed(2)}Z`);
+      const averageCumulative = 2 * time;
+      const x = 90 + 225 * time;
+      const y = 310 - 55 * rate;
+      area.setAttribute('d', `M90 310L${x.toFixed(2)} 310L${x.toFixed(2)} ${y.toFixed(2)}Z`);
       cursor.setAttribute('x1', x.toFixed(2));
       cursor.setAttribute('x2', x.toFixed(2));
-      cursor.setAttribute('y1', '300');
+      cursor.setAttribute('y1', '310');
       cursor.setAttribute('y2', y.toFixed(2));
       point.setAttribute('cx', x.toFixed(2));
       point.setAttribute('cy', y.toFixed(2));
+      const rightX = 660 + 225 * time;
+      const exactY = 310 - 55 * cumulative;
+      const averageY = 310 - 55 * averageCumulative;
+      rightCursor.setAttribute('x1', rightX.toFixed(2));
+      rightCursor.setAttribute('x2', rightX.toFixed(2));
+      rightCursor.setAttribute('y1', '310');
+      rightCursor.setAttribute('y2', exactY.toFixed(2));
+      exactPoint.setAttribute('cx', rightX.toFixed(2));
+      exactPoint.setAttribute('cy', exactY.toFixed(2));
+      averagePoint.setAttribute('cx', rightX.toFixed(2));
+      averagePoint.setAttribute('cy', averageY.toFixed(2));
       timeLabel.textContent = `${formatFr(time)} h`;
       const rateUnit = Math.abs(rate - 1) < 1e-9 ? 'visiteur/h' : 'visiteurs/h';
       const visitorUnit = Math.abs(cumulative - 1) < 1e-9 ? 'visiteur' : 'visiteurs';
-      readout.textContent = `À ${formatFr(time)} h : rythme de ${formatFr(rate)} ${rateUnit} ; cumul de ${formatFr(cumulative)} ${visitorUnit}.`;
+      const averageUnit = Math.abs(averageCumulative - 1) < 1e-9 ? 'visiteur' : 'visiteurs';
+      readout.textContent = `À ${formatFr(time)} h : rythme de ${formatFr(rate)} ${rateUnit} ; cumul exact de ${formatFr(cumulative)} ${visitorUnit} ; cumul avec le rythme moyen de 2 visiteurs/h : ${formatFr(averageCumulative)} ${averageUnit}.`;
     }
     function stop() {
       running = false;

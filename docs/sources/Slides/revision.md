@@ -853,6 +853,86 @@ Pour la question 2, commencez par isoler $x$. Une inégalité comme $x<a$ décri
 
 ---
 
+# Ouverture · Le logarithme change la représentation
+
+Le logarithme népérien, noté $\ln$, est la fonction réciproque de l'exponentielle :
+
+$$
+\ln(e^u)=u,\qquad e^{\ln x}=x\quad (x>0).
+$$
+
+Il transforme les produits en sommes et les puissances en produits :
+
+$$
+\ln(ab)=\ln(a)+\ln(b),\qquad \ln(a^t)=t\ln(a)\quad (a,b>0).
+$$
+
+Cette propriété est utile lorsqu'une quantité évolue de façon exponentielle. Si $N(t)=Aq^t$ avec $A,q>0$, alors :
+
+$$
+\ln N(t)=\ln A+t\ln q.
+$$
+
+Une relation exponentielle devient ainsi une relation affine. On peut alors étudier sa pente avec les outils de la régression linéaire. **Attention :** le logarithme réel ne s'applique qu'à des valeurs strictement positives.
+
+---
+
+# À vous · Résoudre une équation logarithmique
+
+Résoudre dans $\mathbb{R}$ :
+
+$$
+(\ln x)^2-3\ln x+2=0.
+$$
+
+1. Préciser d'abord le domaine de définition.
+2. Poser $u=\ln x$, puis résoudre l'équation du second degré obtenue.
+3. Revenir à $x$ en utilisant la relation entre $\ln$ et l'exponentielle.
+4. Vérifier que les solutions respectent le domaine de départ.
+
+**Repère :** $(\ln x)^2$ signifie bien le carré du nombre $\ln x$. Le changement de variable remplace provisoirement l'expression $\ln x$ par une variable plus simple.
+
+---
+
+# Exercice · Une application qui double ses utilisateurs
+
+Une application compte 100 utilisateurs au départ. Dans ce modèle simplifié, le nombre d'utilisateurs double chaque mois :
+
+| Mois $t$ | Utilisateurs $N(t)$ |
+|---:|---:|
+| 0 | 100 |
+| 1 | 200 |
+| 2 | 400 |
+| 3 | 800 |
+| 4 | 1 600 |
+| 5 | 3 200 |
+
+On modélise cette évolution par $N(t)=100\times2^t$.
+
+1. Calculer les augmentations d'un mois au suivant. Pourquoi la croissance n'est-elle pas linéaire ?
+2. En prenant le logarithme, montrer que $\ln N(t)=\ln(100)+t\ln(2)$. Quelle est la pente de cette droite ?
+3. Avec NumPy, calculer $y=\ln N$, puis ajuster une droite avec `np.polyfit(t, y, 1)`. Interpréter les deux coefficients renvoyés. Pourquoi sont-ils renvoyés dans l'ordre pente puis ordonnée à l'origine ?
+4. À partir des coefficients, retrouver le nombre initial et calculer le temps de doublement avec $T=\ln(2)/b$, où $b$ est la pente.
+5. Tracer les données initiales et le modèle ajusté, puis les données transformées et la droite ajustée, côte à côte. Décrire la différence entre les deux graphiques.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+t = np.arange(6, dtype=float)
+N = np.array([100, 200, 400, 800, 1600, 3200], dtype=float)
+
+# Transformer les valeurs strictement positives
+log_N = np.log(N)
+
+# À compléter : ajuster une droite et retrouver les paramètres.
+# Tracer les données et le modèle dans deux graphiques côte à côte.
+```
+
+**À retenir :** le logarithme ne rend pas automatiquement toutes les données linéaires. Ici, il le fait parce que le modèle choisi est exponentiel. Dans des données réelles, il faut aussi vérifier que cette hypothèse décrit raisonnablement les observations.
+
+---
+
 ## Problème — Compter les occasions
 
 La moitié des années d'un horizon reste-t-elle la moitié des rencontres ?

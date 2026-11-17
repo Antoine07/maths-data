@@ -8,11 +8,11 @@ class: lead
 # QCM de réactivation
 ## Algèbre et dérivation
 
-**20 questions pour réactiver les notions vues jusqu’à la dérivation.** Pour chaque question, choisissez une réponse parmi A, B, C et D, puis cliquez sur « Valider ». Le feedback apparaît après validation.
+**28 questions pour réactiver les notions vues jusqu’à la dérivation.** Pour chaque question, choisissez une réponse parmi A, B, C et D, puis cliquez sur « Valider ». Le feedback apparaît après validation.
 
 ---
 
-## QCM · Algèbre et dérivation (1/10)
+## QCM · Algèbre et dérivation (1/14)
 
 <div class="qcm-review">
 <p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
@@ -42,7 +42,7 @@ class: lead
 
 ---
 
-## QCM · Algèbre et dérivation (2/10)
+## QCM · Algèbre et dérivation (2/14)
 
 <div class="qcm-review">
 <p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
@@ -72,7 +72,7 @@ class: lead
 
 ---
 
-## QCM · Algèbre et dérivation (3/10)
+## QCM · Algèbre et dérivation (3/14)
 
 <div class="qcm-review">
 <p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
@@ -102,7 +102,7 @@ class: lead
 
 ---
 
-## QCM · Algèbre et dérivation (4/10)
+## QCM · Algèbre et dérivation (4/14)
 
 <div class="qcm-review">
 <p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
@@ -132,7 +132,7 @@ class: lead
 
 ---
 
-## QCM · Algèbre et dérivation (5/10)
+## QCM · Algèbre et dérivation (5/14)
 
 <div class="qcm-review">
 <p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
@@ -162,7 +162,7 @@ class: lead
 
 ---
 
-## QCM · Algèbre et dérivation (6/10)
+## QCM · Algèbre et dérivation (6/14)
 
 <div class="qcm-review">
 <p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
@@ -192,7 +192,7 @@ class: lead
 
 ---
 
-## QCM · Algèbre et dérivation (7/10)
+## QCM · Algèbre et dérivation (7/14)
 
 <div class="qcm-review">
 <p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
@@ -222,7 +222,7 @@ class: lead
 
 ---
 
-## QCM · Algèbre et dérivation (8/10)
+## QCM · Algèbre et dérivation (8/14)
 
 <div class="qcm-review">
 <p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
@@ -252,7 +252,7 @@ class: lead
 
 ---
 
-## QCM · Algèbre et dérivation (9/10)
+## QCM · Algèbre et dérivation (9/14)
 
 <div class="qcm-review">
 <p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
@@ -282,7 +282,7 @@ class: lead
 
 ---
 
-## QCM · Algèbre et dérivation (10/10)
+## QCM · Algèbre et dérivation (10/14)
 
 <div class="qcm-review">
 <p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
@@ -304,6 +304,127 @@ class: lead
 <label class="qcm-choice" for="qcm-fondamentaux-20-b"><input id="qcm-fondamentaux-20-b" type="radio" name="qcm-fondamentaux-20" value="B" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle ou le calcul demandé, puis vérifie chaque étape."><span>B. x = 2</span></label>
 <label class="qcm-choice" for="qcm-fondamentaux-20-c"><input id="qcm-fondamentaux-20-c" type="radio" name="qcm-fondamentaux-20" value="C" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="A′(x) = 1 − 9/x² s’annule en x = 3 et passe de négative à positive : minimum."><span>C. x = 3</span></label>
 <label class="qcm-choice" for="qcm-fondamentaux-20-d"><input id="qcm-fondamentaux-20-d" type="radio" name="qcm-fondamentaux-20" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle ou le calcul demandé, puis vérifie chaque étape."><span>D. x = 9</span></label>
+</div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+</div>
+
+
+---
+
+## QCM · Algèbre et dérivation (11/14)
+
+<div class="qcm-review">
+<p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
+<div class="qcm-question" data-qcm-question>
+<h3 id="qcm-fondamentaux-21-label">21. Dériver f(x) = 2x³ + 4x² − 7x.</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-fondamentaux-21-label">
+<label class="qcm-choice" for="qcm-fondamentaux-21-a"><input id="qcm-fondamentaux-21-a" type="radio" name="qcm-fondamentaux-21" value="A" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="On dérive chaque terme : (2x³)&#x27; = 6x², (4x²)&#x27; = 8x et (−7x)&#x27; = −7."><span>A. 6x² + 8x − 7</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-21-b"><input id="qcm-fondamentaux-21-b" type="radio" name="qcm-fondamentaux-21" value="B" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>B. 2x² + 4x − 7</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-21-c"><input id="qcm-fondamentaux-21-c" type="radio" name="qcm-fondamentaux-21" value="C" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>C. 6x² + 4x − 7</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-21-d"><input id="qcm-fondamentaux-21-d" type="radio" name="qcm-fondamentaux-21" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>D. 6x³ + 8x² − 7</span></label>
+</div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+<div class="qcm-question" data-qcm-question>
+<h3 id="qcm-fondamentaux-22-label">22. Quelle est la dérivée de f(x) = 5x⁴ ?</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-fondamentaux-22-label">
+<label class="qcm-choice" for="qcm-fondamentaux-22-a"><input id="qcm-fondamentaux-22-a" type="radio" name="qcm-fondamentaux-22" value="A" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>A. 5x³</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-22-b"><input id="qcm-fondamentaux-22-b" type="radio" name="qcm-fondamentaux-22" value="B" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="La constante multiplicative reste présente et (x⁴)&#x27; = 4x³ : f′(x) = 20x³."><span>B. 20x³</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-22-c"><input id="qcm-fondamentaux-22-c" type="radio" name="qcm-fondamentaux-22" value="C" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>C. 20x⁴</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-22-d"><input id="qcm-fondamentaux-22-d" type="radio" name="qcm-fondamentaux-22" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>D. 4x⁵</span></label>
+</div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+</div>
+
+---
+
+## QCM · Algèbre et dérivation (12/14)
+
+<div class="qcm-review">
+<p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
+<div class="qcm-question" data-qcm-question>
+<h3 id="qcm-fondamentaux-23-label">23. Quelle est la dérivée de f(x) = sin(x) ?</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-fondamentaux-23-label">
+<label class="qcm-choice" for="qcm-fondamentaux-23-a"><input id="qcm-fondamentaux-23-a" type="radio" name="qcm-fondamentaux-23" value="A" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>A. −sin(x)</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-23-b"><input id="qcm-fondamentaux-23-b" type="radio" name="qcm-fondamentaux-23" value="B" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>B. −cos(x)</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-23-c"><input id="qcm-fondamentaux-23-c" type="radio" name="qcm-fondamentaux-23" value="C" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="La dérivée de sin(x) est cos(x)."><span>C. cos(x)</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-23-d"><input id="qcm-fondamentaux-23-d" type="radio" name="qcm-fondamentaux-23" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>D. sin(x)</span></label>
+</div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+<div class="qcm-question" data-qcm-question>
+<h3 id="qcm-fondamentaux-24-label">24. Quelle est la dérivée de f(x) = cos(x) ?</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-fondamentaux-24-label">
+<label class="qcm-choice" for="qcm-fondamentaux-24-a"><input id="qcm-fondamentaux-24-a" type="radio" name="qcm-fondamentaux-24" value="A" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>A. sin(x)</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-24-b"><input id="qcm-fondamentaux-24-b" type="radio" name="qcm-fondamentaux-24" value="B" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="La dérivée de cos(x) est −sin(x)."><span>B. −sin(x)</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-24-c"><input id="qcm-fondamentaux-24-c" type="radio" name="qcm-fondamentaux-24" value="C" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>C. cos(x)</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-24-d"><input id="qcm-fondamentaux-24-d" type="radio" name="qcm-fondamentaux-24" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>D. −cos(x)</span></label>
+</div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+</div>
+
+---
+
+## QCM · Algèbre et dérivation (13/14)
+
+<div class="qcm-review">
+<p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
+<div class="qcm-question" data-qcm-question>
+<h3 id="qcm-fondamentaux-25-label">25. Dériver f(x) = x²(x + 1).</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-fondamentaux-25-label">
+<label class="qcm-choice" for="qcm-fondamentaux-25-a"><input id="qcm-fondamentaux-25-a" type="radio" name="qcm-fondamentaux-25" value="A" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>A. 2x(x + 1)</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-25-b"><input id="qcm-fondamentaux-25-b" type="radio" name="qcm-fondamentaux-25" value="B" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>B. x² + 1</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-25-c"><input id="qcm-fondamentaux-25-c" type="radio" name="qcm-fondamentaux-25" value="C" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="Avec (fg)′ = f′g + fg′ : 2x(x + 1) + x² = 3x² + 2x."><span>C. 3x² + 2x</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-25-d"><input id="qcm-fondamentaux-25-d" type="radio" name="qcm-fondamentaux-25" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>D. 2x² + x</span></label>
+</div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+<div class="qcm-question" data-qcm-question>
+<h3 id="qcm-fondamentaux-26-label">26. Dériver f(x) = (2x + 1)².</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-fondamentaux-26-label">
+<label class="qcm-choice" for="qcm-fondamentaux-26-a"><input id="qcm-fondamentaux-26-a" type="radio" name="qcm-fondamentaux-26" value="A" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>A. 2(2x + 1)</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-26-b"><input id="qcm-fondamentaux-26-b" type="radio" name="qcm-fondamentaux-26" value="B" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="Règle de chaîne : 2(2x + 1) × 2 = 4(2x + 1)."><span>B. 4(2x + 1)</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-26-c"><input id="qcm-fondamentaux-26-c" type="radio" name="qcm-fondamentaux-26" value="C" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>C. 2x + 1</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-26-d"><input id="qcm-fondamentaux-26-d" type="radio" name="qcm-fondamentaux-26" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>D. 4x + 1</span></label>
+</div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+</div>
+
+---
+
+## QCM · Algèbre et dérivation (14/14)
+
+<div class="qcm-review">
+<p class="qcm-intro">Choisissez une seule réponse parmi A, B, C et D, puis cliquez sur « Valider ».</p>
+<div class="qcm-question" data-qcm-question>
+<h3 id="qcm-fondamentaux-27-label">27. Pour f(x) = x² + 1, quelle est l’équation de la tangente en x = 1 ?</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-fondamentaux-27-label">
+<label class="qcm-choice" for="qcm-fondamentaux-27-a"><input id="qcm-fondamentaux-27-a" type="radio" name="qcm-fondamentaux-27" value="A" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>A. y = x + 1</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-27-b"><input id="qcm-fondamentaux-27-b" type="radio" name="qcm-fondamentaux-27" value="B" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="f(1) = 2 et f′(1) = 2. Donc y = f(1) + f′(1)(x − 1) = 2x."><span>B. y = 2x</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-27-c"><input id="qcm-fondamentaux-27-c" type="radio" name="qcm-fondamentaux-27" value="C" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>C. y = 2x + 1</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-27-d"><input id="qcm-fondamentaux-27-d" type="radio" name="qcm-fondamentaux-27" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>D. y = x + 2</span></label>
+</div>
+<button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
+<p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>
+</div>
+<div class="qcm-question" data-qcm-question>
+<h3 id="qcm-fondamentaux-28-label">28. f(x) = x² − 6x. Où f atteint-elle son minimum ?</h3>
+<div class="qcm-options" role="radiogroup" aria-labelledby="qcm-fondamentaux-28-label">
+<label class="qcm-choice" for="qcm-fondamentaux-28-a"><input id="qcm-fondamentaux-28-a" type="radio" name="qcm-fondamentaux-28" value="A" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>A. x = 0</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-28-b"><input id="qcm-fondamentaux-28-b" type="radio" name="qcm-fondamentaux-28" value="B" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>B. x = 2</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-28-c"><input id="qcm-fondamentaux-28-c" type="radio" name="qcm-fondamentaux-28" value="C" data-qcm-answer data-qcm-correct="true" data-qcm-feedback="f′(x) = 2x − 6 s’annule en 3, passe de négative à positive : f atteint un minimum en x = 3."><span>C. x = 3</span></label>
+<label class="qcm-choice" for="qcm-fondamentaux-28-d"><input id="qcm-fondamentaux-28-d" type="radio" name="qcm-fondamentaux-28" value="D" data-qcm-answer data-qcm-correct="false" data-qcm-feedback="Reprends la règle de dérivation concernée, puis vérifie le calcul étape par étape."><span>D. x = 6</span></label>
 </div>
 <button type="button" class="qcm-submit" data-qcm-submit>Valider</button>
 <p class="qcm-feedback" data-qcm-feedback role="status" aria-live="polite" hidden></p>

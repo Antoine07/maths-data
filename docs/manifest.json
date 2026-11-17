@@ -27,7 +27,12 @@
   {
     "file": "qcm/fondamentaux.html",
     "source": "Slides/qcm/fondamentaux.md",
-    "slides": 15
+    "slides": 29
+  },
+  {
+    "file": "qcm/frequence_flashcards.html",
+    "source": "Slides/qcm/frequence_flashcards.md",
+    "slides": 7
   },
   {
     "file": "matrice.html",

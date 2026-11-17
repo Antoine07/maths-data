@@ -244,6 +244,31 @@ La fonction est **strictement croissante** sur chacun des intervalles $]-\infty,
 
 ---
 
+## Exercice — Une affiche qui utilise moins de papier
+
+Une association prépare une affiche pour annoncer un concert. Le texte et les illustrations occupent un bloc rectangulaire de $600\,\text{cm}^2$. Le graphiste peut modifier les proportions du bloc tout en gardant la même aire.
+
+L’imprimeur demande de laisser 2 cm de marge à gauche et à droite, et 3 cm en haut et en bas. Pour que l’affiche reste lisible, la largeur du bloc imprimé doit être comprise entre 15 et 30 cm.
+
+Quelles dimensions de feuille faut-il choisir pour utiliser le moins de papier possible ?
+
+On note $x$ la largeur du bloc imprimé, en centimètres, et $A(x)$ l’aire de la feuille entière, en centimètres carrés.
+
+1. Fais un croquis de l’affiche. Exprime en fonction de $x$ la hauteur du bloc imprimé, puis la largeur et la hauteur de la feuille.
+2. Montre que, pour $x\in[15;30]$,
+
+   $$
+   A(x)=\frac{6x^2+624x+2400}{x}.
+   $$
+
+3. Calcule $A'(x)$, puis dresse son tableau de signes et le tableau de variations de $A$.
+
+   **Indice —** avant de dériver, divise chaque terme du numérateur par $x$.
+
+4. Donne les dimensions du bloc imprimé, puis celles de la feuille qui minimise l’aire de papier utilisée. Calcule cette aire minimale.
+
+---
+
 ## Exemple 3 : Composition
 
 $$f(x) = e^{3x}$$

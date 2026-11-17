@@ -309,6 +309,27 @@
     const toY = y => 280 - 65 * y;
     const toRightX = x => 780 + 90 * x;
     const toRightY = y => 280 - 50 * y;
+    function visibleLineSegment(slope, intercept) {
+      const points = [];
+      const add = (x, y) => {
+        if (x < -2 - 1e-9 || x > 2 + 1e-9 || y < -2 - 1e-9 || y > 2 + 1e-9) return;
+        if (!points.some(point => Math.hypot(point[0] - x, point[1] - y) < 1e-8)) points.push([x, y]);
+      };
+      for (const x of [-2, 2]) add(x, slope * x + intercept);
+      if (Math.abs(slope) > 1e-12) {
+        for (const y of [-2, 2]) add((y - intercept) / slope, y);
+      }
+      if (points.length < 2) return [[-2, slope * -2 + intercept], [2, slope * 2 + intercept]];
+      let farthest = [points[0], points[1]];
+      let distance = -1;
+      for (let i = 0; i < points.length; i++) {
+        for (let j = i + 1; j < points.length; j++) {
+          const candidate = Math.hypot(points[i][0] - points[j][0], points[i][1] - points[j][1]);
+          if (candidate > distance) { distance = candidate; farthest = [points[i], points[j]]; }
+        }
+      }
+      return farthest;
+    }
     function render() {
       const points = Array.from({ length: 161 }, (_, i) => {
         const x = -2 + 4 * i / 160;
@@ -326,10 +347,11 @@
       tangent.setAttribute('y2', toY(tangentY(x2)).toFixed(2));
       point.setAttribute('cx', toX(x0).toFixed(2));
       point.setAttribute('cy', toY(x0 * x0 / 2).toFixed(2));
-      isolatedTangent.setAttribute('x1', toRightX(-2).toFixed(2));
-      isolatedTangent.setAttribute('y1', toRightY(tangentY(-2)).toFixed(2));
-      isolatedTangent.setAttribute('x2', toRightX(2).toFixed(2));
-      isolatedTangent.setAttribute('y2', toRightY(tangentY(2)).toFixed(2));
+      const [[lineX1, lineY1], [lineX2, lineY2]] = visibleLineSegment(slope, intercept);
+      isolatedTangent.setAttribute('x1', toRightX(lineX1).toFixed(2));
+      isolatedTangent.setAttribute('y1', toRightY(lineY1).toFixed(2));
+      isolatedTangent.setAttribute('x2', toRightX(lineX2).toFixed(2));
+      isolatedTangent.setAttribute('y2', toRightY(lineY2).toFixed(2));
       isolatedPoint.setAttribute('cx', toRightX(x0).toFixed(2));
       isolatedPoint.setAttribute('cy', toRightY(x0 * x0 / 2).toFixed(2));
       positionLabel.textContent = `x₀ = ${formatFr(x0)}`;

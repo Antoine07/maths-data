@@ -58,8 +58,7 @@ Le point $A$ glisse sur la courbe $f(x)=\frac{x^2}{2}$. À gauche, on voit le po
     <line x1="600" y1="280" x2="960" y2="280" class="demo-axis"/>
     <line x1="780" y1="175" x2="780" y2="375" class="demo-axis"/>
     <path d="M600 230H960M600 330H960" class="demo-grid"/>
-    <defs><clipPath id="tangent-right-clip"><rect x="600" y="180" width="360" height="200"/></clipPath></defs>
-    <line x1="600" y1="0" x2="960" y2="0" class="demo-tangent-line" data-derivative-isolated-line clip-path="url(#tangent-right-clip)"/>
+    <line x1="600" y1="0" x2="960" y2="0" class="demo-tangent-line" data-derivative-isolated-line/>
     <circle cx="0" cy="0" r="8" class="demo-point" data-derivative-isolated-point/>
     <text x="965" y="286" class="demo-caption">x</text>
     <text x="790" y="180" class="demo-caption">y</text>
@@ -203,6 +202,25 @@ La dérivée s'annule en $-1$ et $1$. Elle est positive pour $x<-1$ et $x>1$, n�
 ![À gauche, x cube moins 3x : maximum local en (-1,2) et minimum local en (1,-2). À droite, sa dérivée, négative entre -1 et 1 et positive ailleurs.](images/fonctions-extrema.svg)
 
 À gauche, on lit les **valeurs** de $f$. À droite, on lit les **pentes**. Une dérivée nulle est un candidat ; le changement de signe permet ici de conclure.
+
+---
+
+## Problème — Combien de tee-shirts produire pour maximiser le bénéfice ?
+
+Une entreprise prépare des tee-shirts pour un festival. Elle peut en produire jusqu’à 1 000 et suppose qu’elle vendra tous ceux qu’elle fabrique.
+
+On note $x$ le nombre de centaines de tee-shirts produits. Dans ce modèle, le bénéfice $B(x)$, exprimé en centaines d’euros, est donné par la fonction du second degré :
+
+$$
+B(x)=-x^2+10x-16,\qquad x\in[0;10].
+$$
+
+### Énoncé
+
+1. Calcule $B(0)$. Que représente cette valeur pour l’entreprise ?
+2. Calcule $B'(x)$ et résous $B'(x)=0$.
+3. Dresse le tableau de signes de $B'(x)$, puis le tableau de variations de $B$.
+4. Combien de tee-shirts l’entreprise doit-elle produire pour maximiser son bénéfice ? Quel est ce bénéfice en euros ?
 
 ---
 

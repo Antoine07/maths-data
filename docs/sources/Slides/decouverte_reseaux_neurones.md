@@ -5,69 +5,17 @@ paginate: true
 class: lead
 ---
 
-# Découverte des réseaux de neurones
+# Coder un perceptron
 
-Des calculs simples pour comprendre comment un modèle classe des données.
+Préparer des données, coder un classifieur binaire et observer ses corrections.
 
-[Voir la frise historique de l’intelligence artificielle](#2)
-
-
----
-
-# Repères historiques de l’intelligence artificielle
-
-<ol class="ai-history" role="list" aria-label="Onze repères chronologiques de l’intelligence artificielle">
-  <li><time datetime="1943">1943</time><div>
-    <strong>Un modèle mathématique du neurone</strong>
-    <p>McCulloch et Pitts décrivent des neurones à seuil qui, reliés entre eux, réalisent des opérations logiques. <a href="https://doi.org/10.1007/BF02478259">Article original</a></p>
-  </div></li>
-  <li><time datetime="1950">1950</time><div>
-    <strong>Le jeu de l’imitation</strong>
-    <p>Alan Turing propose un jeu de conversation écrite pour évaluer si une machine peut imiter les réponses d’une personne. <a href="https://academic.oup.com/mind/article/LIX/236/433/986238">Article de Turing</a></p>
-  </div></li>
-  <li><time datetime="1956">1956</time><div>
-    <strong>L’atelier de Dartmouth</strong>
-    <p>Des chercheurs se réunissent autour d’un programme de recherche appelé « intelligence artificielle » dans leur proposition de 1955. <a href="https://www-formal.stanford.edu/jmc/slides/dartmouth/dartmouth/node1.html">Récit de John McCarthy</a></p>
-  </div></li>
-  <li><time datetime="1958">1958</time><div>
-    <strong>Le perceptron</strong>
-    <p>Frank Rosenblatt publie son modèle de perceptron, qui apprend à classer des exemples en ajustant des poids. <a href="https://pubmed.ncbi.nlm.nih.gov/13602029/">Article de Rosenblatt</a></p>
-  </div></li>
-  <li><time datetime="1976">1976</time><div>
-    <strong>MYCIN et les systèmes experts</strong>
-    <p>Edward Shortliffe présente MYCIN, un programme qui applique des règles d’experts pour assister des décisions médicales. <a href="https://www.sciencedirect.com/book/monograph/9780444001795/computer-based-medical-consultations-mycin">Monographie</a></p>
-  </div></li>
-  <li><time datetime="1986">1986</time><div>
-    <strong>La rétropropagation</strong>
-    <p>Rumelhart, Hinton et Williams décrivent comment ajuster les poids des couches intermédiaires à partir de l’erreur en sortie. <a href="https://doi.org/10.1038/323533a0">Article dans Nature</a></p>
-  </div></li>
-  <li><time datetime="1997">1997</time><div>
-    <strong>Deep Blue aux échecs</strong>
-    <p>Le système d’IBM remporte un match en six parties contre le champion du monde Garry Kasparov. <a href="https://www.ibm.com/history/deep-blue">Archives IBM</a></p>
-  </div></li>
-  <li><time datetime="2012">2012</time><div>
-    <strong>AlexNet et la reconnaissance d’images</strong>
-    <p>Un réseau convolutif profond entraîné sur GPU remporte le défi de classification ImageNet. <a href="https://proceedings.neurips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c-Abstract.html">Article NeurIPS</a></p>
-  </div></li>
-  <li><time datetime="2016">2016</time><div>
-    <strong>AlphaGo au jeu de go</strong>
-    <p>Le programme de Google DeepMind bat le joueur professionnel Lee Sedol par quatre parties à une. <a href="https://deepmind.google/research/alphago/">Compte rendu de DeepMind</a></p>
-  </div></li>
-  <li><time datetime="2017">2017</time><div>
-    <strong>Le Transformer</strong>
-    <p>Vaswani et ses coauteurs proposent une architecture fondée sur l’attention et la testent sur des tâches de traduction. <a href="https://arxiv.org/abs/1706.03762">Article original</a></p>
-  </div></li>
-  <li><time datetime="2022-11-30">2022</time><div>
-    <strong>ChatGPT et l’IA générative grand public</strong>
-    <p>OpenAI ouvre au public l’accès à un assistant qui génère des réponses en langage naturel. <a href="https://openai.com/index/chatgpt/">Annonce de lancement</a></p>
-  </div></li>
-</ol>
+Repère historique — Frank Rosenblatt présente le perceptron en 1958 : un modèle simple qui apprend à classer en ajustant ses poids.
 
 ---
 
 # Le perceptron en un coup d’œil
 
-Un perceptron transforme des entrées en une décision : il pondère les caractéristiques, additionne leurs contributions avec un biais, puis compare le score à un seuil. Le schéma reprend les nombres de l’exercice de la slide suivante.
+Un perceptron transforme des entrées en une décision : il pondère les caractéristiques, additionne leurs contributions avec un biais, puis compare le score à un seuil. Il résume les opérations que nous allons coder, une observation à la fois.
 
 <svg class="perceptron-intro-svg" viewBox="0 0 960 300" style="display:block;width:100%;max-width:900px;height:auto;margin:12px auto" role="img" aria-label="Schéma d'un perceptron à deux entrées : x1 vaut 2 et x2 vaut 1 ; les poids valent 1 et moins 2 ; le biais vaut 1 ; le score vaut 1 ; le seuil prédit la classe 1.">
   <defs>
@@ -130,38 +78,18 @@ $$
 2. Panier $(0,3,2)$.
 3. Panier $(3,0,2)$. Un budget de 10 € suffit-il ?
 
-<details>
-<summary>Vérifier les trois calculs</summary>
-
-1. $1\times 2+2\times 1+1\times 3=7$ €.
-2. $0\times 2+3\times 1+2\times 3=9$ €.
-3. $3\times 2+0\times 1+2\times 3=12$ €. Il manque 2 €.
-
-</details>
 
 Le neurone utilise le même type de calcul avec ses entrées et ses poids, puis ajoute un biais.
 
 ---
 
-# Un parcours en trois étapes
+# Objectif · Coder un perceptron binaire
 
-**1 · Décider.** Calculer le score d'un neurone, comparer le seuil, ReLU et la sigmoïde, puis lire la droite qui sépare deux classes.
+À partir d’un jeu de données sur les manchots, vous allez préparer les caractéristiques et la cible, coder le calcul d’un score, puis écrire la boucle qui ajuste les poids lorsqu’une prédiction est fausse.
 
-**2 · Apprendre.** Modifier les poids quand le neurone se trompe, puis observer ce qu'il peut et ne peut pas apprendre.
+Le fil de travail est simple : **données → score → classe prédite → comparaison à la classe réelle → correction des poids**.
 
-**3 · Regrouper les calculs.** Représenter plusieurs observations dans un tableau et utiliser de petites matrices avec NumPy.
-
-Chaque étape part d'un calcul à la main, puis le vérifie dans un notebook. Nous utiliserons un petit jeu de données artificiel pour que les calculs restent lisibles.
-
-Le chapitre s'appuie sur des additions, des multiplications et des tableaux NumPy. Aucune méthode de dérivation n'est nécessaire pour les activités.
-
----
-
-# Étape 1 · Le neurone comme classifieur
-
-Nous commençons par deux caractéristiques et deux classes. Le but est de comprendre chaque décision avant de demander au programme de la répéter sur beaucoup d'observations.
-
-À la fin de cette étape, vous saurez calculer un score, lire son signe et représenter la frontière entre les deux classes.
+À la fin, vous pourrez expliquer ce que fait le programme pour chaque manchot et représenter l’évolution des poids pendant l’apprentissage.
 
 ---
 
@@ -184,200 +112,6 @@ $$
 $$
 
 Les poids disent quelles caractéristiques font monter ou baisser le score. Le biais déplace le seuil de décision.
-
----
-
-# Le score peut passer par une fonction d'activation
-
-Le neurone calcule d'abord un score $z$. Une **fonction d'activation** transforme ensuite ce score avant de produire la sortie.
-
-Dans le perceptron que nous venons de voir, la fonction seuil transforme le score en une décision 0 ou 1. D'autres activations donnent une sortie différente. Nous allons en comparer deux, sans étudier leur apprentissage.
-
----
-
-# ReLU · garder la partie positive
-
-La fonction ReLU est définie par :
-
-$$
-\operatorname{ReLU}(z)=\max(0,z).
-$$
-
-Elle renvoie 0 si le score est négatif, et garde le score s'il est positif.
-
-| Score $z$ | $-2$ | $0$ | $3$ |
-|---:|---:|---:|---:|
-| ReLU$(z)$ | $0$ | $0$ | $3$ |
-
-ReLU ne donne pas directement une classe : elle produit une nouvelle valeur que d'autres neurones peuvent utiliser.
-
----
-
-# Sigmoïde · une sortie entre 0 et 1
-
-La sigmoïde transforme le score ainsi :
-
-$$
-\sigma(z)=\frac{1}{1+e^{-z}}.
-$$
-
-Quelques valeurs approchées :
-
-| Score $z$ | $-2$ | $0$ | $2$ |
-|---:|---:|---:|---:|
-| Sigmoïde $\sigma(z)$ | $0{,}12$ | $0{,}50$ | $0{,}88$ |
-
-Sa sortie reste entre 0 et 1. Pour une classification binaire, on peut comparer cette sortie à un seuil, par exemple 0,5. Ici, nous nous limitons au calcul et à l'interprétation des sorties.
-
----
-
-# Observer les deux fonctions
-
-ReLU coupe les scores négatifs à 0 et augmente ensuite en ligne droite. La sigmoïde évolue progressivement entre 0 et 1.
-
-<svg class="interactive-demo-svg" viewBox="0 0 680 270" role="img" aria-label="Graphiques de ReLU et de la sigmoïde : ReLU vaut zéro pour les scores négatifs, la sigmoïde évolue entre zéro et un.">
-  <text x="185" y="28" text-anchor="middle" class="demo-title">ReLU(z)</text>
-  <path d="M55 210H320M185 220V48" class="demo-axis"/>
-  <path d="M55 170H320M55 130H320M55 90H320M120 48V210M250 48V210" class="demo-grid"/>
-  <path d="M65 210H185L300 65" fill="none" stroke="#d8894a" stroke-width="4" stroke-linecap="round"/>
-  <text x="185" y="252" text-anchor="middle" class="demo-caption">Score z</text>
-  <text x="32" y="126" text-anchor="middle" class="demo-caption" transform="rotate(-90 32 126)">Sortie</text>
-  <text x="495" y="28" text-anchor="middle" class="demo-title">Sigmoïde σ(z)</text>
-  <path d="M365 210H640M502 220V48" class="demo-axis"/>
-  <path d="M365 170H640M365 130H640M365 90H640M435 48V210M570 48V210" class="demo-grid"/>
-  <path d="M375 202C415 198 440 178 465 155S495 132 502 130S525 108 545 88S590 65 630 59" fill="none" stroke="#457b9d" stroke-width="4" stroke-linecap="round"/>
-  <path d="M365 130H640" stroke="#d8894a" stroke-width="2" stroke-dasharray="7 6"/>
-  <text x="502" y="252" text-anchor="middle" class="demo-caption">Score z · la ligne pointillée indique 0,5</text>
-</svg>
-
-Les deux activations transforment le même score de façons différentes. Dans nos exercices d'apprentissage, nous garderons la règle seuil, dont les sorties restent faciles à vérifier à la main.
-
----
-
-# Exercice · Comparer seuil, ReLU et sigmoïde
-
-On considère les scores $z=-2$, $z=0$ et $z=2$.
-
-1. Calculer les trois sorties ReLU.
-2. À l'aide du tableau précédent, donner les sorties de la sigmoïde.
-3. Appliquer la règle seuil du perceptron : sortie 1 si $z\geq0$, sinon 0.
-4. Pour chaque fonction, décrire en une phrase ce que sa sortie représente.
-
-**Repère :** ce sont trois transformations du score. Dans ce cours, vous n'avez pas à calculer leurs dérivées ni à entraîner un réseau avec la sigmoïde.
-
----
-
-# Préparer les données avant la classification
-
-Avant de demander au perceptron de classer des observations, il faut transformer le tableau en données numériques bien définies. [Téléchargez le fichier `penguins.csv`](data/penguins.csv) et placez-le dans le dossier du notebook.
-
-```python
-import pandas as pd
-
-df = pd.read_csv("penguins.csv")
-df.head()
-```
-
-On conserve les mesures numériques (`bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, `body_mass_g`), la colonne `sex` et la colonne `species`. `species` servira à reconnaître la classe : elle ne doit donc pas être utilisée comme une caractéristique d'entrée.
-
-Le fichier contient trois espèces. Pour ce premier perceptron, choisissez-en deux seulement : sa sortie est une décision binaire, codée 0 ou 1.
-
-**À vous de préparer le tableau :**
-
-1. Avec `df.dtypes` et `df.isna().sum()`, repérer les types de colonnes et les valeurs manquantes.
-2. Garder deux espèces et décider comment traiter les lignes où une mesure ou `sex` manque.
-3. Choisir un encodage cohérent en 0/1 pour les deux espèces. Cette colonne formera la cible `y`.
-4. Choisir également un encodage 0/1 pour `sex`, qui sera une caractéristique d'entrée.
-5. Construire `X` avec les mesures numériques et `sex`, puis vérifier que `X` ne contient que des nombres et que `y` ne contient que 0 et 1.
-
-Vous pouvez choisir quelle espèce reçoit 0 ou 1 : l'essentiel est de garder la même convention dans tout le jeu de données. Les caractéristiques et la cible doivent rester séparées.
-
-```python
-mesures = [
-    "bill_length_mm", "bill_depth_mm",
-    "flipper_length_mm", "body_mass_g"
-]
-
-# À compléter : choisir deux espèces, traiter les valeurs manquantes,
-# encoder species et sex, puis construire X et y.
-```
-
-**Question de vérification :** pourquoi la colonne `species` ne doit-elle pas rester dans `X` une fois que vous l'avez transformée en cible `y` ?
-
----
-
-# Entraîner le perceptron, manchot par manchot
-
-Vous avez maintenant les caractéristiques `X` et la classe attendue `y`. Le perceptron va parcourir les lignes une par une. Pour chaque manchot, il calcule un score, prédit une espèce, compare sa prédiction à la cible, puis corrige ses paramètres en cas d'erreur.
-
-## Mettre les mesures sur des échelles comparables
-
-Les longueurs sont exprimées en millimètres, la masse en grammes et `sex` vaut 0 ou 1. Sans précaution, les valeurs de masse pèseraient beaucoup plus dans les calculs. Centrez-réduisez les quatre mesures numériques ; gardez `sex` encodé en 0/1.
-
-```python
-# X contient les quatre mesures numériques puis sex.
-# Indice : mean(axis=0), std(axis=0), puis (valeur - moyenne) / écart-type.
-moyennes = ...
-ecarts_types = ...
-X[:, :4] = ...
-```
-
-Pour cette activité, le pas d'apprentissage est fixé à **$\eta=0{,}1$**. C'est un hyperparamètre : on le choisit avant l'entraînement et on le garde identique pour tous les manchots et toutes les époques. Il n'est pas appris par le perceptron.
-
-## Compléter la boucle
-
-On commence avec des poids nuls et un biais nul. À chaque ligne `i`, notez le score avant correction, calculez la prédiction avec le seuil $z\geq0$, puis comparez-la à `y[i]`. Reprenez la règle de correction vue plus haut pour compléter les deux lignes manquantes.
-
-```python
-import numpy as np
-
-eta = 0.1
-poids = np.zeros(X.shape[1])
-biais = 0.0
-nb_epoques = 10
-historique = []
-
-for epoque in range(nb_epoques):
-    erreurs = 0
-
-    for i in range(len(X)):
-        xi = X[i]
-        # Indice : produit scalaire des caractéristiques et des poids,
-        # puis ajout du biais.
-        score = ...
-        # Indice : la classe prédite vaut 1 si le score est positif ou nul.
-        classe_reelle = y[i]
-        classe_predite = ...
-        erreur = classe_reelle - classe_predite
-
-        if erreur != 0:
-            # Compléter : mettre à jour les poids et le biais
-            ...
-            ...
-            erreurs += 1
-
-        # Garder une trace des poids après le passage de ce manchot
-        historique.append(poids.copy())
-
-        # Afficher les cinq premiers passages de la première époque
-        if epoque == 0 and i < 5:
-            print(f"manchot {i + 1} | score avant correction={score:.3f} | "
-                  f"classe réelle={classe_reelle} | prédiction={classe_predite} | "
-                  f"poids après={poids} | biais après={biais:.3f}")
-
-    print(f"Époque {epoque + 1} : {erreurs} erreur(s)")
-```
-
-**À observer et expliquer :**
-
-1. Pour les cinq premiers manchots, repérer le score, la classe attendue, la classe prédite et les poids après le passage.
-2. Quand les poids changent-ils ? Que se passe-t-il quand la prédiction est correcte ?
-3. Comparer le nombre d'erreurs d'une époque à l'autre. Les poids restent-ils fixes ou évoluent-ils encore ?
-4. Expliquer le rôle de $\eta$ : que changerait un pas plus grand ou plus petit ? Pour cette expérience, ne modifiez pas sa valeur pendant l'entraînement.
-
-La boucle applique bien ces étapes à **chaque** manchot ; l'affichage des cinq premiers sert seulement à rendre le suivi lisible. Le perceptron apprend à partir de `X` et `y` : la colonne `species` ne doit jamais être ajoutée aux caractéristiques `X`.
-
-Pour voir l'évolution des paramètres, représentez chaque colonne de `historique` avec `plt.plot`. L'axe horizontal correspond au nombre de manchots déjà traités ; chaque courbe représente un poids. Utilisez `plt.legend()` pour distinguer les poids. Observez aussi le biais, qui est suivi séparément.
 
 ---
 
@@ -460,24 +194,42 @@ Ces effets dépendent de l'échelle des caractéristiques. Pour l'instant, nous 
 
 ---
 
-# Exercice · Prévoir avant de coder
+# Préparer les données avant la classification
 
-Un neurone utilise $z=-x_1+x_2$ et prédit 1 lorsque $z\geq0$.
+Avant de demander au perceptron de classer des observations, il faut transformer le tableau en données numériques bien définies. [Téléchargez le fichier `penguins.csv`](data/penguins.csv) et placez-le dans le dossier du notebook.
 
-1. Calculer le score et la classe pour $(1,0)$, $(0,2)$ et $(3,3)$.
-2. Placer ces points dans un repère et tracer la frontière $z=0$.
-3. Indiquer de quel côté se trouvent les points prédits dans la classe 1.
-4. Vérifier les trois prédictions avec une courte fonction Python.
+```python
+import pandas as pd
 
-L'objectif est de relier les calculs, la droite et les décisions du code.
+df = pd.read_csv("penguins.csv")
+df.head()
+```
 
----
+On conserve les mesures numériques (`bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, `body_mass_g`), la colonne `sex` et la colonne `species`. `species` servira à reconnaître la classe : elle ne doit donc pas être utilisée comme une caractéristique d'entrée.
 
-# Étape 2 · Le perceptron apprend par corrections
+Le fichier contient trois espèces. Pour ce premier perceptron, choisissez-en deux seulement : sa sortie est une décision binaire, codée 0 ou 1.
 
-Le neurone commence avec des poids choisis. Il lit les exemples un par un. Quand sa prédiction est fausse, la règle de Rosenblatt déplace ses poids dans le sens qui corrige cette erreur.
+**À vous de préparer le tableau :**
 
-Nous suivons les changements des poids et le nombre d'erreurs. Nous ne cherchons pas encore à dériver une fonction d'erreur.
+1. Avec `df.dtypes` et `df.isna().sum()`, repérer les types de colonnes et les valeurs manquantes.
+2. Garder deux espèces et décider comment traiter les lignes où une mesure ou `sex` manque.
+3. Choisir un encodage cohérent en 0/1 pour les deux espèces. Cette colonne formera la cible `y`.
+4. Choisir également un encodage 0/1 pour `sex`, qui sera une caractéristique d'entrée.
+5. Construire `X` avec les mesures numériques et `sex`, puis vérifier que `X` ne contient que des nombres et que `y` ne contient que 0 et 1.
+
+Vous pouvez choisir quelle espèce reçoit 0 ou 1 : l'essentiel est de garder la même convention dans tout le jeu de données. Les caractéristiques et la cible doivent rester séparées.
+
+```python
+mesures = [
+    "bill_length_mm", "bill_depth_mm",
+    "flipper_length_mm", "body_mass_g"
+]
+
+# À compléter : choisir deux espèces, traiter les valeurs manquantes,
+# encoder species et sex, puis construire X et y.
+```
+
+**Question de vérification :** pourquoi la colonne `species` ne doit-elle pas rester dans `X` une fois que vous l'avez transformée en cible `y` ?
 
 ---
 
@@ -523,252 +275,75 @@ Pour cette observation, le nouveau score est $-0{,}3$. La classe prédite devien
 
 ---
 
-# Exercice 2 · Corriger une prédiction
+# Entraîner le perceptron, manchot par manchot
 
-Reprends l'exemple du neurone qui prédit 1 alors que la classe attendue est 0.
+Vous avez maintenant les caractéristiques `X` et la classe attendue `y`. Le perceptron va parcourir les lignes une par une. Pour chaque manchot, il calcule un score, prédit une espèce, compare sa prédiction à la cible, puis corrige ses paramètres en cas d'erreur.
 
-1. Calcule les nouveaux poids et le nouveau biais après une correction.
-2. Recalcule le score du même exemple avec ces nouveaux paramètres.
-3. La prédiction a-t-elle changé ? Explique le rôle du pas $\eta$.
+## Mettre les mesures sur des échelles comparables
 
-**Pratique NumPy :** représente les poids par un tableau et réalise cette mise à jour sans boucle.
+Les longueurs sont exprimées en millimètres, la masse en grammes et `sex` vaut 0 ou 1. Sans précaution, les valeurs de masse pèseraient beaucoup plus dans les calculs. Centrez-réduisez les quatre mesures numériques ; gardez `sex` encodé en 0/1.
+
+```python
+# X contient les quatre mesures numériques puis sex.
+# Indice : mean(axis=0), std(axis=0), puis (valeur - moyenne) / écart-type.
+moyennes = ...
+ecarts_types = ...
+X[:, :4] = ...
+```
+
+Pour cette activité, le pas d'apprentissage est fixé à **$\eta=0{,}1$**. C'est un hyperparamètre : on le choisit avant l'entraînement et on le garde identique pour tous les manchots et toutes les époques. Il n'est pas appris par le perceptron.
+
+## Compléter la boucle
+
+On commence avec des poids nuls et un biais nul. À chaque ligne `i`, notez le score avant correction, calculez la prédiction avec le seuil $z\geq0$, puis comparez-la à `y[i]`. Reprenez la règle de correction vue plus haut pour compléter les deux lignes manquantes.
 
 ```python
 import numpy as np
 
-x = np.array([1.0, 0.0])
-y = 0
-prediction = 1
-eta = 0.2
-w = np.array([0.2, 0.1])
-b = -0.1
+eta = 0.1
+poids = np.zeros(X.shape[1])
+biais = 0.0
+nb_epoques = 10
+historique = []
 
-# À compléter : mettre à jour w et b
+for epoque in range(nb_epoques):
+    erreurs = 0
+
+    for i in range(len(X)):
+        xi = X[i]
+        # Indice : produit scalaire des caractéristiques et des poids,
+        # puis ajout du biais.
+        score = ...
+        # Indice : la classe prédite vaut 1 si le score est positif ou nul.
+        classe_reelle = y[i]
+        classe_predite = ...
+        erreur = classe_reelle - classe_predite
+
+        if erreur != 0:
+            # Compléter : mettre à jour les poids et le biais
+            ...
+            ...
+            erreurs += 1
+
+        # Garder une trace des poids après le passage de ce manchot
+        historique.append(poids.copy())
+
+        # Afficher les cinq premiers passages de la première époque
+        if epoque == 0 and i < 5:
+            print(f"manchot {i + 1} | score avant correction={score:.3f} | "
+                  f"classe réelle={classe_reelle} | prédiction={classe_predite} | "
+                  f"poids après={poids} | biais après={biais:.3f}")
+
+    print(f"Époque {epoque + 1} : {erreurs} erreur(s)")
 ```
 
----
+**À observer et expliquer :**
 
-# Exercice 3 · Entraîner un petit perceptron
+1. Pour les cinq premiers manchots, repérer le score, la classe attendue, la classe prédite et les poids après le passage.
+2. Quand les poids changent-ils ? Que se passe-t-il quand la prédiction est correcte ?
+3. Comparer le nombre d'erreurs d'une époque à l'autre. Les poids restent-ils fixes ou évoluent-ils encore ?
+4. Expliquer le rôle de $\eta$ : que changerait un pas plus grand ou plus petit ? Pour cette expérience, ne modifiez pas sa valeur pendant l'entraînement.
 
-On veut distinguer deux groupes à partir de deux caractéristiques. Les lignes de `X` sont les observations ; `y` contient leur classe attendue.
+La boucle applique bien ces étapes à **chaque** manchot ; l'affichage des cinq premiers sert seulement à rendre le suivi lisible. Le perceptron apprend à partir de `X` et `y` : la colonne `species` ne doit jamais être ajoutée aux caractéristiques `X`.
 
-```python
-import numpy as np
-
-X = np.array([
-    [1.0, 0.0],
-    [2.0, 1.0],
-    [0.0, 2.0],
-    [1.0, 3.0]
-])
-y = np.array([0, 0, 1, 1])
-```
-
-1. Avec $\mathbf w=(-1,1)$ et $b=0$, calcule les quatre scores et les classes prédites.
-2. Complète une fonction `predict(X, w, b)` qui renvoie toutes les prédictions en une opération NumPy.
-3. En partant de poids nuls, applique la règle de correction pendant plusieurs passages sur les observations. Compte les erreurs à chaque passage.
-4. Trace ou affiche les prédictions avant et après l'apprentissage. Que remarque-t-on ?
-
-**Indice de code :** `X @ w` calcule les produits scalaires de toutes les lignes de `X` avec le vecteur `w`.
-
----
-
-# La boucle d'apprentissage
-
-Voici les étapes à traduire en Python :
-
-1. Initialiser les poids et le biais.
-2. Parcourir les observations.
-3. Calculer un score et une prédiction.
-4. Si la prédiction est incorrecte, corriger les poids et le biais.
-5. À la fin d'un passage complet, compter les erreurs.
-6. Recommencer quelques passages et observer ce qui change.
-
-Un passage complet sur les exemples s'appelle une **époque**. Le nombre d'époques est un réglage choisi avant l'exécution.
-
----
-
-# TP · Compléter et observer l'apprentissage
-
-Dans le notebook, complétez d'abord la fonction de prédiction, puis la boucle d'apprentissage.
-
-```python
-def predict_one(x, w, b):
-    score = x @ w + b
-    return int(score >= 0)
-
-# À compléter : initialiser w et b, parcourir X et y,
-# corriger les paramètres en cas d'erreur,
-# puis mémoriser le nombre d'erreurs de chaque époque.
-```
-
-Comparez les erreurs avant et après chaque époque. Tracez ensuite la frontière avec les poids finaux. Les fonctions de tracé sont fournies ; concentrez-vous sur la logique d'apprentissage.
-
----
-
-# Interpréter le résultat
-
-Quand le nombre d'erreurs atteint zéro sur ces exemples, le perceptron a appris à les séparer. Cela ne prouve pas qu'il saura classer toutes les observations possibles : il a seulement réussi sur les exemples étudiés.
-
-Si les classes se chevauchent ou ne peuvent pas être séparées par une droite, les erreurs peuvent persister. Il faut alors comprendre la limite du modèle au lieu d'ajouter des corrections sans fin.
-
----
-
-# Une limite : le problème XOR
-
-Voici quatre exemples et leur classe :
-
-| $x_1$ | $x_2$ | Classe XOR |
-|---:|---:|---:|
-| 0 | 0 | 0 |
-| 0 | 1 | 1 |
-| 1 | 0 | 1 |
-| 1 | 1 | 0 |
-
-1. Place ces quatre points dans un repère et colore-les selon leur classe.
-2. Peut-on tracer une seule droite qui sépare les deux classes ?
-3. Qu'est-ce que cela nous apprend sur les possibilités d'un neurone seul ?
-
-Une couche de neurones supplémentaire peut d'abord fabriquer de nouvelles caractéristiques, puis une autre unité peut prendre une décision à partir de celles-ci.
-
----
-
-# Étape 3 · Calculer plusieurs scores avec des matrices
-
-Jusqu'ici, nous avons calculé les scores observation par observation. Les tableaux NumPy permettent de regrouper les observations ; les matrices regroupent aussi les poids de plusieurs neurones.
-
-Nous allons seulement lire et calculer de petits produits. Une ligne représente une observation, et une colonne représente une caractéristique ou un neurone selon le tableau.
-
----
-
-# Une couche cachée · Un exemple à calculer
-
-On définit la fonction seuil $s(z)$ : elle vaut 1 si $z\geq0$, et 0 sinon. Deux petits neurones produisent de nouvelles valeurs :
-
-$$
-h_1=s(x_1+x_2-0{,}5),\qquad h_2=s(x_1+x_2-1{,}5).
-$$
-
-Un neurone de sortie calcule ensuite :
-
-$$
-\widehat y=s(h_1-2h_2-0{,}5).
-$$
-
-**À vous :** compléter le tableau pour les quatre lignes XOR. Pour chaque ligne, calculer d'abord $h_1$ et $h_2$, puis $\widehat y$. Aucun calcul de dérivée n'est nécessaire.
-
-La couche cachée crée une représentation intermédiaire. Le réseau combine ces valeurs pour résoudre une tâche qu'une seule droite ne pouvait pas séparer.
-
----
-
-# Des scores à la matrice
-
-Avec plusieurs observations et plusieurs neurones, répéter le calcul une ligne à la fois devient répétitif. Les matrices regroupent ces calculs.
-
-On range les observations dans $X$ : une ligne par observation, une colonne par caractéristique. On range les poids dans $W$ : une ligne par neurone, une colonne par caractéristique. Les scores de tous les neurones se calculent alors ainsi :
-
-$$
-Z=XW^\top+\mathbf b.
-$$
-
-Le biais $\mathbf b$ contient un nombre par neurone ; NumPy le réutilise pour chaque ligne. La multiplication matricielle n'est qu'une façon compacte de faire plusieurs produits scalaires.
-
----
-
-# Lire les dimensions avant de calculer
-
-Si $X$ contient $m$ observations et $d$ caractéristiques, sa forme est $(m,d)$. Si le modèle contient $r$ neurones, $W$ a la forme $(r,d)$.
-
-$$
-X:(m,d),\qquad W^\top:(d,r),\qquad XW^\top:(m,r).
-$$
-
-Le résultat contient donc $m$ lignes et $r$ colonnes : un score par observation et par neurone. Cette vérification des dimensions aide à repérer une transposition oubliée.
-
----
-
-# Un calcul matriciel, ligne par ligne
-
-Prenons $X=\begin{bmatrix}1&2\\3&1\end{bmatrix}$ et $W=\begin{bmatrix}2&-1\\1&1\end{bmatrix}$.
-
-La première observation donne les scores $1\times2+2\times(-1)=0$ et $1\times1+2\times1=3$.
-
-La seconde donne $3\times2+1\times(-1)=5$ et $3\times1+1\times1=4$.
-
-Ainsi, $XW^\top=\begin{bmatrix}0&3\\5&4\end{bmatrix}$. La multiplication matricielle rassemble simplement ces quatre produits scalaires.
-
----
-
-# Exercice 4 · Calculer avec de petites matrices
-
-On donne :
-
-$$
-X=\begin{bmatrix}1&2\\3&1\end{bmatrix},\qquad
-W=\begin{bmatrix}2&-1\\1&1\end{bmatrix},\qquad
-\mathbf b=(-1,-3).
-$$
-
-1. Combien y a-t-il d'observations et de caractéristiques dans $X$ ? Combien y a-t-il de neurones dans $W$ ?
-2. Calculer à la main $XW^\top+\mathbf b$. Commencer par les produits scalaires de chaque ligne de $X$ avec chaque ligne de $W$.
-3. Vérifier avec NumPy :
-
-```python
-import numpy as np
-
-X = np.array([[1, 2], [3, 1]])
-W = np.array([[2, -1], [1, 1]])
-b = np.array([-1, -3])
-Z = X @ W.T + b
-print(Z)
-```
-
-4. Avec la même règle de seuil, transformer les scores en sorties 0 ou 1.
-
----
-
-# Vérifier les formes dans NumPy
-
-Avant de calculer, affichez les formes :
-
-```python
-print(X.shape)       # observations × caractéristiques
-print(W.shape)       # neurones × caractéristiques
-print(W.T.shape)     # caractéristiques × neurones
-print((X @ W.T).shape)
-```
-
-Ajoutez ensuite le biais et vérifiez qu'il existe une valeur par neurone. Pour chaque ligne de `X`, la règle de seuil transforme les scores en sorties 0 ou 1.
-
----
-
-# Mini-défi · Comparer deux façons de calculer
-
-À partir des mêmes petits tableaux :
-
-1. Calculer les scores avec une boucle sur les lignes de `X`.
-2. Calculer les mêmes scores avec `X @ W.T`.
-3. Afficher les deux résultats et vérifier qu'ils sont égaux.
-4. Compter le nombre de multiplications et d'additions effectuées dans les deux écritures.
-
-Le but n'est pas de mesurer des temps sur un exemple minuscule. Il s'agit de comprendre que la notation matricielle rassemble les calculs et se généralise à de nombreux exemples.
-
----
-
-# Pour aller un peu plus loin · XOR avec des poids choisis
-
-Les deux neurones cachés proposés plus tôt transforment les entrées en deux nouvelles valeurs $h_1$ et $h_2$. Le neurone de sortie combine ces valeurs pour retrouver la classe XOR.
-
-Complétez la table à la main, puis vérifiez avec NumPy. Les poids sont fournis : il n'est pas demandé de les apprendre. Cet exemple montre ce qu'un petit réseau peut calculer, sans expliquer encore comment entraîner toutes ses couches.
-
----
-
-# Ce que nous savons faire, et la suite
-
-Nous savons calculer les scores d'un neurone, corriger une prédiction, constater la limite d'une frontière linéaire et regrouper plusieurs calculs avec des matrices.
-
-La règle du perceptron apprend en corrigeant les erreurs observées. D'autres méthodes d'apprentissage utilisent des outils mathématiques supplémentaires ; elles feront l'objet d'un cours ultérieur.
-
-**À retenir :** un réseau de neurones reste une suite de calculs simples. Les poids déterminent ces calculs ; les données et une règle d'apprentissage les font évoluer.
-
----
+Pour voir l'évolution des paramètres, représentez chaque colonne de `historique` avec `plt.plot`. L'axe horizontal correspond au nombre de manchots déjà traités ; chaque courbe représente un poids. Utilisez `plt.legend()` pour distinguer les poids. Observez aussi le biais, qui est suivi séparément.

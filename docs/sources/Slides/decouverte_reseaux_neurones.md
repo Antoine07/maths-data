@@ -15,6 +15,8 @@ Préparer des données, coder un classifieur binaire et observer ses corrections
 
 # Repères historiques de l’intelligence artificielle
 
+Suivez la frise chronologique de gauche à droite. Faites-la défiler horizontalement pour parcourir tous les repères.
+
 <ol class="ai-history" role="list" aria-label="Onze repères chronologiques de l’intelligence artificielle">
   <li><time datetime="1943">1943</time><div>
     <strong>Un modèle mathématique du neurone</strong>
@@ -134,7 +136,7 @@ Le neurone utilise le même type de calcul avec ses entrées et ses poids, puis 
 
 ---
 
-# Objectif · Coder un perceptron binaire
+# Objectif · Coder un perceptron
 
 À partir d’un jeu de données sur les manchots, vous allez préparer les caractéristiques et la cible, coder le calcul d’un score, puis écrire la boucle qui ajuste les poids lorsqu’une prédiction est fausse.
 

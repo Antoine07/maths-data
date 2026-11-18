@@ -350,6 +350,8 @@ Pour cette observation, le nouveau score est $-0{,}3$. La classe prédite devien
 
 Vous avez maintenant les caractéristiques `X` et la classe attendue `y`. Le perceptron va parcourir les lignes une par une. Pour chaque manchot, il calcule un score, prédit une espèce, compare sa prédiction à la cible, puis corrige ses paramètres en cas d'erreur.
 
+Le traitement d'un manchot correspond à **une itération** : le modèle calcule, compare et, si nécessaire, met à jour ses poids. Une **époque** est un passage complet sur toutes les lignes. Avec 10 époques, chaque manchot est donc traité 10 fois.
+
 ## Mettre les mesures sur des échelles comparables
 
 Les longueurs sont exprimées en millimètres, la masse en grammes et `sex` vaut 0 ou 1. Sans précaution, les valeurs de masse pèseraient beaucoup plus dans les calculs. Centrez-réduisez les quatre mesures numériques ; gardez `sex` encodé en 0/1.
@@ -388,4 +390,4 @@ poids, biais, historique, erreurs_par_epoque = entrainer(
 
 La boucle de `res.py` applique bien ces étapes à **chaque** manchot. Pour comprendre le mécanisme, affichez le score, la cible, la prédiction et les poids après correction pour les cinq premiers exemples de la première époque. Le perceptron apprend à partir de `X` et `y` : la colonne `species` ne doit jamais être ajoutée aux caractéristiques `X`.
 
-Pour voir l'évolution des paramètres, représentez chaque colonne de `historique` avec `plt.plot`. L'axe horizontal correspond au nombre de manchots déjà traités ; chaque courbe représente un poids. Utilisez `plt.legend()` pour distinguer les poids. Observez aussi le biais, qui est suivi séparément. Comparez enfin le nombre d'erreurs après chacun des dix passages.
+Pour voir l'évolution des paramètres, représentez chaque colonne de `historique` avec `plt.plot`. L'axe horizontal correspond au numéro d'itération (une observation traitée) ; chaque courbe représente un poids. Utilisez `plt.legend()` pour distinguer les poids. Observez aussi le biais, qui est suivi séparément. Comparez enfin le nombre d'erreurs après chaque époque.

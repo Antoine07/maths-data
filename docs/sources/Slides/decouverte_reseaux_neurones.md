@@ -9,33 +9,65 @@ class: lead
 
 Des calculs simples pour comprendre comment un modèle classe des données.
 
+[Voir la frise historique de l’intelligence artificielle](#34)
+
 ---
 
-# Ce que nous allons construire
+# Échauffement · Le produit scalaire d’un panier
 
-Un neurone reçoit quelques nombres, calcule un score et choisit une classe. Nous allons voir comment corriger ses poids lorsqu'il se trompe, puis comment plusieurs neurones peuvent travailler ensemble.
+Le **produit scalaire** de deux vecteurs de même dimension est le nombre obtenu en multipliant leurs coordonnées de même rang, puis en additionnant les produits. Pour deux vecteurs $a$ et $b$ à trois coordonnées, on écrit
 
-**À la fin du chapitre, tu sauras :**
+$$
+a\cdot b=a_1b_1+a_2b_2+a_3b_3.
+$$
 
-- calculer le score d'un neurone à partir de ses entrées, ses poids et son biais ;
-- comparer un seuil, ReLU et la sigmoïde sur quelques valeurs ;
-- appliquer une règle simple de correction ;
-- reconnaître une limite d'un modèle linéaire ;
-- lire une petite multiplication matricielle qui calcule plusieurs scores à la fois.
+Dans une liste de courses, on associe à chaque produit sa quantité et son prix unitaire.
 
-Le chapitre s'appuie sur des additions, des multiplications et des tableaux NumPy. Aucune méthode de dérivation n'est nécessaire pour les activités.
+| Produit | Prix (€) | Quantité |
+|:---|---:|---:|
+| Sachet de pommes | 2 | 2 |
+| Bouteille de lait | 1 | 1 |
+| Pain | 3 | 1 |
+
+On garde le même ordre dans les deux vecteurs. Pour les quantités $q=(2,1,1)$ et les prix $p=(2,1,3)$, le total vaut
+
+$$
+\begin{aligned}
+q\cdot p &= 2\times 2+1\times 1+1\times 3\\
+         &= 8\ \text{euros}.
+\end{aligned}
+$$
+
+**À toi de jouer.** Garde l’ordre pommes, lait, pain et calcule le total de chaque panier.
+
+1. Panier $(1,2,1)$.
+2. Panier $(0,3,2)$.
+3. Panier $(3,0,2)$. Un budget de 10 € suffit-il ?
+
+<details>
+<summary>Vérifier les trois calculs</summary>
+
+1. $1\times 2+2\times 1+1\times 3=7$ €.
+2. $0\times 2+3\times 1+2\times 3=9$ €.
+3. $3\times 2+0\times 1+2\times 3=12$ €. Il manque 2 €.
+
+</details>
+
+Le neurone utilise le même type de calcul avec ses entrées et ses poids, puis ajoute un biais.
 
 ---
 
 # Un parcours en trois étapes
 
-**1 · Décider.** Comprendre le score d'un neurone et la droite qui sépare deux classes.
+**1 · Décider.** Calculer le score d'un neurone, comparer le seuil, ReLU et la sigmoïde, puis lire la droite qui sépare deux classes.
 
 **2 · Apprendre.** Modifier les poids quand le neurone se trompe, puis observer ce qu'il peut et ne peut pas apprendre.
 
 **3 · Regrouper les calculs.** Représenter plusieurs observations dans un tableau et utiliser de petites matrices avec NumPy.
 
 Chaque étape part d'un calcul à la main, puis le vérifie dans un notebook. Nous utiliserons un petit jeu de données artificiel pour que les calculs restent lisibles.
+
+Le chapitre s'appuie sur des additions, des multiplications et des tableaux NumPy. Aucune méthode de dérivation n'est nécessaire pour les activités.
 
 ---
 
@@ -159,27 +191,48 @@ Un neurone reçoit $x_1=2$ et $x_2=1$. Ses poids valent $w_1=1$ et $w_2=-2$, et 
 
 # Une frontière sépare les deux classes
 
-La décision change lorsque le score vaut zéro. Avec deux caractéristiques, l'équation
+Avec deux caractéristiques et au moins un poids non nul, la frontière est la droite d'équation $w_1x_1+w_2x_2+b=0$. Elle contient les points dont le score vaut zéro.
+
+Reprenons l'exercice 1 avec le biais initial $b=1$. Le score est $z=x_1-2x_2+1$. En posant $z=0$ et en isolant $x_2$, on obtient
 
 $$
-w_1x_1+w_2x_2+b=0
+x_2=\frac{x_1+1}{2}.
 $$
 
-décrit une droite. Le neurone classe les points situés de part et d'autre de cette frontière.
-
-<svg class="interactive-demo-svg discovery-boundary-svg" viewBox="0 0 520 350" role="img" aria-label="Deux groupes de points sont séparés par la droite x2 égale x1.">
-  <text x="260" y="26" text-anchor="middle" class="demo-title">Deux caractéristiques, une droite de décision</text>
-  <path d="M75 290H455M75 290V55" class="demo-axis"/>
-  <path d="M75 230H455M75 170H455M75 110H455M150 55V290M225 55V290M300 55V290M375 55V290" class="demo-grid"/>
-  <path d="M105 270L405 70" stroke="#d8894a" stroke-width="4" stroke-dasharray="8 6"/>
-  <g fill="#457b9d"><circle cx="225" cy="270" r="9"/><circle cx="300" cy="210" r="9"/></g>
-  <g fill="#e66f51"><rect x="137" y="137" width="18" height="18" rx="3"/><rect x="212" y="77" width="18" height="18" rx="3"/></g>
-  <text x="260" y="324" text-anchor="middle" class="demo-caption">Caractéristique x₁</text>
-  <text x="43" y="172" text-anchor="middle" class="demo-caption" transform="rotate(-90 43 172)">Caractéristique x₂</text>
-  <text x="325" y="95" class="demo-caption">Frontière : x₂ = x₁</text>
+<svg class="discovery-boundary-svg" viewBox="0 0 364 262" style="display:block;width:100%;max-width:432px;height:auto;margin:8px auto 16px" role="img" aria-label="Repère gradué. La droite x₂ = (x₁ + 1) / 2 passe par (1, 1) et (3, 2). Le point (2, 1) est sous la droite en classe 1. Le point (2, 2) est au-dessus en classe 0.">
+  <polygon points="45,31 301,31 301,63 45,191" fill="#faeee7"/>
+  <polygon points="45,191 301,63 301,223 45,223" fill="#e5f1f5"/>
+  <path d="M45 159H301 M45 95H301 M45 31H301 M109 31V223 M173 31V223 M237 31V223 M301 31V223" class="demo-grid"/>
+  <path d="M45 24V223H319" class="demo-axis" fill="none"/>
+  <line x1="45" y1="191" x2="301" y2="63" stroke="#a85532" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <circle cx="109" cy="159" r="3.5" fill="#a85532"/>
+  <circle cx="237" cy="95" r="3.5" fill="#a85532"/>
+  <rect x="168" y="90" width="10" height="10" rx="1.5" fill="#a44432"/>
+  <circle cx="173" cy="159" r="5.5" fill="#32647e"/>
+  <g fill="#203f38" font-family="system-ui, sans-serif" font-size="16">
+    <g text-anchor="middle">
+      <text x="45" y="17">x₂</text>
+      <text x="38" y="246">0</text>
+      <text x="109" y="246">1</text>
+      <text x="173" y="246">2</text>
+      <text x="237" y="246">3</text>
+      <text x="301" y="246">4</text>
+    </g>
+    <g text-anchor="end">
+      <text x="34" y="164">1</text>
+      <text x="34" y="100">2</text>
+      <text x="34" y="36">3</text>
+    </g>
+    <text x="326" y="228">x₁</text>
+    <text x="307" y="68" fill="#813d2c">z = 0</text>
+    <text x="60" y="55" fill="#813d2c">Classe 0 · z &lt; 0</text>
+    <text x="169" y="205" fill="#285770">Classe 1 · z ≥ 0</text>
+    <text x="185" y="100">(2, 2)</text>
+    <text x="185" y="164">(2, 1)</text>
+  </g>
 </svg>
 
-Sur ce dessin, une droite suffit à séparer les deux groupes. Un neurone seul ne peut produire qu'une frontière de ce type.
+Le point $(2,1)$ de l'exercice a un score de $1$. Il est sous la droite, dans la classe 1. La règle $z\geq 0$ inclut aussi les points de la droite dans cette classe.
 
 ---
 
@@ -501,3 +554,54 @@ Nous savons calculer les scores d'un neurone, corriger une prédiction, constate
 La règle du perceptron apprend en corrigeant les erreurs observées. D'autres méthodes d'apprentissage utilisent des outils mathématiques supplémentaires ; elles feront l'objet d'un cours ultérieur.
 
 **À retenir :** un réseau de neurones reste une suite de calculs simples. Les poids déterminent ces calculs ; les données et une règle d'apprentissage les font évoluer.
+
+---
+
+# Repères historiques de l’intelligence artificielle
+
+<ol class="ai-history" role="list" aria-label="Onze repères chronologiques de l’intelligence artificielle">
+  <li><time datetime="1943">1943</time><div>
+    <strong>Un modèle mathématique du neurone</strong>
+    <p>McCulloch et Pitts décrivent des neurones à seuil qui, reliés entre eux, réalisent des opérations logiques. <a href="https://doi.org/10.1007/BF02478259">Article original</a></p>
+  </div></li>
+  <li><time datetime="1950">1950</time><div>
+    <strong>Le jeu de l’imitation</strong>
+    <p>Alan Turing propose un jeu de conversation écrite pour évaluer si une machine peut imiter les réponses d’une personne. <a href="https://academic.oup.com/mind/article/LIX/236/433/986238">Article de Turing</a></p>
+  </div></li>
+  <li><time datetime="1956">1956</time><div>
+    <strong>L’atelier de Dartmouth</strong>
+    <p>Des chercheurs se réunissent autour d’un programme de recherche appelé « intelligence artificielle » dans leur proposition de 1955. <a href="https://www-formal.stanford.edu/jmc/slides/dartmouth/dartmouth/node1.html">Récit de John McCarthy</a></p>
+  </div></li>
+  <li><time datetime="1958">1958</time><div>
+    <strong>Le perceptron</strong>
+    <p>Frank Rosenblatt publie son modèle de perceptron, qui apprend à classer des exemples en ajustant des poids. <a href="https://pubmed.ncbi.nlm.nih.gov/13602029/">Article de Rosenblatt</a></p>
+  </div></li>
+  <li><time datetime="1976">1976</time><div>
+    <strong>MYCIN et les systèmes experts</strong>
+    <p>Edward Shortliffe présente MYCIN, un programme qui applique des règles d’experts pour assister des décisions médicales. <a href="https://www.sciencedirect.com/book/monograph/9780444001795/computer-based-medical-consultations-mycin">Monographie</a></p>
+  </div></li>
+  <li><time datetime="1986">1986</time><div>
+    <strong>La rétropropagation</strong>
+    <p>Rumelhart, Hinton et Williams décrivent comment ajuster les poids des couches intermédiaires à partir de l’erreur en sortie. <a href="https://doi.org/10.1038/323533a0">Article dans Nature</a></p>
+  </div></li>
+  <li><time datetime="1997">1997</time><div>
+    <strong>Deep Blue aux échecs</strong>
+    <p>Le système d’IBM remporte un match en six parties contre le champion du monde Garry Kasparov. <a href="https://www.ibm.com/history/deep-blue">Archives IBM</a></p>
+  </div></li>
+  <li><time datetime="2012">2012</time><div>
+    <strong>AlexNet et la reconnaissance d’images</strong>
+    <p>Un réseau convolutif profond entraîné sur GPU remporte le défi de classification ImageNet. <a href="https://proceedings.neurips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c-Abstract.html">Article NeurIPS</a></p>
+  </div></li>
+  <li><time datetime="2016">2016</time><div>
+    <strong>AlphaGo au jeu de go</strong>
+    <p>Le programme de Google DeepMind bat le joueur professionnel Lee Sedol par quatre parties à une. <a href="https://deepmind.google/research/alphago/">Compte rendu de DeepMind</a></p>
+  </div></li>
+  <li><time datetime="2017">2017</time><div>
+    <strong>Le Transformer</strong>
+    <p>Vaswani et ses coauteurs proposent une architecture fondée sur l’attention et la testent sur des tâches de traduction. <a href="https://arxiv.org/abs/1706.03762">Article original</a></p>
+  </div></li>
+  <li><time datetime="2022-11-30">2022</time><div>
+    <strong>ChatGPT et l’IA générative grand public</strong>
+    <p>OpenAI ouvre au public l’accès à un assistant qui génère des réponses en langage naturel. <a href="https://openai.com/index/chatgpt/">Annonce de lancement</a></p>
+  </div></li>
+</ol>

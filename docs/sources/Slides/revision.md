@@ -863,7 +863,7 @@ $$
 
 Les courbes de $y=e^x$ et de $y=\ln(x)$ sont **symétriques par rapport à la droite $y=x$**. Une réflexion par rapport à cette droite échange les coordonnées : le point $(0,1)$ de l'exponentielle correspond à $(1,0)$ pour le logarithme ; de même, $(1,e)$ correspond à $(e,1)$.
 
-![Les courbes de y égale e puissance x et y égale ln de x sont symétriques par rapport à la droite y égale x. Les points (0, 1) et (1, 0), puis (1, e) et (e, 1), se correspondent.](images/exp-ln-symmetry.svg)
+![Les courbes de y égale e puissance x et y égale ln de x se reflètent autour de y=x ; elles vérifient ln de e puissance x égale x et e puissance ln de x égale x pour x strictement positif.](images/exp-ln-symmetry.svg)
 
 Il transforme les produits en sommes et les puissances en produits :
 

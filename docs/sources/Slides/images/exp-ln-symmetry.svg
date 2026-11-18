@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 590" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 620" role="img" aria-labelledby="title desc">
 <title id="title">Exponentielle et logarithme, fonctions réciproques</title>
 <desc id="desc">Les courbes y égale e puissance x et y égale logarithme népérien de x sont symétriques par rapport à la droite y égale x. Les points zéro, un et un, zéro sont échangés, comme un, e et e, un.</desc>
 <rect width="680" height="590" rx="18" fill="#ffffff"/>
@@ -42,4 +42,6 @@
 <text x="575" y="193" font-family="system-ui,sans-serif" font-size="11" fill="#285d76">(e, 1)</text>
 <rect x="105" y="552" width="470" height="26" rx="13" fill="#eef3ef"/>
 <text x="340" y="570" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#334b40">La réflexion par rapport à y = x échange les coordonnées (a, b) et (b, a).</text>
+<rect x="105" y="584" width="470" height="26" rx="13" fill="#eef3ef"/>
+<text x="340" y="602" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#334b40">ln(eˣ) = x ; e^(ln x) = x si x &gt; 0</text>
 </svg>

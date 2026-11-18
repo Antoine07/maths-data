@@ -25,6 +25,8 @@ def entrainer(X, y, eta=0.1, nb_epoques=10):
         erreurs = 0
 
         for i in range(len(X)):
+            # Une itération traite une observation (un manchot).
+            numero_iteration = epoque * len(X) + i + 1
             xi = X[i]
             score = xi @ poids + biais
             classe_reelle = y[i]
@@ -44,7 +46,8 @@ def entrainer(X, y, eta=0.1, nb_epoques=10):
             # Afficher quelques exemples pour suivre les premières corrections.
             if epoque == 0 and i < 5:
                 print(
-                    f"manchot {i + 1} | score={score:.3f} | "
+                    f"itération {numero_iteration} (manchot {i + 1}) | "
+                    f"score={score:.3f} | "
                     f"cible={classe_reelle} | prédiction={classe_predite} | "
                     f"poids={poids} | biais={biais:.3f}"
                 )

@@ -124,6 +124,8 @@ a[href*="Corrections/"]{display:none!important}
 .qcm-feedback[data-state="incorrect"]{background:#fff2ef;color:#7c342a}
 .qcm-feedback[data-state="neutral"]{background:#f6f2e8;color:#6c5934}
 .qcm-feedback[hidden]{display:none}
+.qcm-score{margin:16px 0 0!important;padding:12px 14px;border:1px solid #c9d4ee;border-radius:10px;background:#eef2fb;color:#303c61;font-size:.82rem;font-weight:700}
+.qcm-score[data-complete="true"]{border-color:#8db59a;background:#edf8ef;color:#28583b}
 @media(max-width:700px){.qcm-options{grid-template-columns:1fr}.qcm-review{padding:12px}.qcm-question{padding:10px}}
 .prose .katex{font-size:1.15em}
 .prose .katex-display{overflow-x:auto;overflow-y:hidden;padding:10px 2px;margin:20px 0}

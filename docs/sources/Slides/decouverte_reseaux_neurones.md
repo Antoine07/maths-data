@@ -269,7 +269,7 @@ On considère les scores $z=-2$, $z=0$ et $z=2$.
 
 # Préparer les données avant la classification
 
-Avant de demander au perceptron de classer des observations, il faut transformer le tableau en données numériques bien définies. Nous utiliserons le fichier `penguins.csv`.
+Avant de demander au perceptron de classer des observations, il faut transformer le tableau en données numériques bien définies. [Téléchargez le fichier `penguins.csv`](data/penguins.csv) et placez-le dans le dossier du notebook.
 
 ```python
 import pandas as pd

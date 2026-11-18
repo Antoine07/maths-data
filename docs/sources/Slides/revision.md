@@ -861,6 +861,10 @@ $$
 \ln(e^u)=u,\qquad e^{\ln x}=x\quad (x>0).
 $$
 
+Les courbes de $y=e^x$ et de $y=\ln(x)$ sont **symétriques par rapport à la droite $y=x$**. Une réflexion par rapport à cette droite échange les coordonnées : le point $(0,1)$ de l'exponentielle correspond à $(1,0)$ pour le logarithme ; de même, $(1,e)$ correspond à $(e,1)$.
+
+![Les courbes de y égale e puissance x et y égale ln de x sont symétriques par rapport à la droite y égale x. Les points (0, 1) et (1, 0), puis (1, e) et (e, 1), se correspondent.](images/exp-ln-symmetry.svg)
+
 Il transforme les produits en sommes et les puissances en produits :
 
 $$
@@ -891,6 +895,25 @@ $$
 4. Vérifier que les solutions respectent le domaine de départ.
 
 **Repère :** $(\ln x)^2$ signifie bien le carré du nombre $\ln x$. Le changement de variable remplace provisoirement l'expression $\ln x$ par une variable plus simple.
+
+---
+
+# Exercice — Retrouver le temps avec le logarithme
+
+Une population de bactéries évolue selon la fonction :
+
+$$
+N(t)=100e^{0{,}2t}
+$$
+
+où $t$ représente le temps en heures.
+
+1. Calculer $N(0)$. Que représente cette valeur ?
+2. Calculer $N(5)$.
+3. Au bout de combien de temps la population atteint-elle 500 bactéries ?
+4. Vérifier votre résultat en remplaçant $t$ dans la fonction initiale.
+
+**Aide pour la question 3.** On cherche $t$ tel que $100e^{0{,}2t}=500$. En divisant par 100, on obtient $e^{0{,}2t}=5$. Comment faire disparaître l'exponentielle pour isoler $t$ ? Rappel : $\ln(e^x)=x$.
 
 ---
 

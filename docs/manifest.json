@@ -163,5 +163,10 @@
     "file": "statistiques.html",
     "source": "Slides/01_introduction_stat.md",
     "slides": 40
+  },
+  {
+    "file": "decouverte_reseaux_neurones.html",
+    "source": "Slides/decouverte_reseaux_neurones.md",
+    "slides": 13
   }
 ]

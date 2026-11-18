@@ -9,7 +9,58 @@ class: lead
 
 Préparer des données, coder un classifieur binaire et observer ses corrections.
 
-Repère historique — Frank Rosenblatt présente le perceptron en 1958 : un modèle simple qui apprend à classer en ajustant ses poids.
+[Voir les repères historiques de l’intelligence artificielle](#2)
+
+---
+
+# Repères historiques de l’intelligence artificielle
+
+<ol class="ai-history" role="list" aria-label="Onze repères chronologiques de l’intelligence artificielle">
+  <li><time datetime="1943">1943</time><div>
+    <strong>Un modèle mathématique du neurone</strong>
+    <p>McCulloch et Pitts décrivent des neurones à seuil qui, reliés entre eux, réalisent des opérations logiques. <a href="https://doi.org/10.1007/BF02478259">Article original</a></p>
+  </div></li>
+  <li><time datetime="1950">1950</time><div>
+    <strong>Le jeu de l’imitation</strong>
+    <p>Alan Turing propose un jeu de conversation écrite pour évaluer si une machine peut imiter les réponses d’une personne. <a href="https://academic.oup.com/mind/article/LIX/236/433/986238">Article de Turing</a></p>
+  </div></li>
+  <li><time datetime="1956">1956</time><div>
+    <strong>L’atelier de Dartmouth</strong>
+    <p>Des chercheurs se réunissent autour d’un programme de recherche appelé « intelligence artificielle » dans leur proposition de 1955. <a href="https://www-formal.stanford.edu/jmc/slides/dartmouth/dartmouth/node1.html">Récit de John McCarthy</a></p>
+  </div></li>
+  <li><time datetime="1958">1958</time><div>
+    <strong>Le perceptron</strong>
+    <p>Frank Rosenblatt publie son modèle de perceptron, qui apprend à classer des exemples en ajustant des poids. <a href="https://pubmed.ncbi.nlm.nih.gov/13602029/">Article de Rosenblatt</a></p>
+  </div></li>
+  <li><time datetime="1976">1976</time><div>
+    <strong>MYCIN et les systèmes experts</strong>
+    <p>Edward Shortliffe présente MYCIN, un programme qui applique des règles d’experts pour assister des décisions médicales. <a href="https://www.sciencedirect.com/book/monograph/9780444001795/computer-based-medical-consultations-mycin">Monographie</a></p>
+  </div></li>
+  <li><time datetime="1986">1986</time><div>
+    <strong>La rétropropagation</strong>
+    <p>Rumelhart, Hinton et Williams décrivent comment ajuster les poids des couches intermédiaires à partir de l’erreur en sortie. <a href="https://doi.org/10.1038/323533a0">Article dans Nature</a></p>
+  </div></li>
+  <li><time datetime="1997">1997</time><div>
+    <strong>Deep Blue aux échecs</strong>
+    <p>Le système d’IBM remporte un match en six parties contre le champion du monde Garry Kasparov. <a href="https://www.ibm.com/history/deep-blue">Archives IBM</a></p>
+  </div></li>
+  <li><time datetime="2012">2012</time><div>
+    <strong>AlexNet et la reconnaissance d’images</strong>
+    <p>Un réseau convolutif profond entraîné sur GPU remporte le défi de classification ImageNet. <a href="https://proceedings.neurips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c-Abstract.html">Article NeurIPS</a></p>
+  </div></li>
+  <li><time datetime="2016">2016</time><div>
+    <strong>AlphaGo au jeu de go</strong>
+    <p>Le programme de Google DeepMind bat le joueur professionnel Lee Sedol par quatre parties à une. <a href="https://deepmind.google/research/alphago/">Compte rendu de DeepMind</a></p>
+  </div></li>
+  <li><time datetime="2017">2017</time><div>
+    <strong>Le Transformer</strong>
+    <p>Vaswani et ses coauteurs proposent une architecture fondée sur l’attention et la testent sur des tâches de traduction. <a href="https://arxiv.org/abs/1706.03762">Article original</a></p>
+  </div></li>
+  <li><time datetime="2022-11-30">2022</time><div>
+    <strong>ChatGPT et l’IA générative grand public</strong>
+    <p>OpenAI ouvre au public l’accès à un assistant qui génère des réponses en langage naturel. <a href="https://openai.com/index/chatgpt/">Annonce de lancement</a></p>
+  </div></li>
+</ol>
 
 ---
 
@@ -103,6 +154,19 @@ $$
 
 Le score $z$ résume les entrées selon les poids choisis par le modèle. Une règle de décision transforme ensuite ce score en classe.
 
+En NumPy, l'opérateur `@` calcule un produit matriciel. Quand ses deux côtés sont des vecteurs de même longueur, il calcule leur produit scalaire : il multiplie les coordonnées correspondantes, puis additionne les produits.
+
+```python
+import numpy as np
+
+x = np.array([2, 1])
+poids = np.array([1, -2])
+produit = x @ poids  # 2 × 1 + 1 × (-2) = 0
+score = produit + 1  # le biais vaut 1, donc le score vaut 1
+```
+
+Dans notre perceptron, le score s'écrit donc `x @ poids + biais`. Pour une matrice `X` contenant plusieurs observations, `X @ poids` calcule en une fois un score par ligne.
+
 On note $\widehat y$, prononcé **« y chapeau »**, la classe que le modèle prédit. Le chapeau indique ici une valeur estimée par le modèle. La lettre $y$ sans chapeau désigne la classe attendue, connue dans les données. La prédiction peut être correcte ($\widehat y=y$) ou erronée ($\widehat y\ne y$).
 
 La règle de décision est :
@@ -110,6 +174,13 @@ La règle de décision est :
 $$
 \widehat y=\begin{cases}1 & \text{si } z\geq 0,\\ 0 & \text{si } z<0.\end{cases}
 $$
+
+Cette règle porte le nom de **fonction escalier** : elle transforme un score en classe 0 ou 1.
+
+```python
+def fonction_escalier(score):
+    return int(score >= 0)
+```
 
 Les poids disent quelles caractéristiques font monter ou baisser le score. Le biais déplace le seuil de décision.
 
@@ -173,8 +244,6 @@ $$
 </svg>
 
 Le point $(2,1)$ de l'exercice a un score de $1$. Il est sous la droite, dans la classe 1. La règle $z\geq 0$ inclut aussi les points de la droite dans cette classe.
-
-Pour cet exemple précis, la frontière est $x_2=\frac{x_1+1}{2}$, et non $x_2=x_1$. L'égalité $x_2=x_1$ apparaîtra dans l'exercice suivant, qui utilise un autre score : $z=-x_1+x_2$.
 
 ---
 
@@ -293,48 +362,19 @@ X[:, :4] = ...
 
 Pour cette activité, le pas d'apprentissage est fixé à **$\eta=0{,}1$**. C'est un hyperparamètre : on le choisit avant l'entraînement et on le garde identique pour tous les manchots et toutes les époques. Il n'est pas appris par le perceptron.
 
-## Compléter la boucle
+## Écrire l'algorithme dans `res.py`
 
-On commence avec des poids nuls et un biais nul. À chaque ligne `i`, notez le score avant correction, calculez la prédiction avec le seuil $z\geq0$, puis comparez-la à `y[i]`. Reprenez la règle de correction vue plus haut pour compléter les deux lignes manquantes.
+Téléchargez le [squelette de `res.py`](data/res.py), placez-le à côté du notebook, puis complétez la mise à jour des poids et du biais. Le fichier contient la fonction escalier et le parcours des données.
+
+Pour chaque ligne `i`, l'algorithme suit toujours le même ordre : calculer le score, appliquer la fonction escalier, comparer la classe prédite à `y[i]`, puis corriger les paramètres si elles diffèrent.
 
 ```python
-import numpy as np
+from res import entrainer, predire
 
-eta = 0.1
-poids = np.zeros(X.shape[1])
-biais = 0.0
-nb_epoques = 10
-historique = []
-
-for epoque in range(nb_epoques):
-    erreurs = 0
-
-    for i in range(len(X)):
-        xi = X[i]
-        # Indice : produit scalaire des caractéristiques et des poids,
-        # puis ajout du biais.
-        score = ...
-        # Indice : la classe prédite vaut 1 si le score est positif ou nul.
-        classe_reelle = y[i]
-        classe_predite = ...
-        erreur = classe_reelle - classe_predite
-
-        if erreur != 0:
-            # Compléter : mettre à jour les poids et le biais
-            ...
-            ...
-            erreurs += 1
-
-        # Garder une trace des poids après le passage de ce manchot
-        historique.append(poids.copy())
-
-        # Afficher les cinq premiers passages de la première époque
-        if epoque == 0 and i < 5:
-            print(f"manchot {i + 1} | score avant correction={score:.3f} | "
-                  f"classe réelle={classe_reelle} | prédiction={classe_predite} | "
-                  f"poids après={poids} | biais après={biais:.3f}")
-
-    print(f"Époque {epoque + 1} : {erreurs} erreur(s)")
+# Le pas reste fixé à 0.1 ; faire 10 passages sur les données.
+poids, biais, historique, erreurs_par_epoque = entrainer(
+    X, y, eta=0.1, nb_epoques=10
+)
 ```
 
 **À observer et expliquer :**
@@ -344,6 +384,6 @@ for epoque in range(nb_epoques):
 3. Comparer le nombre d'erreurs d'une époque à l'autre. Les poids restent-ils fixes ou évoluent-ils encore ?
 4. Expliquer le rôle de $\eta$ : que changerait un pas plus grand ou plus petit ? Pour cette expérience, ne modifiez pas sa valeur pendant l'entraînement.
 
-La boucle applique bien ces étapes à **chaque** manchot ; l'affichage des cinq premiers sert seulement à rendre le suivi lisible. Le perceptron apprend à partir de `X` et `y` : la colonne `species` ne doit jamais être ajoutée aux caractéristiques `X`.
+La boucle de `res.py` applique bien ces étapes à **chaque** manchot. Pour comprendre le mécanisme, affichez le score, la cible, la prédiction et les poids après correction pour les cinq premiers exemples de la première époque. Le perceptron apprend à partir de `X` et `y` : la colonne `species` ne doit jamais être ajoutée aux caractéristiques `X`.
 
-Pour voir l'évolution des paramètres, représentez chaque colonne de `historique` avec `plt.plot`. L'axe horizontal correspond au nombre de manchots déjà traités ; chaque courbe représente un poids. Utilisez `plt.legend()` pour distinguer les poids. Observez aussi le biais, qui est suivi séparément.
+Pour voir l'évolution des paramètres, représentez chaque colonne de `historique` avec `plt.plot`. L'axe horizontal correspond au nombre de manchots déjà traités ; chaque courbe représente un poids. Utilisez `plt.legend()` pour distinguer les poids. Observez aussi le biais, qui est suivi séparément. Comparez enfin le nombre d'erreurs après chacun des dix passages.

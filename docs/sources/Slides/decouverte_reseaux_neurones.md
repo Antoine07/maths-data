@@ -22,7 +22,27 @@ Un neurone reçoit quelques nombres, calcule un score et choisit une classe. Nou
 - reconnaître une limite d'un modèle linéaire ;
 - lire une petite multiplication matricielle qui calcule plusieurs scores à la fois.
 
-Nous utiliserons des additions, des multiplications, des tableaux NumPy et des dérivées simples. La dérivation en chaîne et la rétropropagation ne sont pas des prérequis ici.
+Le chapitre s'appuie sur des additions, des multiplications et des tableaux NumPy. Aucune méthode de dérivation n'est nécessaire pour les activités.
+
+---
+
+# Un parcours en trois étapes
+
+**1 · Décider.** Comprendre le score d'un neurone et la droite qui sépare deux classes.
+
+**2 · Apprendre.** Modifier les poids quand le neurone se trompe, puis observer ce qu'il peut et ne peut pas apprendre.
+
+**3 · Regrouper les calculs.** Représenter plusieurs observations dans un tableau et utiliser de petites matrices avec NumPy.
+
+Chaque étape part d'un calcul à la main, puis le vérifie dans un notebook. Nous utiliserons un petit jeu de données artificiel pour que les calculs restent lisibles.
+
+---
+
+# Étape 1 · Le neurone comme classifieur
+
+Nous commençons par deux caractéristiques et deux classes. Le but est de comprendre chaque décision avant de demander au programme de la répéter sur beaucoup d'observations.
+
+À la fin de cette étape, vous saurez calculer un score, lire son signe et représenter la frontière entre les deux classes.
 
 ---
 
@@ -82,6 +102,43 @@ Sur ce dessin, une droite suffit à séparer les deux groupes. Un neurone seul n
 
 ---
 
+# Lire le rôle des poids
+
+Reprenons le score :
+
+$$
+z=w_1x_1+w_2x_2+b.
+$$
+
+- Si un poids est positif, augmenter la caractéristique correspondante augmente le score.
+- Si un poids est négatif, l'augmenter diminue le score.
+- Le biais $b$ déplace la frontière sans changer son orientation.
+
+Ces effets dépendent de l'échelle des caractéristiques. Pour l'instant, nous choisissons de petits nombres faciles à comparer.
+
+---
+
+# Exercice · Prévoir avant de coder
+
+Un neurone utilise $z=-x_1+x_2$ et prédit 1 lorsque $z\geq0$.
+
+1. Calculer le score et la classe pour $(1,0)$, $(0,2)$ et $(3,3)$.
+2. Placer ces points dans un repère et tracer la frontière $z=0$.
+3. Indiquer de quel côté se trouvent les points prédits dans la classe 1.
+4. Vérifier les trois prédictions avec une courte fonction Python.
+
+L'objectif est de relier les calculs, la droite et les décisions du code.
+
+---
+
+# Étape 2 · Le perceptron apprend par corrections
+
+Le neurone commence avec des poids choisis. Il lit les exemples un par un. Quand sa prédiction est fausse, la règle de Rosenblatt déplace ses poids dans le sens qui corrige cette erreur.
+
+Nous suivons les changements des poids et le nombre d'erreurs. Nous ne cherchons pas encore à dériver une fonction d'erreur.
+
+---
+
 # Comment le perceptron apprend-il ?
 
 On compare la classe prédite $\widehat y$ à la classe attendue $y$. Si le neurone se trompe, on modifie légèrement les poids dans le sens de l'exemple :
@@ -94,6 +151,25 @@ $$
 Ici, $\eta$ est un petit nombre positif appelé **pas d'apprentissage**. La formule ne demande que des additions et des multiplications.
 
 **Exemple guidé.** On prend $\mathbf x=(1,0)$, $y=0$, $\widehat y=1$, $\eta=0{,}2$, $\mathbf w=(0{,}2,0{,}1)$ et $b=-0{,}1$. Le facteur $(y-\widehat y)$ vaut $-1$ : le poids associé à la première caractéristique et le biais diminuent.
+
+---
+
+# Une correction, pas à pas
+
+Dans l'exemple précédent, le facteur de correction vaut :
+
+$$
+\eta(y-\widehat y)=0{,}2(0-1)=-0{,}2.
+$$
+
+On applique ce facteur à chaque composante de $\mathbf x=(1,0)$ :
+
+$$
+\mathbf w_{nouveau}=(0{,}2,0{,}1)-0{,}2(1,0)=(0,0{,}1),
+\qquad b_{nouveau}=-0{,}1-0{,}2=-0{,}3.
+$$
+
+Pour cette observation, le nouveau score est $-0{,}3$. La classe prédite devient 0. On vient de corriger cet exemple ; il faudra vérifier les autres exemples avant de conclure que le modèle est prêt.
 
 ---
 
@@ -147,6 +223,47 @@ y = np.array([0, 0, 1, 1])
 
 ---
 
+# La boucle d'apprentissage
+
+Voici les étapes à traduire en Python :
+
+1. Initialiser les poids et le biais.
+2. Parcourir les observations.
+3. Calculer un score et une prédiction.
+4. Si la prédiction est incorrecte, corriger les poids et le biais.
+5. À la fin d'un passage complet, compter les erreurs.
+6. Recommencer quelques passages et observer ce qui change.
+
+Un passage complet sur les exemples s'appelle une **époque**. Le nombre d'époques est un réglage choisi avant l'exécution.
+
+---
+
+# TP · Compléter et observer l'apprentissage
+
+Dans le notebook, complétez d'abord la fonction de prédiction, puis la boucle d'apprentissage.
+
+```python
+def predict_one(x, w, b):
+    score = x @ w + b
+    return int(score >= 0)
+
+# À compléter : initialiser w et b, parcourir X et y,
+# corriger les paramètres en cas d'erreur,
+# puis mémoriser le nombre d'erreurs de chaque époque.
+```
+
+Comparez les erreurs avant et après chaque époque. Tracez ensuite la frontière avec les poids finaux. Les fonctions de tracé sont fournies ; concentrez-vous sur la logique d'apprentissage.
+
+---
+
+# Interpréter le résultat
+
+Quand le nombre d'erreurs atteint zéro sur ces exemples, le perceptron a appris à les séparer. Cela ne prouve pas qu'il saura classer toutes les observations possibles : il a seulement réussi sur les exemples étudiés.
+
+Si les classes se chevauchent ou ne peuvent pas être séparées par une droite, les erreurs peuvent persister. Il faut alors comprendre la limite du modèle au lieu d'ajouter des corrections sans fin.
+
+---
+
 # Une limite : le problème XOR
 
 Voici quatre exemples et leur classe :
@@ -163,6 +280,14 @@ Voici quatre exemples et leur classe :
 3. Qu'est-ce que cela nous apprend sur les possibilités d'un neurone seul ?
 
 Une couche de neurones supplémentaire peut d'abord fabriquer de nouvelles caractéristiques, puis une autre unité peut prendre une décision à partir de celles-ci.
+
+---
+
+# Étape 3 · Calculer plusieurs scores avec des matrices
+
+Jusqu'ici, nous avons calculé les scores observation par observation. Les tableaux NumPy permettent de regrouper les observations ; les matrices regroupent aussi les poids de plusieurs neurones.
+
+Nous allons seulement lire et calculer de petits produits. Une ligne représente une observation, et une colonne représente une caractéristique ou un neurone selon le tableau.
 
 ---
 
@@ -200,6 +325,30 @@ Le biais $\mathbf b$ contient un nombre par neurone ; NumPy le réutilise pour c
 
 ---
 
+# Lire les dimensions avant de calculer
+
+Si $X$ contient $m$ observations et $d$ caractéristiques, sa forme est $(m,d)$. Si le modèle contient $r$ neurones, $W$ a la forme $(r,d)$.
+
+$$
+X:(m,d),\qquad W^\top:(d,r),\qquad XW^\top:(m,r).
+$$
+
+Le résultat contient donc $m$ lignes et $r$ colonnes : un score par observation et par neurone. Cette vérification des dimensions aide à repérer une transposition oubliée.
+
+---
+
+# Un calcul matriciel, ligne par ligne
+
+Prenons $X=\begin{bmatrix}1&2\\3&1\end{bmatrix}$ et $W=\begin{bmatrix}2&-1\\1&1\end{bmatrix}$.
+
+La première observation donne les scores $1\times2+2\times(-1)=0$ et $1\times1+2\times1=3$.
+
+La seconde donne $3\times2+1\times(-1)=5$ et $3\times1+1\times1=4$.
+
+Ainsi, $XW^\top=\begin{bmatrix}0&3\\5&4\end{bmatrix}$. La multiplication matricielle rassemble simplement ces quatre produits scalaires.
+
+---
+
 # Exercice 4 · Calculer avec de petites matrices
 
 On donne :
@@ -228,10 +377,46 @@ print(Z)
 
 ---
 
+# Vérifier les formes dans NumPy
+
+Avant de calculer, affichez les formes :
+
+```python
+print(X.shape)       # observations × caractéristiques
+print(W.shape)       # neurones × caractéristiques
+print(W.T.shape)     # caractéristiques × neurones
+print((X @ W.T).shape)
+```
+
+Ajoutez ensuite le biais et vérifiez qu'il existe une valeur par neurone. Pour chaque ligne de `X`, la règle de seuil transforme les scores en sorties 0 ou 1.
+
+---
+
+# Mini-défi · Comparer deux façons de calculer
+
+À partir des mêmes petits tableaux :
+
+1. Calculer les scores avec une boucle sur les lignes de `X`.
+2. Calculer les mêmes scores avec `X @ W.T`.
+3. Afficher les deux résultats et vérifier qu'ils sont égaux.
+4. Compter le nombre de multiplications et d'additions effectuées dans les deux écritures.
+
+Le but n'est pas de mesurer des temps sur un exemple minuscule. Il s'agit de comprendre que la notation matricielle rassemble les calculs et se généralise à de nombreux exemples.
+
+---
+
+# Pour aller un peu plus loin · XOR avec des poids choisis
+
+Les deux neurones cachés proposés plus tôt transforment les entrées en deux nouvelles valeurs $h_1$ et $h_2$. Le neurone de sortie combine ces valeurs pour retrouver la classe XOR.
+
+Complétez la table à la main, puis vérifiez avec NumPy. Les poids sont fournis : il n'est pas demandé de les apprendre. Cet exemple montre ce qu'un petit réseau peut calculer, sans expliquer encore comment entraîner toutes ses couches.
+
+---
+
 # Ce que nous savons faire, et la suite
 
 Nous savons calculer les scores d'un neurone, corriger une prédiction, constater la limite d'une frontière linéaire et regrouper plusieurs calculs avec des matrices.
 
-La règle du perceptron apprend sans dériver une fonction de perte. Les méthodes plus avancées ajustent les poids à l'aide de dérivées et de gradients. Pour les comprendre et coder la rétropropagation, il faudra d'abord travailler la dérivation en chaîne et les dérivées de plusieurs variables.
+La règle du perceptron apprend en corrigeant les erreurs observées. D'autres méthodes d'apprentissage utilisent des outils mathématiques supplémentaires ; elles feront l'objet d'un cours ultérieur.
 
 **À retenir :** un réseau de neurones reste une suite de calculs simples. Les poids déterminent ces calculs ; les données et une règle d'apprentissage les font évoluer.

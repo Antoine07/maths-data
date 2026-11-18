@@ -4,6 +4,30 @@
   const links = [...document.querySelectorAll('[data-slide-link]')];
   if (!articles.length) return;
   const byId = id => document.getElementById(id);
+  const qcmQuestions = [...document.querySelectorAll('[data-qcm-question]')];
+  let qcmScore = null;
+  if (qcmQuestions.length) {
+    qcmScore = document.createElement('p');
+    qcmScore.className = 'qcm-score';
+    qcmScore.setAttribute('role', 'status');
+    qcmScore.setAttribute('aria-live', 'polite');
+    qcmScore.textContent = `Score : 0/${qcmQuestions.length} · Répondez aux questions pour voir votre résultat.`;
+    const lastQuestion = qcmQuestions[qcmQuestions.length - 1];
+    (lastQuestion.closest('article') || lastQuestion).append(qcmScore);
+  }
+  function updateQcmScore() {
+    if (!qcmScore) return;
+    const answered = qcmQuestions.filter(question => question.dataset.qcmFirstAnswer !== undefined);
+    const correct = answered.filter(question => question.dataset.qcmFirstAnswer === 'true').length;
+    const percent = answered.length ? Math.round(correct / qcmQuestions.length * 100) : 0;
+    if (answered.length === qcmQuestions.length) {
+      qcmScore.textContent = `Résultat : ${correct}/${qcmQuestions.length} (${percent} %) — score calculé sur la première réponse à chaque question.`;
+      qcmScore.dataset.complete = 'true';
+    } else {
+      qcmScore.textContent = `Progression : ${answered.length}/${qcmQuestions.length} questions · Score provisoire : ${correct}/${qcmQuestions.length}.`;
+      qcmScore.dataset.complete = 'false';
+    }
+  }
   document.addEventListener('click', event => {
     const submit = event.target.closest('[data-qcm-submit]');
     if (!submit) return;
@@ -18,6 +42,10 @@
       return;
     }
     const correct = selected.dataset.qcmCorrect === 'true';
+    if (question.dataset.qcmFirstAnswer === undefined) {
+      question.dataset.qcmFirstAnswer = String(correct);
+      updateQcmScore();
+    }
     feedback.textContent = `${correct ? 'Bonne réponse.' : 'Pas encore.'} ${selected.dataset.qcmFeedback || ''}`;
     feedback.dataset.state = correct ? 'correct' : 'incorrect';
     feedback.hidden = false;

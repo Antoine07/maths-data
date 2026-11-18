@@ -18,6 +18,7 @@ Un neurone reçoit quelques nombres, calcule un score et choisit une classe. Nou
 **À la fin du chapitre, tu sauras :**
 
 - calculer le score d'un neurone à partir de ses entrées, ses poids et son biais ;
+- comparer un seuil, ReLU et la sigmoïde sur quelques valeurs ;
 - appliquer une règle simple de correction ;
 - reconnaître une limite d'un modèle linéaire ;
 - lire une petite multiplication matricielle qui calcule plusieurs scores à la fois.
@@ -61,6 +62,86 @@ $$
 $$
 
 Les poids disent quelles caractéristiques font monter ou baisser le score. Le biais déplace le seuil de décision.
+
+---
+
+# Le score peut passer par une fonction d'activation
+
+Le neurone calcule d'abord un score $z$. Une **fonction d'activation** transforme ensuite ce score avant de produire la sortie.
+
+Dans le perceptron que nous venons de voir, la fonction seuil transforme le score en une décision 0 ou 1. D'autres activations donnent une sortie différente. Nous allons en comparer deux, sans étudier leur apprentissage.
+
+---
+
+# ReLU · garder la partie positive
+
+La fonction ReLU est définie par :
+
+$$
+\operatorname{ReLU}(z)=\max(0,z).
+$$
+
+Elle renvoie 0 si le score est négatif, et garde le score s'il est positif.
+
+| Score $z$ | $-2$ | $0$ | $3$ |
+|---:|---:|---:|---:|
+| ReLU$(z)$ | $0$ | $0$ | $3$ |
+
+ReLU ne donne pas directement une classe : elle produit une nouvelle valeur que d'autres neurones peuvent utiliser.
+
+---
+
+# Sigmoïde · une sortie entre 0 et 1
+
+La sigmoïde transforme le score ainsi :
+
+$$
+\sigma(z)=\frac{1}{1+e^{-z}}.
+$$
+
+Quelques valeurs approchées :
+
+| Score $z$ | $-2$ | $0$ | $2$ |
+|---:|---:|---:|---:|
+| Sigmoïde $\sigma(z)$ | $0{,}12$ | $0{,}50$ | $0{,}88$ |
+
+Sa sortie reste entre 0 et 1. Pour une classification binaire, on peut comparer cette sortie à un seuil, par exemple 0,5. Ici, nous nous limitons au calcul et à l'interprétation des sorties.
+
+---
+
+# Observer les deux fonctions
+
+ReLU coupe les scores négatifs à 0 et augmente ensuite en ligne droite. La sigmoïde évolue progressivement entre 0 et 1.
+
+<svg class="interactive-demo-svg" viewBox="0 0 680 270" role="img" aria-label="Graphiques de ReLU et de la sigmoïde : ReLU vaut zéro pour les scores négatifs, la sigmoïde évolue entre zéro et un.">
+  <text x="185" y="28" text-anchor="middle" class="demo-title">ReLU(z)</text>
+  <path d="M55 210H320M185 220V48" class="demo-axis"/>
+  <path d="M55 170H320M55 130H320M55 90H320M120 48V210M250 48V210" class="demo-grid"/>
+  <path d="M65 210H185L300 65" fill="none" stroke="#d8894a" stroke-width="4" stroke-linecap="round"/>
+  <text x="185" y="252" text-anchor="middle" class="demo-caption">Score z</text>
+  <text x="32" y="126" text-anchor="middle" class="demo-caption" transform="rotate(-90 32 126)">Sortie</text>
+  <text x="495" y="28" text-anchor="middle" class="demo-title">Sigmoïde σ(z)</text>
+  <path d="M365 210H640M502 220V48" class="demo-axis"/>
+  <path d="M365 170H640M365 130H640M365 90H640M435 48V210M570 48V210" class="demo-grid"/>
+  <path d="M375 202C415 198 440 178 465 155S495 132 502 130S525 108 545 88S590 65 630 59" fill="none" stroke="#457b9d" stroke-width="4" stroke-linecap="round"/>
+  <path d="M365 130H640" stroke="#d8894a" stroke-width="2" stroke-dasharray="7 6"/>
+  <text x="502" y="252" text-anchor="middle" class="demo-caption">Score z · la ligne pointillée indique 0,5</text>
+</svg>
+
+Les deux activations transforment le même score de façons différentes. Dans nos exercices d'apprentissage, nous garderons la règle seuil, dont les sorties restent faciles à vérifier à la main.
+
+---
+
+# Exercice · Comparer seuil, ReLU et sigmoïde
+
+On considère les scores $z=-2$, $z=0$ et $z=2$.
+
+1. Calculer les trois sorties ReLU.
+2. À l'aide du tableau précédent, donner les sorties de la sigmoïde.
+3. Appliquer la règle seuil du perceptron : sortie 1 si $z\geq0$, sinon 0.
+4. Pour chaque fonction, décrire en une phrase ce que sa sortie représente.
+
+**Repère :** ce sont trois transformations du score. Dans ce cours, vous n'avez pas à calculer leurs dérivées ni à entraîner un réseau avec la sigmoïde.
 
 ---
 

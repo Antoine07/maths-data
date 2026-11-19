@@ -43,6 +43,32 @@ L'ordre des colonnes doit rester identique lors de toutes les comparaisons.
 
 ---
 
+## Mise en situation — Calculer le prix d'un panier
+
+Dans une liste de courses, chaque produit a une quantité et un prix unitaire. Gardons le même ordre pour les deux listes : pommes, lait, pain.
+
+| Produit | Prix unitaire (€) | Quantité |
+|:---|---:|---:|
+| Sachet de pommes | 2 | 2 |
+| Bouteille de lait | 1 | 1 |
+| Pain | 3 | 1 |
+
+Les quantités sont $q=(2,1,1)$ et les prix sont $p=(2,1,3)$. Le total du panier est :
+
+$$
+2\times2+1\times1+1\times3=8\text{ euros}.
+$$
+
+On multiplie chaque quantité par le prix correspondant, puis on additionne. Garder le même ordre dans les deux listes est essentiel.
+
+**À vous de jouer.** Avec l'ordre pommes, lait, pain, calculez le total de chaque panier :
+
+1. $(1,2,1)$.
+2. $(0,3,2)$.
+3. $(3,0,2)$. Un budget de 10 € suffit-il ?
+
+---
+
 ## Concepts essentiels — Produit scalaire
 
 $$

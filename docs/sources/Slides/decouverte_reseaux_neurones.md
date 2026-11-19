@@ -100,42 +100,6 @@ Un perceptron transforme des entrées en une décision : il pondère les caract�
 
 ---
 
-# Échauffement · Le produit scalaire d’un panier
-
-Le **produit scalaire** de deux vecteurs de même dimension est le nombre obtenu en multipliant leurs coordonnées de même rang, puis en additionnant les produits. Pour deux vecteurs $a$ et $b$ à trois coordonnées, on écrit
-
-$$
-a\cdot b=a_1b_1+a_2b_2+a_3b_3.
-$$
-
-Dans une liste de courses, on associe à chaque produit sa quantité et son prix unitaire.
-
-| Produit | Prix (€) | Quantité |
-|:---|---:|---:|
-| Sachet de pommes | 2 | 2 |
-| Bouteille de lait | 1 | 1 |
-| Pain | 3 | 1 |
-
-On garde le même ordre dans les deux vecteurs. Pour les quantités $q=(2,1,1)$ et les prix $p=(2,1,3)$, le total vaut
-
-$$
-\begin{aligned}
-q\cdot p &= 2\times 2+1\times 1+1\times 3\\
-         &= 8\ \text{euros}.
-\end{aligned}
-$$
-
-**À toi de jouer.** Garde l’ordre pommes, lait, pain et calcule le total de chaque panier.
-
-1. Panier $(1,2,1)$.
-2. Panier $(0,3,2)$.
-3. Panier $(3,0,2)$. Un budget de 10 € suffit-il ?
-
-
-Le neurone utilise le même type de calcul avec ses entrées et ses poids, puis ajoute un biais.
-
----
-
 # Objectif · Coder un perceptron
 
 À partir d’un jeu de données sur les manchots, vous allez préparer les caractéristiques et la cible, coder le calcul d’un score, puis écrire la boucle qui ajuste les poids lorsqu’une prédiction est fausse.

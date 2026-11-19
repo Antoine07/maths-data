@@ -1,103 +1,69 @@
+# TP – Le modèle prévoit-il une saturation ?
 
-# **TP – Modéliser la saturation d'un marché numérique**
-
-Une startup lance une application mobile. Le nombre d'utilisateurs actifs (en milliers) au mois (t) est modélisé par :
-
-$$
-U(t) = 5 + t\ln(t+2) - 2t, \qquad t\ge 0
-$$
-
-où
-
-* (t) : temps en mois,
-* (U(t)) : utilisateurs actifs (en milliers).
-
-Le modèle reflète :
-
-1. une croissance initiale : 
+Une startup modélise le nombre d’utilisateurs actifs, en milliers, par la fonction suivante. Le temps $t$ est mesuré en mois depuis le lancement.
 
 $$
-t \ln(t+2)
+U(t) = 5 + t\ln(t+2) - 2t, \qquad t\ge 0.
 $$
 
-1. une perte naturelle d'utilisateurs : (-2t)
-1. une base stable d'utilisateurs fidèles : (+5)
+Le modèle combine une base initiale de 5 000 utilisateurs, une contribution positive $t\ln(t+2)$ pour $t>0$ et une perte modélisée par $-2t$.
+
+On parle ici de **saturation** lorsque le nombre d’utilisateurs actifs tend vers un plafond fini.
 
 ---
 
-#  **Dérivée et signe de la dérivée**
+## Calcul de la dérivée
 
-## **Calculer la dérivée `U'(t)`**
+Calculer et simplifier $U'(t)$ en utilisant la règle de dérivation d’un produit.
 
-En déduire une expression simple de `U'(t)`.
-
----
-
-## **Étudier rigoureusement le signe de `U'(t)`**
-
-On pose :
-
-$$
-f(t)=U'(t)
-$$
-
-1. Calculer `f'(t)`.
-2. Montrer que `f'(t) > 0` pour tout (t > 0).
-3. Conclure que `f(t)` est strictement croissante.
-4. Calculer :
-
-1. f(0)
-1. la limite de f(t) lorsque (t tend vers  + l'infini)
-5. En déduire l'existence d'un **unique** point (t_0) tel que (U'(t_0)=0).
-6. Dresser le tableau de signe de (U'(t)).
-7. Trouvez ce point par dicothomie avec Python.
-8. En conclure les **variations de U(t)**.
+Quelle est l’unité de $U'(t)$ ?
 
 ---
 
-#  **Dérivée seconde et dynamique**
+## Signe de la dérivée et variations
 
-Expliquer, dans le contexte d'un marché :
+On pose $f(t)=U'(t)$.
 
-1. pourquoi une fonction d'utilisateurs peut d'abord décroître,
-1. puis repartir,
-1. et pourquoi une convexité constante est réaliste.
-
----
-
-# **Limite et asymptote**
-
-Calculez la limite en + l'infini de la fonction `U`.
+1. Calculer $f'(t)$ et justifier que $f$ est strictement croissante sur $[0,+\infty[$.
+2. Calculer $f(0)$ et la limite de $f(t)$ lorsque $t$ tend vers $+\infty$.
+3. À l’aide de la continuité de $f$, justifier l’existence et l’unicité d’un instant $t_0$ tel que $f(t_0)=0$. Dresser le tableau de signe de $f$.
+4. Vérifier que $f(2)<0<f(3)$. Approcher $t_0$ par dichotomie en Python sur $[2,3]$ jusqu’à obtenir un intervalle de largeur au plus $10^{-6}$ mois.
+5. En déduire les variations de $U$ et estimer le nombre d’utilisateurs au minimum.
 
 ---
 
-## **Y-a-t-il des asymptotes**
+## Dérivée seconde et dynamique
 
-Étudier :
-
-$$
-\frac{U(t)}{t} = \ln(t+2)-2 + \frac{5}{t}
-$$
-
-1. Calculer sa limite.
-2. Conclure s'il existe une asymptote horizontale ou oblique.
-
-À partir du signe de U'(t), expliquer :
-
-1. quand l'application perd des utilisateurs,
-1. quand elle en regagne,
-1. ce que signifie le point (t_0) pour une équipe produit.
+1. Justifier que $U$ est strictement convexe et décrire comment $U''(t)$ évolue avec le temps.
+2. Interpréter les signes de $U'(t)$ et de $U''(t)$ de part et d’autre de $t_0$. Que représente $t_0$ pour l’équipe produit ?
 
 ---
 
-## **Analyse de la faiblesse de la croissance**
+## Limite à long terme
 
-On fixe un seuil minimal de croissance égal à :
+Calculer la limite de $U(t)$ quand $t$ tend vers $+\infty$.
+
+D’après cette limite, le modèle prévoit-il une saturation du nombre d’utilisateurs actifs ?
+
+---
+
+## Asymptotes
+
+Pour $t>0$, on a
 
 $$
-U'(t) < 0.2.
+\frac{U(t)}{t} = \ln(t+2)-2 + \frac{5}{t}.
 $$
 
-On dit que la croissance est trop faible lorsque la dérivée U'(t) est strictement inférieure à ce seuil.
-Déterminer, à l’aide d’un raisonnement analytique ou d’un calcul numérique, l’instant à partir duquel cette situation cesse d’être vérifiée.
+1. Calculer la limite de ce quotient quand $t$ tend vers $+\infty$.
+2. En déduire si la courbe de $U$ admet une asymptote horizontale ou oblique en $+\infty$.
 
+---
+
+## Seuil de croissance
+
+L’équipe produit fixe un seuil de croissance de $0{,}2$ millier d’utilisateurs actifs par mois, soit 200 utilisateurs actifs par mois.
+
+1. Montrer qu’il existe un unique instant $t_s$ tel que $U'(t_s)=0{,}2$. L’estimer par dichotomie avec la même précision que pour $t_0$.
+2. Donner l’intervalle où $U'(t)<0{,}2$, puis celui où la croissance atteint ou dépasse le seuil.
+3. Sur quel intervalle le nombre d’utilisateurs actifs augmente-t-il à un taux strictement inférieur au seuil ?

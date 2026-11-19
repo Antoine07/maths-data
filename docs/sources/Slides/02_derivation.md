@@ -193,6 +193,9 @@ $$
 y = x + 3
 $$
 
+![La courbe de f(x)=x+3-1/x se rapproche de la droite pointillée y=x+3 lorsque x tend vers plus ou moins l’infini. La droite verticale x=0 est aussi une asymptote.](figures/fonctions-asymptote-oblique.svg)
+
+La différence vaut $f(x)-(x+3)=-\frac1x$ : elle tend vers $0$ aux deux infinis. Pour $x<0$, elle est positive : la courbe est au-dessus de son asymptote. Pour $x>0$, elle est négative : la courbe est en dessous.
 
 ---
 

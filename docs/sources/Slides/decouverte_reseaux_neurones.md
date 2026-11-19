@@ -233,6 +233,8 @@ Ces effets dépendent de l'échelle des caractéristiques. Pour l'instant, nous 
 
 Avant de demander au perceptron de classer des observations, il faut transformer le tableau en données numériques bien définies. [Téléchargez le fichier `penguins.csv`](data/penguins.csv) et placez-le dans le dossier du notebook.
 
+Pour travailler cette étape en autonomie sur le dépôt GitHub, ouvrez le [notebook guidé de nettoyage des données Penguins](https://github.com/Antoine07/maths-data/blob/main/nettoyage_penguins.ipynb). Il vous accompagne de l’inspection du tableau jusqu’à la construction des caractéristiques `X` et de la cible `y`, sans donner la solution complète.
+
 ```python
 import pandas as pd
 

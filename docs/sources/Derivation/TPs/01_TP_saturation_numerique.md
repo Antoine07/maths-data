@@ -66,4 +66,4 @@ L’équipe produit fixe un seuil de croissance de $0{,}2$ millier d’utilisate
 
 1. Montrer qu’il existe un unique instant $t_s$ tel que $U'(t_s)=0{,}2$. L’estimer par dichotomie avec la même précision que pour $t_0$.
 2. Donner l’intervalle où $U'(t)<0{,}2$, puis celui où la croissance atteint ou dépasse le seuil.
-3. Sur quel intervalle le nombre d’utilisateurs actifs augmente-t-il à un taux strictement inférieur au seuil ?
+3. Après le minimum, sur quel intervalle le nombre d’utilisateurs actifs augmente-t-il à un taux strictement inférieur au seuil ?

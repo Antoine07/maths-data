@@ -14,6 +14,14 @@ Il fournit toutes les notions nécessaires pour analyser correctement une foncti
 
 ---
 
+# Vue d'ensemble — relier la courbe et ses variations
+
+![Deux représentations de la fonction x³−3x et de sa dérivée. Le signe de la dérivée indique les intervalles de croissance et les changements de signe repèrent les extrema locaux.](images/fonctions-extrema.svg)
+
+Sur la courbe de $f$, on voit les montées, les descentes et les extrema. La courbe de $f'$ aide à les justifier : $f'>0$ là où $f$ croît ; $f'<0$ là où $f$ décroît. Nous allons aussi étudier les limites, les asymptotes, la continuité et les tangentes.
+
+---
+
 # Limites d'une fonction
 
 La limite décrit **le comportement d'une fonction lorsqu'on s'approche d'un point**, ou lorsqu'on part vers l'infini.
@@ -218,6 +226,10 @@ x^2  & x \ge 0
 \end{cases}
 $$
 
+![La branche x+2 arrive au point ouvert (0,2), tandis que la branche x² commence au point plein (0,0). Le saut montre que la fonction n'est pas continue en zéro.](figures/fonction-par-morceaux.svg)
+
+Le dessin rend visible le rôle des conditions : à $x=0$, la valeur $2$ est exclue de la première branche et la valeur $0$ est incluse dans la seconde. On peut ainsi vérifier la continuité avant d'étudier la dérivabilité.
+
 ---
 
 Questions classiques :
@@ -261,6 +273,10 @@ y = 1 + 2(x-1).
 $$
 
 Cette formule sera utilisée plus tard pour l'**approximation linéaire**.
+
+![À gauche, la courbe de x² et sa tangente au point d'abscisse 1. À droite, la dérivée 2x donne la pente de la tangente en chaque point.](figures/derivee-tangente.svg)
+
+À $x=1$, la courbe passe par $(1,1)$ et la pente vaut $f'(1)=2$. La tangente est donc $y=1+2(x-1)$.
 
 ---
 

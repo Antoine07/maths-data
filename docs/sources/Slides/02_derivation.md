@@ -229,7 +229,7 @@ x^2  & x \ge 0
 \end{cases}
 $$
 
-![La branche x+2 arrive au point ouvert (0,2), tandis que la branche x² commence au point plein (0,0). Le saut montre que la fonction n'est pas continue en zéro.](figures/fonction-par-morceaux.svg)
+![Dans un repère orthonormé, la branche x+2 arrive au point ouvert (0,2) et la branche x² passe par le point plein (0,0), placé à l’origine.](figures/fonction-par-morceaux.svg)
 
 Le dessin rend visible le rôle des conditions : à $x=0$, la valeur $2$ est exclue de la première branche et la valeur $0$ est incluse dans la seconde. On peut ainsi vérifier la continuité avant d'étudier la dérivabilité.
 

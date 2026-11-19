@@ -17,7 +17,7 @@
   {
     "file": "02_derivation.html",
     "source": "Slides/02_derivation.md",
-    "slides": 30
+    "slides": 31
   },
   {
     "file": "01_modelisation.html",
@@ -35,6 +35,11 @@
     "slides": 7
   },
   {
+    "file": "avance/00_produit_scalaire.html",
+    "source": "Slides/avance/00_produit_scalaire.md",
+    "slides": 8
+  },
+  {
     "file": "matrice.html",
     "source": "Slides/matrice.md",
     "slides": 60
@@ -47,7 +52,7 @@
   {
     "file": "avance/01_geometrie_donnees.html",
     "source": "Slides/avance/01_geometrie_donnees.md",
-    "slides": 27
+    "slides": 26
   },
   {
     "file": "qcm/algebre.html",

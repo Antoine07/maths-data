@@ -25,7 +25,7 @@ Prérequis : vecteurs, transposée, produit matrice-vecteur et racine carrée.
 
 Une journée devient un point dont les coordonnées décrivent température, occupation et équipements.
 
-Une distance compare deux points. Un produit scalaire compare leurs directions et intervient aussi dans une prédiction linéaire.
+Une distance compare deux points. Le produit scalaire, vu dans le chapitre précédent, compare aussi des directions et intervient dans une prédiction linéaire.
 
 Une projection conserve la partie d'un vecteur située dans une direction choisie. Elle préparera les moindres carrés et l'ACP.
 
@@ -40,94 +40,6 @@ Une ligne $x_i$ contient les $p$ caractéristiques d'une journée. Pour les form
 Exemple : $x=(12,3,4)^T$ signifie 12 °C, 3 occupants et un indice d'équipement de 4. Cet indice est une variable simulée du projet.
 
 L'ordre des colonnes doit rester identique lors de toutes les comparaisons.
-
----
-
-## Mise en situation — Calculer le prix d'un panier
-
-Dans une liste de courses, chaque produit a une quantité et un prix unitaire. Gardons le même ordre pour les deux listes : pommes, lait, pain.
-
-| Produit | Prix unitaire (€) | Quantité |
-|:---|---:|---:|
-| Sachet de pommes | 2 | 2 |
-| Bouteille de lait | 1 | 1 |
-| Pain | 3 | 1 |
-
-Les quantités sont $q=(2,1,1)$ et les prix sont $p=(2,1,3)$. Le total du panier est :
-
-$$
-2\times2+1\times1+1\times3=8\text{ euros}.
-$$
-
-On multiplie chaque quantité par le prix correspondant, puis on additionne. Garder le même ordre dans les deux listes est essentiel.
-
-**À vous de jouer.** Avec l'ordre pommes, lait, pain, calculez le total de chaque panier :
-
-1. $(1,2,1)$.
-2. $(0,3,2)$.
-3. $(3,0,2)$. Un budget de 10 € suffit-il ?
-
----
-
-## Concepts essentiels — Produit scalaire
-
-$$
-x^Tz=\sum_{j=1}^{p}x_jz_j.
-$$
-
-Chaque coordonnée de $x$ est multipliée par la coordonnée correspondante de $z$, puis les produits sont additionnés. Le résultat est un nombre.
-
-Avec $x=(3,4)^T$ et $z=(4,3)^T$ : $x^Tz=3\times4+4\times3=24$.
-
-Dans un modèle linéaire, $x^Tw$ combine les caractéristiques $x_j$ avec les poids $w_j$.
-
----
-
-## Exercices préparatoires — Du produit scalaire au perceptron
-
-Ces exercices réutilisent les vecteurs, le produit scalaire et NumPy. Ils préparent au calcul d'un score et à la décision d'un perceptron.
-
-### 1. Calculer un score et décider
-
-Trois observations sont décrites par deux caractéristiques :
-
-$$
-X=\begin{bmatrix}2&1\\0&2\\3&0\end{bmatrix},\qquad
-w=\begin{bmatrix}1\\-1\end{bmatrix},\qquad b=0{,}5.
-$$
-
-Pour chaque ligne $x_i$ de $X$ :
-
-1. Calculez le produit scalaire $x_i^Tw$.
-2. Ajoutez le biais pour obtenir le score $z_i=x_i^Tw+b$.
-3. Attribuez la classe 1 si $z_i\geq0$, et la classe 0 sinon.
-
-### 2. Comparer la prédiction à la classe attendue
-
-On vous indique que les classes réelles sont $y=(1,1,0)$.
-
-On note $y_i$ la classe réelle de l'observation $i$, et $\widehat y_i$ (« y chapeau ») la classe prédite à l'exercice 1.
-
-1. Pour chaque observation, dites si la classe prédite à l'exercice 1 est correcte.
-2. Calculez $y_i-\widehat y_i$ pour les trois observations.
-3. Que signifie une différence égale à 0 ? Et une différence égale à 1 ou $-1$ ?
-
-### 3. Refaire les calculs avec NumPy
-
-Complétez les deux lignes pour calculer les scores de toutes les observations, puis leurs classes prédites. `np.where(condition, valeur_si_vrai, valeur_si_faux)` permet d'appliquer une règle à tout un tableau.
-
-```python
-import numpy as np
-
-X = np.array([[2, 1], [0, 2], [3, 0]])
-poids = np.array([1, -1])
-biais = 0.5
-
-scores = ...  # Indice : X @ poids calcule un produit scalaire par ligne.
-classes_predites = ...
-```
-
-**À retenir :** un produit scalaire combine les caractéristiques et les poids pour produire un score. Le biais décale ce score ; une règle de seuil le transforme en classe.
 
 ---
 

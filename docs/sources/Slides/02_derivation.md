@@ -322,8 +322,8 @@ Pour cela, on utilise :
 | Fonction                          | Rôle                                          |
 | --------------------------------- | --------------------------------------------- |
 | `np.linspace(a, b, n)`            | Crée un vecteur de n points entre a et b      |
-| `np.diff(x)`                      | Approximation de la dérivée : (x_{i+1} - x_i) |
-| `np.gradient(x)`                  | Dérivée numérique lissée                      |
+| `np.diff(y) / np.diff(x)`         | Taux de variation entre deux points voisins  |
+| `np.gradient(y, x)`               | Approximation de la dérivée en chaque point  |
 | `np.sin(x), np.exp(x), np.log(x)` | Fonctions usuelles                            |
 | `x**2, x**3`                      | Puissances rapides                            |
 | `np.where(condition)`             | Sélection d'indices                           |
@@ -405,14 +405,13 @@ $$
 f(x) = 0
 $$
 
-Elle s'applique lorsque :
+Elle s'applique lorsque $f$ est continue sur $[a,b]$ et que ses valeurs aux bornes sont de signes opposés :
 
-1. (f) est continue sur l'intervalle
-1. et (f(a)) et (f(b)) sont de signes opposés
-  $$
-  f(a)\cdot f(b) < 0.
-  $$
-1. La fonction est strictement croissante ou décroissante sur l'intervalle de recherche.
+$$
+f(a)\cdot f(b) < 0.
+$$
+
+La continuité et le changement de signe garantissent au moins une racine dans l'intervalle. Si la fonction est aussi strictement monotone, cette racine est unique.
 
 ---
 
@@ -423,12 +422,11 @@ Elle s'applique lorsque :
    $$
    m = \frac{a+b}{2}
    $$
-3. Si (f(a)) et (f(m)) ont des signes contraires → la racine est dans ([a,m]).
-4. Sinon → la racine est dans ([m,b]).
+3. Si $f(m)=0$, on a trouvé une racine. Sinon, si $f(a)$ et $f(m)$ sont de signes contraires, conserver $[a,m]$.
+4. Dans l'autre cas, conserver $[m,b]$ : $f(m)$ et $f(b)$ sont alors de signes contraires.
 5. Répéter jusqu'à obtenir la précision voulue.
 
-L'intervalle se **réduit de moitié** à chaque étape.
-Méthode **lente mais infaillible** si les conditions sont remplies.
+L'intervalle se **réduit de moitié** à chaque étape. Après $n$ étapes, sa longueur vaut $(b-a)/2^n$. On peut ainsi encadrer une racine à la précision voulue. Si plusieurs racines se trouvent dans l'intervalle, la méthode en approche une, sans garantir laquelle.
 
 ---
 

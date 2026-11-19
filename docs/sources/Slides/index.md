@@ -22,7 +22,7 @@ Objectif : comprendre une variation et ajuster une première relation entre une 
 
 ## 2 — Algèbre pour les données
 
-4. **Nouveau :** [produit scalaire pour les données](avance/00_produit_scalaire.md) — du panier au score d’un perceptron.
+4. **Nouveau :** [produit scalaire pour les données](avance/00_produit_scalaire.md) — exemple du panier et calculs de scores avec NumPy.
 5. [Matrices, transformations et valeurs propres](matrice.md).
 6. **Nouveau :** [géométrie des données](avance/01_geometrie_donnees.md) — normes, distances et projections ; jalon 1.
 

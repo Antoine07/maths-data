@@ -5,7 +5,7 @@ html: true
 
 # Produit scalaire pour les données
 
-## Du panier au score d’un perceptron
+## Du panier à une combinaison de caractéristiques
 
 Un produit scalaire associe deux listes de nombres de même longueur. Il multiplie les valeurs qui se correspondent, puis additionne les produits.
 
@@ -61,7 +61,7 @@ $$
 
 Le produit scalaire $x^Tw$ combine les caractéristiques avec les poids. Le biais $b$ décale le score $z$.
 
-Pour un perceptron, une règle de seuil transforme ensuite ce score en classe : par exemple, classe 1 si $z\geq0$, classe 0 sinon.
+Une règle de seuil peut ensuite transformer ce score en classe : par exemple, classe 1 si $z\geq0$, classe 0 sinon.
 
 ---
 
@@ -83,9 +83,9 @@ L’opérateur `@` multiplie les coordonnées qui se correspondent et additionne
 
 ---
 
-## Exercices préparatoires — Du produit scalaire au perceptron
+## Exercices — Calculer un score et décider
 
-Ces exercices préparent au calcul d’un score et à la décision d’un perceptron. Faites les calculs à la main avant de les vérifier avec NumPy.
+Dans le premier exercice, vous appliquez le calcul à un perceptron simple. Faites les calculs à la main avant de les vérifier avec NumPy.
 
 ### 1. Calculer un score et décider
 

@@ -83,6 +83,54 @@ Dans un modèle linéaire, $x^Tw$ combine les caractéristiques $x_j$ avec les p
 
 ---
 
+## Exercices préparatoires — Du produit scalaire au perceptron
+
+Ces exercices réutilisent les vecteurs, le produit scalaire et NumPy. Ils préparent au calcul d'un score et à la décision d'un perceptron.
+
+### 1. Calculer un score et décider
+
+Trois observations sont décrites par deux caractéristiques :
+
+$$
+X=\begin{bmatrix}2&1\\0&2\\3&0\end{bmatrix},\qquad
+w=\begin{bmatrix}1\\-1\end{bmatrix},\qquad b=0{,}5.
+$$
+
+Pour chaque ligne $x_i$ de $X$ :
+
+1. Calculez le produit scalaire $x_i^Tw$.
+2. Ajoutez le biais pour obtenir le score $z_i=x_i^Tw+b$.
+3. Attribuez la classe 1 si $z_i\geq0$, et la classe 0 sinon.
+
+### 2. Comparer la prédiction à la classe attendue
+
+On vous indique que les classes réelles sont $y=(1,1,0)$.
+
+On note $y_i$ la classe réelle de l'observation $i$, et $\widehat y_i$ (« y chapeau ») la classe prédite à l'exercice 1.
+
+1. Pour chaque observation, dites si la classe prédite à l'exercice 1 est correcte.
+2. Calculez $y_i-\widehat y_i$ pour les trois observations.
+3. Que signifie une différence égale à 0 ? Et une différence égale à 1 ou $-1$ ?
+
+### 3. Refaire les calculs avec NumPy
+
+Complétez les deux lignes pour calculer les scores de toutes les observations, puis leurs classes prédites. `np.where(condition, valeur_si_vrai, valeur_si_faux)` permet d'appliquer une règle à tout un tableau.
+
+```python
+import numpy as np
+
+X = np.array([[2, 1], [0, 2], [3, 0]])
+poids = np.array([1, -1])
+biais = 0.5
+
+scores = ...  # Indice : X @ poids calcule un produit scalaire par ligne.
+classes_predites = ...
+```
+
+**À retenir :** un produit scalaire combine les caractéristiques et les poids pour produire un score. Le biais décale ce score ; une règle de seuil le transforme en classe.
+
+---
+
 ## Concepts essentiels — Normes L1 et L2
 
 Une norme mesure la taille d'un vecteur.

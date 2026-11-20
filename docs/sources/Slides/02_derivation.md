@@ -284,29 +284,6 @@ Cette formule sera utilisée plus tard pour l'**approximation linéaire**.
 ---
 
 
-# Exercices 
-
-## Limites et asymptotes
-
-Étudier les limites et asymptotes éventuelles de :
-
-a) 
-
-$$
-f(x)=\frac{2x+1}{x-3}
-$$
-
-
-b) 
-
-$$
-g(x)=3 + \frac{1}{x^2}
-$$
-
-
----
-
-
 # **Étude de fonction avec NumPy et Matplotlib**
 
 Même si l'étude de fonction est théorique, les outils numériques sont très utiles pour :
@@ -380,26 +357,6 @@ Voir un exemple complet à tester dans un Notebook
 
 ---
 
-# **Exercices numériques avec NumPy**
-
-Étudier numériquement la fonction :
-
-$$
-f(x) = x^4 - 2x^2 + 3
-$$
-
-Travail demandé :
-
-1. Générer un vecteur `x` entre –3 et 3.
-2. Calculer `f(x)`, puis sa dérivée `f'(x)` avec `np.gradient`.
-3. Tracer les deux courbes.
-4. Repérer graphiquement :
-
-1. les extremums,
-1. les intervalles où f croît / décroît.
-
----
-
 # **Méthode de dichotomie**
 
 La **méthode de dichotomie** permet de trouver numériquement une solution de :
@@ -464,6 +421,26 @@ $$
 # TP Saturation numérique
 
 [Saturation numérique](https://antoine07.github.io/maths-data/pratique/Derivation/TPs/01_TP_saturation_numerique.html)
+
+---
+
+# Exercice facultatif — Étude numérique avec NumPy
+
+Étudier numériquement la fonction :
+
+$$
+f(x) = x^4 - 2x^2 + 3
+$$
+
+Travail demandé :
+
+1. Générer un vecteur `x` entre –3 et 3.
+2. Calculer `f(x)`, puis sa dérivée `f'(x)` avec `np.gradient`.
+3. Tracer les deux courbes.
+4. Repérer graphiquement :
+
+1. les extremums,
+1. les intervalles où f croît / décroît.
 
 ---
 

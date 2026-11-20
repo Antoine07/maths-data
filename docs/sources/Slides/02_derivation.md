@@ -461,9 +461,25 @@ $$
 
 ---
 
-# TP Saturation numérique
+# TP facultatif — Le modèle prévoit-il une saturation ?
 
 [Saturation numérique](https://antoine07.github.io/maths-data/pratique/Derivation/TPs/01_TP_saturation_numerique.html)
+
+---
+
+## Ouverture facultative — La courbe de Gauss
+
+Avant d’aborder les probabilités, on peut observer une fonction qui y jouera un rôle central : la densité normale standard
+
+$$
+\varphi(x)=\frac{1}{\sqrt{2\pi}}e^{-x^2/2}.
+$$
+
+![Courbe de la densité normale standard : elle est symétrique autour de zéro, atteint son maximum en zéro et l’aire entre moins un et un est colorée.](images/courbe-gauss.svg)
+
+À partir du graphique, repérer l’axe de symétrie, le maximum et le comportement de la courbe lorsque $x$ tend vers $-\infty$ ou $+\infty$. La zone colorée sous la courbe entre $-1$ et $1$ représente une aire ; plus tard, cette aire s’interprétera comme la probabilité que la variable se trouve entre ces deux valeurs. Il n’est pas nécessaire de calculer cette aire ici.
+
+**À retenir pour la suite :** la courbe représente une densité. Une probabilité se lira sur une aire sous la courbe, et non sur la hauteur de la courbe en un point.
 
 ---
 

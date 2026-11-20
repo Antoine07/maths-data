@@ -2,7 +2,7 @@
   {
     "file": "revision.html",
     "source": "Slides/revision.md",
-    "slides": 46
+    "slides": 47
   },
   {
     "file": "fonctions_periodiques.html",
@@ -15,16 +15,6 @@
     "slides": 24
   },
   {
-    "file": "02_derivation.html",
-    "source": "Slides/02_derivation.md",
-    "slides": 31
-  },
-  {
-    "file": "01_modelisation.html",
-    "source": "Slides/01_modelisation.md",
-    "slides": 11
-  },
-  {
     "file": "qcm/fondamentaux.html",
     "source": "Slides/qcm/fondamentaux.md",
     "slides": 29
@@ -33,6 +23,11 @@
     "file": "qcm/frequence_flashcards.html",
     "source": "Slides/qcm/frequence_flashcards.md",
     "slides": 7
+  },
+  {
+    "file": "02_derivation.html",
+    "source": "Slides/02_derivation.md",
+    "slides": 32
   },
   {
     "file": "avance/00_produit_scalaire.html",
@@ -160,6 +155,11 @@
     "slides": 84
   },
   {
+    "file": "decouverte_reseaux_neurones.html",
+    "source": "Slides/decouverte_reseaux_neurones.md",
+    "slides": 12
+  },
+  {
     "file": "modelisation.html",
     "source": "scripts/data/legacy-slides.json",
     "slides": 14
@@ -168,10 +168,5 @@
     "file": "statistiques.html",
     "source": "Slides/01_introduction_stat.md",
     "slides": 40
-  },
-  {
-    "file": "decouverte_reseaux_neurones.html",
-    "source": "Slides/decouverte_reseaux_neurones.md",
-    "slides": 34
   }
 ]

@@ -284,29 +284,6 @@ Cette formule sera utilisée plus tard pour l'**approximation linéaire**.
 ---
 
 
-# Exercices 
-
-## Limites et asymptotes
-
-Étudier les limites et asymptotes éventuelles de :
-
-a) 
-
-$$
-f(x)=\frac{2x+1}{x-3}
-$$
-
-
-b) 
-
-$$
-g(x)=3 + \frac{1}{x^2}
-$$
-
-
----
-
-
 # **Étude de fonction avec NumPy et Matplotlib**
 
 Même si l'étude de fonction est théorique, les outils numériques sont très utiles pour :
@@ -377,26 +354,6 @@ f2 = np.gradient(f1, x)
 
 Voir un exemple complet à tester dans un Notebook
 [code Numpy](https://github.com/Antoine07/maths/blob/main/Examples/mes_tests.ipynb)
-
----
-
-# **Exercices numériques avec NumPy**
-
-Étudier numériquement la fonction :
-
-$$
-f(x) = x^4 - 2x^2 + 3
-$$
-
-Travail demandé :
-
-1. Générer un vecteur `x` entre –3 et 3.
-2. Calculer `f(x)`, puis sa dérivée `f'(x)` avec `np.gradient`.
-3. Tracer les deux courbes.
-4. Repérer graphiquement :
-
-1. les extremums,
-1. les intervalles où f croît / décroît.
 
 ---
 
@@ -480,6 +437,26 @@ $$
 À partir du graphique, repérer l’axe de symétrie, le maximum et le comportement de la courbe lorsque $x$ tend vers $-\infty$ ou $+\infty$. La zone colorée sous la courbe entre $-1$ et $1$ représente une aire ; plus tard, cette aire s’interprétera comme la probabilité que la variable se trouve entre ces deux valeurs. Il n’est pas nécessaire de calculer cette aire ici.
 
 **À retenir pour la suite :** la courbe représente une densité. Une probabilité se lira sur une aire sous la courbe, et non sur la hauteur de la courbe en un point.
+
+---
+
+# Exercice facultatif — Étude numérique avec NumPy
+
+Étudier numériquement la fonction :
+
+$$
+f(x) = x^4 - 2x^2 + 3
+$$
+
+Travail demandé :
+
+1. Générer un vecteur `x` entre –3 et 3.
+2. Calculer `f(x)`, puis sa dérivée `f'(x)` avec `np.gradient`.
+3. Tracer les deux courbes.
+4. Repérer graphiquement :
+
+1. les extremums,
+1. les intervalles où f croît / décroît.
 
 ---
 
